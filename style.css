@@ -431,7 +431,7 @@ section {
 }
 
 h1 {
-    font-size: clamp(40px, 7.4vw, 92px);
+    font-size: clamp(20px, 3.7vw, 46px);
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 1.04;
@@ -439,7 +439,7 @@ h1 {
 }
 
 h2 {
-    font-size: clamp(30px, 4.4vw, 52px);
+    font-size: clamp(16px, 2.2vw, 26px);
     font-weight: 600;
     letter-spacing: -0.035em;
     line-height: 1.1;
