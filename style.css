@@ -1515,3 +1515,25 @@ footer .logo-word .inv {
 .card .plan-btn.btn-ghost {
     border-color: var(--border-color);
 }
+
+/* =========================================================
+   Pi Tasks entry point in the navbar
+   ========================================================= */
+
+.nav-links a.nav-tasks {
+    background: var(--bg-soft-2);
+    font-weight: 600;
+}
+
+.nav-links a.nav-tasks:hover {
+    background: rgba(0, 0, 0, 0.09);
+}
+
+.nav-links a.nav-tasks.is-current {
+    background: var(--blue-soft);
+    color: var(--blue);
+}
+
+.nav-links a.nav-tasks.is-current:hover {
+    background: var(--blue-soft-hover);
+}
