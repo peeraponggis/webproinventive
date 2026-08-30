@@ -12,6 +12,156 @@
         rotator();
         marquees();
         reveal();
+        startMenu();
+        piOpeners();
+        homeDash();
+    }
+
+    function t(key) {
+        return window.I18N ? window.I18N.t(key) : key;
+    }
+
+    /* ---------- "เริ่มใช้ฟรี" start menu ---------- */
+    function startMenu() {
+        var buttons = document.querySelectorAll(".btn-start");
+        if (!buttons.length) return;
+
+        var overlay = null;
+
+        function item(icon, titleKey, descKey, href, extraCls, wip) {
+            var titleTxt = t(titleKey) + (wip ? " " + t("start.wip") : "");
+            return (
+                '<a class="dd-item ' + (extraCls || "") + '" href="' + href + '"' +
+                (href.indexOf("http") === 0 ? ' target="_blank" rel="noopener"' : "") + ">" +
+                '<span class="dd-ico">' + icon + "</span><span>" +
+                '<span class="dd-title">' + titleTxt + "</span>" +
+                '<span class="dd-desc">' + t(descKey) + "</span>" +
+                "</span></a>"
+            );
+        }
+
+        function open() {
+            close();
+            overlay = document.createElement("div");
+            overlay.className = "auth-overlay start-overlay open";
+            overlay.innerHTML =
+                '<div class="auth-card start-card" role="dialog" aria-modal="true">' +
+                '<button type="button" class="auth-x" aria-label="close">' +
+                '<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>' +
+                "</button>" +
+                '<h3 class="auth-title">' + t("hero.cta1") + "</h3>" +
+                '<div class="start-items">' +
+                item("📄", "start.docs.t", "dd.docs.d", "#") +
+                item("✨", "dd.ai.t", "dd.ai.d", "#", "js-open-pi") +
+                item("🗂️", "dd.project.t", "dd.project.d", "#", "", true) +
+                item("☀️", "SaaS", "saas.main.d", "https://web-production-359eb.up.railway.app") +
+                "</div></div>";
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener("click", function (e) {
+                if (e.target === overlay || e.target.closest(".auth-x")) close();
+                if (e.target.closest(".dd-item")) close();
+            });
+        }
+
+        function close() {
+            if (overlay) {
+                overlay.remove();
+                overlay = null;
+            }
+        }
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") close();
+        });
+
+        buttons.forEach(function (btn) {
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                open();
+            });
+        });
+    }
+
+    /* ---------- anything with .js-open-pi opens the Pi console ---------- */
+    function piOpeners() {
+        document.addEventListener("click", function (e) {
+            var el = e.target.closest(".js-open-pi");
+            if (!el) return;
+            e.preventDefault();
+            if (window.PiConsole) window.PiConsole.open();
+        });
+    }
+
+    /* ---------- live "today's summary" inside the hero mockup ---------- */
+    function homeDash() {
+        var box = document.getElementById("homeDash");
+        if (!box) return;
+        var usersEl = document.getElementById("homeDashUsers");
+
+        function fill() {
+            var board = [];
+            try {
+                board = JSON.parse(localStorage.getItem("pi_tasks_board_v2") || "[]");
+            } catch (e) {
+                board = [];
+            }
+            if (!Array.isArray(board)) board = [];
+
+            var counts = { todo: 0, doing: 0, review: 0, done: 0 };
+            var users = {};
+            var today = new Date().toDateString();
+
+            board.forEach(function (c) {
+                if (counts[c.col] !== undefined) counts[c.col]++;
+                var name = c.owner || "—";
+                var u = (users[name] = users[name] || { doneToday: 0, last: 0 });
+                if (c.moved > u.last) u.last = c.moved;
+                if (c.col === "done" && new Date(c.moved).toDateString() === today)
+                    u.doneToday++;
+            });
+
+            Object.keys(counts).forEach(function (k) {
+                var el = box.querySelector('[data-dash="' + k + '"]');
+                if (el) el.textContent = counts[k];
+            });
+
+            if (!usersEl) return;
+            usersEl.innerHTML = "";
+            var names = Object.keys(users).sort(function (a, b) {
+                return users[b].last - users[a].last;
+            });
+            if (!names.length) {
+                var empty = document.createElement("div");
+                empty.className = "mkd-empty";
+                empty.textContent = t("dash.empty");
+                usersEl.appendChild(empty);
+                return;
+            }
+            var lang = window.I18N && I18N.get() === "en" ? "en-GB" : "th-TH";
+            names.slice(0, 4).forEach(function (name) {
+                var row = document.createElement("div");
+                row.className = "mk-row";
+                var when = "";
+                try {
+                    when = new Intl.DateTimeFormat(lang, {
+                        day: "numeric", month: "short",
+                        hour: "2-digit", minute: "2-digit"
+                    }).format(new Date(users[name].last));
+                } catch (e) { /* keep empty */ }
+                ["👤 " + name, String(users[name].doneToday), when].forEach(function (txt) {
+                    var sp = document.createElement("span");
+                    sp.textContent = txt;
+                    row.appendChild(sp);
+                });
+                usersEl.appendChild(row);
+            });
+        }
+
+        fill();
+        document.addEventListener("i18n:change", fill);
+        window.addEventListener("storage", fill);
+        window.addEventListener("pageshow", fill);
     }
 
     /* ---------- Sticky header border ---------- */

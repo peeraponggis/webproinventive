@@ -21,7 +21,7 @@
 (function (global) {
     "use strict";
 
-    var STORE = "pi_tasks_board_v1";
+    var STORE = "pi_tasks_board_v2";
     var LIVE_KEY = "pi_tasks_live";
 
     var COLUMNS = [
@@ -31,39 +31,8 @@
         { id: "done", key: "tk.c.done", dot: "#3f9b6a", pill: "#e6f4ec", bg: "#f7fbf9", text: "#2c7a54" }
     ];
 
-    var SEED = [
-        { k: "tk.s1", col: "todo" },
-        { k: "tk.s2", col: "todo", mine: true },
-        { k: "tk.s3", col: "todo" },
-        { k: "tk.s4", col: "todo", sprint: true },
-        { k: "tk.s5", col: "todo" },
-        { k: "tk.s6", col: "todo", mine: true, sprint: true },
-        { k: "tk.s7", col: "todo" },
-        { k: "tk.s8", col: "todo" },
-        { k: "tk.s9", col: "todo" },
-        { k: "tk.s10", col: "todo", sprint: true },
-
-        { k: "tk.s11", col: "doing" },
-        { k: "tk.s12", col: "doing", sprint: true },
-        { k: "tk.s13", col: "doing", mine: true },
-        { k: "tk.s14", col: "doing" },
-        { k: "tk.s15", col: "doing", sprint: true },
-
-        { k: "tk.s16", col: "review", mine: true },
-        { k: "tk.s17", col: "review" },
-        { k: "tk.s18", col: "review", sprint: true },
-
-        { k: "tk.s19", col: "done" },
-        { k: "tk.s20", col: "done" },
-        { k: "tk.s21", col: "done" },
-        { k: "tk.s22", col: "done" },
-        { k: "tk.s23", col: "done", mine: true },
-        { k: "tk.s24", col: "done" },
-        { k: "tk.s25", col: "done" },
-        { k: "tk.s26", col: "done" },
-        { k: "tk.s27", col: "done" },
-        { k: "tk.s28", col: "done" }
-    ];
+    /* the board ships empty, ready for real work */
+    var SEED = [];
 
     var config = { endpoint: null, headers: {}, transport: null };
     var listeners = {};
@@ -73,7 +42,7 @@
     var live = true;
     var liveTimer = null;
     var dragging = null;
-    var root, boardEl, timelineEl, collabLayer;
+    var root, boardEl, timelineEl, dashEl, collabLayer;
 
     /* ---------------- utils ---------------- */
 
@@ -89,14 +58,6 @@
         return card.k ? t(card.k) : card.title || "";
     }
 
-    /* deterministic sample status dates for the seeded board */
-    var SEED_DATES = {
-        todo: "2026-08-29",
-        doing: "2026-08-27",
-        review: "2026-08-25",
-        done: "2026-08-14"
-    };
-
     function fmtDate(value) {
         if (!value) return "";
         var d = new Date(value);
@@ -110,6 +71,23 @@
             }).format(d);
         } catch (e) {
             return d.toLocaleDateString();
+        }
+    }
+
+    function fmtDateTime(value) {
+        if (!value) return "";
+        var d = new Date(value);
+        if (isNaN(d)) return "";
+        var lang = global.I18N && I18N.get() === "en" ? "en-GB" : "th-TH";
+        try {
+            return new Intl.DateTimeFormat(lang, {
+                day: "numeric",
+                month: "short",
+                hour: "2-digit",
+                minute: "2-digit"
+            }).format(d);
+        } catch (e) {
+            return d.toLocaleString();
         }
     }
 
@@ -175,11 +153,7 @@
         } catch (e) {
             /* fall through to seed */
         }
-        return SEED.map(function (s, i) {
-            var d = new Date(SEED_DATES[s.col] || "2026-08-20");
-            d.setDate(d.getDate() - (i % 4)); /* spread dates a little */
-            return Object.assign({ id: "seed" + i, moved: d.getTime() }, s);
-        });
+        return [];
     }
 
     function save() {
@@ -194,6 +168,7 @@
 
     function visible(card) {
         if (view === "mine" && !card.mine) return false;
+        if (view === "dash") return true;
         if (view === "sprint" && card.col !== "doing") return false;
         if (query && title(card).toLowerCase().indexOf(query) === -1) return false;
         return true;
@@ -222,7 +197,9 @@
             meta.className = "t-meta";
             var who = document.createElement("span");
             who.className = "t-chip user";
-            who.textContent = "👤 " + currentUserName();
+            who.textContent =
+                "👤 " + (card.owner || currentUserName()) +
+                " · " + fmtDateTime(card.moved);
             meta.appendChild(who);
             if (card.mine) {
                 var m = document.createElement("span");
@@ -342,6 +319,102 @@
         });
 
         renderTimeline();
+        renderDash();
+    }
+
+    /* ---------------- dashboard: today's summary ---------------- */
+
+    function renderDash() {
+        if (!dashEl) return;
+        dashEl.innerHTML = "";
+
+        var counts = { todo: 0, doing: 0, review: 0, done: 0 };
+        var users = {};
+        var today = new Date().toDateString();
+        var doneToday = 0;
+
+        board.forEach(function (c) {
+            if (counts[c.col] !== undefined) counts[c.col]++;
+            var name = c.owner || t("tk.guest");
+            var u = (users[name] = users[name] || {
+                todo: 0, doing: 0, review: 0, done: 0, doneToday: 0, last: 0
+            });
+            u[c.col]++;
+            if (c.moved > u.last) u.last = c.moved;
+            if (c.col === "done" && new Date(c.moved).toDateString() === today) {
+                doneToday++;
+                u.doneToday++;
+            }
+        });
+
+        function section(key) {
+            var h = document.createElement("h3");
+            h.textContent = t(key);
+            dashEl.appendChild(h);
+        }
+
+        function tile(label, value, color) {
+            var d = document.createElement("div");
+            d.className = "db-tile";
+            if (color) d.style.borderTopColor = color;
+            var n = document.createElement("span");
+            n.className = "n";
+            n.textContent = value;
+            var l = document.createElement("span");
+            l.className = "l";
+            l.textContent = label;
+            d.appendChild(n);
+            d.appendChild(l);
+            return d;
+        }
+
+        section("dash.company");
+        var tiles = document.createElement("div");
+        tiles.className = "db-tiles";
+        tiles.appendChild(tile(t("dash.total"), board.length));
+        COLUMNS.forEach(function (col) {
+            tiles.appendChild(tile(t(col.key), counts[col.id], col.dot));
+        });
+        tiles.appendChild(tile(t("dash.doneToday"), doneToday, "#3f9b6a"));
+        dashEl.appendChild(tiles);
+
+        section("dash.byuser");
+        var names = Object.keys(users);
+        if (!names.length) {
+            var empty = document.createElement("div");
+            empty.className = "db-empty";
+            empty.textContent = t("dash.empty");
+            dashEl.appendChild(empty);
+            return;
+        }
+
+        var table = document.createElement("div");
+        table.className = "db-table";
+        var head = document.createElement("div");
+        head.className = "db-row head";
+        [t("dash.user"), t("col.todo"), t("col.doing"), t("col.review"),
+         t("col.done"), t("dash.doneToday"), t("dash.lastActive")]
+            .forEach(function (txt) {
+                var sp = document.createElement("span");
+                sp.textContent = txt;
+                head.appendChild(sp);
+            });
+        table.appendChild(head);
+
+        names.sort(function (a, b) { return users[b].last - users[a].last; });
+        names.forEach(function (name) {
+            var u = users[name];
+            var row = document.createElement("div");
+            row.className = "db-row";
+            ["👤 " + name, u.todo, u.doing, u.review, u.done, u.doneToday,
+             fmtDateTime(u.last)].forEach(function (txt) {
+                var sp = document.createElement("span");
+                sp.textContent = txt;
+                row.appendChild(sp);
+            });
+            table.appendChild(row);
+        });
+        dashEl.appendChild(table);
     }
 
     function renderTimeline() {
@@ -400,6 +473,7 @@
             id: uid(),
             title: text || t("tk.untitled"),
             col: colId,
+            owner: currentUserName(),
             moved: Date.now()
         };
         board.unshift(card);
@@ -427,6 +501,7 @@
         if (!card || card.col === toCol) return;
         var from = card.col;
         card.col = toCol;
+        card.owner = currentUserName();
         card.moved = Date.now();
         save();
         render();
@@ -626,6 +701,7 @@
         root = document.querySelector(".tasks-page");
         boardEl = document.getElementById("board");
         timelineEl = document.getElementById("timeline");
+        dashEl = document.getElementById("dashboard");
         collabLayer = document.getElementById("collabLayer");
 
         board = load();
@@ -638,7 +714,10 @@
                     b.classList.toggle("active", b === btn);
                 });
                 view = btn.dataset.view;
-                root.setAttribute("data-view", view === "timeline" ? "timeline" : "board");
+                root.setAttribute(
+                    "data-view",
+                    view === "timeline" ? "timeline" : view === "dash" ? "dash" : "board"
+                );
                 render();
             });
         });
@@ -689,7 +768,7 @@
         document.getElementById("liveToggle").addEventListener("click", function () {
             setLive(!live);
         });
-        setLive(stored === null ? true : stored === "1");
+        setLive(stored === "1");
 
         document.addEventListener("i18n:change", render);
         document.addEventListener("auth:change", render);
