@@ -38,7 +38,7 @@
     /* real province map from thmap.js (loaded before this file) */
     var MAP = window.TH_MAP;
 
-    var GOLD = "#e3b93f";
+    var GOLD = "#ffb03a";
     var BLUE = "#7fb6ff";
 
     /* pin label placement (dx/dy in map units; anchor start|end) */

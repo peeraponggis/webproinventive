@@ -4,14 +4,14 @@
    ========================================================= */
 
 :root {
-    --pi-navy: #101a2e;
-    --pi-navy-2: #17233c;
-    --pi-navy-3: #1f2d4a;
+    --pi-navy: #251102;
+    --pi-navy-2: #331a09;
+    --pi-navy-3: #45240d;
     --pi-line: rgba(255, 255, 255, 0.1);
-    --pi-text: #e8eefc;
-    --pi-dim: #93a3c4;
-    --pi-gold: #e3b93f;
-    --pi-gold-2: #b8860b;
+    --pi-text: #ffeeda;
+    --pi-dim: #c9a482;
+    --pi-gold: #ffb03a;
+    --pi-gold-2: #d97817;
     --pi-cyan: #7fb6ff;
     --pi-ok: #46c07a;
     --pi-warn: #e0a93b;
@@ -39,13 +39,13 @@
     font-size: 14px;
     font-weight: 550;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(16, 26, 46, 0.32);
+    box-shadow: 0 10px 30px rgba(37, 17, 2, 0.32);
     transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .pi-launcher:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 38px rgba(16, 26, 46, 0.4);
+    box-shadow: 0 16px 38px rgba(37, 17, 2, 0.4);
 }
 
 .pi-launcher img {
@@ -320,8 +320,8 @@
 
 .pi-quick button:hover {
     color: var(--pi-text);
-    border-color: rgba(227, 185, 63, 0.5);
-    background: rgba(227, 185, 63, 0.08);
+    border-color: rgba(255, 176, 58, 0.5);
+    background: rgba(255, 176, 58, 0.08);
 }
 
 /* Composer */
@@ -357,7 +357,7 @@
 }
 
 .pi-form textarea:focus {
-    border-color: rgba(227, 185, 63, 0.55);
+    border-color: rgba(255, 176, 58, 0.55);
 }
 
 .pi-send {
