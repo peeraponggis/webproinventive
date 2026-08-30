@@ -495,6 +495,11 @@ p.subtitle {
     margin: 0 auto 34px;
 }
 
+/* hero heading at half the global h1 scale */
+.hero h1 {
+    font-size: clamp(20px, 3.7vw, 46px);
+}
+
 .hero h1 .line {
     display: block;
 }
