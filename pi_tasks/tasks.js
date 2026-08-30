@@ -167,11 +167,25 @@
     /* ---------------- rendering ---------------- */
 
     function visible(card) {
-        if (view === "mine" && !card.mine) return false;
         if (view === "dash") return true;
+        if (view === "mine" && (card.owner || "") !== currentUserName()) return false;
         if (view === "sprint" && card.col !== "doing") return false;
         if (query && title(card).toLowerCase().indexOf(query) === -1) return false;
         return true;
+    }
+
+    /* switch tabs programmatically (also used after creating a card the
+       current filter would hide, so the new card is never invisible) */
+    function activateView(next) {
+        view = next;
+        document.querySelectorAll(".board-tabs button").forEach(function (b) {
+            b.classList.toggle("active", b.dataset.view === next);
+        });
+        root.setAttribute(
+            "data-view",
+            next === "timeline" ? "timeline" : next === "dash" ? "dash" : "board"
+        );
+        render();
     }
 
     function cardsOf(colId) {
@@ -478,7 +492,19 @@
         };
         board.unshift(card);
         save();
-        render();
+
+        /* never let the new card land invisibly behind a filter */
+        if (query) {
+            query = "";
+            var qi = document.getElementById("searchInput");
+            if (qi) qi.value = "";
+        }
+        /* timeline and dashboard can't edit a card title — jump to the board */
+        if (view === "timeline" || view === "dash" || !visible(card)) {
+            activateView("all");
+        } else {
+            render();
+        }
         bumpCount(colId);
         sync("create", { card: card });
 
@@ -710,15 +736,7 @@
         /* tabs */
         document.querySelectorAll(".board-tabs button").forEach(function (btn) {
             btn.addEventListener("click", function () {
-                document.querySelectorAll(".board-tabs button").forEach(function (b) {
-                    b.classList.toggle("active", b === btn);
-                });
-                view = btn.dataset.view;
-                root.setAttribute(
-                    "data-view",
-                    view === "timeline" ? "timeline" : view === "dash" ? "dash" : "board"
-                );
-                render();
+                activateView(btn.dataset.view);
             });
         });
 
