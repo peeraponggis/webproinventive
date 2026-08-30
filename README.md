@@ -51,7 +51,8 @@ python -m http.server 8123
 ```
 
 - ปุ่มสลับภาษาคือ element ที่มี `data-lang="th"` / `data-lang="en"` (มีทั้งใน navbar, เมนูมือถือ และ footer)
-- ภาษาที่เลือกถูกจำไว้ใน `localStorage` (key `pi_lang`) ถ้ายังไม่เคยเลือกจะเดาจาก `navigator.language`
+- **ผู้เข้าชมครั้งแรกได้ภาษาไทยเสมอ** ไม่ว่าเบราว์เซอร์ตั้งภาษาอะไร (เปลี่ยนค่าเริ่มต้นได้ที่ `DEFAULT_LANG` ใน `i18n.js`)
+- ภาษาที่ผู้ใช้กดเลือกเองถูกจำไว้ใน `localStorage` (key `pi_lang`) และมีผลเหนือค่าเริ่มต้น
 - เปลี่ยนภาษาแล้วจะ update `<html lang>`, `<title>` และ meta description ให้อัตโนมัติ
 
 API:

@@ -14,6 +14,7 @@
     "use strict";
 
     var STORAGE_KEY = "pi_lang";
+    var DEFAULT_LANG = "th";   /* ภาษาเริ่มต้นของผู้เข้าชมครั้งแรก */
 
     var DICT = {
         th: {
@@ -507,8 +508,9 @@
             saved = null;
         }
         if (saved === "th" || saved === "en") return saved;
-        var nav = (global.navigator && (navigator.language || navigator.userLanguage)) || "th";
-        return /^th/i.test(nav) ? "th" : "en";
+        /* Thai is the default for every first-time visitor, regardless of
+           browser locale. Only an explicit choice (stored above) overrides it. */
+        return DEFAULT_LANG;
     }
 
     function t(key, vars) {
