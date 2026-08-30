@@ -1,1 +1,156 @@
 # webproinventive
+
+เว็บไซต์ PROINVENTIVE — โครงหน้าและภาษาการออกแบบอ้างอิงจาก notion.com
+รองรับ 2 ภาษา (ไทย / อังกฤษ), มี **Console · Chat with Pi** และบอร์ดงาน **Pi Tasks**
+
+---
+
+## โครงสร้างไฟล์
+
+```
+.
+├── index.html            หน้าแรก (hero, features, use cases, testimonials, CTA, footer)
+├── product.html          หน้าผลิตภัณฑ์
+├── pricing.html          หน้าราคา
+├── style.css             design system ทั้งเว็บ (tokens, nav, ปุ่ม, การ์ด, footer)
+├── app.js                sticky header, เมนูมือถือ, คำหมุนใน hero, marquee, reveal-on-scroll
+├── i18n.js               ระบบ 2 ภาษา + พจนานุกรม TH/EN ของทั้งเว็บ
+├── pi-console.js         Console · Chat with Pi (logic + adapter สำหรับ CRM/SaaS)
+├── pi-console.css        สไตล์ของคอนโซล
+├── img/                  โลโก้ (pilogo.png), favicon, ไอคอน
+└── pi_tasks/             บอร์ดงานแบบ Kanban
+    ├── index.html
+    ├── tasks.js          board logic, drag & drop, โหมดสาธิตสด, adapter
+    ├── tasks-i18n.js     คำแปลเฉพาะหน้า Pi Tasks (merge เข้า I18N)
+    └── tasks.css
+```
+
+## รันบนเครื่อง
+
+เป็นเว็บ static ล้วน ไม่ต้อง build:
+
+```bash
+python -m http.server 8123
+```
+
+แล้วเปิด <http://localhost:8123>
+
+> ต้องเปิดผ่าน HTTP server ไม่ใช่ `file://` เพราะไฟล์ JS/CSS ถูกโหลดแบบ relative path
+
+---
+
+## ระบบ 2 ภาษา (i18n)
+
+ทุกข้อความในหน้าเว็บผูกกับ key ในพจนานุกรมของ [`i18n.js`](i18n.js)
+
+```html
+<span data-i18n="nav.pricing">ราคา</span>
+<p    data-i18n-html="some.key">รองรับแท็ก HTML</p>
+<input data-i18n-attr="placeholder:tk.search, aria-label:tk.search">
+<body data-i18n-title="meta.title" data-i18n-desc="meta.desc">
+```
+
+- ปุ่มสลับภาษาคือ element ที่มี `data-lang="th"` / `data-lang="en"` (มีทั้งใน navbar, เมนูมือถือ และ footer)
+- ภาษาที่เลือกถูกจำไว้ใน `localStorage` (key `pi_lang`) ถ้ายังไม่เคยเลือกจะเดาจาก `navigator.language`
+- เปลี่ยนภาษาแล้วจะ update `<html lang>`, `<title>` และ meta description ให้อัตโนมัติ
+
+API:
+
+```js
+I18N.get();          // 'th' | 'en'
+I18N.set('en');      // สลับภาษา + จำค่า + re-render
+I18N.t('nav.free');  // แปลข้อความ
+document.addEventListener('i18n:change', e => console.log(e.detail.lang));
+```
+
+**เพิ่มข้อความใหม่:** เติม key ทั้งใน `DICT.th` และ `DICT.en` ของ `i18n.js`
+สำหรับหน้าใหม่ในโฟลเดอร์ย่อย ใช้วิธีเดียวกับ `pi_tasks/tasks-i18n.js` คือ merge เข้า `I18N.dict`
+
+---
+
+## Console · Chat with Pi
+
+ปุ่มลอยมุมขวาล่างของทุกหน้า เปิดคอนโซลคุยกับ Pi
+**เฟสนี้ทำงานในโหมดสาธิต** (ตอบจากชุดคำตอบในเครื่อง) และเตรียม adapter ไว้ให้ต่อ CRM/SaaS ในเฟสถัดไปโดยไม่ต้องแก้ UI
+
+คำสั่งในคอนโซล: `/help` `/status` `/connect <endpoint>` `/crm` `/lang th|en` `/clear`
+
+### ต่อกับ backend (เฟสถัดไป)
+
+```js
+PiConsole.configure({
+  endpoint: "https://api.yourcrm.com/pi/chat",
+  headers : { Authorization: "Bearer …" },
+
+  // หรือ override ทั้งก้อน — รับ payload ด้านล่าง คืน { reply } หรือ string
+  transport: async (payload) => ({ reply: "…" })
+});
+
+PiConsole.setContext({ userId, accountId, dealId });   // แนบ context ไปกับทุกคำถาม
+```
+
+payload ที่ส่งไป backend:
+
+```json
+{
+  "message": "ราคาเท่าไหร่",
+  "lang": "th",
+  "history": [{ "role": "user", "text": "…", "ts": 1756500000000 }],
+  "context": { "userId": "…" }
+}
+```
+
+API อื่น: `PiConsole.open() / close() / toggle() / send(text) / say(text, role) / clear()`
+และ `PiConsole.on('message'|'open'|'close'|'error', fn)`
+
+---
+
+## Pi Tasks — บอร์ดงาน Kanban
+
+อยู่ที่ [`pi_tasks/index.html`](pi_tasks/index.html) เข้าได้จากเมนู **ผลิตภัณฑ์ → Pi Tasks**
+
+- 4 คอลัมน์: รอทำ / กำลังทำ / รอตรวจ / เสร็จแล้ว พร้อมตัวนับที่อัปเดตสด
+- ลากการ์ดข้ามคอลัมน์ได้ (pointer-based รองรับทั้งเมาส์และทัช) การ์ดที่ลากจะเอียงตามเงา
+- คลิกที่ชื่อการ์ดเพื่อแก้ไขในที่ · ปุ่ม ✕ เพื่อลบ · `+ เพิ่มการ์ด` ท้ายคอลัมน์
+- แท็บ: งานทั้งบริษัท / งานของฉัน / สปรินต์ปัจจุบัน / ไทม์ไลน์
+- เครื่องมือ: ค้นหา, เรียง A→Z, รีเซ็ตบอร์ด, ปุ่ม "สร้างใหม่"
+- **โหมดสาธิตสด** — จำลองเพื่อนร่วมทีมเข้ามาคอมเมนต์และย้ายการ์ด (ปิดได้ที่ปุ่ม Live demo)
+- บอร์ดถูกเก็บใน `localStorage` (key `pi_tasks_board_v1`)
+
+### ต่อกับ CRM/SaaS (เฟสถัดไป)
+
+ทุกการเปลี่ยนแปลงบนบอร์ดถูกส่งออกเป็น event เดียวกันหมด:
+
+```js
+PiTasks.configure({
+  endpoint : "https://api.yourcrm.com/tasks",
+  headers  : { Authorization: "Bearer …" },
+  transport: async (event) => { /* จัดการเอง */ }
+});
+
+PiTasks.on('change', e => console.log(e.type, e.card));
+```
+
+รูปแบบ event:
+
+```json
+{
+  "type": "create | update | move | delete | reset",
+  "card": { "id": "…", "title": "…", "col": "review", "mine": true, "sprint": false },
+  "from": "doing",
+  "to": "review",
+  "board": [ "…สถานะบอร์ดทั้งหมด…" ],
+  "ts": 1756500000000
+}
+```
+
+API อื่น: `PiTasks.getBoard() / setBoard(arr) / create(col) / move(id, col) / remove(id) / reset() / setLive(bool)`
+
+---
+
+## หมายเหตุ
+
+- ชื่อบริษัทในแถบ "ได้รับความไว้วางใจจาก…" บนหน้าแรกเป็น **ชื่อสมมติ** (Acme, Northwind, Vertex …)
+  ให้เปลี่ยนเป็นลูกค้าจริงที่ `#logoTrack` ใน `index.html` ก่อนใช้งานจริง
+- ตัวเลขสถิติและคำรับรองในหน้าแรกเป็นข้อความตัวอย่างเช่นกัน
+- ฟอนต์โหลดจาก Google Fonts (Inter + Noto Sans Thai) จึงต้องมีอินเทอร์เน็ตตอนเปิดหน้าเว็บ

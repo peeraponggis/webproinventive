@@ -1,0 +1,542 @@
+/* =========================================================
+   Pi Tasks — Kanban board
+   ========================================================= */
+
+.tasks-page {
+    background: var(--bg-main);
+    min-height: 100vh;
+}
+
+/* ---------- Page head ---------- */
+
+.board-head {
+    padding: 28px 32px 0;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.board-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.board-avatar {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: var(--bg-soft-2);
+    flex: none;
+}
+
+.board-title h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    margin: 0;
+}
+
+/* ---------- Tabs + toolbar ---------- */
+
+.board-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.board-tabs {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.board-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.board-tabs button {
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.board-tabs button:hover {
+    background: var(--bg-hover);
+}
+
+.board-tabs button.active {
+    background: var(--bg-soft-2);
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.board-tools {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.tool-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 6px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tool-btn:hover,
+.tool-btn.active {
+    background: var(--bg-hover);
+    color: var(--text-main);
+}
+
+.board-search {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 7px;
+    padding: 4px 9px;
+    background: var(--white);
+}
+
+.board-search.open {
+    display: flex;
+}
+
+.board-search input {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+    width: 150px;
+    background: transparent;
+    color: var(--text-main);
+}
+
+.btn-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 7px 12px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.btn-new:hover {
+    background: var(--blue-hover);
+}
+
+/* ---------- Board ---------- */
+
+.board {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 22px 32px 60px;
+    max-width: 1500px;
+    margin: 0 auto;
+    overflow-x: auto;
+    min-height: 60vh;
+}
+
+.column {
+    flex: 1 1 0;
+    min-width: 244px;
+    border-radius: 10px;
+    padding: 0 0 10px;
+    background: var(--col-bg, transparent);
+    transition: background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.column.drop-target {
+    background: var(--col-bg-strong, rgba(0, 0, 0, 0.04));
+    box-shadow: inset 0 0 0 2px var(--col-dot, var(--border-strong));
+}
+
+.col-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 12px 10px;
+    position: sticky;
+    top: 0;
+}
+
+.col-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--col-pill, var(--bg-soft-2));
+    color: var(--col-text, var(--text-main));
+}
+
+.col-pill .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--col-dot, var(--text-faint));
+    flex: none;
+}
+
+.col-count {
+    font-size: 12.5px;
+    color: var(--text-faint);
+    font-variant-numeric: tabular-nums;
+}
+
+.col-count.bump {
+    animation: count-bump 0.45s ease;
+}
+
+@keyframes count-bump {
+    40% {
+        transform: scale(1.35);
+        color: var(--text-main);
+    }
+}
+
+.col-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px;
+    min-height: 40px;
+}
+
+/* ---------- Cards ---------- */
+
+.task {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 11px 13px;
+    font-size: 14px;
+    line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    cursor: grab;
+    transition: box-shadow 0.16s ease, transform 0.16s ease, opacity 0.16s ease;
+    touch-action: pan-y;
+    animation: task-in 0.28s ease both;
+}
+
+@keyframes task-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+    }
+}
+
+.task:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.09);
+}
+
+.task.is-source {
+    opacity: 0.35;
+}
+
+.task.is-ghost {
+    position: fixed;
+    z-index: 1200;
+    width: 232px;
+    pointer-events: none;
+    transform: rotate(-3.5deg);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+    cursor: grabbing;
+    animation: none;
+}
+
+.task .t-title {
+    outline: none;
+    word-break: break-word;
+}
+
+.task .t-title:focus {
+    box-shadow: 0 0 0 2px rgba(0, 117, 222, 0.28);
+    border-radius: 4px;
+}
+
+.task .t-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.t-chip {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: var(--bg-soft-2);
+    color: var(--text-muted);
+}
+
+.t-chip.mine {
+    background: var(--blue-soft);
+    color: var(--blue);
+}
+
+.t-chip.sprint {
+    background: #f3edfb;
+    color: #6f4fc0;
+}
+
+.t-del {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 22px;
+    height: 22px;
+    border: none;
+    background: transparent;
+    color: var(--text-faint);
+    border-radius: 5px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.task:hover .t-del {
+    opacity: 1;
+}
+
+.t-del:hover {
+    background: rgba(224, 107, 107, 0.14);
+    color: #c94b4b;
+}
+
+.col-add {
+    margin: 8px 10px 0;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 13.5px;
+    color: var(--text-faint);
+    padding: 8px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.col-add:hover {
+    background: rgba(0, 0, 0, 0.045);
+    color: var(--text-main);
+}
+
+.col-empty {
+    font-size: 12.5px;
+    color: var(--text-faint);
+    padding: 10px 4px;
+}
+
+/* ---------- Timeline view ---------- */
+
+.timeline {
+    display: none;
+    padding: 22px 32px 60px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.tasks-page[data-view="timeline"] .board {
+    display: none;
+}
+
+.tasks-page[data-view="timeline"] .timeline {
+    display: block;
+}
+
+.tl-row {
+    display: grid;
+    grid-template-columns: minmax(180px, 1.4fr) 3fr;
+    gap: 18px;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 13.5px;
+}
+
+.tl-row:last-child {
+    border-bottom: none;
+}
+
+.tl-track {
+    height: 10px;
+    border-radius: 999px;
+    background: var(--bg-soft-2);
+    position: relative;
+    overflow: hidden;
+}
+
+.tl-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 999px;
+    background: var(--col-dot, var(--blue));
+    opacity: 0.85;
+}
+
+/* ---------- Live collaborators ---------- */
+
+.collab {
+    position: absolute;
+    z-index: 400;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    pointer-events: none;
+    transition: transform 1.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    opacity: 0;
+}
+
+.collab.show {
+    opacity: 1;
+}
+
+.collab .badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+    background: var(--white);
+    border: 2px solid var(--c-color, var(--blue));
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+    flex: none;
+}
+
+.collab .say {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    padding: 5px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.collab .say:empty {
+    display: none;
+}
+
+/* Live toggle */
+.live-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    font-weight: 550;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 5px 11px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.live-toggle .led {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-faint);
+}
+
+.live-toggle.on {
+    color: var(--text-main);
+    border-color: rgba(70, 192, 122, 0.5);
+}
+
+.live-toggle.on .led {
+    background: #46c07a;
+    animation: led-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes led-pulse {
+    50% {
+        opacity: 0.35;
+    }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+    .board-head {
+        padding: 20px 18px 0;
+    }
+    .board {
+        padding: 18px 18px 48px;
+    }
+    .column {
+        min-width: 232px;
+        flex: 0 0 232px;
+    }
+    .timeline {
+        padding: 18px 18px 48px;
+    }
+    .tl-row {
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .task,
+    .collab,
+    .col-count.bump {
+        animation: none !important;
+        transition: none !important;
+    }
+}

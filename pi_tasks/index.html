@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Tasks — PROINVENTIVE</title>
+    <meta name="description" content="บอร์ดจัดการงานแบบ Kanban ของ PROINVENTIVE พร้อมโหมดสาธิตสดและ Console Chat with Pi">
+
+    <link rel="icon" href="../img/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16.png">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../pi-console.css">
+    <link rel="stylesheet" href="tasks.css">
+
+    <script src="../i18n.js" defer></script>
+    <script src="tasks-i18n.js" defer></script>
+    <script src="../pi-console.js" defer></script>
+    <script src="tasks.js" defer></script>
+</head>
+<body data-i18n-title="tk.title">
+
+<header id="site-header">
+    <div class="nav-left">
+        <a href="../index.html" class="logo">
+            <img class="logo-mark" src="../img/pilogo.png" alt="PROINVENTIVE">
+            <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
+        </a>
+    </div>
+
+    <nav class="nav-center" data-i18n-attr="aria-label:nav.aria">
+        <div class="nav-links">
+            <a href="../product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
+            <a href="../pricing.html" data-i18n="nav.pricing">ราคา</a>
+            <a href="../index.html" data-i18n="tk.back">← กลับหน้าแรก</a>
+        </div>
+    </nav>
+
+    <div class="nav-right">
+        <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
+            <button type="button" data-lang="th">TH</button>
+            <button type="button" data-lang="en">EN</button>
+        </div>
+        <a href="../index.html#cta" class="btn btn-primary" data-i18n="nav.free">เริ่มใช้ฟรี</a>
+    </div>
+</header>
+
+<main class="tasks-page" data-view="board" style="position:relative">
+
+    <div id="collabLayer" style="position:absolute;inset:0;pointer-events:none;overflow:hidden"></div>
+
+    <div class="board-head">
+        <div class="board-title">
+            <img class="board-avatar" src="../img/pilogo.png" alt="">
+            <h1 data-i18n="tk.board">PROINVENTIVE HQ</h1>
+        </div>
+
+        <div class="board-bar">
+            <div class="board-tabs">
+                <button type="button" class="active" data-view="all">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M9 9v11" stroke="currentColor" stroke-width="1.8"/></svg>
+                    <span data-i18n="tk.tab.all">งานทั้งบริษัท</span>
+                </button>
+                <button type="button" data-view="mine">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.8"/><path d="M5 20a7 7 0 0 1 14 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    <span data-i18n="tk.tab.mine">งานของฉัน</span>
+                </button>
+                <button type="button" data-view="sprint">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                    <span data-i18n="tk.tab.sprint">สปรินต์ปัจจุบัน</span>
+                </button>
+                <button type="button" data-view="timeline">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h11M4 12h16M4 17h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    <span data-i18n="tk.tab.timeline">ไทม์ไลน์</span>
+                </button>
+            </div>
+
+            <div class="board-tools">
+                <button type="button" class="live-toggle" id="liveToggle">
+                    <span class="led"></span><span data-i18n="tk.live">โหมดสาธิตสด</span>
+                </button>
+
+                <div class="board-search" id="searchBox">
+                    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="4.6" stroke="currentColor" stroke-width="1.6"/><path d="m10.6 10.6 3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    <input type="text" id="searchInput" data-i18n-attr="placeholder:tk.search, aria-label:tk.search">
+                </div>
+
+                <button type="button" class="tool-btn" id="sortBtn" data-i18n-attr="title:tk.sort, aria-label:tk.sort">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M7 4v16m0 0-3-3m3 3 3-3M17 20V4m0 0-3 3m3-3 3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button type="button" class="tool-btn" id="searchBtn" data-i18n-attr="title:tk.search, aria-label:tk.search">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.2" stroke="currentColor" stroke-width="1.8"/><path d="m15.6 15.6 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </button>
+                <button type="button" class="tool-btn" id="resetBtn" data-i18n-attr="title:tk.reset, aria-label:tk.reset">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 1 2.5 5.8M4 12V7m0 5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+
+                <button type="button" class="btn-new" id="newBtn">
+                    <span data-i18n="tk.new">สร้างใหม่</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="board" id="board"></div>
+    <div class="timeline" id="timeline"></div>
+
+</main>
+
+</body>
+</html>

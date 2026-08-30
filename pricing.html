@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ราคา — PROINVENTIVE</title>
+    <meta name="description" content="แผนการใช้งานที่เหมาะกับคุณ — เริ่มต้นฟรี และอัปเกรดเมื่อทีมของคุณเติบโต">
+
+    <link rel="icon" href="img/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pi-console.css">
+    <script src="i18n.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="pi-console.js" defer></script>
+</head>
+<body data-i18n-title="meta.title.pricing">
+
+<header id="site-header">
+    <div class="nav-left">
+        <a href="index.html" class="logo">
+            <img class="logo-mark" src="img/pilogo.png" alt="PROINVENTIVE">
+            <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
+        </a>
+    </div>
+
+    <nav class="nav-center" data-i18n-attr="aria-label:nav.aria">
+        <div class="nav-links">
+            <a href="product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
+            <a href="pricing.html" data-i18n="nav.pricing">ราคา</a>
+            <a href="index.html#cta" data-i18n="nav.demo">ขอชมเดโม</a>
+        </div>
+    </nav>
+
+    <div class="nav-right">
+        <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
+            <button type="button" data-lang="th">TH</button>
+            <button type="button" data-lang="en">EN</button>
+        </div>
+        <a href="#" class="btn btn-ghost desktop-only" data-i18n="nav.login">เข้าสู่ระบบ</a>
+        <a href="index.html#cta" class="btn btn-primary" data-i18n="nav.free">เริ่มใช้ฟรี</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" data-i18n-attr="aria-label:nav.toggle">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
+    <a href="pricing.html" data-i18n="nav.pricing">ราคา</a>
+    <a href="index.html#cta" data-i18n="nav.demo">ขอชมเดโม</a>
+    <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
+        <button type="button" data-lang="th">TH</button>
+        <button type="button" data-lang="en">EN</button>
+    </div>
+    <div class="mm-actions">
+        <a href="#" class="btn btn-secondary" data-i18n="nav.login">เข้าสู่ระบบ</a>
+        <a href="index.html#cta" class="btn btn-primary" data-i18n="nav.free">เริ่มใช้ฟรี</a>
+    </div>
+</div>
+
+<main>
+    <section>
+        <div class="container">
+            <div class="hero-text">
+                <h1 data-i18n="pr.head">แผนการใช้งานที่เหมาะกับคุณ</h1>
+                <p class="subtitle" data-i18n="pr.sub">เริ่มต้นฟรี และอัปเกรดเมื่อทีมของคุณเติบโต</p>
+            </div>
+
+            <div class="grid">
+                <div class="card reveal">
+                    <h3 data-i18n="pr.free.t">Free</h3>
+                    <div class="price">$0</div>
+                    <p data-i18n="pr.free.d">เหมาะสำหรับบุคคลทั่วไปที่ต้องการจัดการชีวิตประจำวัน</p>
+                    <a href="#" class="btn btn-ghost plan-btn" data-i18n="pr.free.b">เริ่มต้นใช้งาน</a>
+                </div>
+                <div class="card reveal">
+                    <h3 data-i18n="pr.plus.t">Plus</h3>
+                    <div class="price">$8 <span class="per" data-i18n="pr.per">/ ผู้ใช้ / เดือน</span></div>
+                    <p data-i18n="pr.plus.d">สำหรับกลุ่มคนทำงานขนาดเล็กที่ต้องการเครื่องมือร่วมกัน</p>
+                    <a href="#" class="btn btn-primary plan-btn" data-i18n="pr.plus.b">อัปเกรด</a>
+                </div>
+                <div class="card reveal">
+                    <h3 data-i18n="pr.biz.t">Business</h3>
+                    <div class="price">$15 <span class="per" data-i18n="pr.per">/ ผู้ใช้ / เดือน</span></div>
+                    <p data-i18n="pr.biz.d">สำหรับบริษัทที่ต้องการเชื่อมต่อการทำงานทั้งองค์กร</p>
+                    <a href="#" class="btn btn-ghost plan-btn" data-i18n="pr.biz.b">ติดต่อฝ่ายขาย</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2 data-i18n="cta.head">เริ่มต้นวันนี้เลย</h2>
+            <div class="cta-actions">
+                <a href="index.html#cta" class="btn btn-primary btn-lg" data-i18n="hero.cta1">เริ่มใช้ PROINVENTIVE ฟรี</a>
+                <a href="index.html#cta" class="btn btn-secondary btn-lg" data-i18n="hero.cta2">ขอชมเดโม</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-bottom" style="margin-top:0;border-top:none;padding-top:0">
+            <a href="index.html" class="logo">
+                <img class="logo-mark" src="img/pilogo.png" alt="PROINVENTIVE">
+                <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
+            </a>
+            <div class="fb-links">
+                <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
+                    <button type="button" data-lang="th">TH</button>
+                    <button type="button" data-lang="en">EN</button>
+                </div>
+                <span data-i18n="f.copyright">© 2026 PROINVENTIVE Co., Ltd.</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
