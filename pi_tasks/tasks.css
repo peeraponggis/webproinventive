@@ -553,3 +553,30 @@
         transition: none !important;
     }
 }
+
+/* ---------- assignee chip + timeline dates ---------- */
+
+.t-chip.user {
+    background: #f1f5f1;
+    color: #3f7a56;
+}
+
+.tl-track {
+    overflow: visible;
+}
+
+.tl-bar {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.tl-date {
+    font-size: 10.5px;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    padding: 0 8px;
+    white-space: nowrap;
+}

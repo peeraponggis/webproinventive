@@ -89,6 +89,35 @@
         return card.k ? t(card.k) : card.title || "";
     }
 
+    /* deterministic sample status dates for the seeded board */
+    var SEED_DATES = {
+        todo: "2026-08-29",
+        doing: "2026-08-27",
+        review: "2026-08-25",
+        done: "2026-08-14"
+    };
+
+    function fmtDate(value) {
+        if (!value) return "";
+        var d = new Date(value);
+        if (isNaN(d)) return "";
+        var lang = global.I18N && I18N.get() === "en" ? "en-GB" : "th-TH";
+        try {
+            return new Intl.DateTimeFormat(lang, {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
+            }).format(d);
+        } catch (e) {
+            return d.toLocaleDateString();
+        }
+    }
+
+    function currentUserName() {
+        var u = global.PiAuth && PiAuth.getUser();
+        return u ? u.name : t("tk.guest");
+    }
+
     function emit(name, payload) {
         (listeners[name] || []).forEach(function (fn) {
             try {
@@ -136,13 +165,20 @@
             var raw = localStorage.getItem(STORE);
             if (raw) {
                 var parsed = JSON.parse(raw);
-                if (Array.isArray(parsed) && parsed.length) return parsed;
+                if (Array.isArray(parsed) && parsed.length) {
+                    parsed.forEach(function (c) {
+                        if (!c.moved) c.moved = Date.now();
+                    });
+                    return parsed;
+                }
             }
         } catch (e) {
             /* fall through to seed */
         }
         return SEED.map(function (s, i) {
-            return Object.assign({ id: "seed" + i }, s);
+            var d = new Date(SEED_DATES[s.col] || "2026-08-20");
+            d.setDate(d.getDate() - (i % 4)); /* spread dates a little */
+            return Object.assign({ id: "seed" + i, moved: d.getTime() }, s);
         });
     }
 
@@ -158,7 +194,7 @@
 
     function visible(card) {
         if (view === "mine" && !card.mine) return false;
-        if (view === "sprint" && !card.sprint) return false;
+        if (view === "sprint" && card.col !== "doing") return false;
         if (query && title(card).toLowerCase().indexOf(query) === -1) return false;
         return true;
     }
@@ -181,9 +217,13 @@
         titleEl.setAttribute("spellcheck", "false");
         el.appendChild(titleEl);
 
-        if (card.mine || card.sprint) {
+        {
             var meta = document.createElement("div");
             meta.className = "t-meta";
+            var who = document.createElement("span");
+            who.className = "t-chip user";
+            who.textContent = "👤 " + currentUserName();
+            meta.appendChild(who);
             if (card.mine) {
                 var m = document.createElement("span");
                 m.className = "t-chip mine";
@@ -327,6 +367,10 @@
             bar.className = "tl-bar";
             bar.style.left = (colIdx / total) * 100 + "%";
             bar.style.width = ((colIdx + 1) / total) * 100 - (colIdx / total) * 100 + "%";
+            var when = document.createElement("span");
+            when.className = "tl-date";
+            when.textContent = fmtDate(card.moved);
+            bar.appendChild(when);
             track.appendChild(bar);
 
             row.appendChild(name);
@@ -355,7 +399,8 @@
         var card = {
             id: uid(),
             title: text || t("tk.untitled"),
-            col: colId
+            col: colId,
+            moved: Date.now()
         };
         board.unshift(card);
         save();
@@ -382,6 +427,7 @@
         if (!card || card.col === toCol) return;
         var from = card.col;
         card.col = toCol;
+        card.moved = Date.now();
         save();
         render();
         bumpCount(from);
@@ -646,6 +692,7 @@
         setLive(stored === null ? true : stored === "1");
 
         document.addEventListener("i18n:change", render);
+        document.addEventListener("auth:change", render);
         document.addEventListener("visibilitychange", function () {
             if (document.hidden) clearInterval(liveTimer);
             else setLive(live);

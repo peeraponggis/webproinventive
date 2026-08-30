@@ -45,8 +45,8 @@
             "dd.project.d": "ติดตามงานทุกชิ้นในมุมมองเดียว",
             "dd.tasks.t": "Pi Tasks",
             "dd.tasks.d": "บอร์ด Kanban สำหรับทีม เปิดใช้ได้ทันที",
-            "dd.stories.t": "เรื่องราวลูกค้า",
-            "dd.stories.d": "ทีมที่เติบโตไปกับ PROINVENTIVE",
+            "dd.stories.t": "ผลงานของเรา",
+            "dd.stories.d": "โครงการติดตั้งจริงทั่วประเทศ",
             "dd.connect.t": "การเชื่อมต่อ",
             "dd.connect.d": "ต่อกับเครื่องมือที่ทีมใช้อยู่",
             "dd.help.t": "ศูนย์ช่วยเหลือ",
@@ -55,7 +55,7 @@
             /* ---- hero ---- */
             "hero.l1": "ที่ซึ่งทีมและเอเจนต์",
             "hero.l2": "ไปด้วยกัน",
-            "hero.sub": "รวบรวมบริบท ค้นหาคำตอบ และให้งานซ้ำ ๆ ทำงานเองอัตโนมัติ ด้วย AI ที่ออกแบบมาเพื่อทีมของคุณ",
+            "hero.sub": "รวบรวมบริบท ค้นหาคำตอบ และให้งานซ้ำ ๆ ทำงานเองอัตโนมัติ — แพลตฟอร์มดิจิทัลโดย PROINVENTIVE ผู้ให้บริการโซลูชันพลังงานสะอาดครบวงจร",
             "hero.cta1": "เริ่มใช้ PROINVENTIVE ฟรี",
             "hero.cta2": "ขอชมเดโม",
             "rot.1": "สร้าง",
@@ -102,7 +102,7 @@
             "mk.ai.input": "ถามอะไรก็ได้…",
 
             /* ---- trust ---- */
-            "trust.caption": "ได้รับความไว้วางใจจากทีมกว่า 4,000 ทีมทั่วภูมิภาค",
+            "trust.caption": "ได้รับความไว้วางใจจากองค์กรชั้นนำทั่วประเทศ",
 
             /* ---- features ---- */
             "feat.head": "AI ที่อยู่ตรงที่ทีมคุณทำงาน",
@@ -148,8 +148,8 @@
             "u5.b3": "พร้อมใช้งานกับทั้งทีม",
 
             /* ---- testimonials ---- */
-            "stories.head": "ทีมที่ส่งงานได้จริงเลือกใช้",
-            "stories.link": "อ่านเรื่องราวลูกค้า →",
+            "stories.head": "ผลงานติดตั้งจริง",
+            "stories.link": "ดูผลงานทั้งหมด →",
             "q1.text": "“การใช้เครื่องมือที่มี AI อยู่ในเนื้องานตั้งแต่ต้น ทำให้ทีมเล็ก ๆ ของเราส่งงานได้เท่าทีมที่ใหญ่กว่าหลายเท่า”",
             "q1.name": "ธนกฤต ศรีวิไล",
             "q1.role": "ผู้ร่วมก่อตั้งและซีอีโอ",
@@ -161,11 +161,11 @@
             "q3.role": "หัวหน้าฝ่ายปฏิบัติการ",
 
             /* ---- stats ---- */
-            "st.1": "ฐานความรู้อันดับ 1 ต่อเนื่อง 3 ปี",
-            "st.2": "ผู้ใช้งานกว่า 100 ล้านคนใน 50 ประเทศ",
-            "st.3": "สตาร์ทอัพชั้นนำกว่า 50% เลือกใช้",
-            "st.4": "คอมมูนิตี้กว่า 1.4 ล้านคน",
-            "st.5": "องค์กรขนาดใหญ่ 62% ใช้งานอยู่",
+            "st.1": "ผลงานติดตั้งรวมกว่า 3.39 MWp",
+            "st.2": "งานออกแบบระบบรวมกว่า 5.35 MWp",
+            "st.3": "มากกว่า 20 โครงการทั่วประเทศ",
+            "st.4": "เชี่ยวชาญ C&I · ESS · Peak Shaving",
+            "st.5": "ดำเนินธุรกิจตามหลัก ESG",
 
             /* ---- cta ---- */
             "cta.head": "เริ่มต้นวันนี้เลย",
@@ -177,7 +177,7 @@
             "f.ai": "PROINVENTIVE AI",
             "f.download": "ดาวน์โหลด",
             "f.resources": "แหล่งข้อมูล",
-            "f.stories": "เรื่องราวลูกค้า",
+            "f.stories": "ผลงานของเรา",
             "f.connect": "การเชื่อมต่อ",
             "f.market": "มาร์เก็ตเพลส",
             "f.help": "ศูนย์ช่วยเหลือ",
@@ -195,17 +195,17 @@
             "f.startup": "สตาร์ทอัพ",
             "f.dev": "นักพัฒนา",
             "f.more": "ดูเพิ่มเติม →",
-            "f.copyright": "© 2026 PROINVENTIVE Co., Ltd.",
+            "f.copyright": "© 2026 บริษัท โปรอินเวนทีฟ จำกัด (PROINVENTIVE CO., LTD.)",
             "f.cookie": "ตั้งค่าคุกกี้",
             "f.privacy": "สิทธิความเป็นส่วนตัวของคุณ",
 
             /* ---- product page ---- */
-            "pp.head": "ทุกสิ่งที่คุณต้องการเพื่อทำงานให้เสร็จ",
+            "pp.head": "ทุกสิ่งที่คุณต้องการเพื่อทำงานให้เสร็จ..อยู่ที่นี่",
             "pp.sub": "เครื่องมือที่ยืดหยุ่น ปรับแต่งได้ตามใจคุณ",
-            "pp.c1.t": "Docs",
-            "pp.c1.d": "สร้างเอกสารที่สวยงามและเรียบง่าย พร้อมระบบจัดการที่ช่วยให้ทีมทำงานร่วมกันได้แบบเรียลไทม์",
-            "pp.c2.t": "Projects",
-            "pp.c2.d": "จัดการตารางเวลา กำหนดงาน และติดตามความคืบหน้าของโปรเจกต์ด้วยบอร์ดแบบ Kanban",
+            "pp.c1.t": "การออกแบบติดตั้งระบบโซล่าร์เซลล์",
+            "pp.c1.d": "ออกแบบระบบ เลือกโซลูชั่น นำเสนอระบบ จบด้วยราคาที่ยุติธรรม รับประกันระบบอย่างมืออาชีพ",
+            "pp.c2.t": "U-Projects",
+            "pp.c2.d": "CRM/BOQ/Project Management/i-Tasks ครบทุกกระบวนงานในองค์กรของคุณ",
             "pp.c3.t": "Wikis",
             "pp.c3.d": "รวบรวมองค์ความรู้ของบริษัทไว้ในที่เดียว ค้นหาง่าย และอัปเดตได้ตลอดเวลา",
 
@@ -222,6 +222,51 @@
             "pr.biz.t": "Business",
             "pr.biz.d": "สำหรับบริษัทที่ต้องการเชื่อมต่อการทำงานทั้งองค์กร",
             "pr.biz.b": "ติดต่อฝ่ายขาย",
+
+            /* ---- auth + internal menu ---- */
+            "nav.internal": "ระบบภายใน",
+            "auth.title": "เข้าสู่ระบบ",
+            "auth.hint": "ใช้อีเมลบริษัท @proinventive.co.th เพื่อเข้าถึงระบบภายใน (โหมดสาธิต)",
+            "auth.placeholder": "you@proinventive.co.th",
+            "auth.submit": "เข้าสู่ระบบ",
+            "auth.invalid": "อีเมลไม่ถูกต้อง หรือไม่ใช่โดเมน @proinventive.co.th",
+            "auth.logout": "ออกจากระบบ",
+            "auth.loggedin": "เข้าสู่ระบบแล้ว",
+            "in.crm.d": "ระบบบริหารลูกค้าสัมพันธ์",
+            "in.boq.d": "ระบบถอดแบบประมาณราคา",
+            "in.asc.d": "ระบบงาน ASC",
+            "in.admin.t": "SaaS หลังบ้านแอดมิน",
+            "in.admin.d": "ตรวจ lead / ตรวจสลิป",
+            "saas.installer.t": "SaaS ช่างติดตั้ง",
+            "saas.installer.d": "พื้นที่ทำงานสำหรับทีมติดตั้งหน้างาน",
+            "saas.main.d": "แพลตฟอร์ม SaaS สำหรับลูกค้า",
+
+            /* ---- about (company profile) ---- */
+            "about.head": "เกี่ยวกับเรา",
+            "about.tag": "Innovative Clean Energy Solution Provider",
+            "about.lead": "เราสร้างอนาคตพลังงานสะอาด ด้วยเทคโนโลยีล้ำหน้าและความยั่งยืนที่จับต้องได้ — โซลูชันครบวงจรตั้งแต่การออกแบบ ติดตั้ง ตรวจสอบระบบ ไปจนถึงการบำรุงรักษาเชิงป้องกัน",
+            "a1.t": "Smart Energy Management",
+            "a1.d": "ผสานเทคโนโลยี IoT, AI และ Big Data เข้ากับระบบพลังงาน เพื่อการบริหารจัดการที่ฉลาดขึ้น และวิเคราะห์ประสิทธิภาพแบบเรียลไทม์",
+            "a2.t": "C&I · ESS · Peak Shaving",
+            "a2.d": "เชี่ยวชาญการออกแบบระบบเชิงพาณิชย์และอุตสาหกรรม ระบบจัดเก็บพลังงาน และการลดค่าความต้องการไฟฟ้าสูงสุด เพื่อพลังงานที่ต่อเนื่องและมีเสถียรภาพ",
+            "a3.t": "ESG และการพัฒนาบุคลากร",
+            "a3.d": "ดำเนินธุรกิจตามหลัก ESG อย่างรอบด้าน พร้อมฝึกอบรมและพัฒนาศักยภาพบุคลากรทุกระดับ สู่ยุคพลังงานสะอาดที่เปลี่ยนแปลงอย่างรวดเร็ว",
+
+            /* ---- real projects ---- */
+            "proj.install": "ติดตั้งแล้ว",
+            "proj.design": "งานออกแบบ",
+            "pj1.t": "Big C กำแพงเพชร",
+            "pj1.d": "Solar Rooftop AC System กำลังการติดตั้งสูงสุดในพอร์ตของเรา",
+            "pj2.t": "Big C Market สีคิ้ว",
+            "pj2.d": "Solar Rooftop On-grid จังหวัดนครราชสีมา",
+            "pj3.t": "โรงเรียนอนุบาลบ้านหนือ อุบลราชธานี",
+            "pj3.d": "Solar Rooftop AC System พร้อมระบบกักเก็บพลังงาน BESS",
+            "pl.head": "ผลงานออกแบบและติดตั้ง",
+            "pl.sub": "โครงการจริงของเรา — ติดตั้งแล้ว 8 โครงการ และงานออกแบบระบบอีก 12 โครงการทั่วประเทศ",
+
+            /* ---- footer contact ---- */
+            "f.contact": "ติดต่อเรา",
+            "f.addr": "59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150",
 
             /* ---- Pi console ---- */
             "pi.launch": "เปิดคอนโซลคุยกับ Pi",
@@ -285,8 +330,8 @@
             "dd.project.d": "Track every piece of work in one view",
             "dd.tasks.t": "Pi Tasks",
             "dd.tasks.d": "A team Kanban board, ready to use",
-            "dd.stories.t": "Customer stories",
-            "dd.stories.d": "Teams growing with PROINVENTIVE",
+            "dd.stories.t": "Our projects",
+            "dd.stories.d": "Real installations nationwide",
             "dd.connect.t": "Connections",
             "dd.connect.d": "Plug into the tools you already use",
             "dd.help.t": "Help center",
@@ -295,7 +340,7 @@
             /* ---- hero ---- */
             "hero.l1": "Where teams and agents",
             "hero.l2": "together.",
-            "hero.sub": "Capture context, find answers, and automate busywork with AI built for your team.",
+            "hero.sub": "Capture context, find answers, and automate busywork — the digital platform by PROINVENTIVE, your end-to-end clean energy solution provider.",
             "hero.cta1": "Get PROINVENTIVE free",
             "hero.cta2": "Request a demo",
             "rot.1": "Create",
@@ -342,7 +387,7 @@
             "mk.ai.input": "Ask anything…",
 
             /* ---- trust ---- */
-            "trust.caption": "Trusted by more than 4,000 teams across the region",
+            "trust.caption": "Trusted by leading organizations nationwide",
 
             /* ---- features ---- */
             "feat.head": "AI where your team works.",
@@ -388,8 +433,8 @@
             "u5.b3": "Ready for the whole team",
 
             /* ---- testimonials ---- */
-            "stories.head": "Trusted by teams that ship.",
-            "stories.link": "Read customer stories →",
+            "stories.head": "Real installations",
+            "stories.link": "See all projects →",
             "q1.text": "“Working with AI-native tools from day one lets our small team ship like a company many times our size.”",
             "q1.name": "Thanakrit Sriwilai",
             "q1.role": "Co-founder & CEO",
@@ -401,11 +446,11 @@
             "q3.role": "Head of Operations",
 
             /* ---- stats ---- */
-            "st.1": "#1 knowledge base for 3 consecutive years",
-            "st.2": "100M+ users in over 50 countries",
-            "st.3": "Over 50% of leading startups",
-            "st.4": "1.4M+ community members",
-            "st.5": "62% of large enterprises use it",
+            "st.1": "Over 3.39 MWp installed",
+            "st.2": "Over 5.35 MWp of system design work",
+            "st.3": "20+ projects nationwide",
+            "st.4": "C&I · ESS · Peak Shaving expertise",
+            "st.5": "Committed to ESG principles",
 
             /* ---- cta ---- */
             "cta.head": "Get started today.",
@@ -417,7 +462,7 @@
             "f.ai": "PROINVENTIVE AI",
             "f.download": "Download",
             "f.resources": "Resources",
-            "f.stories": "Customer stories",
+            "f.stories": "Our projects",
             "f.connect": "Connections",
             "f.market": "Marketplace",
             "f.help": "Help center",
@@ -435,17 +480,17 @@
             "f.startup": "Startups",
             "f.dev": "Developers",
             "f.more": "Explore more →",
-            "f.copyright": "© 2026 PROINVENTIVE Co., Ltd.",
+            "f.copyright": "© 2026 PROINVENTIVE CO., LTD.",
             "f.cookie": "Cookie settings",
             "f.privacy": "Your privacy rights",
 
             /* ---- product page ---- */
-            "pp.head": "Everything you need to get work done",
+            "pp.head": "Everything you need to get work done… right here",
             "pp.sub": "A flexible toolkit you can shape around your team",
-            "pp.c1.t": "Docs",
-            "pp.c1.d": "Write clean, beautiful documents with real-time collaboration built in.",
-            "pp.c2.t": "Projects",
-            "pp.c2.d": "Plan schedules, assign work and track progress on Kanban boards.",
+            "pp.c1.t": "Solar system design & installation",
+            "pp.c1.d": "System design, solution selection and professional proposals — finished with fair pricing and a professional system warranty.",
+            "pp.c2.t": "U-Projects",
+            "pp.c2.d": "CRM / BOQ / Project Management / i-Tasks — every workflow in your organization.",
             "pp.c3.t": "Wikis",
             "pp.c3.d": "Keep company knowledge in one searchable, always-current place.",
 
@@ -462,6 +507,51 @@
             "pr.biz.t": "Business",
             "pr.biz.d": "For companies connecting work across the org.",
             "pr.biz.b": "Contact sales",
+
+            /* ---- auth + internal menu ---- */
+            "nav.internal": "Internal systems",
+            "auth.title": "Log in",
+            "auth.hint": "Use your @proinventive.co.th company email to access internal systems (demo mode)",
+            "auth.placeholder": "you@proinventive.co.th",
+            "auth.submit": "Log in",
+            "auth.invalid": "Invalid email, or not a @proinventive.co.th address",
+            "auth.logout": "Log out",
+            "auth.loggedin": "Signed in",
+            "in.crm.d": "Customer relationship management",
+            "in.boq.d": "Bill of quantities & estimating",
+            "in.asc.d": "ASC system",
+            "in.admin.t": "SaaS admin console",
+            "in.admin.d": "Review leads & payment slips",
+            "saas.installer.t": "SaaS for installers",
+            "saas.installer.d": "Workspace for on-site installation teams",
+            "saas.main.d": "The customer-facing SaaS platform",
+
+            /* ---- about (company profile) ---- */
+            "about.head": "About us",
+            "about.tag": "Innovative Clean Energy Solution Provider",
+            "about.lead": "We build the future of clean energy with cutting-edge technology and tangible sustainability — end-to-end solutions from design and installation to inspection and preventive maintenance.",
+            "a1.t": "Smart Energy Management",
+            "a1.d": "IoT, AI and Big Data woven into the energy system for smarter management and real-time performance analysis.",
+            "a2.t": "C&I · ESS · Peak Shaving",
+            "a2.d": "Specialists in Commercial & Industrial system design, Energy Storage Systems, and peak shaving to reduce demand charges — for stable, continuous power.",
+            "a3.t": "ESG & people development",
+            "a3.d": "We operate on ESG principles and invest in training and capacity building at every level, preparing people for a fast-moving clean energy era.",
+
+            /* ---- real projects ---- */
+            "proj.install": "Installed",
+            "proj.design": "Design",
+            "pj1.t": "Big C Kamphaeng Phet",
+            "pj1.d": "Solar Rooftop AC System — the largest installation in our portfolio",
+            "pj2.t": "Big C Market Sikhio",
+            "pj2.d": "Solar Rooftop On-grid, Nakhon Ratchasima",
+            "pj3.t": "Ban Nuea Kindergarten, Ubon Ratchathani",
+            "pj3.d": "Solar Rooftop AC System with BESS energy storage",
+            "pl.head": "Design & installation portfolio",
+            "pl.sub": "Our real track record — 8 completed installations and 12 system design projects nationwide.",
+
+            /* ---- footer contact ---- */
+            "f.contact": "Contact",
+            "f.addr": "59/6 Moo 7, Sai Noi, Nonthaburi 11150, Thailand",
 
             /* ---- Pi console ---- */
             "pi.launch": "Open the Pi console",

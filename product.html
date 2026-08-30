@@ -14,11 +14,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026083004">
-    <link rel="stylesheet" href="pi-console.css?v=2026083004">
-    <script src="i18n.js?v=2026083004" defer></script>
-    <script src="app.js?v=2026083004" defer></script>
-    <script src="pi-console.js?v=2026083004" defer></script>
+    <link rel="stylesheet" href="style.css?v=2026083005">
+    <link rel="stylesheet" href="pi-console.css?v=2026083005">
+    <script src="i18n.js?v=2026083005" defer></script>
+    <script src="auth.js?v=2026083005" defer></script>
+    <script src="app.js?v=2026083005" defer></script>
+    <script src="pi-console.js?v=2026083005" defer></script>
 </head>
 <body data-i18n-title="meta.title.product">
 
@@ -31,9 +32,54 @@
     </div>
 
     <nav class="nav-center" data-i18n-attr="aria-label:nav.aria">
+        <div class="nav-item internal-only">
+            <button type="button" aria-expanded="false">
+                <span data-i18n="nav.internal">ระบบภายใน</span>
+                <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="dropdown">
+                <a class="dd-item" href="pi_tasks/index.html">
+                    <span class="dd-ico">🗒️</span>
+                    <span>
+                        <span class="dd-title" data-i18n="dd.tasks.t">Pi Tasks</span>
+                        <span class="dd-desc" data-i18n="dd.tasks.d">บอร์ด Kanban สำหรับทีม เปิดใช้ได้ทันที</span>
+                    </span>
+                </a>
+                <a class="dd-item" href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener">
+                    <span class="dd-ico">📇</span>
+                    <span>
+                        <span class="dd-title">CRM</span>
+                        <span class="dd-desc" data-i18n="in.crm.d">ระบบบริหารลูกค้าสัมพันธ์</span>
+                    </span>
+                </a>
+                <a class="dd-item" href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener">
+                    <span class="dd-ico">🧾</span>
+                    <span>
+                        <span class="dd-title">BoQ</span>
+                        <span class="dd-desc" data-i18n="in.boq.d">ระบบถอดแบบประมาณราคา</span>
+                    </span>
+                </a>
+                <a class="dd-item" href="https://peeraponggis.github.io/asc/index.html" target="_blank" rel="noopener">
+                    <span class="dd-ico">⚡</span>
+                    <span>
+                        <span class="dd-title">ASC</span>
+                        <span class="dd-desc" data-i18n="in.asc.d">ระบบงาน ASC</span>
+                    </span>
+                </a>
+                <a class="dd-item" href="https://web-production-359eb.up.railway.app/pro/admin" target="_blank" rel="noopener">
+                    <span class="dd-ico">🛠️</span>
+                    <span>
+                        <span class="dd-title" data-i18n="in.admin.t">SaaS หลังบ้านแอดมิน</span>
+                        <span class="dd-desc" data-i18n="in.admin.d">ตรวจ lead / ตรวจสลิป</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+
         <div class="nav-links">
             <a href="product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
-            <a href="pi_tasks/index.html" class="tasks-chip" data-i18n="dd.tasks.t">Pi Tasks</a>
+            <a href="pi_tasks/index.html" class="tasks-chip internal-only" data-i18n="dd.tasks.t">Pi Tasks</a>
+            <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">SaaS</a>
             <a href="pricing.html" data-i18n="nav.pricing">ราคา</a>
             <a href="index.html#cta" data-i18n="nav.demo">ขอชมเดโม</a>
         </div>
@@ -44,7 +90,7 @@
             <button type="button" data-lang="th">TH</button>
             <button type="button" data-lang="en">EN</button>
         </div>
-        <a href="#" class="btn btn-ghost desktop-only" data-i18n="nav.login">เข้าสู่ระบบ</a>
+        <a href="#" class="btn btn-ghost desktop-only auth-btn">เข้าสู่ระบบ</a>
         <a href="index.html#cta" class="btn btn-primary" data-i18n="nav.free">เริ่มใช้ฟรี</a>
         <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" data-i18n-attr="aria-label:nav.toggle">
             <span></span><span></span><span></span>
@@ -54,15 +100,20 @@
 
 <div class="mobile-menu" id="mobileMenu">
     <a href="product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
-    <a href="pi_tasks/index.html" data-i18n="dd.tasks.t">Pi Tasks</a>
     <a href="pricing.html" data-i18n="nav.pricing">ราคา</a>
+    <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">SaaS</a>
     <a href="index.html#cta" data-i18n="nav.demo">ขอชมเดโม</a>
+    <a class="internal-only" href="pi_tasks/index.html" data-i18n="dd.tasks.t">Pi Tasks</a>
+    <a class="internal-only" href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener">CRM</a>
+    <a class="internal-only" href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener">BoQ</a>
+    <a class="internal-only" href="https://peeraponggis.github.io/asc/index.html" target="_blank" rel="noopener">ASC</a>
+    <a class="internal-only" href="https://web-production-359eb.up.railway.app/pro/admin" target="_blank" rel="noopener" data-i18n="in.admin.t">SaaS หลังบ้านแอดมิน</a>
     <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
         <button type="button" data-lang="th">TH</button>
         <button type="button" data-lang="en">EN</button>
     </div>
     <div class="mm-actions">
-        <a href="#" class="btn btn-secondary" data-i18n="nav.login">เข้าสู่ระบบ</a>
+        <a href="#" class="btn btn-secondary auth-btn">เข้าสู่ระบบ</a>
         <a href="index.html#cta" class="btn btn-primary" data-i18n="nav.free">เริ่มใช้ฟรี</a>
     </div>
 </div>
@@ -71,23 +122,56 @@
     <section>
         <div class="container">
             <div class="hero-text">
-                <h1 data-i18n="pp.head">ทุกสิ่งที่คุณต้องการเพื่อทำงานให้เสร็จ</h1>
+                <h1 data-i18n="pp.head">ทุกสิ่งที่คุณต้องการเพื่อทำงานให้เสร็จ..อยู่ที่นี่</h1>
                 <p class="subtitle" data-i18n="pp.sub">เครื่องมือที่ยืดหยุ่น ปรับแต่งได้ตามใจคุณ</p>
             </div>
 
             <div class="grid">
                 <div class="card reveal">
-                    <h3 data-i18n="pp.c1.t">Docs</h3>
-                    <p data-i18n="pp.c1.d">สร้างเอกสารที่สวยงามและเรียบง่าย พร้อมระบบจัดการที่ช่วยให้ทีมทำงานร่วมกันได้แบบเรียลไทม์</p>
+                    <h3 data-i18n="pp.c1.t">การออกแบบติดตั้งระบบโซล่าร์เซลล์</h3>
+                    <p data-i18n="pp.c1.d">ออกแบบระบบ เลือกโซลูชั่น นำเสนอระบบ จบด้วยราคาที่ยุติธรรม รับประกันระบบอย่างมืออาชีพ</p>
                 </div>
                 <div class="card reveal">
-                    <h3 data-i18n="pp.c2.t">Projects</h3>
-                    <p data-i18n="pp.c2.d">จัดการตารางเวลา กำหนดงาน และติดตามความคืบหน้าของโปรเจกต์ด้วยบอร์ดแบบ Kanban</p>
+                    <h3 data-i18n="pp.c2.t">U-Projects</h3>
+                    <p data-i18n="pp.c2.d">CRM/BOQ/Project Management/i-Tasks ครบทุกกระบวนงานในองค์กรของคุณ</p>
                 </div>
                 <div class="card reveal">
                     <h3 data-i18n="pp.c3.t">Wikis</h3>
                     <p data-i18n="pp.c3.d">รวบรวมองค์ความรู้ของบริษัทไว้ในที่เดียว ค้นหาง่าย และอัปเดตได้ตลอดเวลา</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-soft" id="portfolio">
+        <div class="container">
+            <div class="section-head reveal">
+                <div>
+                    <h2 data-i18n="pl.head">ผลงานออกแบบและติดตั้ง</h2>
+                </div>
+            </div>
+            <p class="subtitle reveal" style="max-width:820px" data-i18n="pl.sub">โครงการจริงของเรา — ติดตั้งแล้ว 8 โครงการ และงานออกแบบระบบอีก 12 โครงการทั่วประเทศ</p>
+            <div class="pf-grid reveal">
+                <div class="pf-item"><span class="pf-name">Big C กำแพงเพชร</span><span class="pf-kw">2,343.60 kWp</span><span class="tag green" data-i18n="proj.install">ติดตั้งแล้ว</span></div>
+                <div class="pf-item"><span class="pf-name">Big C Market สีคิ้ว · นครราชสีมา</span><span class="pf-kw">390.6 kWp</span><span class="tag green" data-i18n="proj.install">ติดตั้งแล้ว</span></div>
+                <div class="pf-item"><span class="pf-name">Big C Market คู้บอน · นนทบุรี</span><span class="pf-kw">195.3 kWp</span><span class="tag green" data-i18n="proj.install">ติดตั้งแล้ว</span></div>
+                <div class="pf-item"><span class="pf-name">Big C Food Service สนามบินน้ำ · นนทบุรี</span><span class="pf-kw">195.3 kWp</span><span class="tag green" data-i18n="proj.install">ติดตั้งแล้ว</span></div>
+                <div class="pf-item"><span class="pf-name">โรงเรียนวิจิตราพิทยา อุบลราชธานี</span><span class="pf-kw">123 kWp</span><span class="tag green" data-i18n="proj.install">ติดตั้งแล้ว</span></div>
+                <div class="pf-item"><span class="pf-name">โรงเรียนอนุบาลบ้านหนือ อุบลราชธานี (พร้อม BESS)</span><span class="pf-kw">123 kWp</span><span class="tag green" data-i18n="proj.install">ติดตั้งแล้ว</span></div>
+                <div class="pf-item"><span class="pf-name">ร้านอะไหล่ PK อ.เสลภูมิ ร้อยเอ็ด (Hybrid + Battery 5kW)</span><span class="pf-kw">10.44 kWp</span><span class="tag green" data-i18n="proj.install">ติดตั้งแล้ว</span></div>
+                <div class="pf-item"><span class="pf-name">Level9 Co., Ltd. กรุงเทพมหานคร</span><span class="pf-kw">5.67 kWp</span><span class="tag green" data-i18n="proj.install">ติดตั้งแล้ว</span></div>
+                <div class="pf-item"><span class="pf-name">บมจ. นิตโต เดนโกะ แมททีเรียล (ประเทศไทย)</span><span class="pf-kw">999.57 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">โรงเรียนอนุบาลอุบลราชธานี</span><span class="pf-kw">999.18 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย เพชรบุรี</span><span class="pf-kw">700.47 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">โรงพยาบาลชะอำ</span><span class="pf-kw">451.5 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">โรงพยาบาลราชเวช เชียงใหม่</span><span class="pf-kw">451.5 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">โรงแรมโซ โซฟิเทล หัวหิน</span><span class="pf-kw">450 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">บจก. เจริญมงคล ฟู้ดส์ แอนด์ เบฟเวอเรจ</span><span class="pf-kw">393.45 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">บจก. ยูพีพี อัลทิเมท แพคกิ้ง</span><span class="pf-kw">321.21 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">โรงเรียนศรีเมืองวิทยาคาร อุบลราชธานี</span><span class="pf-kw">198.9 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">มหาวิทยาลัยนอร์ท-เชียงใหม่</span><span class="pf-kw">190.92 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">โรงเรียนโพธิ์ไทรพิทยาคาร อุบลราชธานี</span><span class="pf-kw">127.8 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
+                <div class="pf-item"><span class="pf-name">ศูนย์บริการและขาย เอกรัฐวิศวกรรม ฉะเชิงเทรา</span><span class="pf-kw">67.2 kWp</span><span class="tag blue" data-i18n="proj.design">งานออกแบบ</span></div>
             </div>
         </div>
     </section>
@@ -111,12 +195,14 @@
                 <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
             </a>
             <div class="fb-links">
-                <a href="pi_tasks/index.html" class="tasks-chip" data-i18n="dd.tasks.t">Pi Tasks</a>
+                <a href="tel:0800282399">📞 080-028-2399</a>
+                <a href="mailto:info@proinventive.co.th">✉️ info@proinventive.co.th</a>
+                <a href="pi_tasks/index.html" class="tasks-chip internal-only" data-i18n="dd.tasks.t">Pi Tasks</a>
                 <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
                     <button type="button" data-lang="th">TH</button>
                     <button type="button" data-lang="en">EN</button>
                 </div>
-                <span data-i18n="f.copyright">© 2026 PROINVENTIVE Co., Ltd.</span>
+                <span data-i18n="f.copyright">© 2026 บริษัท โปรอินเวนทีฟ จำกัด (PROINVENTIVE CO., LTD.)</span>
             </div>
         </div>
     </div>

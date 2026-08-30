@@ -14,11 +14,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026083004">
-    <link rel="stylesheet" href="pi-console.css?v=2026083004">
-    <script src="i18n.js?v=2026083004" defer></script>
-    <script src="app.js?v=2026083004" defer></script>
-    <script src="pi-console.js?v=2026083004" defer></script>
+    <link rel="stylesheet" href="style.css?v=2026083005">
+    <link rel="stylesheet" href="pi-console.css?v=2026083005">
+    <script src="i18n.js?v=2026083005" defer></script>
+    <script src="auth.js?v=2026083005" defer></script>
+    <script src="app.js?v=2026083005" defer></script>
+    <script src="pi-console.js?v=2026083005" defer></script>
 </head>
 <body data-i18n-title="meta.title.pricing">
 
@@ -31,9 +32,54 @@
     </div>
 
     <nav class="nav-center" data-i18n-attr="aria-label:nav.aria">
+        <div class="nav-item internal-only">
+            <button type="button" aria-expanded="false">
+                <span data-i18n="nav.internal">ระบบภายใน</span>
+                <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="dropdown">
+                <a class="dd-item" href="pi_tasks/index.html">
+                    <span class="dd-ico">🗒️</span>
+                    <span>
+                        <span class="dd-title" data-i18n="dd.tasks.t">Pi Tasks</span>
+                        <span class="dd-desc" data-i18n="dd.tasks.d">บอร์ด Kanban สำหรับทีม เปิดใช้ได้ทันที</span>
+                    </span>
+                </a>
+                <a class="dd-item" href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener">
+                    <span class="dd-ico">📇</span>
+                    <span>
+                        <span class="dd-title">CRM</span>
+                        <span class="dd-desc" data-i18n="in.crm.d">ระบบบริหารลูกค้าสัมพันธ์</span>
+                    </span>
+                </a>
+                <a class="dd-item" href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener">
+                    <span class="dd-ico">🧾</span>
+                    <span>
+                        <span class="dd-title">BoQ</span>
+                        <span class="dd-desc" data-i18n="in.boq.d">ระบบถอดแบบประมาณราคา</span>
+                    </span>
+                </a>
+                <a class="dd-item" href="https://peeraponggis.github.io/asc/index.html" target="_blank" rel="noopener">
+                    <span class="dd-ico">⚡</span>
+                    <span>
+                        <span class="dd-title">ASC</span>
+                        <span class="dd-desc" data-i18n="in.asc.d">ระบบงาน ASC</span>
+                    </span>
+                </a>
+                <a class="dd-item" href="https://web-production-359eb.up.railway.app/pro/admin" target="_blank" rel="noopener">
+                    <span class="dd-ico">🛠️</span>
+                    <span>
+                        <span class="dd-title" data-i18n="in.admin.t">SaaS หลังบ้านแอดมิน</span>
+                        <span class="dd-desc" data-i18n="in.admin.d">ตรวจ lead / ตรวจสลิป</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+
         <div class="nav-links">
             <a href="product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
-            <a href="pi_tasks/index.html" class="tasks-chip" data-i18n="dd.tasks.t">Pi Tasks</a>
+            <a href="pi_tasks/index.html" class="tasks-chip internal-only" data-i18n="dd.tasks.t">Pi Tasks</a>
+            <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">SaaS</a>
             <a href="pricing.html" data-i18n="nav.pricing">ราคา</a>
             <a href="index.html#cta" data-i18n="nav.demo">ขอชมเดโม</a>
         </div>
@@ -44,7 +90,7 @@
             <button type="button" data-lang="th">TH</button>
             <button type="button" data-lang="en">EN</button>
         </div>
-        <a href="#" class="btn btn-ghost desktop-only" data-i18n="nav.login">เข้าสู่ระบบ</a>
+        <a href="#" class="btn btn-ghost desktop-only auth-btn">เข้าสู่ระบบ</a>
         <a href="index.html#cta" class="btn btn-primary" data-i18n="nav.free">เริ่มใช้ฟรี</a>
         <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" data-i18n-attr="aria-label:nav.toggle">
             <span></span><span></span><span></span>
@@ -54,15 +100,20 @@
 
 <div class="mobile-menu" id="mobileMenu">
     <a href="product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
-    <a href="pi_tasks/index.html" data-i18n="dd.tasks.t">Pi Tasks</a>
     <a href="pricing.html" data-i18n="nav.pricing">ราคา</a>
+    <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">SaaS</a>
     <a href="index.html#cta" data-i18n="nav.demo">ขอชมเดโม</a>
+    <a class="internal-only" href="pi_tasks/index.html" data-i18n="dd.tasks.t">Pi Tasks</a>
+    <a class="internal-only" href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener">CRM</a>
+    <a class="internal-only" href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener">BoQ</a>
+    <a class="internal-only" href="https://peeraponggis.github.io/asc/index.html" target="_blank" rel="noopener">ASC</a>
+    <a class="internal-only" href="https://web-production-359eb.up.railway.app/pro/admin" target="_blank" rel="noopener" data-i18n="in.admin.t">SaaS หลังบ้านแอดมิน</a>
     <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
         <button type="button" data-lang="th">TH</button>
         <button type="button" data-lang="en">EN</button>
     </div>
     <div class="mm-actions">
-        <a href="#" class="btn btn-secondary" data-i18n="nav.login">เข้าสู่ระบบ</a>
+        <a href="#" class="btn btn-secondary auth-btn">เข้าสู่ระบบ</a>
         <a href="index.html#cta" class="btn btn-primary" data-i18n="nav.free">เริ่มใช้ฟรี</a>
     </div>
 </div>
@@ -117,12 +168,14 @@
                 <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
             </a>
             <div class="fb-links">
-                <a href="pi_tasks/index.html" class="tasks-chip" data-i18n="dd.tasks.t">Pi Tasks</a>
+                <a href="tel:0800282399">📞 080-028-2399</a>
+                <a href="mailto:info@proinventive.co.th">✉️ info@proinventive.co.th</a>
+                <a href="pi_tasks/index.html" class="tasks-chip internal-only" data-i18n="dd.tasks.t">Pi Tasks</a>
                 <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
                     <button type="button" data-lang="th">TH</button>
                     <button type="button" data-lang="en">EN</button>
                 </div>
-                <span data-i18n="f.copyright">© 2026 PROINVENTIVE Co., Ltd.</span>
+                <span data-i18n="f.copyright">© 2026 บริษัท โปรอินเวนทีฟ จำกัด (PROINVENTIVE CO., LTD.)</span>
             </div>
         </div>
     </div>

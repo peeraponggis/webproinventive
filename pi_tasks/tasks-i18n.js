@@ -14,7 +14,7 @@
 
             "tk.tab.all": "งานทั้งบริษัท",
             "tk.tab.mine": "งานของฉัน",
-            "tk.tab.sprint": "สปรินต์ปัจจุบัน",
+            "tk.tab.sprint": "งานที่กำลังดำเนินอยู่ ณ เวลานี้",
             "tk.tab.timeline": "ไทม์ไลน์",
 
             "tk.new": "สร้างใหม่",
@@ -27,6 +27,7 @@
             "tk.empty": "ยังไม่มีงานในคอลัมน์นี้",
             "tk.untitled": "งานใหม่",
             "tk.mine": "ของฉัน",
+            "tk.guest": "ผู้เยี่ยมชม",
             "tk.sprint": "สปรินต์",
             "tk.confirmReset": "รีเซ็ตบอร์ดกลับเป็นข้อมูลตัวอย่าง? งานที่แก้ไว้จะหายทั้งหมด",
 
@@ -80,7 +81,7 @@
 
             "tk.tab.all": "Company tasks",
             "tk.tab.mine": "My tasks",
-            "tk.tab.sprint": "Current sprint",
+            "tk.tab.sprint": "In progress right now",
             "tk.tab.timeline": "Timeline",
 
             "tk.new": "New",
@@ -93,6 +94,7 @@
             "tk.empty": "Nothing here yet",
             "tk.untitled": "New task",
             "tk.mine": "Mine",
+            "tk.guest": "Guest",
             "tk.sprint": "Sprint",
             "tk.confirmReset": "Reset the board to sample data? Your edits will be lost.",
 

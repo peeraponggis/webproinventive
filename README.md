@@ -159,9 +159,19 @@ push ขึ้น `main` แล้ว GitHub Pages จะ publish ให้เ�
 
 ---
 
+## ระบบ login (โหมดสาธิต) — `auth.js`
+
+- ปุ่ม "เข้าสู่ระบบ" เปิด modal กรอกอีเมล — ถ้าลงท้าย `@proinventive.co.th` ถือว่าเข้าสู่ระบบสำเร็จ
+  (เก็บใน `localStorage` key `pi_user`) และเมนู **ระบบภายใน** จะปรากฏ: Pi Tasks · CRM · BoQ · ASC · SaaS หลังบ้านแอดมิน
+- ลิงก์ที่เห็นเสมอไม่ต้อง login: **SaaS** (เว็บลูกค้า) และ **SaaS ช่างติดตั้ง**
+- element ที่มีคลาส `internal-only` ถูกซ่อนจนกว่าจะ login (CSS: `body.pi-authed`)
+- ⚠️ **เป็นการสาธิต UI เท่านั้น ไม่ใช่ความปลอดภัยจริง** — เว็บเป็น static ไม่มี backend ตรวจรหัสผ่าน
+  ใครดูโค้ดก็ข้ามได้ ระบบจริงต้องทำ auth ฝั่ง server ในเฟสถัดไป
+- API: `PiAuth.getUser() / login(email) / logout() / open()` + event `auth:change`
+
 ## หมายเหตุ
 
-- ชื่อบริษัทในแถบ "ได้รับความไว้วางใจจาก…" บนหน้าแรกเป็น **ชื่อสมมติ** (Acme, Northwind, Vertex …)
-  ให้เปลี่ยนเป็นลูกค้าจริงที่ `#logoTrack` ใน `index.html` ก่อนใช้งานจริง
-- ตัวเลขสถิติและคำรับรองในหน้าแรกเป็นข้อความตัวอย่างเช่นกัน
+- ข้อมูลบริษัท ผลงานโครงการ สถิติ MWp และช่องทางติดต่อ นำมาจาก **Company Profile จริง** ของ
+  บริษัท โปรอินเวนทีฟ จำกัด (แก้ได้ที่ `#logoTrack`, `#statTrack`, `#stories`, `#about` ใน `index.html`
+  และ `#portfolio` ใน `product.html`)
 - ฟอนต์โหลดจาก Google Fonts (Inter + Noto Sans Thai) จึงต้องมีอินเทอร์เน็ตตอนเปิดหน้าเว็บ
