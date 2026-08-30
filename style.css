@@ -500,6 +500,16 @@ p.subtitle {
     font-size: clamp(20px, 3.7vw, 46px);
 }
 
+/* subtitle and buttons under the hero follow the compact scale */
+.hero-text .subtitle {
+    font-size: 14px;
+}
+
+.hero-actions .btn-lg {
+    padding: 8px 14px;
+    font-size: 13px;
+}
+
 .hero h1 .line {
     display: inline;
 }
