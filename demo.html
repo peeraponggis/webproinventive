@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo — PROINVENTIVE</title>
+    <meta name="description" content="ชมการทำงานจริงของระบบ PROINVENTIVE — U-Projects (Pi Tasks / BoQ / CRM), ASC และ SaaS">
+
+    <link rel="icon" href="img/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2026083008">
+    <link rel="stylesheet" href="pi-console.css?v=2026083008">
+    <script src="i18n.js?v=2026083008" defer></script>
+    <script src="auth.js?v=2026083008" defer></script>
+    <script src="app.js?v=2026083008" defer></script>
+    <script src="pi-console.js?v=2026083008" defer></script>
+</head>
+<body data-i18n-title="demo.title">
+
+<header id="site-header">
+    <div class="nav-left">
+        <a href="index.html" class="logo">
+            <img class="logo-mark" src="img/pilogo.png" alt="PROINVENTIVE">
+            <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
+        </a>
+    </div>
+
+    <nav class="nav-center" data-i18n-attr="aria-label:nav.aria">
+        <div class="nav-links">
+            <a href="product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
+            <a href="pi_tasks/index.html" class="tasks-chip internal-only" data-i18n="dd.tasks.t">Pi Tasks</a>
+            <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">SaaS</a>
+            <a href="demo.html" class="tasks-chip is-current" aria-current="page">Demo</a>
+        </div>
+    </nav>
+
+    <div class="nav-right">
+        <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
+            <button type="button" data-lang="th">TH</button>
+            <button type="button" data-lang="en">EN</button>
+        </div>
+        <a href="#" class="btn btn-ghost desktop-only auth-btn">เข้าสู่ระบบ</a>
+        <a href="#" class="btn btn-primary btn-start" data-i18n="nav.free">เริ่มใช้ฟรี</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" data-i18n-attr="aria-label:nav.toggle">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
+    <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">SaaS</a>
+    <a href="demo.html">Demo</a>
+    <a class="internal-only" href="pi_tasks/index.html" data-i18n="dd.tasks.t">Pi Tasks</a>
+    <a class="internal-only" href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener">CRM</a>
+    <a class="internal-only" href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener">BoQ</a>
+    <a class="internal-only" href="https://peeraponggis.github.io/asc/index.html" target="_blank" rel="noopener">ASC</a>
+    <a class="internal-only" href="https://web-production-359eb.up.railway.app/pro/admin" target="_blank" rel="noopener" data-i18n="in.admin.t">SaaS หลังบ้านแอดมิน</a>
+    <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
+        <button type="button" data-lang="th">TH</button>
+        <button type="button" data-lang="en">EN</button>
+    </div>
+    <div class="mm-actions">
+        <a href="#" class="btn btn-secondary auth-btn">เข้าสู่ระบบ</a>
+        <a href="#" class="btn btn-primary btn-start" data-i18n="nav.free">เริ่มใช้ฟรี</a>
+    </div>
+</div>
+
+<main>
+    <section style="padding-bottom:40px">
+        <div class="container">
+            <div class="hero-text">
+                <h1 data-i18n="demo.head">ชมการทำงานจริงของระบบ</h1>
+                <p class="subtitle" data-i18n="demo.sub">คลิปสั้น ๆ จากหน้าจอจริงของแต่ละระบบ — กดเล่นได้เลย</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= U-PROJECTS ================= -->
+    <section class="section-soft" style="padding-top:56px" id="u-projects">
+        <div class="container">
+            <div class="section-head reveal">
+                <div>
+                    <p class="eyebrow">U-Projects</p>
+                    <h2 data-i18n="demo.up.head">ครบทุกกระบวนงานในองค์กรของคุณ</h2>
+                </div>
+            </div>
+            <p class="subtitle reveal" style="max-width:820px;font-size:16px" data-i18n="demo.up.sub">CRM / BOQ / Project Management / i-Tasks — ชุดเครื่องมือภายในที่ทีม PROINVENTIVE ใช้ทำงานจริงทุกวัน</p>
+
+            <div class="demo-grid" style="margin-top:34px">
+                <figure class="demo-card reveal">
+                    <video controls preload="metadata" playsinline poster="media/pi_tasks.jpg">
+                        <source src="media/pi_tasks.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3>📇 Pi Tasks</h3>
+                        <p data-i18n="demo.pt.d">บอร์ด Kanban ของทีม — ลากการ์ดข้ามสถานะ ติดตามเจ้าของงานพร้อม timestamp และดูสรุปงานวันนี้เป็น dashboard</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="demo-card reveal">
+                    <video controls preload="metadata" playsinline poster="media/boq.jpg">
+                        <source src="media/boq.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3>🧾 Pi BoQ</h3>
+                        <p data-i18n="demo.boq.d">ออกใบเสนอราคาและ BOQ — กำหนดงวดชำระเงิน เงื่อนไขเอกสาร แล้วพิมพ์เป็น PDF ได้ในไม่กี่คลิก</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="demo-card reveal wide">
+                    <video controls preload="metadata" playsinline poster="media/crm_boq.jpg">
+                        <source src="media/crm_boq.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3>📇 CRM + BoQ (Pi-System)</h3>
+                        <p data-i18n="demo.crm.d">ระบบบริหารลูกค้าสัมพันธ์เชื่อมกับฐานข้อมูลวัสดุกว่า 500 รายการ — จาก Lead ถึงใบเสนอราคาในระบบเดียว พร้อม Pipeline และ Siteflow</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ASC ================= -->
+    <section id="asc-demo">
+        <div class="container">
+            <div class="section-head reveal">
+                <div>
+                    <p class="eyebrow">ASC</p>
+                    <h2 data-i18n="demo.asc.head">ระบบออกแบบ PVs</h2>
+                </div>
+            </div>
+            <div class="demo-grid" style="margin-top:34px">
+                <figure class="demo-card reveal wide">
+                    <video controls preload="metadata" playsinline poster="media/asc.jpg">
+                        <source src="media/asc.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3>🛠️ ASC — Advanced Solar Calculator</h3>
+                        <p data-i18n="demo.asc.d">ครบ 6 ขั้นตอนออกแบบระบบโซล่าร์: วิเคราะห์ค่าไฟ Load Profiling → System Design → โมเดล 3 มิติ → ตำแหน่งอุปกรณ์ → ข้อเสนอและรายงาน → สรุประบบ</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SaaS ================= -->
+    <section class="section-soft" id="saas-demo">
+        <div class="container">
+            <div class="section-head reveal">
+                <div>
+                    <p class="eyebrow">SaaS</p>
+                    <h2 data-i18n="demo.saas.head">แพลตฟอร์มสำหรับลูกค้า</h2>
+                </div>
+                <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener" class="link-arrow" data-i18n="demo.saas.try">ลองใช้งานจริง →</a>
+            </div>
+            <div class="demo-grid" style="margin-top:34px">
+                <figure class="demo-card reveal wide">
+                    <video controls preload="metadata" playsinline poster="media/saas_customer.jpg">
+                        <source src="media/saas_customer.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3>☀️ SaaS — ประเมินระบบโซล่าร์ด้วยตัวเอง</h3>
+                        <p data-i18n="demo.saas.d">ลูกค้ากรอกข้อมูลการใช้ไฟ แล้วได้ผลวิเคราะห์ทันที — กำลังผลิตรายชั่วโมง การทำงานของแบตเตอรี่ ผลผลิตรายเดือน Cash Flow, NPV, LCOE พร้อมรายงานฉบับเต็มพิมพ์เป็น PDF ได้</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2 data-i18n="cta.head">เริ่มต้นวันนี้เลย</h2>
+            <div class="cta-actions">
+                <a href="#" class="btn btn-primary btn-lg btn-start" data-i18n="hero.cta1">เริ่มใช้ PROINVENTIVE ฟรี</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-bottom" style="margin-top:0;border-top:none;padding-top:0">
+            <a href="index.html" class="logo">
+                <img class="logo-mark" src="img/pilogo.png" alt="PROINVENTIVE">
+                <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
+            </a>
+            <div class="fb-links">
+                <a href="tel:0800282399">📞 080-028-2399</a>
+                <a href="mailto:info@proinventive.co.th">✉️ info@proinventive.co.th</a>
+                <a href="pi_tasks/index.html" class="tasks-chip internal-only" data-i18n="dd.tasks.t">Pi Tasks</a>
+                <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
+                    <button type="button" data-lang="th">TH</button>
+                    <button type="button" data-lang="en">EN</button>
+                </div>
+                <span data-i18n="f.copyright">© 2026 บริษัท โปรอินเวนทีฟ จำกัด (PROINVENTIVE CO., LTD.)</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

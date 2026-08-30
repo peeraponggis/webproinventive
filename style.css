@@ -1895,3 +1895,60 @@ body:not(.pi-authed) .internal-only {
 .start-items .dd-item .dd-title {
     font-size: 14.5px;
 }
+
+/* =========================================================
+   Demo page — video presentation frames
+   ========================================================= */
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+}
+
+.demo-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.demo-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.demo-card.wide {
+    grid-column: 1 / -1;
+}
+
+.demo-card video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background: #0f1523;
+}
+
+.demo-card figcaption {
+    padding: 18px 22px 20px;
+}
+
+.demo-card figcaption h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+.demo-card figcaption p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+@media (max-width: 800px) {
+    .demo-grid {
+        grid-template-columns: 1fr;
+    }
+}
