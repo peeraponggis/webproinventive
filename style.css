@@ -2201,6 +2201,29 @@ body:not(.pi-authed) .internal-only {
     color: var(--pi-dim);
 }
 
+.pd-num .mw {
+    font-weight: 600;
+}
+
+/* installed = amber, system design = blue */
+.pd-tile.c-install .pd-num,
+.pd-tile.c-install .pd-num em {
+    color: #e07000;
+}
+
+.pd-tile.c-install {
+    border-top: 3px solid #ff9800;
+}
+
+.pd-tile.c-design .pd-num,
+.pd-tile.c-design .pd-num em {
+    color: #2b7fd4;
+}
+
+.pd-tile.c-design {
+    border-top: 3px solid #2b7fd4;
+}
+
 .pd-gauges {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
