@@ -501,7 +501,7 @@ p.subtitle {
 }
 
 .hero h1 .line {
-    display: block;
+    display: inline;
 }
 
 /* Rotating highlight pill */
