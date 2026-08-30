@@ -2042,9 +2042,9 @@ body:not(.pi-authed) .internal-only {
 }
 
 .pd-land {
-    fill: rgba(255, 255, 255, 0.07);
-    stroke: rgba(255, 255, 255, 0.22);
-    stroke-width: 1.6;
+    fill: rgba(255, 255, 255, 0.08);
+    stroke: rgba(255, 255, 255, 0.28);
+    stroke-width: 0.6;
     stroke-linejoin: round;
 }
 
