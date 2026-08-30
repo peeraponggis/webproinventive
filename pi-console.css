@@ -4,10 +4,10 @@
    ========================================================= */
 
 :root {
-    --pi-navy: #e8c3a7;
-    --pi-navy-2: #f4ddc7;
-    --pi-navy-3: #cf9f74;
-    --pi-line: rgba(90, 50, 15, 0.18);
+    --pi-navy: #fcf8f5;
+    --pi-navy-2: #f2eeeb;
+    --pi-navy-3: #d8cbbf;
+    --pi-line: rgba(70, 50, 32, 0.14);
     --pi-text: #38200c;
     --pi-dim: #7d5a3c;
     --pi-gold: #ff9800;

@@ -1929,7 +1929,7 @@ body:not(.pi-authed) .internal-only {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: contain;
-    background: #e8c3a7;
+    background: #f2eeeb;
 }
 
 .demo-card figcaption {
@@ -2075,7 +2075,7 @@ body:not(.pi-authed) .internal-only {
     font-weight: 600;
     fill: #38200c;
     paint-order: stroke;
-    stroke: rgba(248, 231, 213, 0.9);
+    stroke: rgba(252, 248, 245, 0.92);
     stroke-width: 3px;
     stroke-linejoin: round;
     pointer-events: none;
@@ -2362,7 +2362,7 @@ body.pi-authed .guest-only {
     object-fit: cover;
     border: 1px solid var(--border-color);
     border-radius: 10px;
-    background: #e8c3a7;
+    background: #f2eeeb;
 }
 
 .mk-asc-link {
