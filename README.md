@@ -149,6 +149,16 @@ API อื่น: `PiTasks.getBoard() / setBoard(arr) / create(col) / move(id, c
 
 ---
 
+## Deploy (GitHub Pages)
+
+push ขึ้น `main` แล้ว GitHub Pages จะ publish ให้เอง → <https://peeraponggis.github.io/webproinventive/>
+
+> **ทุกครั้งที่แก้ไฟล์ `.css` / `.js` ให้เปลี่ยนเลข `?v=` ใน `<link>` และ `<script>` ของไฟล์ HTML ทั้ง 4 หน้า**
+> (ใช้รูปแบบ `?v=YYYYMMDDnn`) — GitHub Pages ตั้ง `Cache-Control: max-age=600` ถ้าไม่เปลี่ยนเลขนี้
+> เบราว์เซอร์ของผู้ใช้เดิมอาจโหลด HTML ใหม่คู่กับ JS เก่าค้างไว้ได้
+
+---
+
 ## หมายเหตุ
 
 - ชื่อบริษัทในแถบ "ได้รับความไว้วางใจจาก…" บนหน้าแรกเป็น **ชื่อสมมติ** (Acme, Northwind, Vertex …)
