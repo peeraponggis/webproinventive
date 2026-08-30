@@ -1517,23 +1517,45 @@ footer .logo-word .inv {
 }
 
 /* =========================================================
-   Pi Tasks entry point in the navbar
+   Pi Tasks entry point (navbar + footer)
    ========================================================= */
 
-.nav-links a.nav-tasks {
+.tasks-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     background: var(--bg-soft-2);
+    color: var(--text-main);
+    font-size: 13px;
     font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
-.nav-links a.nav-tasks:hover {
+.tasks-chip:hover {
     background: rgba(0, 0, 0, 0.09);
+    text-decoration: none;
 }
 
-.nav-links a.nav-tasks.is-current {
+.tasks-chip.is-current {
     background: var(--blue-soft);
     color: var(--blue);
 }
 
-.nav-links a.nav-tasks.is-current:hover {
+.tasks-chip.is-current:hover {
     background: var(--blue-soft-hover);
+}
+
+/* inside the navbar it keeps the nav-link metrics */
+.nav-links a.tasks-chip {
+    font-size: 14px;
+    padding: 7px 10px;
+    border-radius: 6px;
+}
+
+.footer-col a.tasks-chip {
+    font-size: 12.5px;
+    padding: 3px 10px;
 }
