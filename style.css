@@ -2348,3 +2348,33 @@ body:not(.pi-authed) .internal-only {
         animation: none;
     }
 }
+
+/* content for visitors only — hidden once logged in */
+body.pi-authed .guest-only {
+    display: none !important;
+}
+
+/* ASC demo clip inside the hero mockup (guest view) */
+.mk-asc video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: #0f1523;
+}
+
+.mk-asc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 550;
+    color: var(--blue);
+}
+
+.mk-asc-link:hover {
+    text-decoration: underline;
+}

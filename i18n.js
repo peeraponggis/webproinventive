@@ -47,9 +47,9 @@
             "dd.tasks.d": "บอร์ด Kanban สำหรับทีม เปิดใช้ได้ทันที",
             "dd.stories.t": "ผลงานของเรา",
             "dd.stories.d": "โครงการติดตั้งจริงทั่วประเทศ",
-            "dd.connect.t": "การเชื่อมต่อ",
+            "dd.connect.t": "การเชื่อมต่อ (ปรับปรุง)",
             "dd.connect.d": "ต่อกับเครื่องมือที่ทีมใช้อยู่",
-            "dd.help.t": "ศูนย์ช่วยเหลือ",
+            "dd.help.t": "ศูนย์ช่วยเหลือ (ปรับปรุง)",
             "dd.help.d": "คู่มือ บทเรียน และคำถามที่พบบ่อย",
 
             /* ---- hero ---- */
@@ -391,9 +391,9 @@
             "dd.tasks.d": "A team Kanban board, ready to use",
             "dd.stories.t": "Our projects",
             "dd.stories.d": "Real installations nationwide",
-            "dd.connect.t": "Connections",
+            "dd.connect.t": "Connections (under improvement)",
             "dd.connect.d": "Plug into the tools you already use",
-            "dd.help.t": "Help center",
+            "dd.help.t": "Help center (under improvement)",
             "dd.help.d": "Guides, tutorials and FAQs",
 
             /* ---- hero ---- */

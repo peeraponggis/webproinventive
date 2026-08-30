@@ -14,14 +14,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2026083013">
-    <link rel="stylesheet" href="pi-console.css?v=2026083013">
-    <script src="i18n.js?v=2026083013" defer></script>
-    <script src="auth.js?v=2026083013" defer></script>
-    <script src="app.js?v=2026083013" defer></script>
-    <script src="thmap.js?v=2026083013" defer></script>
-    <script src="dashboard.js?v=2026083013" defer></script>
-    <script src="pi-console.js?v=2026083013" defer></script>
+    <link rel="stylesheet" href="style.css?v=2026083014">
+    <link rel="stylesheet" href="pi-console.css?v=2026083014">
+    <script src="i18n.js?v=2026083014" defer></script>
+    <script src="auth.js?v=2026083014" defer></script>
+    <script src="app.js?v=2026083014" defer></script>
+    <script src="thmap.js?v=2026083014" defer></script>
+    <script src="dashboard.js?v=2026083014" defer></script>
+    <script src="pi-console.js?v=2026083014" defer></script>
 </head>
 <body data-i18n-title="meta.title" data-i18n-desc="meta.desc">
 
@@ -41,27 +41,6 @@
                 <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="dropdown">
-                <a class="dd-item" href="product.html">
-                    <span class="dd-ico">📄</span>
-                    <span>
-                        <span class="dd-title" data-i18n="dd.docs.t">เอกสารและวิกิ</span>
-                        <span class="dd-desc" data-i18n="dd.docs.d">รวมความรู้ทั้งองค์กรไว้ที่เดียว</span>
-                    </span>
-                </a>
-                <a class="dd-item" href="product.html">
-                    <span class="dd-ico">✨</span>
-                    <span>
-                        <span class="dd-title" data-i18n="dd.ai.t">PROINVENTIVE AI</span>
-                        <span class="dd-desc" data-i18n="dd.ai.d">ค้นหาคำตอบพร้อมแหล่งอ้างอิง</span>
-                    </span>
-                </a>
-                <a class="dd-item" href="product.html">
-                    <span class="dd-ico">🤖</span>
-                    <span>
-                        <span class="dd-title" data-i18n="dd.agent.t">เอเจนต์อัตโนมัติ</span>
-                        <span class="dd-desc" data-i18n="dd.agent.d">ให้งานเดินต่อได้ตลอด 24/7</span>
-                    </span>
-                </a>
                 <a class="dd-item" href="product.html">
                     <span class="dd-ico">🗂️</span>
                     <span>
@@ -196,7 +175,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
     <a href="product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
-    <a href="#features" data-i18n="nav.resources">แหล่งข้อมูล</a>
+    <a href="#stories" data-i18n="nav.resources">แหล่งข้อมูล</a>
     <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">SaaS</a>
     <a href="demo.html">Demo</a>
     <a class="internal-only" href="pi_tasks/index.html" data-i18n="dd.tasks.t">Pi Tasks</a>
@@ -257,8 +236,8 @@
                             <li class="active" data-i18n="mk.home">🏠 หน้าแรก</li>
                             <li class="lnk"><a href="#" class="js-open-pi" data-i18n="mk.askai">✨ ถาม Pi</a></li>
                         </ul>
-                        <div class="mk-label" data-i18n="mk.workspace">พื้นที่ทำงาน PI</div>
-                        <ul class="mk-nav">
+                        <div class="mk-label internal-only" data-i18n="mk.workspace">พื้นที่ทำงาน PI</div>
+                        <ul class="mk-nav internal-only">
                             <li class="lnk"><a href="pi_tasks/index.html" data-i18n="mk.p1" data-i18n-attr="title:dd.tasks.d">📇 Pi Tasks</a></li>
                             <li class="lnk"><a href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener" data-i18n="mk.p2" data-i18n-attr="title:in.crm.d">🧾 CRM</a></li>
                             <li class="lnk"><a href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener" data-i18n="mk.p3" data-i18n-attr="title:in.boq.d">⚡ BoQ</a></li>
@@ -281,6 +260,15 @@
 
                     <div class="mk-main">
                         <div class="mk-cover"></div>
+                        <div class="guest-only mk-asc">
+                            <div class="mk-title">🛠️ ASC — <span data-i18n="in.asc.d">ระบบออกแบบ PVs</span></div>
+                            <video muted loop autoplay playsinline controls preload="metadata" poster="media/asc.jpg">
+                                <source src="media/asc.mp4" type="video/mp4">
+                            </video>
+                            <a class="mk-asc-link" href="demo.html">🎬 <span data-i18n="in.demo.d">ชมคลิปการทำงานของทุกระบบ</span> →</a>
+                        </div>
+
+                        <div class="internal-only">
                         <div class="mk-title">📊 <span data-i18n="mk.title">สรุปงานวันนี้</span></div>
                         <div class="mk-dash" id="homeDash">
                             <div class="mkd-tiles">
@@ -293,6 +281,7 @@
                                 <div class="mk-row head"><span data-i18n="dash.user">ผู้ใช้</span><span data-i18n="dash.doneToday">เสร็จวันนี้</span><span data-i18n="dash.lastActive">กิจกรรมล่าสุด</span></div>
                                 <div id="homeDashUsers"></div>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -318,120 +307,6 @@
             </div>
         </div>
     </div>
-
-    <!-- ================= FEATURES ================= -->
-    <section id="features">
-        <div class="container">
-            <div class="section-head reveal">
-                <div>
-                    <h2 data-i18n="feat.head">AI ที่อยู่ตรงที่ทีมคุณทำงาน</h2>
-                </div>
-                <a href="product.html" class="link-arrow" data-i18n="feat.link">ดูความสามารถทั้งหมด →</a>
-            </div>
-
-            <div class="grid-3">
-                <article class="feature-card reveal">
-                    <div class="fc-visual">
-                        <span class="fc-chip" data-i18n="f1.c1">📄 บันทึกการประชุม</span>
-                        <div class="fc-line" style="width:88%"></div>
-                        <div class="fc-line" style="width:64%"></div>
-                        <span class="fc-chip" data-i18n="f1.c2">🧭 คู่มือทีม</span>
-                        <div class="fc-line" style="width:76%"></div>
-                        <div class="fc-line" style="width:48%"></div>
-                        <span class="fc-chip" data-i18n="f1.c3">💡 คลังไอเดีย</span>
-                    </div>
-                    <h3 data-i18n="f1.t">รวบรวมความรู้</h3>
-                    <p data-i18n="f1.d">นำเอกสาร ข้อมูล และบทสนทนาทั้งหมดมาไว้ในระบบเดียวที่ค้นหาได้จริง</p>
-                    <a href="product.html" class="fc-link"><span data-i18n="feat.more">เรียนรู้เพิ่มเติม</span> <span class="arrow">→</span></a>
-                </article>
-
-                <article class="feature-card reveal">
-                    <div class="fc-visual">
-                        <span class="fc-chip" style="margin-left:auto" data-i18n="f2.c1">นโยบายลาพักร้อนเป็นอย่างไร?</span>
-                        <div class="fc-line" style="width:92%"></div>
-                        <div class="fc-line" style="width:80%"></div>
-                        <div class="fc-line" style="width:58%"></div>
-                        <span class="fc-chip" data-i18n="f2.c2">🔗 อ้างอิง: คู่มือพนักงาน</span>
-                        <span class="fc-chip" data-i18n="f2.c3">🔗 อ้างอิง: นโยบาย HR</span>
-                    </div>
-                    <h3 data-i18n="f2.t">ค้นหาคำตอบ</h3>
-                    <p data-i18n="f2.d">ถามด้วยภาษาธรรมดา แล้วได้คำตอบทันทีพร้อมแหล่งอ้างอิงที่ตรวจสอบย้อนกลับได้</p>
-                    <a href="product.html" class="fc-link"><span data-i18n="feat.more">เรียนรู้เพิ่มเติม</span> <span class="arrow">→</span></a>
-                </article>
-
-                <article class="feature-card reveal">
-                    <div class="fc-visual">
-                        <span class="fc-chip" data-i18n="f3.c1">⚡ ทริกเกอร์: มีทิกเก็ตใหม่</span>
-                        <div class="fc-line" style="width:70%"></div>
-                        <span class="fc-chip" data-i18n="f3.c2">🤖 เอเจนต์: จัดหมวดหมู่</span>
-                        <div class="fc-line" style="width:84%"></div>
-                        <span class="fc-chip" data-i18n="f3.c3">✅ ส่งต่อทีมที่เกี่ยวข้อง</span>
-                        <div class="fc-line" style="width:52%"></div>
-                    </div>
-                    <h3 data-i18n="f3.t">ทำงานซ้ำ ๆ อัตโนมัติ</h3>
-                    <p data-i18n="f3.d">ให้เอเจนต์รับงานประจำไปทำต่อ ทีมจะได้โฟกัสกับงานที่สร้างผลกระทบจริง</p>
-                    <a href="product.html" class="fc-link"><span data-i18n="feat.more">เรียนรู้เพิ่มเติม</span> <span class="arrow">→</span></a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= USE CASES RAIL ================= -->
-    <section class="section-soft">
-        <div class="container">
-            <div class="section-head reveal">
-                <h2 data-i18n="use.head">ดูสิ่งที่ PROINVENTIVE ทำได้</h2>
-            </div>
-        </div>
-        <div class="rail-wrap">
-            <div class="rail">
-                <a class="use-card" href="product.html">
-                    <div class="uc-visual v1">
-                        <div class="uc-bubble me" data-i18n="u1.b1">ช่วยจัดกลุ่มฟีดแบ็กสัปดาห์นี้</div>
-                        <div class="uc-bubble" data-i18n="u1.b2">พบ 3 ธีมหลัก: ความเร็ว การนำเข้าข้อมูล และการแจ้งเตือน</div>
-                        <div class="uc-bubble" data-i18n="u1.b3">สร้างทิกเก็ตให้แล้ว 8 รายการ</div>
-                    </div>
-                    <div class="uc-foot"><span data-i18n="u1.t">คัดกรองฟีดแบ็กผลิตภัณฑ์</span> <span class="arrow">→</span></div>
-                </a>
-
-                <a class="use-card" href="product.html">
-                    <div class="uc-visual v2">
-                        <div class="uc-bubble" data-i18n="u2.b1">🎫 ทิกเก็ต #2841 — ล็อกอินไม่ได้</div>
-                        <div class="uc-bubble me" data-i18n="u2.b2">ร่างคำตอบให้หน่อย</div>
-                        <div class="uc-bubble" data-i18n="u2.b3">ร่างเสร็จแล้ว พร้อมลิงก์คู่มือรีเซ็ตรหัสผ่าน</div>
-                    </div>
-                    <div class="uc-foot"><span data-i18n="u2.t">ปิดทิกเก็ตซัพพอร์ตในแชต</span> <span class="arrow">→</span></div>
-                </a>
-
-                <a class="use-card" href="product.html">
-                    <div class="uc-visual v3">
-                        <div class="uc-bubble" data-i18n="u3.b1">🔔 แจ้งเตือน: สิทธิ์เข้าถึงผิดปกติ</div>
-                        <div class="uc-bubble" data-i18n="u3.b2">เทียบกับ Playbook แล้ว — ระดับความรุนแรง: กลาง</div>
-                        <div class="uc-bubble me" data-i18n="u3.b3">แจ้งทีมความปลอดภัย</div>
-                    </div>
-                    <div class="uc-foot"><span data-i18n="u3.t">ตอบสนองการแจ้งเตือนได้เร็วขึ้น</span> <span class="arrow">→</span></div>
-                </a>
-
-                <a class="use-card" href="product.html">
-                    <div class="uc-visual v4">
-                        <div class="uc-bubble" data-i18n="u4.b1">📊 รายงานประจำสัปดาห์ — อัตโนมัติ</div>
-                        <div class="uc-bubble" data-i18n="u4.b2">ปิดงาน 24 · ค้าง 5 · เสี่ยงล่าช้า 2</div>
-                        <div class="uc-bubble" data-i18n="u4.b3">ส่งเข้าช่องทีมทุกวันศุกร์ 17:00</div>
-                    </div>
-                    <div class="uc-foot"><span data-i18n="u4.t">สรุปรายงานอัตโนมัติ</span> <span class="arrow">→</span></div>
-                </a>
-
-                <a class="use-card" href="product.html">
-                    <div class="uc-visual v5">
-                        <div class="uc-bubble me" data-i18n="u5.b1">สร้างเอเจนต์ตรวจรีวิวโค้ด</div>
-                        <div class="uc-bubble" data-i18n="u5.b2">กำหนดกติกาและสิทธิ์เข้าถึงแล้ว</div>
-                        <div class="uc-bubble" data-i18n="u5.b3">พร้อมใช้งานกับทั้งทีม</div>
-                    </div>
-                    <div class="uc-foot"><span data-i18n="u5.t">สร้างเครื่องมือของทีมเอง</span> <span class="arrow">→</span></div>
-                </a>
-            </div>
-        </div>
-    </section>
 
     <!-- ================= TESTIMONIALS ================= -->
     <section id="stories">

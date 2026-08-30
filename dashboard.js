@@ -176,7 +176,7 @@
         var start = null;
         function step(ts) {
             if (!start) start = ts;
-            var k = Math.min(1, (ts - start) / (ms || 1400));
+            var k = Math.min(1, (ts - start) / (ms || 2800));
             var eased = 1 - Math.pow(1 - k, 3);
             el.textContent = fmt(target * eased, dec);
             if (k < 1) requestAnimationFrame(step);
@@ -196,10 +196,10 @@
             ring.style.strokeDasharray = c;
             ring.style.strokeDashoffset = c;
             requestAnimationFrame(function () {
-                ring.style.transition = "stroke-dashoffset 1.6s cubic-bezier(0.2,0.8,0.2,1)";
+                ring.style.transition = "stroke-dashoffset 3.2s cubic-bezier(0.2,0.8,0.2,1)";
                 ring.style.strokeDashoffset = c * (1 - pct / 100);
             });
-            countUp(g.querySelector(".pd-gauge-num"), pct, 0, 1600);
+            countUp(g.querySelector(".pd-gauge-num"), pct, 0, 3200);
         });
         animateBars();
         drawCurve(true);
