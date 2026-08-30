@@ -41,6 +41,20 @@
     var GOLD = "#e3b93f";
     var BLUE = "#7fb6ff";
 
+    /* pin label placement (dx/dy in map units; anchor start|end) */
+    var LABELS = {
+        "เชียงใหม่":       { dx: 10, dy: 4 },
+        "กำแพงเพชร":      { dx: -10, dy: 4, anchor: "end" },
+        "ร้อยเอ็ด":        { dx: 8, dy: -6 },
+        "อุบลราชธานี":     { dx: 2, dy: 18 },
+        "นครราชสีมา":     { dx: 10, dy: 4 },
+        "นนทบุรี":         { dx: -10, dy: 0, anchor: "end" },
+        "กรุงเทพมหานคร":  { dx: -10, dy: 14, anchor: "end", text: "กรุงเทพฯ" },
+        "ฉะเชิงเทรา":      { dx: 11, dy: 6 },
+        "เพชรบุรี":        { dx: -10, dy: 2, anchor: "end" },
+        "ประจวบคีรีขันธ์": { dx: 11, dy: 6 }
+    };
+
     function t(key) {
         return window.I18N ? window.I18N.t(key) : key;
     }
@@ -61,6 +75,15 @@
     var kwDesigned = designed.reduce(function (a, p) { return a + p.kw; }, 0);
     var provinces = {};
     PROJECTS.forEach(function (p) { if (p.p) provinces[p.p] = 1; });
+
+    /* keep the stat tiles honest — counts derive from the data itself */
+    function syncTiles() {
+        var provCount = Object.keys(provinces).length;
+        var el = document.getElementById("pdProvCount");
+        if (el) el.setAttribute("data-count", provCount);
+        el = document.getElementById("pdProjCount");
+        if (el) el.setAttribute("data-count", PROJECTS.length);
+    }
 
     /* ---------------- map ---------------- */
 
@@ -108,6 +131,16 @@
 
             g.appendChild(halo);
             g.appendChild(dot);
+
+            var cfg = LABELS[s.items[0].p] || { dx: 10, dy: 4 };
+            var label = document.createElementNS(NS, "text");
+            label.setAttribute("x", s.x + cfg.dx);
+            label.setAttribute("y", s.y + cfg.dy);
+            if (cfg.anchor) label.setAttribute("text-anchor", cfg.anchor);
+            label.setAttribute("class", "pd-map-label");
+            label.textContent = cfg.text || s.items[0].p;
+            g.appendChild(label);
+
             svg.appendChild(g);
 
             g.addEventListener("mouseenter", function () {
@@ -296,6 +329,7 @@
 
     /* ---------------- boot ---------------- */
 
+    syncTiles();
     buildMap();
     liveTick();
     setInterval(liveTick, 2000);

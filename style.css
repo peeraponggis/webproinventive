@@ -2070,6 +2070,17 @@ body:not(.pi-authed) .internal-only {
     stroke-width: 1;
 }
 
+.pd-map-label {
+    font-size: 12px;
+    font-weight: 500;
+    fill: rgba(255, 255, 255, 0.82);
+    paint-order: stroke;
+    stroke: rgba(16, 26, 46, 0.85);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
 .pd-tip {
     position: absolute;
     z-index: 5;
