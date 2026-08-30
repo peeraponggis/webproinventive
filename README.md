@@ -11,7 +11,7 @@
 .
 ├── index.html            หน้าแรก (hero, features, use cases, testimonials, CTA, footer)
 ├── product.html          หน้าผลิตภัณฑ์
-├── pricing.html          หน้าราคา
+├── demo.html             หน้ารวมคลิปเดโมทุกระบบ
 ├── style.css             design system ทั้งเว็บ (tokens, nav, ปุ่ม, การ์ด, footer)
 ├── app.js                sticky header, เมนูมือถือ, คำหมุนใน hero, marquee, reveal-on-scroll
 ├── i18n.js               ระบบ 2 ภาษา + พจนานุกรม TH/EN ของทั้งเว็บ

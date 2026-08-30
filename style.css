@@ -1952,3 +1952,388 @@ body:not(.pi-authed) .internal-only {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================================
+   Project Dashboard (dark, matches the Pi console theme)
+   ========================================================= */
+
+.pd-wrap {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-areas:
+        "map main"
+        "curve bars";
+    gap: 16px;
+    background: var(--pi-navy);
+    border: 1px solid var(--pi-navy-3);
+    border-radius: var(--radius-xl);
+    padding: 16px;
+    color: var(--pi-text);
+    margin-top: 8px;
+}
+
+.pd-card {
+    background: var(--pi-navy-2);
+    border: 1px solid var(--pi-line);
+    border-radius: 12px;
+    padding: 14px 16px;
+}
+
+.pd-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.pd-label {
+    display: block;
+    font-size: 11.5px;
+    color: var(--pi-dim);
+}
+
+.pd-note {
+    display: block;
+    font-size: 10.5px;
+    color: var(--pi-dim);
+    opacity: 0.8;
+    margin-top: 8px;
+}
+
+/* ---- map ---- */
+.pd-map-card {
+    grid-area: map;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pd-legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--pi-dim);
+}
+
+.pd-legend i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.pd-map {
+    flex: 1;
+    min-height: 380px;
+    max-height: 560px;
+}
+
+.pd-map svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.pd-land {
+    fill: rgba(255, 255, 255, 0.07);
+    stroke: rgba(255, 255, 255, 0.22);
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+}
+
+.pd-dot {
+    cursor: pointer;
+}
+
+.pd-halo {
+    opacity: 0.35;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pd-pulse 2.4s ease-out infinite;
+}
+
+@keyframes pd-pulse {
+    0% { transform: scale(0.6); opacity: 0.45; }
+    70% { transform: scale(2.4); opacity: 0; }
+    100% { transform: scale(2.4); opacity: 0; }
+}
+
+.pd-core {
+    stroke: rgba(0, 0, 0, 0.35);
+    stroke-width: 1;
+}
+
+.pd-tip {
+    position: absolute;
+    z-index: 5;
+    max-width: 240px;
+    background: var(--pi-navy);
+    border: 1px solid var(--pi-navy-3);
+    border-radius: 9px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    padding: 9px 11px;
+    font-size: 11px;
+    line-height: 1.5;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.pd-tip.show {
+    opacity: 1;
+    transform: none;
+}
+
+.pd-tip strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11.5px;
+}
+
+.pd-tip span {
+    display: block;
+    color: var(--pi-dim);
+}
+
+.pd-tip i {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* ---- right column ---- */
+.pd-main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pd-live-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.pd-live-val {
+    display: block;
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.15;
+}
+
+.pd-live-val em {
+    font-style: normal;
+    font-size: 0.45em;
+    color: var(--pi-dim);
+}
+
+.pd-clock {
+    font-family: var(--pi-mono);
+    font-size: 12px;
+    color: var(--pi-dim);
+}
+
+.pd-live-bar {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.pd-live-bar i {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--pi-gold-2), var(--pi-gold));
+    transition: width 1.2s ease;
+}
+
+.pd-tiles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.pd-num {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.pd-num em {
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--pi-dim);
+}
+
+.pd-gauges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.pd-gauge {
+    position: relative;
+    text-align: center;
+    padding-bottom: 12px;
+}
+
+.pd-gauge svg {
+    width: 104px;
+    height: 104px;
+    transform: rotate(-90deg);
+    margin: 2px auto 4px;
+    display: block;
+}
+
+.pd-ring-bg,
+.pd-ring {
+    fill: none;
+    stroke-width: 9;
+    stroke-linecap: round;
+}
+
+.pd-ring-bg {
+    stroke: rgba(255, 255, 255, 0.09);
+}
+
+.pd-gauge-txt {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+    line-height: 1.1;
+}
+
+.pd-gauge-big {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.pd-gauge-sub {
+    font-size: 11px;
+    color: var(--pi-dim);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---- daily curve ---- */
+.pd-curve-card {
+    grid-area: curve;
+}
+
+#pdCurve {
+    width: 100%;
+    height: 150px;
+    display: block;
+}
+
+.pd-line {
+    fill: none;
+    stroke: var(--pi-gold);
+    stroke-width: 2.4;
+}
+
+.pd-area {
+    fill: rgba(227, 185, 63, 0.14);
+    stroke: none;
+}
+
+.pd-nowline {
+    stroke: rgba(255, 255, 255, 0.25);
+    stroke-width: 1;
+    stroke-dasharray: 3 4;
+}
+
+.pd-nowdot {
+    fill: var(--pi-gold);
+    stroke: #fff;
+    stroke-width: 1.5;
+}
+
+.pd-x {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--pi-mono);
+    font-size: 10px;
+    color: var(--pi-dim);
+    margin-top: 4px;
+}
+
+/* ---- top-project bars ---- */
+.pd-bars-card {
+    grid-area: bars;
+}
+
+.pd-bar-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 1.2fr) 2fr 62px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 9px;
+    font-size: 11.5px;
+}
+
+.pd-bar-name {
+    color: var(--pi-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pd-bar-track {
+    height: 9px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.pd-bar-track i {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    transition: width 1.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pd-bar-val {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .pd-wrap {
+        grid-template-columns: 1fr;
+        grid-template-areas: "map" "main" "curve" "bars";
+    }
+    .pd-map {
+        min-height: 320px;
+        max-height: 400px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pd-halo {
+        animation: none;
+    }
+}

@@ -156,7 +156,7 @@
             "u5.b3": "พร้อมใช้งานกับทั้งทีม",
 
             /* ---- testimonials ---- */
-            "stories.head": "ผลงานติดตั้งจริง",
+            "stories.head": "ผลงานติดตั้งและออกแบบระบบ",
             "stories.link": "ดูผลงานทั้งหมด →",
             "q1.text": "“การใช้เครื่องมือที่มี AI อยู่ในเนื้องานตั้งแต่ต้น ทำให้ทีมเล็ก ๆ ของเราส่งงานได้เท่าทีมที่ใหญ่กว่าหลายเท่า”",
             "q1.name": "ธนกฤต ศรีวิไล",
@@ -273,6 +273,22 @@
             "pl.head": "ผลงานออกแบบและติดตั้ง",
             "pl.sub": "โครงการจริงของเรา — ติดตั้งแล้ว 8 โครงการ และงานออกแบบระบบอีก 12 โครงการทั่วประเทศ",
 
+            /* ---- project dashboard ---- */
+            "pd.eyebrow": "Project Dashboard",
+            "pd.map.t": "แผนที่โครงการทั่วประเทศ",
+            "pd.live.t": "กำลังผลิตโดยประมาณ ขณะนี้",
+            "pd.live.d": "โมเดลจำลองจากกำลังติดตั้งรวมทุกโครงการ",
+            "pd.t1": "กำลังติดตั้งรวม",
+            "pd.t2": "งานออกแบบระบบรวม",
+            "pd.t3": "ผลงานทั้งหมด",
+            "pd.t4": "พื้นที่ให้บริการ",
+            "pd.unit.proj": "โครงการ",
+            "pd.unit.prov": "จังหวัด",
+            "pd.g1": "โครงการติดตั้งแล้ว",
+            "pd.g2": "โครงการออกแบบระบบ",
+            "pd.curve.t": "โปรไฟล์การผลิตรายวัน (จำลอง)",
+            "pd.top.t": "โครงการกำลังการผลิตสูงสุด (kWp)",
+
             /* ---- footer contact ---- */
             "f.contact": "ติดต่อเรา",
             "f.addr": "59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150",
@@ -340,7 +356,7 @@
             "pi.unknown": "ยังไม่รู้จักคำสั่งนี้ ลองพิมพ์ /help ดูครับ",
             "pi.fallback": "ตอนนี้ผมยังตอบได้เฉพาะหัวข้อพื้นฐานในโหมดสาธิตครับ เมื่อเชื่อมกับ CRM/SaaS แล้ว ผมจะดึงข้อมูลจริงของทีมคุณมาตอบได้ ลองถามเรื่องฟีเจอร์ ราคา หรือการเชื่อมต่อดูได้เลย",
             "pi.a.features": "PROINVENTIVE รวมเอกสาร วิกิ โปรเจกต์ และเอเจนต์ AI ไว้ในที่เดียว จุดเด่นคือค้นหาคำตอบพร้อมแหล่งอ้างอิง และให้เอเจนต์ทำงานซ้ำ ๆ แทนทีมได้ตลอด 24/7",
-            "pi.a.pricing": "มี 3 แผน — Free (฿0), Plus ($8/ผู้ใช้/เดือน) และ Business ($15/ผู้ใช้/เดือน) ดูรายละเอียดได้ที่หน้าราคาครับ",
+            "pi.a.pricing": "เรื่องราคาขึ้นกับขนาดระบบและขอบเขตงานครับ ฝากอีเมลไว้ในแชตนี้ หรือติดต่อ 080-028-2399 / info@proinventive.co.th เพื่อรับใบเสนอราคาได้เลย",
             "pi.a.crm": "การเชื่อมต่อ CRM/SaaS จะทำในเฟสถัดไป โดยใช้ adapter ที่เตรียมไว้แล้ว พิมพ์ /crm เพื่อดูแผนการเชื่อมต่อแบบละเอียด",
             "pi.a.contact": "ทีมขายติดต่อได้ผ่านปุ่ม “ขอชมเดโม” ด้านบน หรือฝากอีเมลไว้ในแชตนี้ก็ได้ครับ"
         },
@@ -484,7 +500,7 @@
             "u5.b3": "Ready for the whole team",
 
             /* ---- testimonials ---- */
-            "stories.head": "Real installations",
+            "stories.head": "Installations & system design",
             "stories.link": "See all projects →",
             "q1.text": "“Working with AI-native tools from day one lets our small team ship like a company many times our size.”",
             "q1.name": "Thanakrit Sriwilai",
@@ -601,6 +617,22 @@
             "pl.head": "Design & installation portfolio",
             "pl.sub": "Our real track record — 8 completed installations and 12 system design projects nationwide.",
 
+            /* ---- project dashboard ---- */
+            "pd.eyebrow": "Project Dashboard",
+            "pd.map.t": "Projects across Thailand",
+            "pd.live.t": "Estimated output right now",
+            "pd.live.d": "Simulated from the combined installed capacity",
+            "pd.t1": "Total installed",
+            "pd.t2": "Total system design",
+            "pd.t3": "All projects",
+            "pd.t4": "Service area",
+            "pd.unit.proj": "projects",
+            "pd.unit.prov": "provinces",
+            "pd.g1": "Installed projects",
+            "pd.g2": "System design projects",
+            "pd.curve.t": "Daily production profile (simulated)",
+            "pd.top.t": "Largest projects (kWp)",
+
             /* ---- footer contact ---- */
             "f.contact": "Contact",
             "f.addr": "59/6 Moo 7, Sai Noi, Nonthaburi 11150, Thailand",
@@ -668,7 +700,7 @@
             "pi.unknown": "I don't know that command yet. Try /help.",
             "pi.fallback": "In demo mode I can only answer a few basics. Once connected to your CRM/SaaS I'll pull your team's real data. Try asking about features, pricing or integrations.",
             "pi.a.features": "PROINVENTIVE brings docs, wikis, projects and AI agents together. The highlights: answers with citations, and agents that handle routine work 24/7.",
-            "pi.a.pricing": "Three plans — Free ($0), Plus ($8/user/month) and Business ($15/user/month). Full details on the pricing page.",
+            "pi.a.pricing": "Pricing depends on system size and scope. Leave your email here in the chat, or reach us at 080-028-2399 / info@proinventive.co.th for a quotation.",
             "pi.a.crm": "CRM/SaaS integration lands in the next phase through the adapter that's already in place. Type /crm for the detailed plan.",
             "pi.a.contact": "You can reach sales through the “Request a demo” button above, or just leave your email here in the chat."
         }
