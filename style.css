@@ -2383,3 +2383,26 @@ body.pi-authed .guest-only {
 .mk-asc-link:hover {
     text-decoration: underline;
 }
+
+/* =========================================================
+   Compact scale pass — follows the halved hero heading
+   ========================================================= */
+
+/* large CTA buttons shrink to regular-button proportions */
+.btn-lg {
+    padding: 9px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+/* the section headings named in the trim: dashboard, about, final CTA */
+#stories .section-head h2,
+#about h2,
+.cta h2 {
+    font-size: clamp(16px, 2.2vw, 26px);
+}
+
+/* ASC title inside the hero mockup (guest view) */
+.mk-asc .mk-title {
+    font-size: 15px;
+}
