@@ -4,18 +4,18 @@
    ========================================================= */
 
 :root {
-    --pi-navy: #251102;
-    --pi-navy-2: #331a09;
-    --pi-navy-3: #45240d;
-    --pi-line: rgba(255, 255, 255, 0.1);
-    --pi-text: #ffeeda;
-    --pi-dim: #c9a482;
-    --pi-gold: #ffb03a;
-    --pi-gold-2: #d97817;
-    --pi-cyan: #7fb6ff;
-    --pi-ok: #46c07a;
-    --pi-warn: #e0a93b;
-    --pi-err: #e06b6b;
+    --pi-navy: #e8c3a7;
+    --pi-navy-2: #f4ddc7;
+    --pi-navy-3: #cf9f74;
+    --pi-line: rgba(90, 50, 15, 0.18);
+    --pi-text: #38200c;
+    --pi-dim: #7d5a3c;
+    --pi-gold: #ff9800;
+    --pi-gold-2: #e07000;
+    --pi-cyan: #1d6fd6;
+    --pi-ok: #1f9d5c;
+    --pi-warn: #c77700;
+    --pi-err: #c94b4b;
     --pi-mono: "SFMono-Regular", ui-monospace, Menlo, Consolas,
         "Liberation Mono", monospace;
 }
@@ -185,7 +185,7 @@
 }
 
 .pi-iconbtn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.06);
     color: var(--pi-text);
 }
 
@@ -198,7 +198,7 @@
     flex-direction: column;
     gap: 12px;
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+    scrollbar-color: rgba(90, 50, 15, 0.3) transparent;
 }
 
 .pi-log::-webkit-scrollbar {
@@ -206,7 +206,7 @@
 }
 
 .pi-log::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(90, 50, 15, 0.28);
     border-radius: 4px;
 }
 
@@ -253,7 +253,7 @@
 
 .pi-msg[data-role="user"] .pi-bubble {
     background: var(--pi-navy-3);
-    border-color: rgba(127, 182, 255, 0.24);
+    border-color: rgba(29, 111, 214, 0.3);
 }
 
 .pi-msg[data-role="system"] .pi-bubble {
@@ -320,8 +320,8 @@
 
 .pi-quick button:hover {
     color: var(--pi-text);
-    border-color: rgba(255, 176, 58, 0.5);
-    background: rgba(255, 176, 58, 0.08);
+    border-color: rgba(255, 152, 0, 0.55);
+    background: rgba(255, 152, 0, 0.1);
 }
 
 /* Composer */
@@ -353,11 +353,11 @@
 }
 
 .pi-form textarea::placeholder {
-    color: rgba(147, 163, 196, 0.7);
+    color: rgba(125, 90, 60, 0.7);
 }
 
 .pi-form textarea:focus {
-    border-color: rgba(255, 176, 58, 0.55);
+    border-color: rgba(255, 152, 0, 0.6);
 }
 
 .pi-send {
@@ -367,7 +367,7 @@
     border: none;
     border-radius: 10px;
     background: linear-gradient(150deg, var(--pi-gold), var(--pi-gold-2));
-    color: #1b1405;
+    color: #fff;
     cursor: pointer;
     display: grid;
     place-items: center;
@@ -391,7 +391,7 @@
     padding: 0 14px 10px;
     font-family: var(--pi-mono);
     font-size: 10.5px;
-    color: rgba(147, 163, 196, 0.75);
+    color: rgba(125, 90, 60, 0.8);
     background: var(--pi-navy-2);
     flex: none;
 }

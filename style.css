@@ -1929,7 +1929,7 @@ body:not(.pi-authed) .internal-only {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: contain;
-    background: #1a0c02;
+    background: #e8c3a7;
 }
 
 .demo-card figcaption {
@@ -2042,8 +2042,8 @@ body:not(.pi-authed) .internal-only {
 }
 
 .pd-land {
-    fill: rgba(255, 255, 255, 0.08);
-    stroke: rgba(255, 255, 255, 0.28);
+    fill: rgba(120, 70, 30, 0.14);
+    stroke: rgba(90, 50, 15, 0.42);
     stroke-width: 0.6;
     stroke-linejoin: round;
 }
@@ -2072,10 +2072,10 @@ body:not(.pi-authed) .internal-only {
 
 .pd-map-label {
     font-size: 12px;
-    font-weight: 500;
-    fill: rgba(255, 255, 255, 0.82);
+    font-weight: 600;
+    fill: #38200c;
     paint-order: stroke;
-    stroke: rgba(37, 17, 2, 0.85);
+    stroke: rgba(248, 231, 213, 0.9);
     stroke-width: 3px;
     stroke-linejoin: round;
     pointer-events: none;
@@ -2161,7 +2161,7 @@ body:not(.pi-authed) .internal-only {
 .pd-live-bar {
     height: 10px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(90, 50, 15, 0.14);
     overflow: hidden;
     margin-top: 10px;
 }
@@ -2224,7 +2224,7 @@ body:not(.pi-authed) .internal-only {
 }
 
 .pd-ring-bg {
-    stroke: rgba(255, 255, 255, 0.09);
+    stroke: rgba(90, 50, 15, 0.14);
 }
 
 .pd-gauge-txt {
@@ -2265,12 +2265,12 @@ body:not(.pi-authed) .internal-only {
 }
 
 .pd-area {
-    fill: rgba(255, 176, 58, 0.16);
+    fill: rgba(255, 152, 0, 0.18);
     stroke: none;
 }
 
 .pd-nowline {
-    stroke: rgba(255, 255, 255, 0.25);
+    stroke: rgba(90, 50, 15, 0.35);
     stroke-width: 1;
     stroke-dasharray: 3 4;
 }
@@ -2314,7 +2314,7 @@ body:not(.pi-authed) .internal-only {
 .pd-bar-track {
     height: 9px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(90, 50, 15, 0.14);
     overflow: hidden;
 }
 
@@ -2362,7 +2362,7 @@ body.pi-authed .guest-only {
     object-fit: cover;
     border: 1px solid var(--border-color);
     border-radius: 10px;
-    background: #1a0c02;
+    background: #e8c3a7;
 }
 
 .mk-asc-link {
