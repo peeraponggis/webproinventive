@@ -292,6 +292,8 @@
 
             /* ---- demo page ---- */
             "demo.title": "Demo — PROINVENTIVE",
+            "demo.desc": "ชมการทำงานจริงของระบบ PROINVENTIVE — U-Projects (Pi Tasks / BoQ / CRM), ASC และ SaaS",
+            "demo.saas.t": "☀️ SaaS — ประเมินระบบโซล่าร์ด้วยตัวเอง",
             "demo.head": "ชมการทำงานจริงของระบบ",
             "demo.sub": "คลิปสั้น ๆ จากหน้าจอจริงของแต่ละระบบ — กดเล่นได้เลย",
             "demo.up.head": "ครบทุกกระบวนงานในองค์กรของคุณ",
@@ -618,6 +620,8 @@
 
             /* ---- demo page ---- */
             "demo.title": "Demo — PROINVENTIVE",
+            "demo.desc": "See the PROINVENTIVE systems in action — U-Projects (Pi Tasks / BoQ / CRM), ASC and SaaS",
+            "demo.saas.t": "☀️ SaaS — size your own solar system",
             "demo.head": "See the systems in action",
             "demo.sub": "Short clips captured from the real screens — press play",
             "demo.up.head": "Every workflow in your organization",
