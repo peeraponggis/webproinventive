@@ -1,0 +1,953 @@
+{
+ "generated": "2026-09-03",
+ "note": "เลขข้อ/เลขตาราง/ชื่อหัวข้อเป็นข้อมูลอ้างอิงบรรณานุกรม คำอธิบายเป็นคำสรุปที่เรียบเรียงขึ้นเอง — เนื้อหาฉบับเต็มอยู่ในเล่มมาตรฐานของ วสท.",
+ "codes": {
+  "EIT-2564": {
+   "eitCode": "วสท. 022001-22",
+   "titleTh": "มาตรฐานการติดตั้งทางไฟฟ้าสำหรับประเทศไทย พ.ศ. 2564",
+   "year": 2564
+  },
+  "EIT-2568": {
+   "eitCode": "วสท. 022013-25",
+   "titleTh": "มาตรฐานการติดตั้งทางไฟฟ้าสำหรับประเทศไทย : ระบบการผลิตไฟฟ้าพลังงานแสงอาทิตย์ และระบบกักเก็บพลังงานแบตเตอรี่ พ.ศ. 2568",
+   "year": 2568
+  },
+  "EIT-2565": {
+   "eitCode": "วสท. 022013-22",
+   "titleTh": "ระบบการผลิตไฟฟ้าจากพลังงานแสงอาทิตย์ที่ติดตั้งบนหลังคา พ.ศ. 2565",
+   "year": 2565
+  }
+ },
+ "entries": [
+  {
+   "id": "FAQ.01",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.2",
+   "table": null,
+   "title": "แรงดันเปิดวงจรสูงสุด (Voc,max)",
+   "kw": "แรงดัน สตริง string voc สูงสุด array voltage maximum",
+   "a_th": "แรงดันสูงสุดของสตริงคิดจาก Voc ของแผงที่อุณหภูมิต่ำสุดของพื้นที่ติดตั้ง และต้องไม่เกินพิกัดที่มาตรฐานกำหนดสำหรับ PV array บนอาคาร",
+   "a_en": "Maximum string voltage is computed from module Voc at the site's lowest temperature and must not exceed the standard's limit for PV arrays on buildings."
+  },
+  {
+   "id": "FAQ.02",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.3.5",
+   "table": null,
+   "title": "ฟิวส์",
+   "kw": "ฟิวส์ fuse สตริง เลือก ป้องกันกระแสเกิน ocpd",
+   "a_th": "การเลือกฟิวส์สตริง (พิกัด ชนิด gPV) กำหนดไว้ในหัวข้อฟิวส์ของมาตรฐานระบบ PV — ดูควบคู่กับข้อการป้องกันกระแสเกิน (ข้อ 3.5)",
+   "a_en": "String fuse selection (rating, gPV type) is specified in the PV standard's fuse clause — read together with the overcurrent-protection clause (3.5)."
+  },
+  {
+   "id": "FAQ.03",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.3.6",
+   "table": null,
+   "title": "เซอร์กิตเบรกเกอร์ที่ใช้ป้องกันกระแสเกิน",
+   "kw": "เบรกเกอร์ breaker cb dc เซอร์กิต",
+   "a_th": "เซอร์กิตเบรกเกอร์ฝั่ง DC ต้องเป็นรุ่นสำหรับไฟตรงและเลือกตามหัวข้อเซอร์กิตเบรกเกอร์ที่ใช้ป้องกันกระแสเกินของมาตรฐาน",
+   "a_en": "DC-side circuit breakers must be DC-rated and selected per the standard's clause on overcurrent circuit breakers."
+  },
+  {
+   "id": "FAQ.04",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.3.8",
+   "table": "ภาคผนวก ฌ",
+   "title": "เคเบิล",
+   "kw": "สาย dc pv cable สายไฟ เคเบิล ใช้สายอะไร h1z2z2",
+   "a_th": "สายวงจร PV ต้องเป็นเคเบิลตามข้อกำหนดเคเบิลของมาตรฐาน โดยมีรายละเอียดชนิดสายในภาคผนวก ฌ",
+   "a_en": "PV circuit conductors must follow the standard's cable clause; permitted cable types are detailed in Appendix ฌ."
+  },
+  {
+   "id": "FAQ.05",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.3.9",
+   "table": null,
+   "title": "ขั้วต่อในวงจร PV ต้องเป็นยี่ห้อ/รุ่นที่ประกบกันได้ตามผู้ผลิต",
+   "kw": "mc4 ขั้วต่อ connector ต่างยี่ห้อ ประกบ เต้าเสียบ",
+   "a_th": "ขั้วต่อในวงจร PV ต้องเป็นยี่ห้อ/รุ่นที่ผู้ผลิตระบุว่าประกบกันได้ — ไม่ควรจับคู่ขั้วต่อคนละผู้ผลิตโดยไม่มีเอกสารรับรอง",
+   "a_en": "PV connectors must be brand/model combinations the manufacturer certifies as compatible — do not mix makers without documentation."
+  },
+  {
+   "id": "FAQ.06",
+   "type": "faq",
+   "code": "EIT-2564",
+   "clause": "3.6",
+   "table": "ภาคผนวก ฐ",
+   "title": "แรงดันตกสำหรับระบบแรงต่ำ",
+   "kw": "voltage drop แรงดันตก เกณฑ์ กี่เปอร์เซ็นต์",
+   "a_th": "เกณฑ์แรงดันตกของวงจรกำหนดในมาตรฐานการติดตั้งทางไฟฟ้าฯ — แยกเกณฑ์วงจรย่อย/สายป้อน และเกณฑ์รวม ดูข้อที่อ้างอิงประกอบการคำนวณ",
+   "a_en": "Voltage-drop criteria are set in the Thai Electrical Code — separate branch/feeder and total limits; see the cited clause for calculations."
+  },
+  {
+   "id": "FAQ.07",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "5.4.2 (5)",
+   "table": null,
+   "title": "แรงดันตกระหว่างแบตเตอรี่กับ PCE",
+   "kw": "voltage drop bess แบตเตอรี่ pce 3%",
+   "a_th": "แรงดันตกระหว่างระบบแบตเตอรี่กับ PCE ต้องไม่เกิน 3% ของพิกัดแรงดันกระแสตรงที่ขั้วแบตเตอรี่",
+   "a_en": "Voltage drop between the battery system and the PCE must not exceed 3% of the DC voltage rating at the battery terminals."
+  },
+  {
+   "id": "FAQ.08",
+   "type": "faq",
+   "code": "EIT-2564",
+   "clause": "5.25",
+   "table": "ตารางที่ 5-20 ถึง 5-44",
+   "title": "ขนาดกระแสของสายไฟฟ้า",
+   "kw": "ampacity derating ลดพิกัด กระแสสาย ตัวคูณ อุณหภูมิ",
+   "a_th": "พิกัดกระแสของสายต้องคูณตัวปรับค่าตามอุณหภูมิแวดล้อมและจำนวนวงจรตามมาตรฐาน — ค่าตัวคูณอยู่ในตารางของเล่ม (ไม่แสดงในระบบนี้)",
+   "a_en": "Conductor ampacity must be corrected for ambient temperature and grouping per the code — the factors are in the book's tables (not reproduced here)."
+  },
+  {
+   "id": "FAQ.09",
+   "type": "faq",
+   "code": "EIT-2564",
+   "clause": "5.1.15",
+   "table": null,
+   "title": "การเดินสายควบ — ≥50 ตร.มม. · ชนิด/ขนาด/ความยาว/วิธีต่อเหมือนกัน (หน้า 5-8)",
+   "kw": "สายขนาน ขนานสาย parallel ตัวนำ",
+   "a_th": "การเดินสายขนานทำได้ตามเงื่อนไขของมาตรฐาน เช่น ขนาดขั้นต่ำ ความยาว/ชนิดเท่ากันทุกเส้น — ดูรายละเอียดในข้อที่อ้างอิง",
+   "a_en": "Parallel conductors are allowed under the code's conditions (minimum size, identical length/type per conductor) — see the cited clause."
+  },
+  {
+   "id": "FAQ.10",
+   "type": "faq",
+   "code": "EIT-2564",
+   "clause": "5.8.2.2 (คู่ 5.8.1.2)",
+   "table": null,
+   "title": "ข้อจำกัดท่อ HDPE — ห้ามในอาคาร/ที่เปิดโล่ง · นอกอาคารต้องหุ้มคอนกรีต ≥50 มม. (หน้า 5-14)",
+   "kw": "hdpe ท่อ ในอาคาร indoor conduit",
+   "a_th": "การใช้ท่อ HDPE ภายในอาคารมีข้อจำกัดตามมาตรฐาน — ตรวจสอบเงื่อนไขในข้อที่อ้างอิงก่อนออกแบบ",
+   "a_en": "HDPE conduit use indoors is restricted by the code — check the cited clause before designing."
+  },
+  {
+   "id": "FAQ.11",
+   "type": "faq",
+   "code": "EIT-2564",
+   "clause": "5.4",
+   "table": "ตารางที่ 5-3 · ภาคผนวก ฎ",
+   "title": "พื้นที่หน้าตัดของสายในท่อร้อยสาย",
+   "kw": "ท่อ conduit fill จำนวนสาย ร้อยสาย พื้นที่หน้าตัด",
+   "a_th": "จำนวน/พื้นที่หน้าตัดสายในท่อจำกัดตามมาตรฐาน — ค่าตารางการบรรจุอยู่ในเล่ม (ไม่แสดงในระบบนี้)",
+   "a_en": "Conduit fill is limited by the code — the fill tables are in the book (not reproduced here)."
+  },
+  {
+   "id": "FAQ.12",
+   "type": "faq",
+   "code": "EIT-2564",
+   "clause": "5.5",
+   "table": "ตารางที่ 5-40, 5-40 (ก), 5-41",
+   "title": "การเดินสายในรางเคเบิล",
+   "kw": "cable tray ราง จัดกลุ่ม ระยะห่าง 300 225",
+   "a_th": "การจัดสายในรางเคเบิลมีตัวคูณและเงื่อนไข เช่น วางชั้นเดียว, รางแนวนอนห่างกันตามแนวดิ่ง ≥300 มม. ห่างผนัง ≥20 มม., รางแนวดิ่งห่างกัน ≥225 มม. (ตารางที่ 5-41 หมายเหตุ)",
+   "a_en": "Cable-tray grouping has factors and conditions: single-layer laying, horizontal trays ≥300 mm apart vertically and ≥20 mm from walls, vertical trays ≥225 mm apart (Table 5-41 notes)."
+  },
+  {
+   "id": "FAQ.13",
+   "type": "faq",
+   "code": "EIT-2564",
+   "clause": "4.19",
+   "table": "ตารางที่ 4-2 · ภาคผนวก ญ",
+   "title": "ขนาดสายดินของบริภัณฑ์ไฟฟ้า",
+   "kw": "สายดิน อุปกรณ์ บริภัณฑ์ egc ขนาด ตารางไหน",
+   "a_th": "ขนาดสายดินของบริภัณฑ์ (EGC) เลือกตามพิกัดเครื่องป้องกันกระแสเกิน — ดูตารางที่ 4-2 (และภาคผนวก ญ) ของเล่มมาตรฐาน",
+   "a_en": "Equipment grounding conductor (EGC) size follows the overcurrent-device rating — see Table 4-2 (and Appendix ญ) in the code."
+  },
+  {
+   "id": "FAQ.14",
+   "type": "faq",
+   "code": "EIT-2564",
+   "clause": "4.18",
+   "table": "ตารางที่ 4-1",
+   "title": "ขนาดสายต่อหลักดิน",
+   "kw": "สายต่อหลักดิน gec ขนาด หลักดิน",
+   "a_th": "ขนาดสายต่อหลักดิน (GEC) เลือกตามขนาดตัวนำประธาน — ดูตารางที่ 4-1 ของเล่มมาตรฐาน",
+   "a_en": "Grounding electrode conductor (GEC) size follows the service-conductor size — see Table 4-1 in the code."
+  },
+  {
+   "id": "FAQ.15",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.4.2",
+   "table": null,
+   "title": "ลักษณะการต่อลงดินและการต่อประสาน",
+   "kw": "ต่อลงดิน กราวด์ ระบบ pv ground earthing",
+   "a_th": "ลักษณะการต่อลงดินและการต่อประสานของระบบ PV กำหนดไว้ในหมวดการต่อลงดินของมาตรฐานระบบ PV",
+   "a_en": "Earthing and bonding arrangements for PV systems are set in the PV standard's earthing section."
+  },
+  {
+   "id": "FAQ.16",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.4.2.2",
+   "table": null,
+   "title": "ขนาดของตัวนำต่อประสาน",
+   "kw": "ตัวนำประสาน bonding ขนาด",
+   "a_th": "ขนาดของตัวนำต่อประสานโครงสร้าง/รางแผงกำหนดไว้ในข้อที่อ้างอิง",
+   "a_en": "Bonding-conductor sizing for frames/racking is set in the cited clause."
+  },
+  {
+   "id": "FAQ.17",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.4.2.3",
+   "table": null,
+   "title": "รากสายดินแบบแยก",
+   "kw": "รากสายดิน แยก separate electrode หลักดินแยก",
+   "a_th": "เงื่อนไขการใช้รากสายดินแบบแยกของระบบ PV กำหนดไว้ในข้อที่อ้างอิง",
+   "a_en": "Conditions for a separate PV earth electrode are set in the cited clause."
+  },
+  {
+   "id": "FAQ.18",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "3.6.3",
+   "table": "ภาคผนวก จ",
+   "title": "อุปกรณ์ป้องกันเสิร์จ (SPD)",
+   "kw": "spd กันเสิร์จ surge เลือก type",
+   "a_th": "การเลือกและตำแหน่งติดตั้ง SPD ทั้งฝั่ง DC และ AC กำหนดไว้ในหมวดการป้องกันของมาตรฐานระบบ PV",
+   "a_en": "SPD selection and placement for both DC and AC sides are set in the PV standard's protection section."
+  },
+  {
+   "id": "FAQ.19",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "3.6.1",
+   "table": null,
+   "title": "การป้องกันผลกระทบจากฟ้าผ่า — ข้อกำหนดทั่วไป",
+   "kw": "ฟ้าผ่า lightning ล่อฟ้า",
+   "a_th": "ข้อกำหนดการป้องกันฟ้าผ่าของระบบ PV (การประสานกับระบบล่อฟ้าอาคาร) อยู่ในข้อที่อ้างอิง",
+   "a_en": "Lightning-protection requirements for PV (coordination with the building LPS) are in the cited clause."
+  },
+  {
+   "id": "FAQ.20",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.3.14",
+   "table": null,
+   "title": "ระบบ Arc Fault Circuit Interrupter (AFCI)",
+   "kw": "afci arc fault อาร์ก",
+   "a_th": "เงื่อนไขที่ต้องติดตั้งอุปกรณ์ตรวจจับอาร์กฟอลต์ (AFCI) กำหนดไว้ในหมวดความปลอดภัยของมาตรฐานระบบ PV",
+   "a_en": "When arc-fault detection (AFCI) is required is defined in the PV standard's safety section."
+  },
+  {
+   "id": "FAQ.21",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.3.15",
+   "table": null,
+   "title": "อุปกรณ์หยุดทำงานฉุกเฉิน (rapid shutdown)",
+   "kw": "rapid shutdown หยุดฉุกเฉิน ดับเพลิง ลดแรงดัน",
+   "a_th": "ข้อกำหนด Rapid Shutdown (การลดแรงดันวงจร PV บนอาคารเพื่อความปลอดภัยเจ้าหน้าที่ดับเพลิง) อยู่ในข้อที่อ้างอิง",
+   "a_en": "Rapid-shutdown requirements (de-energizing rooftop PV circuits for firefighter safety) are in the cited clause."
+  },
+  {
+   "id": "FAQ.22",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "3.7",
+   "table": null,
+   "title": "การบริหารจัดการความเสี่ยงจากเพลิงไหม้ของอาคารที่ติดตั้ง PV บนหลังคา",
+   "kw": "ไฟไหม้ fire risk ความเสี่ยง",
+   "a_th": "มาตรการลดความเสี่ยงอัคคีภัยของระบบ PV กำหนดไว้ในหมวดความปลอดภัย",
+   "a_en": "Fire-risk mitigation for PV systems is set in the safety section."
+  },
+  {
+   "id": "FAQ.23",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "3.4.3",
+   "table": null,
+   "title": "การตรวจจับและการแจ้งเตือนการผิดพร่องลงดิน",
+   "kw": "earth fault ตรวจจับ กระแสรั่ว ลงดิน",
+   "a_th": "การตรวจจับ/แจ้งเตือน earth fault ของระบบ PV กำหนดไว้ในข้อที่อ้างอิง",
+   "a_en": "PV earth-fault detection/alarm requirements are in the cited clause."
+  },
+  {
+   "id": "FAQ.24",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "4.1",
+   "table": null,
+   "title": "ข้อกำหนดทั่วไป — อุปกรณ์แปลงผันกำลังไฟฟ้าตาม IEC 62109-1",
+   "kw": "อินเวอร์เตอร์ inverter pce มาตรฐาน รับรอง",
+   "a_th": "PCE/อินเวอร์เตอร์ต้องเป็นไปตามมาตรฐานผลิตภัณฑ์ที่ระบุในข้อที่อ้างอิง และรุ่นที่ขนานกับการไฟฟ้าต้องอยู่ในทะเบียนของ PEA/MEA",
+   "a_en": "PCE/inverters must meet the product standards in the cited clause; grid-tied models must be on the PEA/MEA approved registry."
+  },
+  {
+   "id": "FAQ.25",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "5.1 (5)",
+   "table": null,
+   "title": "ขอบเขต — ห้ามใช้ระบบกักเก็บพลังงานแบตเตอรี่แทนวงจรช่วยชีวิตในอาคาร",
+   "kw": "bess แบตเตอรี่ กักเก็บ ขอบเขต scope",
+   "a_th": "ขอบเขตข้อกำหนดระบบกักเก็บพลังงานแบตเตอรี่ (BESS) กำหนดไว้ในบท BESS ของ วสท. 022013-25",
+   "a_en": "The scope of BESS requirements is defined in the BESS chapter of วสท. 022013-25."
+  },
+  {
+   "id": "FAQ.26",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "5.4.2 (1)",
+   "table": "ภาคผนวก ช ตาราง ช.1",
+   "title": "มาตรฐานสายและระดับแรงดันของระบบแบตเตอรี่",
+   "kw": "bess แรงดัน จำกัด voltage limit",
+   "a_th": "พิกัดแรงดันของระบบ BESS กำหนดไว้ในข้อที่อ้างอิง",
+   "a_en": "BESS voltage limits are set in the cited clause."
+  },
+  {
+   "id": "FAQ.27",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "5.3.1",
+   "table": null,
+   "title": "ข้อกำหนดด้านสถานที่ติดตั้ง — ทั่วไป",
+   "kw": "bess ตำแหน่ง ติดตั้ง ห้อง location",
+   "a_th": "ข้อกำหนดตำแหน่ง/สถานที่ติดตั้ง BESS (การระบายอากาศ ระยะห่าง ฯลฯ) อยู่ในข้อที่อ้างอิง",
+   "a_en": "BESS location requirements (ventilation, clearances, etc.) are in the cited clause."
+  },
+  {
+   "id": "FAQ.28",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "5.5.1 (6)",
+   "table": null,
+   "title": "PPE ป้องกัน arc flash ระบบแบตเตอรี่",
+   "kw": "arc flash ppe 240 แบตเตอรี่",
+   "a_th": "ระบบแบตเตอรี่ที่แรงดันเกิน 240 V (DC หรือ AC) ต้องกำหนดระดับ PPE ป้องกัน arc flash สำหรับผู้ปฏิบัติงาน",
+   "a_en": "Battery systems above 240 V (DC or AC) require an arc-flash PPE level to be defined for workers."
+  },
+  {
+   "id": "FAQ.29",
+   "type": "faq",
+   "code": "PEA-INTERCONNECT",
+   "clause": "ทะเบียนอินเวอร์เตอร์ PEA",
+   "table": null,
+   "title": "อินเวอร์เตอร์ต้องอยู่ในทะเบียนและรับรองขนาดระบบรวม",
+   "kw": "ขนาน ไฟ pea ขอ ขนาด ระบบ กี่ kw interconnection",
+   "a_th": "ขนาดระบบที่ขอเชื่อมขนานกับโครงข่าย PEA มีเพดานตามระเบียบการเชื่อมต่อ — ดูข้อที่อ้างอิงและระเบียบ PEA ฉบับปัจจุบันประกอบ",
+   "a_en": "System size for PEA grid interconnection is capped by the interconnection rules — see the cited reference and current PEA regulations."
+  },
+  {
+   "id": "FAQ.30",
+   "type": "faq",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "เล่มมาตรฐานที่ระบบอ้างอิง",
+   "kw": "มาตรฐาน เล่มไหน อ้างอิง วสท ใช้เล่มอะไร",
+   "a_th": "ระบบอ้างอิง 3 เล่มหลักของ วสท.: มาตรฐานการติดตั้งทางไฟฟ้าฯ พ.ศ. 2564 (022001-22), ระบบผลิตไฟฟ้าพลังงานแสงอาทิตย์และ BESS พ.ศ. 2568 (022013-25) และฉบับ Solar Rooftop พ.ศ. 2565 (022013-22)",
+   "a_en": "Answers reference three EIT volumes: Thai Electrical Code 2021 (022001-22), the Solar + BESS standard 2025 (022013-25), and Solar Rooftop 2022 (022013-22)."
+  },
+  {
+   "id": "PROV.T5_41_SINGLE_LAYER_ONLY",
+   "type": "provision",
+   "code": "EIT-2564",
+   "eitCode": "วสท. 022001-22",
+   "clause": "ตารางที่ 5-41 หมายเหตุ 1",
+   "table": null,
+   "title": "ตัวคูณใช้กับการวางสายชั้นเดียวเท่านั้น",
+   "value": "1",
+   "unit": "ชั้น",
+   "a_th": "ตัวคูณใช้กับการวางสายชั้นเดียวเท่านั้น"
+  },
+  {
+   "id": "PROV.T5_41_HTRAY_VERTICAL_GAP_MIN_MM",
+   "type": "provision",
+   "code": "EIT-2564",
+   "eitCode": "วสท. 022001-22",
+   "clause": "ตารางที่ 5-41 หมายเหตุ 2",
+   "table": null,
+   "title": "รางแนวนอนหลายราง ระยะดิ่งระหว่างรางไม่น้อยกว่า 300 มม.",
+   "value": "300",
+   "unit": "mm",
+   "a_th": "รางแนวนอนหลายราง ระยะดิ่งระหว่างรางไม่น้อยกว่า 300 มม."
+  },
+  {
+   "id": "PROV.T5_41_HTRAY_WALL_GAP_MIN_MM",
+   "type": "provision",
+   "code": "EIT-2564",
+   "eitCode": "วสท. 022001-22",
+   "clause": "ตารางที่ 5-41 หมายเหตุ 2",
+   "table": null,
+   "title": "รางแนวนอน ห่างผนังไม่น้อยกว่า 20 มม.",
+   "value": "20",
+   "unit": "mm",
+   "a_th": "รางแนวนอน ห่างผนังไม่น้อยกว่า 20 มม."
+  },
+  {
+   "id": "PROV.T5_41_VTRAY_HORIZONTAL_GAP_MIN_MM",
+   "type": "provision",
+   "code": "EIT-2564",
+   "eitCode": "วสท. 022001-22",
+   "clause": "ตารางที่ 5-41 หมายเหตุ 3",
+   "table": null,
+   "title": "รางแนวดิ่ง ระยะราบระหว่างรางไม่น้อยกว่า 225 มม.",
+   "value": "225",
+   "unit": "mm",
+   "a_th": "รางแนวดิ่ง ระยะราบระหว่างรางไม่น้อยกว่า 225 มม."
+  },
+  {
+   "id": "PROV.T5_41_MULTI_TRAY_USE_MAX_GROUPS",
+   "type": "provision",
+   "code": "EIT-2564",
+   "eitCode": "วสท. 022001-22",
+   "clause": "ตารางที่ 5-41 หมายเหตุ 4",
+   "table": null,
+   "title": "หลายราง ให้คิดตัวคูณจากรางที่มีจำนวนกลุ่มวงจรมากที่สุด",
+   "value": "1",
+   "unit": "boolean",
+   "a_th": "หลายราง ให้คิดตัวคูณจากรางที่มีจำนวนกลุ่มวงจรมากที่สุด"
+  },
+  {
+   "id": "PROV.BESS_PCE_VOLTAGE_DROP_MAX_PCT",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.4.2 (5)",
+   "table": null,
+   "title": "แรงดันตกระหว่างระบบแบตเตอรี่กับ PCE สูงสุด 3% ของพิกัดกระแสตรงที่ขั้วแบตเตอรี่",
+   "value": "3",
+   "unit": "%",
+   "a_th": "แรงดันตกระหว่างระบบแบตเตอรี่กับ PCE สูงสุด 3% ของพิกัดกระแสตรงที่ขั้วแบตเตอรี่"
+  },
+  {
+   "id": "PROV.BESS_ARC_FLASH_PPE_MIN_V",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.5.1 (6)",
+   "table": null,
+   "title": "แรงดันเกิน 240 V (DC หรือ AC) ต้องกำหนดระดับ PPE ป้องกัน arc flash",
+   "value": "240",
+   "unit": "V",
+   "a_th": "แรงดันเกิน 240 V (DC หรือ AC) ต้องกำหนดระดับ PPE ป้องกัน arc flash"
+  },
+  {
+   "id": "PROV.BESS_CLEARANCE_SIDE_MIN_MM",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.3.2 (1)",
+   "table": null,
+   "title": "ระยะห้ามมีแหล่งความร้อน/เครื่องใช้ไฟฟ้าไม่เกี่ยวข้อง ด้านข้าง 600 มม.",
+   "value": "600",
+   "unit": "mm",
+   "a_th": "ระยะห้ามมีแหล่งความร้อน/เครื่องใช้ไฟฟ้าไม่เกี่ยวข้อง ด้านข้าง 600 มม."
+  },
+  {
+   "id": "PROV.BESS_CLEARANCE_TOP_MIN_MM",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.3.2 (1)",
+   "table": null,
+   "title": "ระยะด้านบน 900 มม. (เพดานต่ำกว่านี้ต้องกันไฟ ≥2 ชม.)",
+   "value": "900",
+   "unit": "mm",
+   "a_th": "ระยะด้านบน 900 มม. (เพดานต่ำกว่านี้ต้องกันไฟ ≥2 ชม.)"
+  },
+  {
+   "id": "PROV.BESS_AC_ACCESS_MIN_MM",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.3.2 (1) หมายเหตุ (3)",
+   "table": null,
+   "title": "ระยะเข้าถึงจุดเชื่อมต่อแรงดัน AC ไม่น้อยกว่า 900 มม.",
+   "value": "900",
+   "unit": "mm",
+   "a_th": "ระยะเข้าถึงจุดเชื่อมต่อแรงดัน AC ไม่น้อยกว่า 900 มม."
+  },
+  {
+   "id": "PROV.BESS_OUTDOOR_SETBACK_MIN_M",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.3.2 (2)",
+   "table": null,
+   "title": "เว้นจากขอบเขตที่ดิน/อาคารข้างเคียง/ทางเดิน ≥3 ม. (ลดเหลือ 900 มม. เมื่อกั้นวัสดุ",
+   "value": "3",
+   "unit": "m",
+   "a_th": "เว้นจากขอบเขตที่ดิน/อาคารข้างเคียง/ทางเดิน ≥3 ม. (ลดเหลือ 900 มม. เมื่อกั้นวัสดุกันไฟ ≥1 ชม. หรือผ่านทดสอบ 5.5.2)"
+  },
+  {
+   "id": "PROV.BESS_SUBDIVISION_MAX_KWH",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.3.2 (3)",
+   "table": null,
+   "title": "ลิเทียม >50 kWh ต้องแบ่งส่วนย่อยละไม่เกิน 50 kWh (ยกเว้น Flow/Ni-Cd/Lead Acid หร",
+   "value": "50",
+   "unit": "kWh",
+   "a_th": "ลิเทียม >50 kWh ต้องแบ่งส่วนย่อยละไม่เกิน 50 kWh (ยกเว้น Flow/Ni-Cd/Lead Acid หรือผ่านทดสอบ 5.5.2+5.5.3)"
+  },
+  {
+   "id": "PROV.BESS_SUBDIVISION_GAP_MIN_MM",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.3.2 (3)",
+   "table": null,
+   "title": "ระยะห่างระหว่างสิ่งห่อหุ้มของแต่ละส่วนย่อยไม่น้อยกว่า 900 มม.",
+   "value": "900",
+   "unit": "mm",
+   "a_th": "ระยะห่างระหว่างสิ่งห่อหุ้มของแต่ละส่วนย่อยไม่น้อยกว่า 900 มม."
+  },
+  {
+   "id": "PROV.TRAY_GROUPS_ABOVE_9_USE_9",
+   "type": "provision",
+   "code": "EIT-2564",
+   "eitCode": "วสท. 022001-22",
+   "clause": "ตารางที่ 5-40/5-41 หมายเหตุ 5",
+   "table": null,
+   "title": "รางเคเบิล 1 ราง กลุ่มวงจรมากกว่า 9 ให้ใช้ตัวปรับค่าเช่นเดียวกับ 9 กลุ่มวงจร",
+   "value": "9",
+   "unit": "กลุ่มวงจร",
+   "a_th": "รางเคเบิล 1 ราง กลุ่มวงจรมากกว่า 9 ให้ใช้ตัวปรับค่าเช่นเดียวกับ 9 กลุ่มวงจร"
+  },
+  {
+   "id": "EIT2568.DC.STRING_VOLTAGE",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.2",
+   "table": null,
+   "title": "แรงดันเปิดวงจรสูงสุด (Voc,max)"
+  },
+  {
+   "id": "EIT2568.DC.ARRAY_VOLTAGE_LIMIT",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.2",
+   "table": null,
+   "title": "ข้อกำหนดทั่วไป — แรงดันสูงสุดของ PV array บนอาคาร"
+  },
+  {
+   "id": "EIT2568.DC.STRING_OCPD",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "3.5",
+   "table": null,
+   "title": "การป้องกันกระแสเกิน"
+  },
+  {
+   "id": "EIT2568.DC.FUSE_SELECTION",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.3.5",
+   "table": null,
+   "title": "ฟิวส์"
+  },
+  {
+   "id": "EIT2568.DC.CB_SELECTION",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.3.6",
+   "table": null,
+   "title": "เซอร์กิตเบรกเกอร์ที่ใช้ป้องกันกระแสเกิน"
+  },
+  {
+   "id": "EIT2568.DC.CABLE_RATING",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.3.8",
+   "table": "ภาคผนวก ฌ",
+   "title": "เคเบิล"
+  },
+  {
+   "id": "EIT2568.DC.CONNECTOR",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.3.9",
+   "table": null,
+   "title": "เต้าเสียบ เต้ารับ และตัวต่อสายในวงจร PV"
+  },
+  {
+   "id": "EIT2568.DC.CONNECTOR_MATCHING",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.3.9",
+   "table": null,
+   "title": "ขั้วต่อในวงจร PV ต้องเป็นยี่ห้อ/รุ่นที่ประกบกันได้ตามผู้ผลิต"
+  },
+  {
+   "id": "VENDOR.COMPAT.DEVICE_PAIR",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.3 + เอกสารผู้ผลิต",
+   "table": null,
+   "title": "อุปกรณ์ที่ใช้ร่วมกันต้องอยู่ในรายการที่ผู้ผลิตรับรอง (compatibility list)"
+  },
+  {
+   "id": "EIT2564.AC_DC.VOLTAGE_DROP",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "3.6",
+   "table": "ภาคผนวก ฐ",
+   "title": "แรงดันตกสำหรับระบบแรงต่ำ"
+  },
+  {
+   "id": "EIT2564.AC_DC.VOLTAGE_DROP_TOTAL",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "3.6.1",
+   "table": null,
+   "title": "แรงดันตกรวมจากเครื่องวัดฯ ถึงจุดใช้ไฟจุดสุดท้าย"
+  },
+  {
+   "id": "EIT2564.COND.AMPACITY_DERATING",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "5.25",
+   "table": "ตารางที่ 5-20 ถึง 5-44",
+   "title": "ขนาดกระแสของสายไฟฟ้า"
+  },
+  {
+   "id": "EIT2564.COND.CABLE_USE_COMPATIBILITY",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "5.25.2 (5.25.2.1)",
+   "table": "ตารางที่ 5-48 (หน้า 5-66) คู่กับ 5-47",
+   "title": "ข้อกำหนดการใช้งานของสายแต่ละประเภท"
+  },
+  {
+   "id": "EIT2564.COND.PARALLEL_CONDUCTOR",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "5.1.15",
+   "table": null,
+   "title": "การเดินสายควบ — ≥50 ตร.มม. · ชนิด/ขนาด/ความยาว/วิธีต่อเหมือนกัน (หน้า 5-8)"
+  },
+  {
+   "id": "EIT2564.CONTAINMENT.INDUCED_CURRENT",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "5.1.8.1 (+5.1.8.3)",
+   "table": null,
+   "title": "การป้องกันกระแสเหนี่ยวนำในเครื่องห่อหุ้ม/ช่องเดินสายโลหะ (หน้า 5-4)"
+  },
+  {
+   "id": "EIT2564.COND.MIXED_TEMP_RATING",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "5.25.2.2 (ง) + แนวปฏิบัติ",
+   "table": null,
+   "title": "การใช้สายต่างพิกัดอุณหภูมิร่วมกัน — คิดที่ค่าต่ำสุด (advisory)"
+  },
+  {
+   "id": "EIT2564.CONTAINMENT.HDPE_INDOOR",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "5.8.2.2 (คู่ 5.8.1.2)",
+   "table": null,
+   "title": "ข้อจำกัดท่อ HDPE — ห้ามในอาคาร/ที่เปิดโล่ง · นอกอาคารต้องหุ้มคอนกรีต ≥50 มม. (หน้า 5-14)"
+  },
+  {
+   "id": "PEA.INTERCONNECT.SYSTEM_SIZE_LIMIT",
+   "type": "clause",
+   "code": "PEA-INTERCONNECT",
+   "clause": "ทะเบียนอินเวอร์เตอร์ PEA",
+   "table": null,
+   "title": "อินเวอร์เตอร์ต้องอยู่ในทะเบียนและรับรองขนาดระบบรวม"
+  },
+  {
+   "id": "EIT2564.CONTAINMENT.CONDUIT_FILL",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "5.4",
+   "table": "ตารางที่ 5-3 · ภาคผนวก ฎ",
+   "title": "พื้นที่หน้าตัดของสายในท่อร้อยสาย"
+  },
+  {
+   "id": "EIT2564.CONTAINMENT.TRAY_FILL",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "5.5",
+   "table": "ตารางที่ 5-40, 5-40 (ก), 5-41",
+   "title": "การเดินสายในรางเคเบิล"
+  },
+  {
+   "id": "EIT2564.SWITCHGEAR.BUSBAR_RATING",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "ไม่มีเลขข้อ วสท. — อิง IEC 61439-1 + การรับรองแผง",
+   "table": null,
+   "title": "พิกัดกระแสและความทนกระแสลัดวงจรของบัสบาร์ในแผงสวิตช์"
+  },
+  {
+   "id": "EIT2564.SWITCHGEAR.ENCLOSURE_THERMAL",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "ไม่มีเลขข้อ วสท. — อิง IEC 61439-1 + ข้อมูลผู้ผลิตตู้",
+   "table": null,
+   "title": "การระบายความร้อนของแผงสวิตช์ (กำลังสูญเสียรวมเทียบความสามารถตู้)"
+  },
+  {
+   "id": "EIT2564.EARTH.EGC_SIZE",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "4.19",
+   "table": "ตารางที่ 4-2 · ภาคผนวก ญ",
+   "title": "ขนาดสายดินของบริภัณฑ์ไฟฟ้า"
+  },
+  {
+   "id": "EIT2564.EARTH.GEC_SIZE",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "4.18",
+   "table": "ตารางที่ 4-1",
+   "title": "ขนาดสายต่อหลักดิน"
+  },
+  {
+   "id": "EIT2568.EARTH.SYSTEM_INTEGRITY",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.4.2",
+   "table": null,
+   "title": "ลักษณะการต่อลงดินและการต่อประสาน"
+  },
+  {
+   "id": "EIT2568.EARTH.BONDING_SIZE",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.4.2.2",
+   "table": null,
+   "title": "ขนาดของตัวนำต่อประสาน"
+  },
+  {
+   "id": "EIT2568.EARTH.SEPARATE_ELECTRODE",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.4.2.3",
+   "table": null,
+   "title": "รากสายดินแบบแยก"
+  },
+  {
+   "id": "EIT2568.EARTH.EQUIPOTENTIAL",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.4.2.4",
+   "table": null,
+   "title": "การประสานให้ศักย์เท่ากัน"
+  },
+  {
+   "id": "EIT2568.PROTECTION.SPD_SELECTION",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "3.6.3",
+   "table": "ภาคผนวก จ",
+   "title": "อุปกรณ์ป้องกันเสิร์จ (SPD)"
+  },
+  {
+   "id": "EIT2568.PROTECTION.LIGHTNING",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "3.6.1",
+   "table": null,
+   "title": "การป้องกันผลกระทบจากฟ้าผ่า — ข้อกำหนดทั่วไป"
+  },
+  {
+   "id": "EIT2568.SAFETY.AFCI",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.3.14",
+   "table": null,
+   "title": "ระบบ Arc Fault Circuit Interrupter (AFCI)"
+  },
+  {
+   "id": "EIT2568.SAFETY.RAPID_SHUTDOWN",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.3.15",
+   "table": null,
+   "title": "อุปกรณ์หยุดทำงานฉุกเฉิน (rapid shutdown)"
+  },
+  {
+   "id": "EIT2568.SAFETY.FIRE_RISK",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "3.7",
+   "table": null,
+   "title": "การบริหารจัดการความเสี่ยงจากเพลิงไหม้ของอาคารที่ติดตั้ง PV บนหลังคา"
+  },
+  {
+   "id": "EIT2568.SAFETY.EARTH_FAULT_DETECTION",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "3.4.3",
+   "table": null,
+   "title": "การตรวจจับและการแจ้งเตือนการผิดพร่องลงดิน"
+  },
+  {
+   "id": "EIT2568.COMP.GENERAL",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.3.1",
+   "table": null,
+   "title": "ข้อกำหนดทั่วไปสำหรับส่วนประกอบ"
+  },
+  {
+   "id": "EIT2568.COMP.PCE_STANDARD",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.1",
+   "table": null,
+   "title": "ข้อกำหนดทั่วไป — อุปกรณ์แปลงผันกำลังไฟฟ้าตาม IEC 62109-1"
+  },
+  {
+   "id": "EIT2568.BESS.SCOPE",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.1 (5)",
+   "table": null,
+   "title": "ขอบเขต — ห้ามใช้ระบบกักเก็บพลังงานแบตเตอรี่แทนวงจรช่วยชีวิตในอาคาร"
+  },
+  {
+   "id": "EIT2568.BESS.VOLTAGE_LIMIT",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.4.2 (1)",
+   "table": "ภาคผนวก ช ตาราง ช.1",
+   "title": "มาตรฐานสายและระดับแรงดันของระบบแบตเตอรี่"
+  },
+  {
+   "id": "EIT2568.BESS.DVC",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.4.2 (1)",
+   "table": "ภาคผนวก ช ตาราง ช.1 (หน้า 129)",
+   "title": "การจำแนกระดับ DVC และการเลือกสาย"
+  },
+  {
+   "id": "EIT2568.BESS.LOCATION",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.3.1",
+   "table": null,
+   "title": "ข้อกำหนดด้านสถานที่ติดตั้ง — ทั่วไป"
+  },
+  {
+   "id": "EIT2568.BESS.ENVIRONMENT",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.3.1 (5)",
+   "table": null,
+   "title": "บริเวณที่ควรหลีกเลี่ยง — วัสดุติดไฟ/แหล่งความร้อน/เงื่อนไขผู้ผลิต"
+  },
+  {
+   "id": "EIT2568.BESS.ROOM",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.3.1 (2)",
+   "table": null,
+   "title": "ติดตั้งในอาคารต้องเป็นห้องแบตเตอรี่โดยเฉพาะ (ระยะปลอดภัยดู 5.3.2)"
+  },
+  {
+   "id": "EIT2568.BESS.FIRE",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.2.6",
+   "table": null,
+   "title": "การป้องกันอัคคีภัย"
+  },
+  {
+   "id": "EIT2568.BESS.VENTILATION",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.5.2",
+   "table": null,
+   "title": "การระบายอากาศ"
+  },
+  {
+   "id": "EIT2568.BESS.ARC_FLASH_PPE",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.5.1 (6)",
+   "table": null,
+   "title": "แรงดันเกิน 240 V (DC หรือ AC) ต้องกำหนดระดับ PPE ป้องกัน arc flash"
+  },
+  {
+   "id": "EIT2568.BESS.EARTHING",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.3.7",
+   "table": "ภาคผนวก ซ",
+   "title": "ระบบการต่อลงดินของระบบแบตเตอรี่"
+  },
+  {
+   "id": "EIT2568.DOC.LABELS",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "6.2",
+   "table": null,
+   "title": "ข้อกำหนดสำหรับป้าย"
+  },
+  {
+   "id": "EIT2568.DOC.PV_PRESENCE",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "6.3",
+   "table": null,
+   "title": "การระบุว่ามีระบบผลิตไฟฟ้าจากพลังงานแสงอาทิตย์"
+  },
+  {
+   "id": "EIT2568.DOC.RAPID_SHUTDOWN_SIGN",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "6.5",
+   "table": null,
+   "title": "ป้ายสำหรับอุปกรณ์หยุดทำงานฉุกเฉิน"
+  },
+  {
+   "id": "EIT2568.DOC.HANDOVER",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "6.6",
+   "table": "ภาคผนวก ข",
+   "title": "เอกสาร"
+  },
+  {
+   "id": "EIT2568.TEST.COMMISSIONING",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.5",
+   "table": "ภาคผนวก ค (ข้อแนะนำ) · ภาคผนวก ง (ข้อมูลระบบใหญ่)",
+   "title": "การทดสอบการทำงาน (Test & Commissioning)"
+  },
+  {
+   "id": "EIT2568.GROUND.PVIR",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "ไม่มีในฉบับตีพิมพ์ (แนวปฏิบัติจากร่าง 7.3.2.4)",
+   "table": null,
+   "title": "ค่าอัตราส่วนกำลังของ PV ต่อกำลังของอินเวอร์เตอร์ (PVIR) — advisory เท่านั้น"
+  },
+  {
+   "id": "EIT2568.GROUND.VOLTAGE_LIMIT",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "3.1 (2)",
+   "table": null,
+   "title": "แรงดัน PV array สูงสุด ≤1,500 V — อาคารอื่น รวมพื้นดิน (solar farm) และทุ่นลอยน้ำ"
+  },
+  {
+   "id": "EIT2568.FLOATING.ANCHORING",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "2.3 + 4.1 (8)",
+   "table": null,
+   "title": "การออกแบบทางกลและการยึดโยงของระบบทุ่นลอยน้ำ (แทนร่าง 8.3)"
+  }
+ ]
+}

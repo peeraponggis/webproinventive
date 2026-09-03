@@ -169,6 +169,21 @@ push ขึ้น `main` แล้ว GitHub Pages จะ publish ให้เ�
   ใครดูโค้ดก็ข้ามได้ ระบบจริงต้องทำ auth ฝั่ง server ในเฟสถัดไป
 - API: `PiAuth.getUser() / login(email) / logout() / open()` + event `auth:change`
 
+## ฐานความรู้มาตรฐาน EIT (Pi Brain) — `pi-brain.js` + `knowledge.json`
+
+Pi console ตอบคำถามเทคนิคเรื่องมาตรฐานไฟฟ้า/โซล่าร์/BESS ได้เอง **client-side ทั้งหมด**
+(retrieval แบบ keyword + trigram ภาษาไทย — ไม่มีโมเดล ไม่มี server):
+
+- `knowledge.json` สร้างโดย `python tools/build_knowledge.py` จากข้อมูลที่ audit ไว้ใน
+  `C:/enterprise/solar-project-complete` (clause-map.ts + PROVISIONS.csv) + FAQ ที่เรียบเรียงเอง
+- **กติกาลิขสิทธิ์**: ไฟล์สาธารณะเก็บเฉพาะ เลขข้อ/เลขตาราง/ชื่อหัวข้อ (ข้อมูลบรรณานุกรม)
+  และคำสรุปสั้นที่เรียบเรียงเอง — **ห้าม** ฝังตาราง lookup ของ วสท. (AMPACITY, T4-x, T5-x)
+  หรือข้อความจากเล่มเกิน ~40 คำ (generator มี validate บังคับ) ทุกคำตอบอ้างอิงเล่ม+เลขข้อ
+  และเตือนให้ตรวจกับฉบับจริง
+- คำถามราคา/ขาย ถูก intercept ก่อนเสมอ → ส่งต่อฝ่ายขาย ไม่เข้าฐานความรู้
+- เสียบผ่าน `PiConsole.configure({ transport })` — ถอดออกเมื่อมี backend จริงได้ทันที
+- regenerate: แก้ FAQ ใน `tools/build_knowledge.py` → รันสคริปต์ → bump `?v=` → commit
+
 ## หมายเหตุ
 
 - ข้อมูลบริษัท ผลงานโครงการ สถิติ MWp และช่องทางติดต่อ นำมาจาก **Company Profile จริง** ของ
