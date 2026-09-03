@@ -83,7 +83,8 @@
                 var tok = tablesToken();
                 if (!config.privateTablesUrl || !tok) return null;
                 TABLES._privateSrc = "railway";
-                return fetchJSON(config.privateTablesUrl, { headers: { Authorization: "Bearer " + tok } });
+                /* no-store: the reply depends on the token — a cached copy would outlive a changed/removed key */
+                return fetchJSON(config.privateTablesUrl, { headers: { Authorization: "Bearer " + tok }, cache: "no-store" });
             });
         }
         return p.then(function (d) { TABLES[tier] = d ? d.tables : null; return TABLES[tier]; });
