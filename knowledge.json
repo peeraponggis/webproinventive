@@ -350,6 +350,61 @@
    "a_en": "Answers reference three EIT volumes: Thai Electrical Code 2021 (022001-22), the Solar + BESS standard 2025 (022013-25), and Solar Rooftop 2022 (022013-22)."
   },
   {
+   "id": "FAQ.31",
+   "type": "faq",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "วิธีคำนวณขนาดระบบและจำนวนแผง",
+   "kw": "คำนวณจำนวนแผง กี่แผง ขนาดระบบ กี่ kWp สูตร วิธีคิด how many panels system size formula",
+   "a_th": "ขนาดระบบ (kWp) ≈ พลังงานที่ต้องผลิตต่อวัน (kWh) ÷ ชั่วโมงแดดเฉลี่ย (~4.2) ÷ ประสิทธิภาพระบบ (~0.8) แล้วจำนวนแผง = kWp × 1000 ÷ วัตต์ต่อแผง — พิมพ์ตัวเลขมาได้เลย เช่น \"ใช้ไฟเดือนละ 900 หน่วย แผง 600W กี่แผง\" Pi จะคำนวณให้ ออกแบบละเอียดใช้ ASC",
+   "a_en": "Array size (kWp) ≈ daily energy to generate (kWh) ÷ peak-sun hours (~4.2) ÷ system efficiency (~0.8); panels = kWp × 1000 ÷ panel watts. Give Pi the numbers, e.g. \"900 units/month, 600W panels, how many panels\" and it will compute. Use ASC for a detailed design."
+  },
+  {
+   "id": "FAQ.32",
+   "type": "faq",
+   "code": "EIT-2568",
+   "clause": "ข้อ 5.3.2 (3)",
+   "table": null,
+   "title": "ขนาดแบตเตอรี่ควรเป็นเท่าไหร่",
+   "kw": "ขนาดแบต แบตเตอรี่ กี่ kWh เลือกแบต battery size how big",
+   "a_th": "แบตเตอรี่ (kWh) ≈ พลังงานที่ใช้ช่วงกลางคืนหรือช่วงไฟดับ ÷ ความลึกการคายที่ใช้ได้ (~0.9 สำหรับ LFP) เช่น กลางคืนใช้ 9 หน่วย → แบต ~10 kWh ถ้ารวมเกิน 50 kWh ต้องแบ่งส่วนย่อยตามมาตรฐาน — พิมพ์ \"แบต X kWh แผง Y W กี่แผง\" ให้ Pi ประมาณแผงที่ต้องใช้ชาร์จได้",
+   "a_en": "Battery (kWh) ≈ energy used overnight or during an outage ÷ usable depth of discharge (~0.9 for LFP), e.g. 9 kWh overnight → ~10 kWh battery. Above 50 kWh total the standard requires sub-division. Ask \"X kWh battery, Y W panels, how many panels\" for the array needed to recharge it."
+  },
+  {
+   "id": "FAQ.33",
+   "type": "faq",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "ระบบ 1 kWp ผลิตไฟได้เท่าไหร่ในไทย",
+   "kw": "ชั่วโมงแดด peak sun hours 1 kWp ผลิตได้กี่หน่วย ต่อวัน ต่อเดือน yield",
+   "a_th": "ในไทยระบบ 1 kWp ผลิตได้ประมาณ 4–4.5 หน่วย/วัน หรือ ~120–135 หน่วย/เดือน (ชั่วโมงแดดเฉลี่ย ~4.2 ชม./วัน) ขึ้นกับภาค ทิศและมุมหลังคา การบังแสง และอุณหภูมิแผง ฤดูฝนต่ำกว่านี้ ฤดูร้อนสูงกว่า",
+   "a_en": "In Thailand 1 kWp yields roughly 4–4.5 kWh/day (~120–135 kWh/month, about 4.2 peak-sun hours/day) depending on region, roof orientation/tilt, shading and module temperature; lower in the rainy season, higher in summer."
+  },
+  {
+   "id": "FAQ.34",
+   "type": "faq",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "เลือกขนาดอินเวอร์เตอร์อย่างไร",
+   "kw": "ขนาดอินเวอร์เตอร์ inverter size DC/AC ratio oversize แผงมากกว่าอินเวอร์เตอร์",
+   "a_th": "นิยมเลือกให้ DC/AC ratio ประมาณ 1.1–1.3 คือกำลังแผงรวม (kWp) มากกว่าพิกัดอินเวอร์เตอร์ (kW) เล็กน้อย เพื่อให้ผลิตได้เต็มช่วงแดดอ่อน แต่ต้องไม่เกินพิกัด input DC สูงสุด แรงดัน และกระแสต่อ MPPT ตามสเปกผู้ผลิต และพิกัด AC ต้องสอดคล้องกับมิเตอร์/ข้อกำหนดการไฟฟ้า",
+   "a_en": "A DC/AC ratio of about 1.1–1.3 is common (array kWp slightly above inverter kW) to harvest more in low light, but never exceed the inverter's max DC input power, voltage or current per MPPT, and keep the AC rating within the meter/utility limits."
+  },
+  {
+   "id": "FAQ.35",
+   "type": "faq",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "ต้องใช้พื้นที่หลังคาเท่าไหร่",
+   "kw": "พื้นที่หลังคา หลังคากว้าง กว้างแค่ไหน ขนาดหลังคา หลังคาพอไหม ตารางเมตร ต่อ kWp กี่ตารางเมตร roof area space m2 per kWp",
+   "a_th": "แผง 550–650 W มีขนาดประมาณ 2.3–2.6 ตร.ม./แผง คิดเป็น ~4.5–5 ตร.ม. ต่อ kWp (เช่น 10 kWp ≈ 45–50 ตร.ม.) ยังไม่รวมทางเดินบำรุงรักษาและระยะเว้นขอบหลังคา จึงควรเผื่ออีก 20–30%",
+   "a_en": "A 550–650 W panel covers about 2.3–2.6 m², i.e. ~4.5–5 m² per kWp (10 kWp ≈ 45–50 m²), excluding maintenance walkways and roof-edge setbacks — allow another 20–30%."
+  },
+  {
    "id": "PROV.T5_41_SINGLE_LAYER_ONLY",
    "type": "provision",
    "code": "EIT-2564",
