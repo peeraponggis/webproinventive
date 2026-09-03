@@ -197,6 +197,7 @@ Pi โหลดตาราง วสท. เฉพาะเมื่อผู�
 1. `tables-private.json` ข้างไฟล์เว็บ (โฮสต์ภายใน) — ถ้ามี
 2. endpoint บน Railway `https://web-production-359eb.up.railway.app/api/pi/tables` (route อยู่ใน repo ส่วนตัว Solar-SaaS — https://github.com/enterprice0945/enterprice0945-Solar-SaaS — ที่ `apps/web/app/api/pi/tables/route.ts`, ไฟล์ตารางที่ `apps/web/private-data/`) — ต้องส่ง `Authorization: Bearer <PI_TABLES_TOKEN>` และเปิด CORS เฉพาะ `peeraponggis.github.io` กับ localhost
    พนักงานใส่รหัสครั้งเดียวในคอนโซล: `/tables <รหัส>` (เก็บใน `localStorage.pi_tables_token`; `/tables` ดูสถานะ, `/tables clear` ลบ) — รหัสตั้งเป็นตัวแปร `PI_TABLES_TOKEN` ของ service `web` บน Railway
+   **หมายเหตุเรื่องแคช:** endpoint ตอบ `Cache-Control: no-store` และ `Vary: Origin, Authorization` และฝั่งเว็บดึงด้วย `fetch(..., { cache: "no-store" })` — ห้ามผ่อนคลายทั้งสองอย่าง เพราะเคยพบว่าเมื่อ endpoint ตอบ `max-age=3600` เบราว์เซอร์จะใช้ตารางจากแคชต่อได้อีก 1 ชั่วโมงแม้พิมพ์รหัสผิดหรือ `/tables clear` ไปแล้ว (แคชของเบราว์เซอร์ใช้ URL เป็นคีย์ ไม่ดู header Authorization)
 3. ถ้าไม่มีทั้งสองอย่าง Pi จะชี้เลขตารางและบอกวิธีเชื่อมแทน
 
 อัปเดตตารางบน Railway: `python tools/build_knowledge.py --private-out "C:/enterprise/Solar SaaS/proinventive-solar/apps/web/private-data"` แล้ว `railway up --service web` จากโฟลเดอร์ `C:/enterprise/Solar SaaS/proinventive-solar` (repo `enterprice0945/enterprice0945-Solar-SaaS`)
