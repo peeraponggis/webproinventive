@@ -190,16 +190,19 @@
                 push(t("pi.crm"), "system");
                 return true;
 
-            case "status":
-                push(
-                    t("pi.status.msg", {
-                        status: el.status.textContent,
-                        endpoint: config.endpoint || t("pi.notset"),
-                        lang: lang().toUpperCase()
-                    }),
-                    "system"
-                );
+            case "status": {
+                var base = t("pi.status.msg", {
+                    status: el.status.textContent,
+                    endpoint: config.endpoint || t("pi.notset"),
+                    lang: lang().toUpperCase()
+                });
+                if (global.PiBrain && global.PiBrain.status) {
+                    global.PiBrain.status().then(function (extra) { push(base + "\n" + extra, "system"); });
+                } else {
+                    push(base, "system");
+                }
                 return true;
+            }
 
             case "connect":
                 if (!arg) {

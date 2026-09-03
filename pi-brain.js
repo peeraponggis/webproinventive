@@ -79,9 +79,10 @@
         if (tier === "private") {
             /* local file first (internal hosts), else the Railway endpoint with the staff token */
             p = local.then(function (d) {
-                if (d) return d;
+                if (d) { TABLES._privateSrc = "local"; return d; }
                 var tok = tablesToken();
                 if (!config.privateTablesUrl || !tok) return null;
+                TABLES._privateSrc = "railway";
                 return fetchJSON(config.privateTablesUrl, { headers: { Authorization: "Bearer " + tok } });
             });
         }
@@ -590,6 +591,23 @@
         return t("kb.exported", { n: faq.length }) + "\n\n" + payload + "\n\n" + questions();
     }
 
+    /* ================= /status lines (user · knowledge base · internal tables) ================= */
+
+    function status() {
+        var u = user();
+        return load().then(function () {
+            var lines = [t("kb.status.user", { user: u ? u.email : t("kb.status.guest") })];
+            var taught = KB.entries.filter(function (e) { return e.type === "taught"; }).length;
+            lines.push(t("kb.status.kb", { n: KB.entries.length - taught, taught: taught }));
+            if (!u) { lines.push(t("kb.status.tablesGuest")); return lines.join("\n"); }
+            return loadTables("private").then(function (T) {
+                lines.push(T ? t("kb.status.tablesOk", { n: Object.keys(T).length, src: TABLES._privateSrc || "" })
+                             : (tablesToken() ? t("kb.status.tablesFail") : t("kb.status.tablesNone")));
+                return lines.join("\n");
+            });
+        }).catch(function () { return t("kb.status.kbFail"); });
+    }
+
     /* ================= console commands ================= */
 
     function cmd(name, arg) {
@@ -656,7 +674,7 @@
     document.addEventListener("auth:change", function () { TABLES["private"] = undefined; });
 
     global.PiBrain = {
-        answer: answer, load: load, cmd: cmd, _score: score,
+        answer: answer, load: load, cmd: cmd, status: status, _score: score,
         configure: function (o) { Object.assign(config, o || {}); return this; },
         skills: SKILLS.map(function (s) { return s.id; })
     };
