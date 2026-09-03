@@ -147,7 +147,7 @@
         var code = entry.code && KB.codes[entry.code];
         var name = code ? code.eitCode : (entry.eitCode || entry.code || "");
         var bits = [name];
-        if (entry.clause) bits.push(/ตาราง|ภาคผนวก/.test(entry.clause) ? entry.clause : (t("kb.clause") + " " + entry.clause));
+        if (entry.clause) bits.push(/^(ข้อ|ตาราง|ภาคผนวก|clause|table)/i.test(entry.clause) ? entry.clause : (t("kb.clause") + " " + entry.clause));
         if (entry.table) bits.push(entry.table);
         return bits.filter(Boolean).join(" · ");
     }
@@ -160,7 +160,7 @@
 
     function compose(best, l) {
         var body = (l === "en" && best.a_en) ? best.a_en : (best.a_th || best.title);
-        if (best.type === "provision" && best.value) body += " — " + best.value + " " + (best.unit || "");
+        if (best.type === "provision" && best.value && body.indexOf(String(best.value)) === -1) body += " — " + best.value + " " + (best.unit || "");
         var c = cite(best);
         return body.trim() + (c ? tail(c, false) : "\n\n⚠️ " + t("kb.disclaimer"));
     }
@@ -190,7 +190,53 @@
     /* ================= lookup skills ================= */
     /* each: { id, tier, tables:[...], match(qNorm) -> params|null, run(params, T, l) -> string|null } */
 
+    /* rule-of-thumb sizing (our own estimate, not a standard value) */
+    var SIZING = { psh: 4.2, eff: 0.8, dod: 0.9, panelW: 550 };
+
     var SKILLS = [
+        {
+            id: "sizing", tier: "none", tables: [],
+            match: function (q) {
+                if (!/กี\s*แผง|จำนวนแผง|แผง.{0,12}กี|how many panel|panels? .{0,20}need|ขนาดระบบ|กี\s*kwp|size (?:the |a )?system/.test(q)) return null;
+                var batt = null, m;
+                if (/แบต|battery|bess/.test(q)) { m = q.match(/(\d+(?:\.\d+)?)\s*kwh/); if (m) batt = parseFloat(m[1]); }
+                var load = null;
+                m = q.match(/(?:ใช\S*|โหลด|load|use)[^\d]{0,20}(\d+(?:\.\d+)?)\s*kwh/); if (m && !batt) load = parseFloat(m[1]);
+                if (!load) { m = q.match(/(\d+(?:\.\d+)?)\s*(?:หนวย|หน่วย|unit)/); if (m) load = parseFloat(m[1]) / 30; }
+                if (!load && !batt) { m = q.match(/(\d+(?:\.\d+)?)\s*kwh/); if (m) load = parseFloat(m[1]); }
+                var kwp = grab(q, /(\d+(?:\.\d+)?)\s*kwp/);
+                var w = grab(q, /(\d+(?:\.\d+)?)\s*(?:w\b|วัตต|watt)/);
+                if (!batt && !load && !kwp) return null;
+                return { batt: batt, load: load, kwp: kwp, w: w };
+            },
+            run: function (p, T, l) {
+                var w = p.w || SIZING.panelW;
+                var lines = [], need = 0;
+                if (!p.kwp) {
+                    if (p.load) { need += p.load; lines.push(l === "en" ? "daytime/daily load " + fmt(p.load) + " kWh" : "โหลดที่ต้องจ่าย " + fmt(p.load) + " kWh/วัน"); }
+                    if (p.batt) { var b = p.batt * SIZING.dod; need += b; lines.push(l === "en" ? "recharge " + p.batt + " kWh battery × " + SIZING.dod + " = " + fmt(b) + " kWh" : "ชาร์จแบต " + p.batt + " kWh × " + SIZING.dod + " = " + fmt(b) + " kWh"); }
+                    p.kwp = need / (SIZING.psh * SIZING.eff);
+                }
+                var panels = Math.ceil(p.kwp * 1000 / w);
+                var out = l === "en"
+                    ? "Rough estimate (assumptions: " + SIZING.psh + " peak-sun hours/day · system efficiency " + Math.round(SIZING.eff * 100) + "% · battery usable " + Math.round(SIZING.dod * 100) + "%, one full cycle/day)" +
+                      (lines.length ? "\n• energy to generate: " + fmt(need) + " kWh/day (" + lines.join(" + ") + ")" : "") +
+                      "\n• array size ≈ " + fmt(p.kwp) + " kWp" +
+                      "\n• " + w + " W panels ≈ " + panels + " panels" + (p.w ? "" : " (assumed " + w + " W)") +
+                      "\nThe real count depends on daytime load, roof orientation/tilt and losses — design it in ASC or contact sales 080-028-2399"
+                    : "ประมาณการเบื้องต้น (สมมติฐาน: แดดเฉลี่ย " + SIZING.psh + " ชม./วัน · ประสิทธิภาพระบบ " + Math.round(SIZING.eff * 100) + "% · แบตใช้งานได้ " + Math.round(SIZING.dod * 100) + "% ชาร์จเต็มวันละ 1 รอบ)" +
+                      (lines.length ? "\n• พลังงานที่ต้องผลิต: " + fmt(need) + " kWh/วัน (" + lines.join(" + ") + ")" : "") +
+                      "\n• ขนาดระบบที่ต้องการ ≈ " + fmt(p.kwp) + " kWp" +
+                      "\n• แผง " + w + " W ≈ " + panels + " แผง" + (p.w ? "" : " (สมมติแผง " + w + " W)") +
+                      "\nจำนวนจริงขึ้นกับโหลดกลางวัน ทิศ/มุมหลังคา และการสูญเสีย — ออกแบบละเอียดด้วย ASC หรือติดต่อฝ่ายขาย 080-028-2399";
+                out += "\n\n📖 " + t("kb.ref") + ": " + t("kb.estimate");
+                if (p.batt && p.batt >= 50 && KB) {
+                    var hit = KB.entries.filter(function (e) { return e.type === "provision" && /50 kwh/.test(e._text); })[0];
+                    if (hit) out += "\n" + t("kb.alsoNote") + " " + (l === "en" && hit.a_en ? hit.a_en : hit.a_th) + " (" + cite(hit) + ")";
+                }
+                return out + "\n⚠️ " + t("kb.disclaimer");
+            }
+        },
         {
             id: "egc", tier: "private", tables: ["T4-2"],
             match: function (q) {
@@ -430,8 +476,8 @@
             var sk = SKILLS[i];
             var p = sk.match(qNorm);
             if (!p) continue;
-            return loadTables(sk.tier).then(function (T) {
-                if (!T || !sk.tables.every(function (id) { return T[id]; })) return { kind: "locked", skill: sk };
+            return (sk.tier === "none" ? Promise.resolve({}) : loadTables(sk.tier)).then(function (T) {
+                if (sk.tier !== "none" && (!T || !sk.tables.every(function (id) { return T[id]; }))) return { kind: "locked", skill: sk };
                 var out = sk.run(p, T, l);
                 return out ? { kind: "hit", text: out } : { kind: "miss" };
             });
