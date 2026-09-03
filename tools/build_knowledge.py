@@ -217,6 +217,87 @@ FAQ = [
 ]
 
 
+# ---------------------------------------------------------------- lookup tables
+KIT = ENT + "/digitize-kit"
+OUT_DIR = os.path.dirname(os.path.abspath(OUT))
+DROP_COLS = {"footnote_refs"}   # long provenance strings — cite comes from the metadata below
+
+# id → (csv, citation).  "public": government / manufacturer data, safe to publish.
+PUBLIC_TABLES = {
+    "TARIFF_energy_blocks": ("TARIFF_energy_blocks.csv",
+        {"doc": "กฟภ. อัตราค่าไฟฟ้า พ.ค. 2566", "table": "ประเภท 1 บ้านอยู่อาศัย (อัตราปกติ)"}),
+    "TARIFF_tou_rates": ("TARIFF_tou_rates.csv",
+        {"doc": "กฟภ. อัตราค่าไฟฟ้า พ.ค. 2566", "table": "อัตรา TOU"}),
+    "TARIFF_tou_periods": ("TARIFF_tou_periods.csv",
+        {"doc": "กฟภ. อัตราค่าไฟฟ้า พ.ค. 2566", "table": "ช่วงเวลา TOU/TOD"}),
+    "FT_history": ("FT_history.csv",
+        {"doc": "กกพ. ประกาศค่า Ft", "table": "ค่า Ft รายงวด"}),
+    "PEA_accredited_test_labs": ("PEA_accredited_test_labs.csv",
+        {"doc": "กฟภ.", "table": "รายชื่อหน่วยทดสอบที่ได้รับการรับรอง"}),
+    "COMPAT_matrix": ("COMPAT_matrix.csv",
+        {"doc": "เอกสารผู้ผลิต", "table": "ตารางความเข้ากันได้อินเวอร์เตอร์–แบตเตอรี่"}),
+}
+
+# "private": reproduced from the วสท. volumes — generated locally, never committed.
+EIT64 = "วสท. 022001-22"
+PRIVATE_TABLES = {
+    "T4-1": ("T4-1_gec_size.csv", {"doc": EIT64, "table": "ตารางที่ 4-1", "page": "4-12"}),
+    "T4-2": ("T4-2_egc_size.csv", {"doc": EIT64, "table": "ตารางที่ 4-2", "page": "4-13"}),
+    "T3-4": ("T3-4_mea_meter.csv", {"doc": EIT64, "table": "ตารางที่ 3-4", "page": "3-10"}),
+    "T3-5": ("T3-5_pea_meter.csv", {"doc": EIT64, "table": "ตารางที่ 3-5", "page": "3-11"}),
+    "T5-3": ("T5-3_conduit_fill_verify.csv", {"doc": EIT64, "table": "ตารางที่ 5-3", "page": "5-5"}),
+    "T5-8": ("T5-8_grouping_raceway.csv", {"doc": EIT64, "table": "ตารางที่ 5-8", "page": "5-30"}),
+    "T5-43": ("T5-43_temp_correction_above_ground.csv", {"doc": EIT64, "table": "ตารางที่ 5-43", "page": "5-61"}),
+    "T5-44": ("T5-44_temp_correction_buried.csv", {"doc": EIT64, "table": "ตารางที่ 5-44", "page": "5-62"}),
+    "T5-40": ("T5-40_tray_grouping_singlecore.csv", {"doc": EIT64, "table": "ตารางที่ 5-40", "page": "5-56"}),
+    "T5-40K": ("T5-40K_tray_covered_solid.csv", {"doc": EIT64, "table": "ตารางที่ 5-40 (ก)", "page": "5-58"}),
+    "T5-41": ("T5-41_tray_grouping_multicore.csv", {"doc": EIT64, "table": "ตารางที่ 5-41", "page": "5-59"}),
+    "T5-47": ("T5-47_install_methods.csv", {"doc": EIT64, "table": "ตารางที่ 5-47", "page": "5-64"}),
+    "T5-48": ("T5-48_usage_normalized.csv", {"doc": EIT64, "table": "ตารางที่ 5-48", "page": "5-66"}),
+    "AMPACITY": ("AMPACITY_long_format.csv", {"doc": EIT64, "table": "ตารางขนาดกระแส 5-20/5-23/5-27/5-29", "page": "5-35+"}),
+    "APPX-KHO": ("APPX-KHO_conduit_max_count.csv", {"doc": EIT64, "table": "ภาคผนวก ฎ", "page": ""}),
+    "APPX-THO": ("APPX-THO_voltage_drop.csv", {"doc": EIT64, "table": "ภาคผนวก ฐ (ตาราง ฐ.1+)", "page": "ฐ-3+"}),
+    "BCC_dims": ("BCC_cable_dimensions.csv", {"doc": "คู่มือ Bangkok Cable", "table": "ตารางที่ 2-4", "page": "353"}),
+    "BCC_conduit": ("BCC_conduit_areas.csv", {"doc": "คู่มือ Bangkok Cable", "table": "ตารางที่ 1", "page": "352"}),
+}
+
+
+def read_table(csv_name):
+    with io.open(os.path.join(KIT, csv_name), encoding="utf-8-sig") as f:
+        rows = []
+        for row in csv.DictReader(f):
+            rows.append({k: v for k, v in row.items() if k not in DROP_COLS and k is not None})
+        return rows
+
+
+def build_tables(spec, tier):
+    out = {}
+    for tid, (csv_name, cite) in spec.items():
+        path = os.path.join(KIT, csv_name)
+        if not os.path.exists(path):
+            print("  (skip, missing)", csv_name)
+            continue
+        out[tid] = {"cite": cite, "tier": tier, "rows": read_table(csv_name)}
+    return out
+
+
+def write_tables(name, tables):
+    path = os.path.join(OUT_DIR, name)
+    with io.open(path, "w", encoding="utf-8") as f:
+        json.dump({"generated": date.today().isoformat(), "tables": tables}, f, ensure_ascii=False)
+    print("written:", path, "|", len(tables), "tables,", sum(len(t["rows"]) for t in tables.values()), "rows")
+
+
+def load_faq_extra():
+    """FAQ taught through the console (/export) — same shape as FAQ entries."""
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "faq_extra.json")
+    if not os.path.exists(path):
+        return []
+    with io.open(path, encoding="utf-8") as f:
+        data = json.load(f)
+    return [d for d in data if d.get("th")]
+
+
 def validate(entries):
     bad = []
     for e in entries:
@@ -237,8 +318,12 @@ def main():
     by_id = {c["id"]: c for c in clauses}
     provisions = parse_provisions(codes)
 
+    extra = load_faq_extra()
+    if extra:
+        print("faq_extra.json:", len(extra), "taught entries merged")
+
     faq = []
-    for i, f in enumerate(FAQ):
+    for i, f in enumerate(FAQ + extra):
         ref = by_id.get(f.get("ref") or "")
         faq.append({
             "id": "FAQ.%02d" % (i + 1),
@@ -266,6 +351,11 @@ def main():
           "| provisions:", len(provisions), "| clauses:", len(clauses),
           "| total entries:", len(entries))
     print("written:", os.path.abspath(OUT))
+
+    # lookup tables — two tiers (see PUBLIC_TABLES / PRIVATE_TABLES)
+    write_tables("tables-public.json", build_tables(PUBLIC_TABLES, "public"))
+    write_tables("tables-private.json", build_tables(PRIVATE_TABLES, "private"))
+    print("NOTE: tables-private.json is git-ignored — deploy it only to internal hosts.")
 
 
 if __name__ == "__main__":

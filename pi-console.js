@@ -211,6 +211,14 @@
                 push(t("pi.connected", { endpoint: arg }), "system");
                 return true;
 
+            case "questions":
+            case "teach":
+            case "export":
+                push(global.PiBrain && global.PiBrain.cmd
+                    ? global.PiBrain.cmd(cmd, arg)
+                    : t("pi.unknown"), "system");
+                return true;
+
             default:
                 push(t("pi.unknown"), "system");
                 return true;

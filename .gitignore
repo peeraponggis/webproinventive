@@ -5,3 +5,6 @@
 *.pdf
 .DS_Store
 Thumbs.db
+
+# EIT lookup tables are copyrighted (วสท.) — never publish
+tables-private.json
