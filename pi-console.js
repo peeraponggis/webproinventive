@@ -214,9 +214,9 @@
             case "questions":
             case "teach":
             case "export":
-                push(global.PiBrain && global.PiBrain.cmd
-                    ? global.PiBrain.cmd(cmd, arg)
-                    : t("pi.unknown"), "system");
+            case "tables":
+                if (!global.PiBrain || !global.PiBrain.cmd) { push(t("pi.unknown"), "system"); return true; }
+                Promise.resolve(global.PiBrain.cmd(cmd, arg)).then(function (text) { push(text, "system"); });
                 return true;
 
             default:

@@ -193,7 +193,13 @@ Pi console ตอบคำถามเทคนิคเรื่องมาต
 | `tables-public.json` | ค่าไฟ กฟภ. / Ft / TOU, หน่วยทดสอบที่ กฟภ. รับรอง, ตารางความเข้ากันได้อินเวอร์เตอร์–แบตเตอรี่ (ข้อมูลราชการ/ผู้ผลิต) | ✅ |
 | `tables-private.json` | ตาราง วสท. (4-1, 4-2, 3-4, 3-5, 5-3, 5-8, 5-40/41/43/44/47/48, ขนาดกระแส, ภาคผนวก ฎ/ฐ, BCC) | ❌ อยู่ใน `.gitignore` — วางบนโฮสต์ภายในเท่านั้น |
 
-Pi โหลด `tables-private.json` เฉพาะเมื่อผู้ใช้เข้าสู่ระบบ (`PiAuth`) และไฟล์นั้นมีอยู่บนโฮสต์; ถ้าไม่มี Pi จะชี้เลขตารางและบอกให้เปิดเล่ม/เข้าสู่ระบบภายในแทน
+Pi โหลดตาราง วสท. เฉพาะเมื่อผู้ใช้เข้าสู่ระบบ (`PiAuth`) ตามลำดับนี้:
+1. `tables-private.json` ข้างไฟล์เว็บ (โฮสต์ภายใน) — ถ้ามี
+2. endpoint บน Railway `https://web-production-359eb.up.railway.app/api/pi/tables` (route อยู่ใน repo ส่วนตัว Solar-SaaS ที่ `apps/web/app/api/pi/tables/route.ts`, ไฟล์ตารางที่ `apps/web/private-data/`) — ต้องส่ง `Authorization: Bearer <PI_TABLES_TOKEN>` และเปิด CORS เฉพาะ `peeraponggis.github.io` กับ localhost
+   พนักงานใส่รหัสครั้งเดียวในคอนโซล: `/tables <รหัส>` (เก็บใน `localStorage.pi_tables_token`; `/tables` ดูสถานะ, `/tables clear` ลบ) — รหัสตั้งเป็นตัวแปร `PI_TABLES_TOKEN` ของ service `web` บน Railway
+3. ถ้าไม่มีทั้งสองอย่าง Pi จะชี้เลขตารางและบอกวิธีเชื่อมแทน
+
+อัปเดตตารางบน Railway: `python tools/build_knowledge.py --private-out "C:/enterprise/Solar SaaS/proinventive-solar/apps/web/private-data"` แล้ว `railway up --service web` จากโฟลเดอร์ Solar-SaaS
 
 **Lookup skills** (ใน `pi-brain.js`, รันก่อน retrieval): สายดินบริภัณฑ์ (ตาราง 4-2) · สายต่อหลักดิน (4-1) · ตัวคูณอุณหภูมิ (5-43/5-44) · ตัวคูณจำนวนวงจรในท่อ (5-8) · แรงดันตก mV/A/m + คำนวณ (ภาคผนวก ฐ) · ขนาดกระแส (5-20…) · จำนวนสายในท่อ (ภาคผนวก ฎ) · มิเตอร์ กฟภ./กฟน. (3-5/3-4) · ค่าไฟ/Ft/TOU · COMPAT · หน่วยทดสอบ PEA
 

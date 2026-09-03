@@ -354,8 +354,19 @@ def main():
 
     # lookup tables — two tiers (see PUBLIC_TABLES / PRIVATE_TABLES)
     write_tables("tables-public.json", build_tables(PUBLIC_TABLES, "public"))
-    write_tables("tables-private.json", build_tables(PRIVATE_TABLES, "private"))
+    private_tables = build_tables(PRIVATE_TABLES, "private")
+    write_tables("tables-private.json", private_tables)
     print("NOTE: tables-private.json is git-ignored — deploy it only to internal hosts.")
+
+    # --private-out <dir>: also drop the private file where the internal host
+    # (Railway app: apps/web/private-data/) picks it up at build time.
+    if "--private-out" in sys.argv:
+        out_dir = sys.argv[sys.argv.index("--private-out") + 1]
+        os.makedirs(out_dir, exist_ok=True)
+        path = os.path.join(out_dir, "tables-private.json")
+        with io.open(path, "w", encoding="utf-8") as f:
+            json.dump({"generated": date.today().isoformat(), "tables": private_tables}, f, ensure_ascii=False)
+        print("written (internal host copy):", path)
 
 
 if __name__ == "__main__":

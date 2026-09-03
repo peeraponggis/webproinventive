@@ -28,7 +28,12 @@
     var TAUGHT_KEY = "pi_faq_local";
     var QLOG_CAP = 300;
 
-    var config = { logEndpoint: null };
+    var TOKEN_KEY = "pi_tables_token";
+    var config = {
+        logEndpoint: null,
+        /* internal host that serves the วสท. tables (Railway app, bearer token required) */
+        privateTablesUrl: "https://web-production-359eb.up.railway.app/api/pi/tables"
+    };
     var KB = null;
     var loading = null;
     var TABLES = { public: undefined, private: undefined };   /* undefined = not tried yet */
@@ -60,13 +65,48 @@
         return loading;
     }
 
+    function tablesToken() { try { return localStorage.getItem(TOKEN_KEY) || ""; } catch (e) { return ""; } }
+
+    function fetchJSON(url, opts) {
+        return fetch(url, opts).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+    }
+
     function loadTables(tier) {
         if (TABLES[tier] !== undefined) return Promise.resolve(TABLES[tier]);
         if (tier === "private" && !user()) return Promise.resolve(null);
-        return fetch(BASE + "tables-" + tier + ".json" + VQ)
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (d) { TABLES[tier] = d ? d.tables : null; return TABLES[tier]; })
-            .catch(function () { TABLES[tier] = null; return null; });
+        var local = fetchJSON(BASE + "tables-" + tier + ".json" + VQ);
+        var p = local;
+        if (tier === "private") {
+            /* local file first (internal hosts), else the Railway endpoint with the staff token */
+            p = local.then(function (d) {
+                if (d) return d;
+                var tok = tablesToken();
+                if (!config.privateTablesUrl || !tok) return null;
+                return fetchJSON(config.privateTablesUrl, { headers: { Authorization: "Bearer " + tok } });
+            });
+        }
+        return p.then(function (d) { TABLES[tier] = d ? d.tables : null; return TABLES[tier]; });
+    }
+
+    /* /tables — show status, store or clear the staff token for the private endpoint */
+    function tablesCmd(arg) {
+        var a = (arg || "").trim();
+        if (a === "clear") {
+            try { localStorage.removeItem(TOKEN_KEY); } catch (e) { /* ignore */ }
+            TABLES["private"] = undefined;
+            return t("kb.tablesCleared");
+        }
+        if (a) {
+            try { localStorage.setItem(TOKEN_KEY, a); } catch (e) { /* ignore */ }
+            TABLES["private"] = undefined;
+            return loadTables("private").then(function (T) {
+                return T ? t("kb.tablesOk", { n: Object.keys(T).length }) : t("kb.tablesFail");
+            });
+        }
+        return loadTables("private").then(function (T) {
+            return (T ? t("kb.tablesOk", { n: Object.keys(T).length }) : t("kb.tablesNone")) +
+                "\n" + t("kb.tablesHint", { url: config.privateTablesUrl || "-" });
+        });
     }
 
     /* ================= text matching (Thai-friendly) ================= */
@@ -509,6 +549,7 @@
         if (name === "teach") return teach(arg);
         if (name === "questions") return questions();
         if (name === "export") return exportJSON();
+        if (name === "tables") return tablesCmd(arg);
         return t("pi.unknown");
     }
 
@@ -534,7 +575,7 @@
                 if (sk && sk.kind === "locked") {
                     var names = sk.skill.tables.map(function (id) { return TABLE_NAMES[id] || id; }).join(" / ");
                     logQuestion(message, top ? top.s : 0, false, l);
-                    return t(user() ? "kb.lockedStaff" : "kb.locked", { table: names }) + (top && top.s >= 3 ? "\n\n" + composePointers([top.e]) : "");
+                    return t(user() ? (tablesToken() ? "kb.lockedStaff" : "kb.lockedToken") : "kb.locked", { table: names }) + (top && top.s >= 3 ? "\n\n" + composePointers([top.e]) : "");
                 }
 
                 if (!top || top.s < 3) { logQuestion(message, top ? top.s : 0, false, l); return t("pi.fallback"); }
