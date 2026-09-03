@@ -32,6 +32,14 @@
   "clause": null
  },
  {
+  "kw": "ขายไฟคืน ขายไฟให้การไฟฟ้า ขายไฟกลับ ไฟเหลือขาย โซลาร์ภาคประชาชน รับซื้อไฟ อัตรารับซื้อ 2.20 net metering net billing sell back excess export feed-in",
+  "title": "ติดโซลาร์แล้วขายไฟคืนการไฟฟ้าได้ไหม",
+  "th": "บ้านอยู่อาศัย (มิเตอร์ประเภท 1) ขายไฟส่วนเกินคืนได้ผ่านโครงการโซลาร์ภาคประชาชนของ กกพ. ระบบไม่เกิน 10 kWp อัตรารับซื้อ 2.20 บาท/หน่วย สัญญา 10 ปี ต้องยื่นสมัครกับ กฟน./กฟภ. และมีโควต้ารายปีจำกัด ส่วนอาคารธุรกิจยังไม่มีการรับซื้อทั่วไป — ติดต่อฝ่ายขายเพื่อดูสิทธิ์ของโครงการคุณ",
+  "en": "Homes (tariff type 1) can sell surplus energy under the ERC's Solar for the People scheme: up to 10 kWp, 2.20 THB/kWh on a 10-year contract, applied via MEA/PEA, limited yearly quota. Commercial buildings have no general buy-back yet — ask sales about your project's eligibility.",
+  "code": null,
+  "clause": null
+ },
+ {
   "kw": "พื้นที่หลังคา หลังคากว้าง กว้างแค่ไหน ขนาดหลังคา หลังคาพอไหม ตารางเมตร ต่อ kWp กี่ตารางเมตร roof area space m2 per kWp",
   "title": "ต้องใช้พื้นที่หลังคาเท่าไหร่",
   "th": "แผง 550–650 W มีขนาดประมาณ 2.3–2.6 ตร.ม./แผง คิดเป็น ~4.5–5 ตร.ม. ต่อ kWp (เช่น 10 kWp ≈ 45–50 ตร.ม.) ยังไม่รวมทางเดินบำรุงรักษาและระยะเว้นขอบหลังคา จึงควรเผื่ออีก 20–30%",
