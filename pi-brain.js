@@ -534,7 +534,7 @@
                 if (sk && sk.kind === "locked") {
                     var names = sk.skill.tables.map(function (id) { return TABLE_NAMES[id] || id; }).join(" / ");
                     logQuestion(message, top ? top.s : 0, false, l);
-                    return t("kb.locked", { table: names }) + (top && top.s >= 3 ? "\n\n" + composePointers([top.e]) : "");
+                    return t(user() ? "kb.lockedStaff" : "kb.locked", { table: names }) + (top && top.s >= 3 ? "\n\n" + composePointers([top.e]) : "");
                 }
 
                 if (!top || top.s < 3) { logQuestion(message, top ? top.s : 0, false, l); return t("pi.fallback"); }
