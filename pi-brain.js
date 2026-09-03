@@ -500,7 +500,9 @@
         if (has(["ค่าไฟ", "หน่วยละ", "tou", "tod", "ft", "อัตราค่าไฟ", "tariff"])) return null;
         if (has(["ราคา", "กี่บาท", "ค่าติดตั้ง", "ค่าใช้จ่าย", "งบประมาณ", "โปรโมชั่น", "ส่วนลด", "ผ่อน",
                  "price", "pricing", "cost", "quote", "quotation", "โควท"])) return t("pi.a.pricing");
-        if (has(["ติดต่อ", "เดโม", "นัดหมาย", "ขาย", "demo", "contact", "sales"])) return t("pi.a.contact");
+        /* "ขาย"/"ติดต่อ" alone are too broad ("ขายไฟคืน", "ติดต่อการไฟฟ้า") */
+        if (has(["ติดต่อบริษัท", "ติดต่อฝ่าย", "ติดต่อทีม", "เบอร์ติดต่อ", "ช่องทางติดต่อ", "ฝ่ายขาย", "ทีมขาย", "พนักงานขาย",
+                 "เดโม", "นัดหมาย", "demo", "contact", "sales"])) return t("pi.a.contact");
         if (has(["crm", "erp", "pi tasks", "boq"]) && q.length < 60) return t("pi.a.crm");
         return null;
     }
@@ -604,12 +606,19 @@
     function answer(payload) {
         var message = payload.message || "";
         var l = payload.lang || lang();
-        var routed = intercept(message);
-        if (routed) return Promise.resolve(routed);
-
         var qNorm = norm(message);
 
         return load().then(function () {
+            /* answers staff taught explicitly win over the sales intercept and the skills */
+            var qTri0 = trigrams(qNorm), qTri0Count = Object.keys(qTri0).length;
+            var taughtTop = KB.entries.filter(function (e) { return e.type === "taught"; })
+                .map(function (e) { return { e: e, s: score(qNorm, qTri0, qTri0Count, e) }; })
+                .sort(function (a, b) { return b.s - a.s; })[0];
+            if (taughtTop && taughtTop.s >= 8) { logQuestion(message, taughtTop.s, true, l); return compose(taughtTop.e, l); }
+
+            var routed = intercept(message);
+            if (routed) { logQuestion(message, 0, true, l); return routed; }
+
             return runSkills(qNorm, l).then(function (sk) {
                 if (sk && sk.kind === "hit") { logQuestion(message, 10, true, l); return sk.text; }
 
