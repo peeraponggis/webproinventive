@@ -550,7 +550,7 @@
         var del = a.match(/^del\s+(\d+)$/i);
         if (del) {
             var list2 = taughtList(), i = parseInt(del[1], 10) - 1;
-            if (!list2[i]) return t("pi.unknown");
+            if (!list2[i]) return t("kb.teachNoSuch", { n: del[1], total: list2.length });
             var gone = "LOCAL." + list2[i].ts;
             list2.splice(i, 1); writeJSON(TAUGHT_KEY, list2);
             if (KB) KB.entries = KB.entries.filter(function (e) { return e.id !== gone; });
