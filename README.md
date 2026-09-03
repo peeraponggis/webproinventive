@@ -195,11 +195,11 @@ Pi console ตอบคำถามเทคนิคเรื่องมาต
 
 Pi โหลดตาราง วสท. เฉพาะเมื่อผู้ใช้เข้าสู่ระบบ (`PiAuth`) ตามลำดับนี้:
 1. `tables-private.json` ข้างไฟล์เว็บ (โฮสต์ภายใน) — ถ้ามี
-2. endpoint บน Railway `https://web-production-359eb.up.railway.app/api/pi/tables` (route อยู่ใน repo ส่วนตัว Solar-SaaS ที่ `apps/web/app/api/pi/tables/route.ts`, ไฟล์ตารางที่ `apps/web/private-data/`) — ต้องส่ง `Authorization: Bearer <PI_TABLES_TOKEN>` และเปิด CORS เฉพาะ `peeraponggis.github.io` กับ localhost
+2. endpoint บน Railway `https://web-production-359eb.up.railway.app/api/pi/tables` (route อยู่ใน repo ส่วนตัว Solar-SaaS — https://github.com/enterprice0945/enterprice0945-Solar-SaaS — ที่ `apps/web/app/api/pi/tables/route.ts`, ไฟล์ตารางที่ `apps/web/private-data/`) — ต้องส่ง `Authorization: Bearer <PI_TABLES_TOKEN>` และเปิด CORS เฉพาะ `peeraponggis.github.io` กับ localhost
    พนักงานใส่รหัสครั้งเดียวในคอนโซล: `/tables <รหัส>` (เก็บใน `localStorage.pi_tables_token`; `/tables` ดูสถานะ, `/tables clear` ลบ) — รหัสตั้งเป็นตัวแปร `PI_TABLES_TOKEN` ของ service `web` บน Railway
 3. ถ้าไม่มีทั้งสองอย่าง Pi จะชี้เลขตารางและบอกวิธีเชื่อมแทน
 
-อัปเดตตารางบน Railway: `python tools/build_knowledge.py --private-out "C:/enterprise/Solar SaaS/proinventive-solar/apps/web/private-data"` แล้ว `railway up --service web` จากโฟลเดอร์ Solar-SaaS
+อัปเดตตารางบน Railway: `python tools/build_knowledge.py --private-out "C:/enterprise/Solar SaaS/proinventive-solar/apps/web/private-data"` แล้ว `railway up --service web` จากโฟลเดอร์ `C:/enterprise/Solar SaaS/proinventive-solar` (repo `enterprice0945/enterprice0945-Solar-SaaS`)
 
 **Lookup skills** (ใน `pi-brain.js`, รันก่อน retrieval): สายดินบริภัณฑ์ (ตาราง 4-2) · สายต่อหลักดิน (4-1) · ตัวคูณอุณหภูมิ (5-43/5-44) · ตัวคูณจำนวนวงจรในท่อ (5-8) · แรงดันตก mV/A/m + คำนวณ (ภาคผนวก ฐ) · ขนาดกระแส (5-20…) · จำนวนสายในท่อ (ภาคผนวก ฎ) · มิเตอร์ กฟภ./กฟน. (3-5/3-4) · ค่าไฟ/Ft/TOU · COMPAT · หน่วยทดสอบ PEA
 
