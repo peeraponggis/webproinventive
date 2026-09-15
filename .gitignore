@@ -6,5 +6,12 @@
 .DS_Store
 Thumbs.db
 
+# npm
+node_modules/
+package-lock.json
+
 # EIT lookup tables are copyrighted (วสท.) — never publish
 tables-private.json
+# OKMD API key — secret, never commit
+okmd-api-key.json
+*/config/okmd-api-key.local.js

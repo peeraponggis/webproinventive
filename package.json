@@ -1,0 +1,24 @@
+{
+  "name": "webproinventive",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PROINVENTIVE — static web app (docs, projects, Pi Tasks, Console, OKMD AI)",
+  "scripts": {
+    "start": "python -m http.server 8123",
+    "build:okmd-knowledge": "python tools/build_knowledge.py",
+    "okmd:widget": "echo 'okmd-ai-widget installed — see okmd-bridge.js for vanilla JS integration'",
+    "lint": "echo 'No lint configured for vanilla JS project'",
+    "typecheck": "echo 'No TypeScript in vanilla JS project'"
+  },
+  "dependencies": {
+    "@edvisory/okmd-ai-widget": "^1.0.22"
+  },
+  "devDependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@tanstack/react-query": "^5.59.16",
+    "antd": "^5.21.6",
+    "axios": "^1.7.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

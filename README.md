@@ -222,6 +222,82 @@ Pi โหลดตาราง วสท. เฉพาะเมื่อผู�
 - ส่งบันทึกคำถามเข้า backend (Railway) ได้ด้วย `PiBrain.configure({ logEndpoint: "https://…/api/pi/log" })` — ส่งแบบ `navigator.sendBeacon` เป็น JSON:
   `{ "q": "...", "score": 4.2, "answered": false, "lang": "th", "ts": 1756600000000, "user": "a@proinventive.co.th" | null, "page": "/index.html" }`
 
+---
+
+## OKMD AI Integration
+
+[OKMD AI](https://ai.okmd.or.th/) — บริการ AI ภาษาไทย (โดย Edvisory / TK-Park) พร้อม API
+
+### ติดตั้ง
+
+```bash
+npm install
+```
+
+`@edvisory/okmd-ai-widget@1.0.22` (React widget) ถูกติดตั้งบน npm — แต่หน้าเว็บ ProInventive เป็น vanilla JS ไม่ใช่ React  ดังนั้นมี `okmd-bridge.js` ที่ทำหน้าที่ adapter เรียก OKMD API ตรงแทน:
+
+| ส่วน | ไฟล์ |
+|---|---|
+| npm package | `package.json` (dependency `@edvisory/okmd-ai-widget`) |
+| API bridge | `okmd-bridge.js` (vanilla JS — guest token, SSE chat, cache) |
+| Config auto-init | `config/okmd-config.js` |
+| PiConsole plugin | คำสั่ง `/okmd` ใน `pi-console.js` + `okmd-bridge.js` |
+
+### OKMD API endpoints (ที่ Bridge ใช้)
+
+| Method | Path | หน้าที่ |
+|---|---|---|
+| `POST` | `https://ai-api.okmd.or.th/api/v1/auth/guest` | ขอ guest token (X-API-Key) |
+| `GET`  | `/v1/chats/conversation-starters` | รับปุ่มถามเริ่มต้น |
+| `POST` | `/v1/chats/message` | ส่งข้อความไปยัง AI |
+| `GET`  | `/v1/chats/stream/{id}` | รับคำตอบแบบ SSE streaming |
+| `POST` | `/v1/chats/chat-sessions/chat-messages/{id}/feedback` | Like/Dislike |
+
+### วิธีใช้
+
+#### วิธีที่ 1 — พิมพ์คำสั่งใน Pi Console
+
+```
+/okmd <api_key>   เชื่อมต่อ OKMD AI (บันทึกอัตโรมัติใน localStorage)
+/okmd status      ดูสถานะการเชื่อมต่อ
+/okmd off         ปิดและกลับสู่โหมดสาธิต
+```
+
+#### วิธีที่ 2 — Auto-init (ใส่คีย์ลงใน localStorage หรือ HTML)
+
+```html
+<script>window.OKMD_API_KEY = "sk-xxx";</script>
+<script src="okmd-bridge.js" defer></script>
+<script src="config/okmd-config.js" defer></script>
+```
+
+Bridge จะอ่านคีย์อัตโรมัติและเชื่อมต่อทุกครั้งที่เปิดหน้า (ไม่หายเมื่อรีสตาร์ท)
+
+#### วิธีที่ 3 — เรียก API แบบ programmatic
+
+```js
+await OkmdBridge.init("sk-your-api-key");
+const { text, citations } = await OkmdBridge.chat("แรงดันสตริงสูงสุดกำหนดที่ข้อไหน?");
+```
+
+### ฟีเจอร์พิเศษ
+
+- **ตอบภาษาไทยเสมอ** — Bridge ใส่คำสั่ง `[ตอบภาษาไทย]` ไว้ข้างหน้าทุกข้อความก่อนส่งให้ OKMD AI
+- **แคชคำถาม-คำตอบ** — คำถามที่ตอบแล้วถูกบันทึกใน `localStorage["okmd_cache"]` (สูงสุด 100 รายการ) การถามซ้ำจะได้คำตอบทันทีจากแคช ไม่เสีย API
+- **บันทึก provider อัตโรมัติ** — API key, guest token, chat session ถูกบันทึกใน `localStorage["okmd_state"]` ใช้ได้ทุกครั้งที่เข้ามาใหม่
+- **Conversation starters** — ปุ่มถามเริ่มต้นจาก OKMD แสดงที่ด้านล่างของ Pi Console
+- **SSE streaming** — คำตอบถูกสะสมจาก Server-Sent Events แล้วคืนเป็น string เต็ม
+
+### Persistence (ข้อมูลบันทึกไว้ใช้ทุกครั้ง)
+
+| สิ่งที่บันทึก | Key ใน localStorage | หายไหมเมื่อรีสตาร์ท |
+|---|---|---|
+| API key + guest token + session | `okmd_state` | ไม่หาย |
+| แคช Q&A (สูงสุด 100) | `okmd_cache` | ไม่หาย |
+| คำสั่งภาษาไทย | ฮาร์ดโค้ดใน `okmd-bridge.js` | ไม่หาย (ไฟล์บนดิสก์) |
+
+---
+
 ## หมายเหตุ
 
 - ข้อมูลบริษัท ผลงานโครงการ สถิติ MWp และช่องทางติดต่อ นำมาจาก **Company Profile จริง** ของ

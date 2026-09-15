@@ -222,6 +222,11 @@
                 Promise.resolve(global.PiBrain.cmd(cmd, arg)).then(function (text) { push(text, "system"); });
                 return true;
 
+            case "okmd":
+                if (!global.OkmdBridge) { push(t("pi.unknown"), "system"); return true; }
+                global.OkmdBridge.handleCommand(arg);
+                return true;
+
             default:
                 push(t("pi.unknown"), "system");
                 return true;
