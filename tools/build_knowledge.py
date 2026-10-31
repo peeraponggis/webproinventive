@@ -21,7 +21,16 @@ import re
 import sys
 from datetime import date
 
-ENT = r"C:/enterprise/solar-project-complete"
+# enterprise checkout (repo proinventive/solar-project-complete). Override with
+# EIT_ENT=<path> or --ent <path>; otherwise the first existing default is used.
+_ENT_DEFAULTS = [r"F:/enterprise/solar-project-complete", r"C:/enterprise/solar-project-complete",
+                 os.path.expanduser("~/enterprise/solar-project-complete")]
+if "--ent" in sys.argv:
+    ENT = sys.argv[sys.argv.index("--ent") + 1]
+else:
+    ENT = os.environ.get("EIT_ENT") or next((d for d in _ENT_DEFAULTS if os.path.isdir(d)), _ENT_DEFAULTS[0])
+if not os.path.isdir(ENT):
+    sys.exit("enterprise checkout not found: %s  (clone proinventive/solar-project-complete, then pass --ent <path>)" % ENT)
 CLAUSE_MAP = ENT + "/solar-engine/src/data/clause-map.ts"
 PROVISIONS = ENT + "/digitize-kit/PROVISIONS.csv"
 OUT = os.path.join(os.path.dirname(__file__), "..", "knowledge.json")

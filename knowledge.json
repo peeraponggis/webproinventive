@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-03",
+ "generated": "2026-11-01",
  "note": "เลขข้อ/เลขตาราง/ชื่อหัวข้อเป็นข้อมูลอ้างอิงบรรณานุกรม คำอธิบายเป็นคำสรุปที่เรียบเรียงขึ้นเอง — เนื้อหาฉบับเต็มอยู่ในเล่มมาตรฐานของ วสท.",
  "codes": {
   "EIT-2564": {
@@ -57,7 +57,7 @@
    "type": "faq",
    "code": "EIT-2568",
    "clause": "4.3.8",
-   "table": "ภาคผนวก ฌ",
+   "table": "ภาคผนวก ณ",
    "title": "เคเบิล",
    "kw": "สาย dc pv cable สายไฟ เคเบิล ใช้สายอะไร h1z2z2",
    "a_th": "สายวงจร PV ต้องเป็นเคเบิลตามข้อกำหนดเคเบิลของมาตรฐาน โดยมีรายละเอียดชนิดสายในภาคผนวก ฌ",
@@ -133,9 +133,9 @@
    "id": "FAQ.11",
    "type": "faq",
    "code": "EIT-2564",
-   "clause": "5.4",
-   "table": "ตารางที่ 5-3 · ภาคผนวก ฎ",
-   "title": "พื้นที่หน้าตัดของสายในท่อร้อยสาย",
+   "clause": "5.1.10",
+   "table": "ตารางที่ 5-3",
+   "title": "จำนวนสายไฟฟ้าสูงสุดในท่อร้อยสาย",
    "kw": "ท่อ conduit fill จำนวนสาย ร้อยสาย พื้นที่หน้าตัด",
    "a_th": "จำนวน/พื้นที่หน้าตัดสายในท่อจำกัดตามมาตรฐาน — ค่าตารางการบรรจุอยู่ในเล่ม (ไม่แสดงในระบบนี้)",
    "a_en": "Conduit fill is limited by the code — the fill tables are in the book (not reproduced here)."
@@ -584,6 +584,222 @@
    "a_th": "รางเคเบิล 1 ราง กลุ่มวงจรมากกว่า 9 ให้ใช้ตัวปรับค่าเช่นเดียวกับ 9 กลุ่มวงจร"
   },
   {
+   "id": "PROV.PV_ARRAY_MAX_VOLTAGE_V",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 3.1 (1)",
+   "table": null,
+   "title": "ยืนยันจากสแกนหน้า 23 — ที่พักอาศัย 1000 V",
+   "value": "1000",
+   "unit": "V",
+   "a_th": "ยืนยันจากสแกนหน้า 23 — ที่พักอาศัย 1000 V"
+  },
+  {
+   "id": "PROV.PV_ARRAY_MAX_VOLTAGE_V",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 3.1 (2)",
+   "table": null,
+   "title": "ยืนยันจากสแกนหน้า 23 — อาคารอื่น 1500 V",
+   "value": "1500",
+   "unit": "V",
+   "a_th": "ยืนยันจากสแกนหน้า 23 — อาคารอื่น 1500 V"
+  },
+  {
+   "id": "PROV.GROUND_MOUNT_MAX_VOLTAGE_V",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 3.1 (2)",
+   "table": null,
+   "title": "ครอบคลุม solar farm / floating / ลานจอดรถที่ไม่ติดอาคารพักอาศัย (สแกนหน้า 23)",
+   "value": "1500",
+   "unit": "V",
+   "a_th": "ครอบคลุม solar farm / floating / ลานจอดรถที่ไม่ติดอาคารพักอาศัย (สแกนหน้า 23)"
+  },
+  {
+   "id": "PROV.BATTERY_NOMINAL_MAX_VOLTAGE_V",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.4.2 (1)",
+   "table": null,
+   "title": "เพดานที่ตัวบทรองรับคือมาตรฐานสาย IEC 62930 ต่ำกว่า 1500 V — ค่า 1000/1500 แยกตาม",
+   "value": "1500",
+   "unit": "V",
+   "a_th": "เพดานที่ตัวบทรองรับคือมาตรฐานสาย IEC 62930 ต่ำกว่า 1500 V — ค่า 1000/1500 แยกตามอาคารในร่าง (ข้อ 5.8.1) ไม่มีในเล่มพิมพ์ ห้ามอ้างเลขข้อนั้น"
+  },
+  {
+   "id": "PROV.VOLTAGE_DROP_TOTAL_MAX_PCT",
+   "type": "provision",
+   "code": "EIT-2564",
+   "eitCode": "วสท. 022001-22",
+   "clause": "ข้อ 3.6",
+   "table": null,
+   "title": "แรงดันตกรวมจากเครื่องวัดฯ ถึงจุดใช้ไฟจุดสุดท้าย",
+   "value": "5",
+   "unit": "%",
+   "a_th": "แรงดันตกรวมจากเครื่องวัดฯ ถึงจุดใช้ไฟจุดสุดท้าย"
+  },
+  {
+   "id": "PROV.OUTDOOR_MIN_IP",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 4.1 (4)",
+   "table": null,
+   "title": "ระดับการป้องกันขั้นต่ำของอุปกรณ์ติดตั้งภายนอก (ยืนยันจากเล่ม 31 ส.ค. 2569)",
+   "value": "IP54",
+   "unit": "text",
+   "a_th": "ระดับการป้องกันขั้นต่ำของอุปกรณ์ติดตั้งภายนอก (ยืนยันจากเล่ม 31 ส.ค. 2569)"
+  },
+  {
+   "id": "PROV.BESS_BREAKER_ENCLOSURE_IP",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.4.1 (4) (ข)",
+   "table": null,
+   "title": "MCB/MCCB ของระบบแบตเตอรี่ ในอาคาร",
+   "value": "IP23",
+   "unit": "text",
+   "a_th": "MCB/MCCB ของระบบแบตเตอรี่ ในอาคาร"
+  },
+  {
+   "id": "PROV.BESS_BREAKER_ENCLOSURE_IP",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.4.1 (4) (ข)",
+   "table": null,
+   "title": "MCB/MCCB ของระบบแบตเตอรี่ นอกอาคาร",
+   "value": "IP56",
+   "unit": "text",
+   "a_th": "MCB/MCCB ของระบบแบตเตอรี่ นอกอาคาร"
+  },
+  {
+   "id": "PROV.SCOPE_MIN_ARRAY_W",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "หมายเหตุข้อ 1.1",
+   "table": null,
+   "title": "มาตรฐานไม่ใช้กับ PV array ต่ำกว่า 100 W (ยืนยันจากรูปหน้า 1)",
+   "value": "100",
+   "unit": "W",
+   "a_th": "มาตรฐานไม่ใช้กับ PV array ต่ำกว่า 100 W (ยืนยันจากรูปหน้า 1)"
+  },
+  {
+   "id": "PROV.SCOPE_MIN_VOC_DC_V",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "หมายเหตุข้อ 1.1",
+   "table": null,
+   "title": "มาตรฐานไม่ใช้กับแรงดันเปิดวงจรต่ำกว่า 35 Vdc ที่ STC",
+   "value": "35",
+   "unit": "V",
+   "a_th": "มาตรฐานไม่ใช้กับแรงดันเปิดวงจรต่ำกว่า 35 Vdc ที่ STC"
+  },
+  {
+   "id": "PROV.COMMISSIONING_RAPID_SHUTDOWN_MAX_VOC_V",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ภาคผนวก ค.5",
+   "table": null,
+   "title": "กดหยุดฉุกเฉินแล้ว Voc สตริงต้องลดเหลือไม่เกินค่านี้ — ภาคผนวกเป็นข้อแนะนำ ไม่ใช่",
+   "value": "30",
+   "unit": "V",
+   "a_th": "กดหยุดฉุกเฉินแล้ว Voc สตริงต้องลดเหลือไม่เกินค่านี้ — ภาคผนวกเป็นข้อแนะนำ ไม่ใช่ตัวบทบังคับ"
+  },
+  {
+   "id": "PROV.COMMISSIONING_RAPID_SHUTDOWN_WITHIN_S",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ภาคผนวก ค.5",
+   "table": null,
+   "title": "ภายในกี่วินาทีหลังกดหยุดฉุกเฉิน — ภาคผนวกเป็นข้อแนะนำ",
+   "value": "30",
+   "unit": "s",
+   "a_th": "ภายในกี่วินาทีหลังกดหยุดฉุกเฉิน — ภาคผนวกเป็นข้อแนะนำ"
+  },
+  {
+   "id": "PROV.COMMISSIONING_VOC_TOLERANCE_PCT",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ภาคผนวก ง.2.2/ง.2.3",
+   "table": null,
+   "title": "Voc วัดได้ควรอยู่ในพิสัยนี้ของค่าคาด (วัดแรงดัน ±2% อุณหภูมิ ±1C) — ข้อแนะนำ",
+   "value": "3",
+   "unit": "%",
+   "a_th": "Voc วัดได้ควรอยู่ในพิสัยนี้ของค่าคาด (วัดแรงดัน ±2% อุณหภูมิ ±1C) — ข้อแนะนำ"
+  },
+  {
+   "id": "PROV.COMMISSIONING_ISC_MISMATCH_FACTOR",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ภาคผนวก สมการ ง.1",
+   "table": null,
+   "title": "ตัวประกอบ mismatch ในสมการ Isc,expected — ข้อแนะนำ",
+   "value": "0.95",
+   "unit": "ratio",
+   "a_th": "ตัวประกอบ mismatch ในสมการ Isc,expected — ข้อแนะนำ"
+  },
+  {
+   "id": "PROV.REFERENCE_AMBIENT_AC_ABOVE_GROUND_C",
+   "type": "provision",
+   "code": "EIT-2564",
+   "eitCode": "วสท. 022001-22",
+   "clause": "ตารางที่ 5-43",
+   "table": null,
+   "title": "อุณหภูมิอ้างอิงของตารางฝั่ง AC เหนือดิน",
+   "value": "40",
+   "unit": "C",
+   "a_th": "อุณหภูมิอ้างอิงของตารางฝั่ง AC เหนือดิน"
+  },
+  {
+   "id": "PROV.REFERENCE_AMBIENT_AC_BURIED_C",
+   "type": "provision",
+   "code": "EIT-2564",
+   "eitCode": "วสท. 022001-22",
+   "clause": "ตารางที่ 5-44",
+   "table": null,
+   "title": "อุณหภูมิอ้างอิงของตารางฝั่ง AC ใต้ดิน",
+   "value": "30",
+   "unit": "C",
+   "a_th": "อุณหภูมิอ้างอิงของตารางฝั่ง AC ใต้ดิน"
+  },
+  {
+   "id": "PROV.REFERENCE_AMBIENT_PV_CABLE_C",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ภาคผนวก ณ.2",
+   "table": null,
+   "title": "อุณหภูมิอ้างอิงของตารางสาย PV ในเล่มพิมพ์ = 40 C (ร่างเดิมใช้ภาคผนวก ฌ ที่ 30 C ",
+   "value": "40",
+   "unit": "C",
+   "a_th": "อุณหภูมิอ้างอิงของตารางสาย PV ในเล่มพิมพ์ = 40 C (ร่างเดิมใช้ภาคผนวก ฌ ที่ 30 C ซึ่งไม่ตรงเล่ม) ตรงกับ ambient_ref_c ใน APPX-NO2"
+  },
+  {
+   "id": "PROV.BESS_OUTDOOR_SETBACK_REDUCED_MM",
+   "type": "provision",
+   "code": "EIT-2568",
+   "eitCode": "วสท. 022013-25",
+   "clause": "ข้อ 5.3.2 (2)",
+   "table": null,
+   "title": "ลดระยะเว้นเหลือ 900 มม. ได้เมื่อกั้นด้วยวัสดุกันไฟไม่น้อยกว่า 1 ชม. หรือผ่านทดสอ",
+   "value": "900",
+   "unit": "mm",
+   "a_th": "ลดระยะเว้นเหลือ 900 มม. ได้เมื่อกั้นด้วยวัสดุกันไฟไม่น้อยกว่า 1 ชม. หรือผ่านทดสอบ 5.5.2"
+  },
+  {
    "id": "EIT2568.DC.STRING_VOLTAGE",
    "type": "clause",
    "code": "EIT-2568",
@@ -603,7 +819,7 @@
    "id": "EIT2568.DC.STRING_OCPD",
    "type": "clause",
    "code": "EIT-2568",
-   "clause": "3.5",
+   "clause": "3.4",
    "table": null,
    "title": "การป้องกันกระแสเกิน"
   },
@@ -628,7 +844,7 @@
    "type": "clause",
    "code": "EIT-2568",
    "clause": "4.3.8",
-   "table": "ภาคผนวก ฌ",
+   "table": "ภาคผนวก ณ",
    "title": "เคเบิล"
   },
   {
@@ -648,6 +864,46 @@
    "title": "ขั้วต่อในวงจร PV ต้องเป็นยี่ห้อ/รุ่นที่ประกบกันได้ตามผู้ผลิต"
   },
   {
+   "id": "EIT2564.SERVICE.CAPACITY",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "3 (ตัวนำประธานและบริภัณฑ์ประธาน)",
+   "table": null,
+   "title": "ของที่เพิ่มเข้าระบบต้องอยู่ในพิกัดของเมน/มิเตอร์เดิม"
+  },
+  {
+   "id": "EIT2568.AC.SERVICE_PHASE",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.4",
+   "table": null,
+   "title": "อุปกรณ์ที่ต่อเข้าระบบต้องเข้ากับจำนวนเฟสของไฟที่เข้าอาคาร"
+  },
+  {
+   "id": "VENDOR.COMPAT.OPTIMIZER",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.3 + เอกสารผู้ผลิต",
+   "table": null,
+   "title": "ออปติไมเซอร์ต้องรับพิกัดของแผงและสตริงที่ออกแบบไว้"
+  },
+  {
+   "id": "VENDOR.COMPAT.EV_CHARGER",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "4.4 + เอกสารผู้ผลิต",
+   "table": null,
+   "title": "เครื่องชาร์จ EV ต้องเข้ากับระบบไฟของอาคารและมีเครื่องป้องกันขนาดถูกต้อง"
+  },
+  {
+   "id": "VENDOR.COMPAT.BESS_PORT",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5 + เอกสารผู้ผลิต",
+   "table": null,
+   "title": "แบตเตอรี่และอินเวอร์เตอร์ต้องต่อเข้าด้วยกันได้ตามพิกัดใน datasheet"
+  },
+  {
    "id": "VENDOR.COMPAT.DEVICE_PAIR",
    "type": "clause",
    "code": "EIT-2568",
@@ -662,6 +918,14 @@
    "clause": "3.6",
    "table": "ภาคผนวก ฐ",
    "title": "แรงดันตกสำหรับระบบแรงต่ำ"
+  },
+  {
+   "id": "EIT2564.AC.VOLTAGE_DROP_APPX",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "3.6",
+   "table": "ภาคผนวก ฐ",
+   "title": "แรงดันตกสำหรับระบบแรงต่ำ — ตรวจทวนด้วยตารางแรงดันตก (mV/A/m)"
   },
   {
    "id": "EIT2564.AC_DC.VOLTAGE_DROP_TOTAL",
@@ -731,9 +995,17 @@
    "id": "EIT2564.CONTAINMENT.CONDUIT_FILL",
    "type": "clause",
    "code": "EIT-2564",
-   "clause": "5.4",
-   "table": "ตารางที่ 5-3 · ภาคผนวก ฎ",
-   "title": "พื้นที่หน้าตัดของสายในท่อร้อยสาย"
+   "clause": "5.1.10",
+   "table": "ตารางที่ 5-3",
+   "title": "จำนวนสายไฟฟ้าสูงสุดในท่อร้อยสาย"
+  },
+  {
+   "id": "EIT2564.CONTAINMENT.CONDUIT_COUNT_APPX",
+   "type": "clause",
+   "code": "EIT-2564",
+   "clause": "5.1.10 หมายเหตุ",
+   "table": "ภาคผนวก ฎ",
+   "title": "จำนวนสูงสุดของสายไฟฟ้าขนาดเดียวกันในท่อโลหะ (ข้อแนะนำ)"
   },
   {
    "id": "EIT2564.CONTAINMENT.TRAY_FILL",
@@ -880,6 +1152,14 @@
    "title": "ขอบเขต — ห้ามใช้ระบบกักเก็บพลังงานแบตเตอรี่แทนวงจรช่วยชีวิตในอาคาร"
   },
   {
+   "id": "EIT2568.BESS.SCOPE_PROHIBITION",
+   "type": "clause",
+   "code": "EIT-2568",
+   "clause": "5.1 (5)",
+   "table": null,
+   "title": "ห้ามใช้ระบบกักเก็บพลังงานแบตเตอรี่ทดแทนวงจรช่วยชีวิต"
+  },
+  {
    "id": "EIT2568.BESS.VOLTAGE_LIMIT",
    "type": "clause",
    "code": "EIT-2568",
@@ -947,9 +1227,9 @@
    "id": "EIT2568.BESS.EARTHING",
    "type": "clause",
    "code": "EIT-2568",
-   "clause": "5.3.7",
-   "table": "ภาคผนวก ซ",
-   "title": "ระบบการต่อลงดินของระบบแบตเตอรี่"
+   "clause": "5.4.3",
+   "table": null,
+   "title": "การต่อลงดินสำหรับระบบแบตเตอรี่"
   },
   {
    "id": "EIT2568.DOC.LABELS",
