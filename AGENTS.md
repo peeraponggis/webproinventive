@@ -37,12 +37,14 @@ CHAT:  GET  /v1/chats/conversation-starters                   (Authorization + X
 /okmd off           ปิด
 ```
 
-### Auto-init (ตั้งไว้ใน HTML แล้ว)
+### Auto-init (ไม่ได้ตั้งไว้ใน HTML ของ repo นี้)
 ```html
 <script>window.OKMD_API_KEY = "sk-xxx";</script>
 <script src="okmd-bridge.js" defer></script>
 <script src="config/okmd-config.js" defer></script>
 ```
+⚠️ repo นี้เป็น public — ห้ามใส่คีย์จริงใน HTML (นำออกแล้วใน 1.0.0) ใช้ `/okmd <api_key>` แทน
+หรือใช้วิธีนี้เฉพาะบนโฮสต์ภายในที่ไม่ขึ้น git
 
 ### Programmatic
 ```js

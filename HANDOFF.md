@@ -24,7 +24,7 @@
 
 งานที่ยังไม่ได้ทำ (จาก `AGENTS.md`): markdown rendering สำหรับ citations ของ OKMD · ปุ่ม like/dislike · conversation starters เป็นปุ่มใน console
 
-ข้อควรระวังที่พบ: `index.html` ฯลฯ ฝัง `window.OKMD_API_KEY` ไว้ใน repo สาธารณะ — ถ้าคีย์นั้นไม่ใช่คีย์สำหรับ guest/public ควรย้ายออก
+ข้อควรระวังที่พบ: `index.html` ฯลฯ เคยฝัง `window.OKMD_API_KEY` ไว้ใน repo สาธารณะ — **นำออกจาก HTML ทั้ง 5 หน้าแล้ว (1.0.0, 1 พ.ย. 2569)** แต่คีย์ยังอยู่ในประวัติ git ตั้งแต่ commit `244126b` → ต้องยกเลิก/เปลี่ยนคีย์ที่ ai.okmd.or.th (ตอนตรวจ คีย์นั้นตอบ 401 แล้ว) · ใช้ `/okmd <api_key>` ในคอนโซลแทน
 
 ## 3. ตั้งค่าเครื่องใหม่ (Windows หรือ Linux)
 
