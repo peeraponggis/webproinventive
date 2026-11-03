@@ -53,17 +53,25 @@
             "dd.help.d": "คู่มือ บทเรียน และคำถามที่พบบ่อย",
 
             /* ---- hero ---- */
+            "hero.eyebrow": "⚡ Solar & EV Charging Platform สำหรับวิศวกรไทย",
             "hero.l1": "เราจะ",
             "hero.l2": "ไปด้วยกัน",
-            "hero.sub": "รวบรวมบริบท ค้นหาคำตอบ และให้งานซ้ำ ๆ ทำงานเองอัตโนมัติ — แพลตฟอร์มดิจิทัลโดย PROINVENTIVE ผู้ให้บริการโซลูชันพลังงานสะอาดครบวงจร",
+            "hero.sub": "ซอฟต์แวร์ครบวงจรสำหรับออกแบบ ติดตั้ง และบริหารโครงการพลังงาน — Solar PV, EV Charging และระบบไฟฟ้าตามมาตรฐาน กฟภ.-กฟน.",
             "hero.cta1": "เริ่มใช้ PROINVENTIVE ฟรี",
             "hero.cta2": "Demo",
+            "hero.trust1": "✓ 500+ โครงการ",
+            "hero.trust2": "✓ กฟภ. & กฟน. Compliant",
+            "hero.trust3": "✓ ใช้งานใน 3 ประเทศ",
             "rot.1": "สร้าง",
             "rot.2": "ส่งมอบ",
             "rot.3": "เติบโต",
             "rot.4": "คิดค้น",
 
             /* ---- mockup ---- */
+            "mk.dash.title": "ภาพรวมพลังงานวันนี้",
+            "mk.kpi1": "พลังงานผลิตวันนี้",
+            "mk.kpi2": "โครงการออนไลน์",
+            "mk.kpi3": "สถานีชาร์จ EV",
             "mk.ws": "PROINVENTIVE HQ",
             "mk.search": "ค้นหา",
             "mk.home": "🏠 หน้าแรก",
@@ -436,7 +444,11 @@
             /* ---- hero ---- */
             "hero.l1": "We will",
             "hero.l2": "together.",
-            "hero.sub": "Capture context, find answers, and automate busywork — the digital platform by PROINVENTIVE, your end-to-end clean energy solution provider.",
+            "hero.eyebrow": "⚡ Solar & EV Charging Platform for Thai Engineers",
+            "hero.sub": "All-in-one software for Solar PV design, EV Charging installation, and project management — built to กฟภ.-กฟน. standards.",
+            "hero.trust1": "✓ 500+ Projects",
+            "hero.trust2": "✓ กฟภ. & กฟน. Compliant",
+            "hero.trust3": "✓ Used in 3 Countries",
             "hero.cta1": "Get PROINVENTIVE free",
             "hero.cta2": "Demo",
             "rot.1": "create",
@@ -445,6 +457,10 @@
             "rot.4": "invent",
 
             /* ---- mockup ---- */
+            "mk.dash.title": "Today's Energy Overview",
+            "mk.kpi1": "Energy Generated Today",
+            "mk.kpi2": "Projects Online",
+            "mk.kpi3": "EV Charging Stations",
             "mk.ws": "PROINVENTIVE HQ",
             "mk.search": "Search",
             "mk.home": "🏠 Home",
