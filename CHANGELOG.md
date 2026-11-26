@@ -1,3 +1,6 @@
+## 1.0.1 — 2026-11-27 โดย ลุงพี
+- เปลี่ยนลิงก์จาก peeraponggis.github.io เป็นโดเมนใหม่ aisolar.dev / pi.aisolar.dev
+
 # PROINVENTIVE Website + Pi Console — บันทึกการปรับปรุง
 
 สร้างเมื่อ 30 ส.ค. 2569 (commit แรก) · โดย ลุงพี
