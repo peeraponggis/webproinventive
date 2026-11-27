@@ -1,3 +1,6 @@
+## 1.1.4 — 2026-11-27 โดย ลุงพี
+- ตัด internal-only SaaS หลังบ้านแอดมิน ออกจาก navbar index.html
+
 ## 1.1.3 — 2026-11-27 โดย ลุงพี
 - ตัด SaaS ออกจาก navbar ของ pi_tasks/index.html
 
