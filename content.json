@@ -162,7 +162,7 @@
             },
             "desc": {
               "th": "บอร์ด Kanban สำหรับทีม เปิดใช้ได้ทันที",
-              "en": "Team Kanban board"
+              "en": "A team Kanban board, ready to use"
             },
             "href": "pi_tasks/index.html",
             "visible": true
@@ -191,7 +191,7 @@
             },
             "desc": {
               "th": "ระบบถอดแบบประมาณราคา",
-              "en": "Bill of Quantities estimator"
+              "en": "Bill of quantities & estimating"
             },
             "href": "https://pi-system.pages.dev/pi_boq_app/web/",
             "external": true,
@@ -206,7 +206,7 @@
             },
             "desc": {
               "th": "ระบบออกแบบ PVs",
-              "en": "PV system design"
+              "en": "PV design system"
             },
             "href": "https://aisolar.dev/index.html",
             "external": true,
@@ -237,10 +237,24 @@
             },
             "desc": {
               "th": "ชมคลิปการทำงานของทุกระบบ",
-              "en": "Watch all systems in action"
+              "en": "Watch every system in action"
             },
             "href": "demo.html",
             "visible": true
+          },
+          {
+            "id": "int-cms",
+            "label": {
+              "th": "Admin CMS",
+              "en": "Admin CMS"
+            },
+            "desc": {
+              "th": "จัดการเนื้อหาหน้าเว็บ",
+              "en": "Manage website content"
+            },
+            "href": "admin.html",
+            "visible": true,
+            "icon": "🛠️"
           }
         ]
       }
@@ -374,13 +388,14 @@
         "visible": true
       },
       {
-        "id": "ft-new",
+        "id": "ft-cms",
         "label": {
-          "th": "มีอะไรใหม่",
-          "en": "What's new"
+          "th": "Admin CMS",
+          "en": "Admin CMS"
         },
-        "href": "#",
-        "visible": true
+        "href": "admin.html",
+        "visible": true,
+        "internal": true
       },
       {
         "id": "ft-ai",
@@ -404,7 +419,7 @@
         "id": "ft-dl",
         "label": {
           "th": "ดาวน์โหลด",
-          "en": "Downloads"
+          "en": "Download"
         },
         "href": "#",
         "visible": true
@@ -686,7 +701,7 @@
     "email": "info@proinventive.co.th",
     "address": {
       "th": "59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150",
-      "en": "59/6 Moo 7, Sai Noi, Sai Noi, Nonthaburi 11150, Thailand"
+      "en": "59/6 Moo 7, Sai Noi, Nonthaburi 11150, Thailand"
     },
     "social": {
       "facebook": "https://www.facebook.com/profile.php?id=61572188957133",
@@ -702,7 +717,7 @@
           "th": "Innovative Clean Energy Solution Provider",
           "en": "Innovative Clean Energy Solution Provider"
         },
-        "title": "PROINVENTIVE   ECOSYSTEMS"
+        "title": "PROINVENTIVE ECOSYSTEMS"
       },
       "donut": [
         {
@@ -792,11 +807,11 @@
         },
         "head": {
           "th": "เกี่ยวกับเรา",
-          "en": "About Us"
+          "en": "About us"
         },
         "lead": {
           "th": "เราสร้างอนาคตพลังงานสะอาด ด้วยเทคโนโลยีล้ำหน้าและความยั่งยืนที่จับต้องได้ — โซลูชันครบวงจรตั้งแต่การออกแบบ ติดตั้ง ตรวจสอบระบบ ไปจนถึงการบำรุงรักษาเชิงป้องกัน",
-          "en": "Building a clean energy future with cutting-edge technology and tangible sustainability — comprehensive solutions from design, installation, system inspection to preventive maintenance"
+          "en": "We build the future of clean energy with cutting-edge technology and tangible sustainability — end-to-end solutions from design and installation to inspection and preventive maintenance."
         },
         "cards": [
           {
@@ -807,7 +822,7 @@
             },
             "desc": {
               "th": "ผสานเทคโนโลยี IoT, AI และ Big Data เข้ากับระบบพลังงาน เพื่อการบริหารจัดการที่ฉลาดขึ้น และวิเคราะห์ประสิทธิภาพแบบเรียลไทม์",
-              "en": "Integrate IoT, AI, and Big Data with energy systems for smarter management and real-time performance analytics"
+              "en": "IoT, AI and Big Data woven into the energy system for smarter management and real-time performance analysis."
             }
           },
           {
@@ -818,18 +833,18 @@
             },
             "desc": {
               "th": "เชี่ยวชาญการออกแบบระบบเชิงพาณิชย์และอุตสาหกรรม ระบบจัดเก็บพลังงาน และการลดค่าความต้องการไฟฟ้าสูงสุด เพื่อพลังงานที่ต่อเนื่องและมีเสถียรภาพ",
-              "en": "Expert in commercial/industrial system design, energy storage, and peak demand reduction for continuous, stable energy"
+              "en": "Specialists in Commercial & Industrial system design, Energy Storage Systems, and peak shaving to reduce demand charges — for stable, continuous power."
             }
           },
           {
             "id": "a3",
             "title": {
               "th": "ESG และการพัฒนาบุคลากร",
-              "en": "ESG & Human Development"
+              "en": "ESG & people development"
             },
             "desc": {
               "th": "ดำเนินธุรกิจตามหลัก ESG อย่างรอบด้าน พร้อมฝึกอบรมและพัฒนาศักยภาพบุคลากรทุกระดับ สู่ยุคพลังงานสะอาดที่เปลี่ยนแปลงอย่างรวดเร็ว",
-              "en": "Comprehensive ESG-driven operations with training and development at all levels for the rapidly evolving clean energy era"
+              "en": "We operate on ESG principles and invest in training and capacity building at every level, preparing people for a fast-moving clean energy era."
             }
           }
         ]
@@ -837,15 +852,15 @@
       "cta": {
         "tag": {
           "th": "ติดต่อเรา",
-          "en": "Contact Us"
+          "en": "Contact us"
         },
         "head": {
           "th": "พร้อมให้บริการ",
-          "en": "Ready to Serve"
+          "en": "Ready to serve."
         },
         "sub": {
           "th": "ทีมงานพร้อมให้คำปรึกษาฟรี ไม่มีข้อผูกมัด",
-          "en": "Free consultation, no obligations"
+          "en": "Our team is ready to advise you — free, no obligation."
         }
       }
     },
@@ -853,11 +868,11 @@
       "hero": {
         "head": {
           "th": "ทุกสิ่งที่คุณต้องการเพื่อทำงานให้สำเร็จ..อยู่ที่นี่",
-          "en": "Everything you need to get the job done..right here"
+          "en": "Everything you need to get work done… right here"
         },
         "sub": {
           "th": "เครื่องมือที่ยืดหยุ่น ปรับแต่งได้ตามใจคุณ",
-          "en": "Flexible tools, customizable to your needs"
+          "en": "A flexible toolkit you can shape around your team"
         }
       },
       "features": [
@@ -865,11 +880,11 @@
           "id": "pp-c1",
           "title": {
             "th": "การออกแบบติดตั้งระบบโซล่าร์เซลล์",
-            "en": "Solar Cell System Design & Installation"
+            "en": "Solar system design & installation"
           },
           "desc": {
             "th": "ออกแบบระบบ เลือกโซลูชั่น นำเสนอระบบ จบด้วยราคาที่ยุติธรรม รับประกันระบบอย่างมืออาชีพ",
-            "en": "Design systems, select solutions, present with fair pricing, professional system warranty"
+            "en": "System design, solution selection and professional proposals — finished with fair pricing and a professional system warranty."
           }
         },
         {
@@ -880,7 +895,7 @@
           },
           "desc": {
             "th": "CRM/BOQ/Project Management/i-Tasks ครบทุกกระบวนงานในองค์กรของคุณ",
-            "en": "CRM/BOQ/Project Management/i-Tasks — all your organization's workflows"
+            "en": "CRM / BOQ / Project Management / i-Tasks — every workflow in your organization."
           }
         },
         {
@@ -891,18 +906,18 @@
           },
           "desc": {
             "th": "รวบรวมองค์ความรู้ของบริษัทไว้ในที่เดียว ค้นหาง่าย และอัปเดตได้ตลอดเวลา",
-            "en": "Centralize company knowledge, easy search, always up to date"
+            "en": "Keep company knowledge in one searchable, always-current place."
           }
         }
       ],
       "portfolio": {
         "head": {
           "th": "ผลงานออกแบบและติดตั้ง",
-          "en": "Design & Installation Portfolio"
+          "en": "Design & installation portfolio"
         },
         "sub": {
           "th": "โครงการจริงของเรา — ติดตั้งแล้ว 8 โครงการ และงานออกแบบระบบอีก 12 โครงการทั่วประเทศ",
-          "en": "Our real projects — 8 installed and 12 design projects nationwide"
+          "en": "Our real track record — 8 completed installations and 12 system design projects nationwide."
         }
       }
     },
@@ -910,22 +925,22 @@
       "hero": {
         "head": {
           "th": "ชมการทำงานจริงของระบบ",
-          "en": "Watch Real System Operations"
+          "en": "See the systems in action"
         },
         "sub": {
           "th": "คลิปสั้น ๆ จากหน้าจอจริงของแต่ละระบบ — กดเล่นได้เลย",
-          "en": "Short clips from each system's real screen — press play"
+          "en": "Short clips captured from the real screens — press play"
         }
       },
       "uProjects": {
         "eyebrow": "U-Projects",
         "head": {
           "th": "ครบทุกกระบวนงานในองค์กรของคุณ",
-          "en": "All Workflows for Your Organization"
+          "en": "Every workflow in your organization"
         },
         "sub": {
           "th": "CRM / BOQ / Project Management / i-Tasks — ชุดเครื่องมือภายในที่ทีม PROINVENTIVE ใช้ทำงานจริงทุกวัน",
-          "en": "CRM / BOQ / Project Management / i-Tasks — internal tools used daily by team PROINVENTIVE"
+          "en": "CRM / BOQ / Project Management / i-Tasks — the internal toolkit the PROINVENTIVE team runs on every day"
         },
         "items": [
           {
@@ -933,7 +948,7 @@
             "title": "📇 Pi Tasks",
             "desc": {
               "th": "บอร์ด Kanban ของทีม — ลากการ์ดข้ามสถานะ ติดตามเจ้าของงานพร้อม timestamp และดูสรุปงานวันนี้เป็น dashboard",
-              "en": "Team Kanban board — drag cards, track owners, view daily summary"
+              "en": "The team Kanban board — drag cards between statuses, track owners with timestamps, and read the day's summary as a dashboard"
             },
             "video": "media/pi_tasks.mp4",
             "poster": "media/pi_tasks.jpg",
@@ -944,7 +959,7 @@
             "title": "🧾 Pi BoQ",
             "desc": {
               "th": "ออกใบเสนอราคาและ BOQ — กำหนดงวดชำระเงิน เงื่อนไขเอกสาร แล้วพิมพ์เป็น PDF ได้ในไม่กี่คลิก",
-              "en": "Issue quotations and BOQ — set payment terms, print PDF in clicks"
+              "en": "Quotations and BOQ — set payment terms and document options, then print a PDF in a few clicks"
             },
             "video": "media/boq.mp4",
             "poster": "media/boq.jpg",
@@ -955,7 +970,7 @@
             "title": "📇 CRM + BoQ (Pi-System)",
             "desc": {
               "th": "ระบบบริหารลูกค้าสัมพันธ์เชื่อมกับฐานข้อมูลวัสดุกว่า 500 รายการ — จาก Lead ถึงใบเสนอราคาในระบบเดียว พร้อม Pipeline และ Siteflow",
-              "en": "CRM linked to 500+ material database — from Lead to quotation in one system"
+              "en": "CRM wired to a 500+ item materials database — from lead to quotation in one system, with Pipeline and Siteflow"
             },
             "video": "media/crm_boq.mp4",
             "poster": "media/crm_boq.jpg",
@@ -964,22 +979,67 @@
         ]
       },
       "ascDemo": {
-        "eyebrow": "ASC",
+        "eyebrow": "ASC Studio",
         "head": {
-          "th": "ระบบออกแบบ PVs",
-          "en": "PV System Design"
+          "th": "ระบบออกแบบโซลาร์เซลล์ครบวงจรในที่เดียว",
+          "en": "Complete solar cell design system in one place"
         },
         "items": [
           {
-            "id": "demo-asc",
-            "title": "🛠️ ASC — Advanced Solar Calculator",
-            "desc": {
-              "th": "ครบ 6 ขั้นตอนออกแบบระบบโซล่าร์: วิเคราะห์ค่าไฟ Load Profiling → System Design → โมเดล 3 มิติ → ตำแหน่งอุปกรณ์ → ข้อเสนอและรายงาน → สรุประบบ",
-              "en": "Complete 6-step solar design: Bill analysis → System Design → 3D Model → Equipment layout → Proposal → Summary"
+            "id": "demo-asc-home",
+            "video": "media/asc_home.mp4",
+            "poster": "media/asc_home.jpg",
+            "title": {
+              "th": "🏠 ตัวอย่างงานบ้าน",
+              "en": "🏠 Residential example"
             },
-            "video": "media/asc.mp4",
-            "poster": "media/asc.jpg",
-            "wide": true
+            "desc": {
+              "th": "ออกแบบระบบโซลาร์เซลล์สำหรับบ้านพักอาศัย — วางแผงบนหลังคาปั้นหยา จั่ว หลายอาคารในงานเดียว พร้อมแบตเตอรี่ Hybrid",
+              "en": "Solar design for homes — panels on hip and gable roofs, multiple buildings in one job, with hybrid batteries"
+            },
+            "wide": false
+          },
+          {
+            "id": "demo-asc-com",
+            "video": "media/asc_commercial.mp4",
+            "poster": "media/asc_commercial.jpg",
+            "title": {
+              "th": "🏢 ตัวอย่างงานพาณิชย์",
+              "en": "🏢 Commercial example"
+            },
+            "desc": {
+              "th": "ออกแบบระบบโซลาร์เซลล์สำหรับอาคารพาณิชย์หลายชั้น — วางแผงบนดาดฟ้า เว้นระยะเครื่องจักร เห็นแนวสายลงตู้ไฟใน 3D",
+              "en": "Solar design for multi-storey commercial buildings — rooftop layout with machinery clearance and 3D cable routes to the switchboard"
+            },
+            "wide": false
+          },
+          {
+            "id": "demo-asc-lv",
+            "video": "media/asc_low_voltage.mp4",
+            "poster": "media/asc_low_voltage.jpg",
+            "title": {
+              "th": "⚡ การขนานแรงต่ำ",
+              "en": "⚡ Low-voltage interconnection"
+            },
+            "desc": {
+              "th": "ขั้นตอนออกแบบและจัดทำเอกสารขนานระบบโซลาร์เซลล์กับระบบไฟฟ้าแรงต่ำ — SLD อัตโนมัติ แบบตู้ SMDB พร้อมรายงานวิศวกรรม",
+              "en": "Designing and documenting a low-voltage grid interconnection — automatic SLD, SMDB drawings and engineering report"
+            },
+            "wide": false
+          },
+          {
+            "id": "demo-asc-hv",
+            "video": "media/asc_high_voltage.mp4",
+            "poster": "media/asc_high_voltage.jpg",
+            "title": {
+              "th": "🔌 การขนานแรงสูง",
+              "en": "🔌 High-voltage interconnection"
+            },
+            "desc": {
+              "th": "ขั้นตอนออกแบบและจัดทำเอกสารขนานระบบโซลาร์เซลล์กับระบบไฟฟ้าแรงสูง — รายงานผลผลิตไฟฟ้า P50/P90 พร้อมผังแผงและแบบวิศวกรรม",
+              "en": "Designing and documenting a high-voltage grid interconnection — P50/P90 energy yield report, panel layout and engineering drawings"
+            },
+            "wide": false
           }
         ]
       },
@@ -987,7 +1047,7 @@
         "eyebrow": "SaaS",
         "head": {
           "th": "แพลตฟอร์มสำหรับลูกค้า",
-          "en": "Customer Platform"
+          "en": "The customer-facing platform"
         },
         "tryLink": "https://web-production-359eb.up.railway.app",
         "tryLabel": {
@@ -999,11 +1059,11 @@
             "id": "demo-saas",
             "title": {
               "th": "☀️ SaaS — ประเมินระบบโซล่าร์ด้วยตัวเอง",
-              "en": "☀️ SaaS — Self-assess your solar system"
+              "en": "☀️ SaaS — size your own solar system"
             },
             "desc": {
               "th": "ลูกค้ากรอกข้อมูลการใช้ไฟ แล้วได้ผลวิเคราะห์ทันที — กำลังผลิตรายชั่วโมง การทำงานของแบตเตอรี่ ผลผลิตรายเดือน Cash Flow, NPV, LCOE พร้อมรายงานฉบับเต็มพิมพ์เป็น PDF ได้",
-              "en": "Customers enter electricity data and get instant analysis — hourly production, battery, monthly output, Cash Flow, NPV, LCOE with full PDF report"
+              "en": "Customers enter their electricity usage and get instant analysis — hourly output, battery behaviour, monthly yields, cash flow, NPV and LCOE, with a full printable PDF report"
             },
             "video": "media/saas_customer.mp4",
             "poster": "media/saas_customer.jpg",
@@ -1048,7 +1108,7 @@
             "th": "ดูแพ็คเกจ →",
             "en": "View packages →"
           },
-          "image": "img/promo/asc-architect/01.jpg"
+          "image": "img/promo/asc-studio/01.jpg"
         },
         {
           "id": "ascs-app",

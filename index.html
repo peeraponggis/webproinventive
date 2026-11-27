@@ -63,8 +63,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Thai:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261127005">
-    <link rel="stylesheet" href="pi-console.css?v=20261127005">
+    <link rel="stylesheet" href="style.css?v=20261127006">
+    <link rel="stylesheet" href="pi-console.css?v=20261127006">
 
     <!-- Warm Donut Theme -->
     <style>
@@ -236,14 +236,15 @@
     }
     </style>
 
-    <script src="i18n.js?v=20261127005" defer></script>
-    <script src="auth.js?v=20261127005" defer></script>
-    <script src="app.js?v=20261127005" defer></script>
-    <script src="thmap.js?v=20261127005" defer></script>
-    <script src="dashboard.js?v=20261127005" defer></script>
-    <script src="pi-console.js?v=20261127005" defer></script>
-    <script src="pi-brain.js?v=20261127005" defer></script>
-    <script src="okmd-bridge.js?v=20261127005" defer></script>
+    <script src="i18n.js?v=20261127006" defer></script>
+    <script src="content.js?v=20261127006" defer></script>
+    <script src="auth.js?v=20261127006" defer></script>
+    <script src="app.js?v=20261127006" defer></script>
+    <script src="thmap.js?v=20261127006" defer></script>
+    <script src="dashboard.js?v=20261127006" defer></script>
+    <script src="pi-console.js?v=20261127006" defer></script>
+    <script src="pi-brain.js?v=20261127006" defer></script>
+    <script src="okmd-bridge.js?v=20261127006" defer></script>
     <script src="config/okmd-config.js" defer></script>
 </head>
 <body data-i18n-title="meta.title" data-i18n-desc="meta.desc">
@@ -264,39 +265,46 @@
                 <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="dropdown">
-                <a class="dd-item" href="pi_tasks/index.html">
+                <a class="dd-item" data-cms-show="nav.menus#internal.items#int-tasks.visible" data-cms-attr="href:nav.menus#internal.items#int-tasks.href" href="pi_tasks/index.html">
                     <span class="dd-ico">🗒️</span>
                     <span>
-                        <span class="dd-title" data-i18n="dd.tasks.t">Pi Tasks</span>
-                        <span class="dd-desc" data-i18n="dd.tasks.d">บอร์ด Kanban สำหรับทีม เปิดใช้ได้ทันที</span>
+                        <span class="dd-title" data-cms="nav.menus#internal.items#int-tasks.label" data-i18n="dd.tasks.t">Pi Tasks</span>
+                        <span class="dd-desc" data-cms="nav.menus#internal.items#int-tasks.desc" data-i18n="dd.tasks.d">บอร์ด Kanban สำหรับทีม เปิดใช้ได้ทันที</span>
                     </span>
                 </a>
-                <a class="dd-item" href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener">
+                <a class="dd-item" data-cms-show="nav.menus#internal.items#int-crm.visible" data-cms-attr="href:nav.menus#internal.items#int-crm.href" href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener">
                     <span class="dd-ico">📇</span>
                     <span>
-                        <span class="dd-title">CRM</span>
-                        <span class="dd-desc" data-i18n="in.crm.d">ระบบบริหารลูกค้าสัมพันธ์</span>
+                        <span class="dd-title" data-cms="nav.menus#internal.items#int-crm.label">CRM</span>
+                        <span class="dd-desc" data-cms="nav.menus#internal.items#int-crm.desc" data-i18n="in.crm.d">ระบบบริหารลูกค้าสัมพันธ์</span>
                     </span>
                 </a>
-                <a class="dd-item" href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener">
+                <a class="dd-item" data-cms-show="nav.menus#internal.items#int-boq.visible" data-cms-attr="href:nav.menus#internal.items#int-boq.href" href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener">
                     <span class="dd-ico">🧾</span>
                     <span>
-                        <span class="dd-title">BoQ</span>
-                        <span class="dd-desc" data-i18n="in.boq.d">ระบบถอดแบบประมาณราคา</span>
+                        <span class="dd-title" data-cms="nav.menus#internal.items#int-boq.label">BoQ</span>
+                        <span class="dd-desc" data-cms="nav.menus#internal.items#int-boq.desc" data-i18n="in.boq.d">ระบบถอดแบบประมาณราคา</span>
                     </span>
                 </a>
-                <a class="dd-item" href="https://aisolar.dev/index.html" target="_blank" rel="noopener">
+                <a class="dd-item" data-cms-show="nav.menus#internal.items#int-asc.visible" data-cms-attr="href:nav.menus#internal.items#int-asc.href" href="https://aisolar.dev/index.html" target="_blank" rel="noopener">
                     <span class="dd-ico">⚡</span>
                     <span>
-                        <span class="dd-title">ASC</span>
-                        <span class="dd-desc" data-i18n="in.asc.d">ระบบออกแบบ PVs</span>
+                        <span class="dd-title" data-cms="nav.menus#internal.items#int-asc.label">ASC</span>
+                        <span class="dd-desc" data-cms="nav.menus#internal.items#int-asc.desc" data-i18n="in.asc.d">ระบบออกแบบ PVs</span>
                     </span>
                 </a>
-                <a class="dd-item" href="demo.html">
+                <a class="dd-item" data-cms-show="nav.menus#internal.items#int-demo.visible" data-cms-attr="href:nav.menus#internal.items#int-demo.href" href="demo.html">
                     <span class="dd-ico">🎬</span>
                     <span>
-                        <span class="dd-title">Demo</span>
-                        <span class="dd-desc" data-i18n="in.demo.d">ชมคลิปการทำงานของทุกระบบ</span>
+                        <span class="dd-title" data-cms="nav.menus#internal.items#int-demo.label">Demo</span>
+                        <span class="dd-desc" data-cms="nav.menus#internal.items#int-demo.desc" data-i18n="in.demo.d">ชมคลิปการทำงานของทุกระบบ</span>
+                    </span>
+                </a>
+                <a class="dd-item" data-cms-show="nav.menus#internal.items#int-cms.visible" data-cms-attr="href:nav.menus#internal.items#int-cms.href" href="admin.html">
+                    <span class="dd-ico">🛠️</span>
+                    <span>
+                        <span class="dd-title" data-cms="nav.menus#internal.items#int-cms.label">Admin CMS</span>
+                        <span class="dd-desc" data-cms="nav.menus#internal.items#int-cms.desc" data-i18n="in.cms.d">จัดการเนื้อหาหน้าเว็บ</span>
                     </span>
                 </a>
             </div>
@@ -317,11 +325,12 @@
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
-    <a class="internal-only" href="pi_tasks/index.html" data-i18n="dd.tasks.t">Pi Tasks</a>
-    <a class="internal-only" href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener">CRM</a>
-    <a class="internal-only" href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener">BoQ</a>
-    <a class="internal-only" href="https://aisolar.dev/index.html" target="_blank" rel="noopener">ASC</a>
-    <a class="internal-only" href="demo.html">🎬 Demo</a>
+    <a class="internal-only" data-cms-show="nav.menus#internal.items#int-tasks.visible" data-cms-attr="href:nav.menus#internal.items#int-tasks.href" href="pi_tasks/index.html" data-i18n="dd.tasks.t">Pi Tasks</a>
+    <a class="internal-only" data-cms-show="nav.menus#internal.items#int-crm.visible" data-cms-attr="href:nav.menus#internal.items#int-crm.href" href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener">CRM</a>
+    <a class="internal-only" data-cms-show="nav.menus#internal.items#int-boq.visible" data-cms-attr="href:nav.menus#internal.items#int-boq.href" href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener">BoQ</a>
+    <a class="internal-only" data-cms-show="nav.menus#internal.items#int-asc.visible" data-cms-attr="href:nav.menus#internal.items#int-asc.href" href="https://aisolar.dev/index.html" target="_blank" rel="noopener">ASC</a>
+    <a class="internal-only" data-cms-show="nav.menus#internal.items#int-demo.visible" data-cms-attr="href:nav.menus#internal.items#int-demo.href" href="demo.html">🎬 Demo</a>
+    <a class="internal-only" data-cms-show="nav.menus#internal.items#int-cms.visible" data-cms-attr="href:nav.menus#internal.items#int-cms.href" href="admin.html">🛠️ Admin CMS</a>
     <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
         <button type="button" data-lang="th">TH</button>
         <button type="button" data-lang="en">EN</button>
@@ -340,8 +349,8 @@
             </div>
         </div>
         <div>
-            <div class="badge" data-i18n="about.tag">Innovative Clean Energy Solution Provider</div>
-            <h1>PROINVENTIVE ECOSYSTEMS</h1>
+            <div data-cms="pages.index.hero.badge" class="badge" data-i18n="about.tag">Innovative Clean Energy Solution Provider</div>
+            <h1 data-cms="pages.index.hero.title">PROINVENTIVE ECOSYSTEMS</h1>
         </div>
     </section>
 
@@ -355,35 +364,35 @@
                     <path id="arcPurple" d="M114,249 A105,105 0 0,0 230,218"/>
                     <path id="arcGreen" d="M47,132 A105,105 0 0,0 83,230"/>
                 </defs>
-                <text><textPath href="#arcBlue" startOffset="50%" text-anchor="middle">Solar PV Design</textPath></text>
-                <text><textPath href="#arcAmber" startOffset="50%" text-anchor="middle">Project Dashboard</textPath></text>
-                <text><textPath href="#arcPurple" startOffset="50%" text-anchor="middle">Architectural Design</textPath></text>
-                <text><textPath href="#arcGreen" startOffset="50%" text-anchor="middle">Energy Platform</textPath></text>
+                <text><textPath data-cms="pages.index.donut#d-blue.label" href="#arcBlue" startOffset="50%" text-anchor="middle">Solar PV Design</textPath></text>
+                <text><textPath data-cms="pages.index.donut#d-amber.label" href="#arcAmber" startOffset="50%" text-anchor="middle">Project Dashboard</textPath></text>
+                <text><textPath data-cms="pages.index.donut#d-purple.label" href="#arcPurple" startOffset="50%" text-anchor="middle">Architectural Design</textPath></text>
+                <text><textPath data-cms="pages.index.donut#d-green.label" href="#arcGreen" startOffset="50%" text-anchor="middle">Energy Platform</textPath></text>
             </svg>
             <div class="wd-donut-hole">
                 <img src="img/pi-gold-logo-md.png" alt="PROINVENTIVE">
             </div>
         </div>
         <div class="wd-donut-legend">
-            <a class="wd-legend-item wd-li-blue" href="ascs.html">
+            <a data-cms-attr="href:pages.index.donut#d-blue.href" class="wd-legend-item wd-li-blue" href="ascs.html">
                 <div class="wd-legend-dot"></div>
-                <h4>Solar PV Design</h4>
-                <span class="wd-legend-sub">ASC Studio</span>
+                <h4 data-cms="pages.index.donut#d-blue.label">Solar PV Design</h4>
+                <span data-cms="pages.index.donut#d-blue.sub" class="wd-legend-sub">ASC Studio</span>
             </a>
             <a class="wd-legend-item wd-li-purple" href="javascript:void(0)" onclick="openGallery('asc-architect','ASC Architect')">
                 <div class="wd-legend-dot"></div>
-                <h4>Architectural Design</h4>
-                <span class="wd-legend-sub">ASC Architect</span>
+                <h4 data-cms="pages.index.donut#d-purple.label">Architectural Design</h4>
+                <span data-cms="pages.index.donut#d-purple.sub" class="wd-legend-sub">ASC Architect</span>
             </a>
-            <a class="wd-legend-item wd-li-green" href="platform.html">
+            <a data-cms-attr="href:pages.index.donut#d-green.href" class="wd-legend-item wd-li-green" href="platform.html">
                 <div class="wd-legend-dot"></div>
-                <h4>Energy Platform</h4>
-                <span class="wd-legend-sub">PVCAL · Site Survey</span>
+                <h4 data-cms="pages.index.donut#d-green.label">Energy Platform</h4>
+                <span data-cms="pages.index.donut#d-green.sub" class="wd-legend-sub">PVCAL · Site Survey</span>
             </a>
-            <a class="wd-legend-item wd-li-amber" href="demo.html">
+            <a data-cms-attr="href:pages.index.donut#d-amber.href" class="wd-legend-item wd-li-amber" href="demo.html">
                 <div class="wd-legend-dot"></div>
-                <h4>Project Dashboard</h4>
-                <span class="wd-legend-sub">CRM-Pi · BoQ · Pi Tasks</span>
+                <h4 data-cms="pages.index.donut#d-amber.label">Project Dashboard</h4>
+                <span data-cms="pages.index.donut#d-amber.sub" class="wd-legend-sub">CRM-Pi · BoQ · Pi Tasks</span>
             </a>
         </div>
     </div>
@@ -522,34 +531,34 @@
             <div class="wd-prod-card" onclick="openGallery('asc-studio','ASC Studio')">
                 <div class="prod-head">
                     <img class="prod-ico" src="img/promo/asc-studio/ascs.ico" alt="ASC Studio">
-                    <h4>ASC Studio</h4>
+                    <h4 data-cms="pages.index.softwareCards#sw-asc.title">ASC Studio</h4>
                 </div>
-                <p>ระบบออกแบบ Solar PV ครบวงจร</p>
+                <p data-cms="pages.index.softwareCards#sw-asc.desc">ระบบออกแบบ Solar PV ครบวงจร</p>
                 <div class="prod-hint">คลิกดูภาพประชาสัมพันธ์ →</div>
             </div>
             <div class="wd-prod-card" onclick="openGallery('asc-architect','ASC Architect')">
                 <div class="prod-head">
                     <img class="prod-ico" src="img/promo/asc-architect/asc_architect.ico" alt="ASC Architect">
-                    <h4>ASC Architect</h4>
+                    <h4 data-cms="pages.index.softwareCards#sw-arch.title">ASC Architect</h4>
                 </div>
-                <p>ระบบออกแบบสถาปัตยกรรมครบวงจร</p>
+                <p data-cms="pages.index.softwareCards#sw-arch.desc">ระบบออกแบบสถาปัตยกรรมครบวงจร</p>
                 <div class="prod-hint">คลิกดูภาพประชาสัมพันธ์ →</div>
             </div>
             <div class="wd-prod-card" onclick="openGallery('project-plan','Project Plan')">
                 <div class="prod-head">
                     <img class="prod-ico" src="img/promo/asc-studio/ascs.ico" alt="Project Plan">
-                    <h4>Project Plan</h4>
+                    <h4 data-cms="pages.index.softwareCards#sw-plan.title">Project Plan</h4>
                 </div>
-                <p>Plan S-curve Weekly Daily report</p>
+                <p data-cms="pages.index.softwareCards#sw-plan.desc">Plan S-curve Weekly Daily report</p>
                 <div class="prod-hint">คลิกดูภาพประชาสัมพันธ์ →</div>
             </div>
             <a class="wd-prod-card" href="demo.html" style="text-decoration:none;color:inherit">
                 <div class="prod-head">
                     <span style="font-size:28px;width:32px;text-align:center">🎬</span>
-                    <h4>Demo</h4>
+                    <h4 data-cms="pages.index.softwareCards#sw-demo.title">Demo</h4>
                 </div>
-                <p>ชมคลิปการทำงานของทุกระบบ</p>
-                <p style="font-size:11px;color:#78716c;margin-top:4px">CRM · BOQ · Project Management · i-Tasks</p>
+                <p data-cms="pages.index.softwareCards#sw-demo.desc">ชมคลิปการทำงานของทุกระบบ</p>
+                <p data-cms="pages.index.softwareCards#sw-demo.sub" style="font-size:11px;color:#78716c;margin-top:4px">CRM · BOQ · Project Management · i-Tasks</p>
                 <div class="prod-hint">ดูคลิปสาธิต →</div>
             </a>
         </div>
@@ -573,21 +582,21 @@
     <!-- ================= ABOUT (Warm) ================= -->
     <section class="wd-about" id="about">
         <div class="container">
-            <p class="eyebrow" data-i18n="about.tag">Innovative Clean Energy Solution Provider</p>
-            <h2 data-i18n="about.head">เกี่ยวกับเรา</h2>
-            <p class="lead" data-i18n="about.lead">เราสร้างอนาคตพลังงานสะอาด ด้วยเทคโนโลยีล้ำหน้าและความยั่งยืนที่จับต้องได้ — โซลูชันครบวงจรตั้งแต่การออกแบบ ติดตั้ง ตรวจสอบระบบ ไปจนถึงการบำรุงรักษาเชิงป้องกัน</p>
+            <p data-cms="pages.index.about.tag" class="eyebrow" data-i18n="about.tag">Innovative Clean Energy Solution Provider</p>
+            <h2 data-cms="pages.index.about.head" data-i18n="about.head">เกี่ยวกับเรา</h2>
+            <p data-cms="pages.index.about.lead" class="lead" data-i18n="about.lead">เราสร้างอนาคตพลังงานสะอาด ด้วยเทคโนโลยีล้ำหน้าและความยั่งยืนที่จับต้องได้ — โซลูชันครบวงจรตั้งแต่การออกแบบ ติดตั้ง ตรวจสอบระบบ ไปจนถึงการบำรุงรักษาเชิงป้องกัน</p>
             <div class="wd-about-cards">
                 <div class="wd-about-card">
-                    <h3 data-i18n="a1.t">Smart Energy Management</h3>
-                    <p data-i18n="a1.d">ผสานเทคโนโลยี IoT, AI และ Big Data เข้ากับระบบพลังงาน เพื่อการบริหารจัดการที่ฉลาดขึ้น และวิเคราะห์ประสิทธิภาพแบบเรียลไทม์</p>
+                    <h3 data-cms="pages.index.about.cards#a1.title" data-i18n="a1.t">Smart Energy Management</h3>
+                    <p data-cms="pages.index.about.cards#a1.desc" data-i18n="a1.d">ผสานเทคโนโลยี IoT, AI และ Big Data เข้ากับระบบพลังงาน เพื่อการบริหารจัดการที่ฉลาดขึ้น และวิเคราะห์ประสิทธิภาพแบบเรียลไทม์</p>
                 </div>
                 <div class="wd-about-card">
-                    <h3 data-i18n="a2.t">C&amp;I · ESS · Peak Shaving</h3>
-                    <p data-i18n="a2.d">เชี่ยวชาญการออกแบบระบบเชิงพาณิชย์และอุตสาหกรรม ระบบจัดเก็บพลังงาน และการลดค่าความต้องการไฟฟ้าสูงสุด เพื่อพลังงานที่ต่อเนื่องและมีเสถียรภาพ</p>
+                    <h3 data-cms="pages.index.about.cards#a2.title" data-i18n="a2.t">C&amp;I · ESS · Peak Shaving</h3>
+                    <p data-cms="pages.index.about.cards#a2.desc" data-i18n="a2.d">เชี่ยวชาญการออกแบบระบบเชิงพาณิชย์และอุตสาหกรรม ระบบจัดเก็บพลังงาน และการลดค่าความต้องการไฟฟ้าสูงสุด เพื่อพลังงานที่ต่อเนื่องและมีเสถียรภาพ</p>
                 </div>
                 <div class="wd-about-card">
-                    <h3 data-i18n="a3.t">ESG และการพัฒนาบุคลากร</h3>
-                    <p data-i18n="a3.d">ดำเนินธุรกิจตามหลัก ESG อย่างรอบด้าน พร้อมฝึกอบรมและพัฒนาศักยภาพบุคลากรทุกระดับ สู่ยุคพลังงานสะอาดที่เปลี่ยนแปลงอย่างรวดเร็ว</p>
+                    <h3 data-cms="pages.index.about.cards#a3.title" data-i18n="a3.t">ESG และการพัฒนาบุคลากร</h3>
+                    <p data-cms="pages.index.about.cards#a3.desc" data-i18n="a3.d">ดำเนินธุรกิจตามหลัก ESG อย่างรอบด้าน พร้อมฝึกอบรมและพัฒนาศักยภาพบุคลากรทุกระดับ สู่ยุคพลังงานสะอาดที่เปลี่ยนแปลงอย่างรวดเร็ว</p>
                 </div>
             </div>
         </div>
@@ -597,13 +606,13 @@
     <section class="wd-contact" id="cta">
         <div class="container">
             <div class="contact-info-warm">
-                <p class="eyebrow" data-i18n="cta.tag">ติดต่อเรา</p>
-                <h2 data-i18n="cta.head">พร้อมให้บริการ</h2>
-                <p class="lead" data-i18n="cta.sub">ทีมงานพร้อมให้คำปรึกษาฟรี ไม่มีข้อผูกมัด</p>
+                <p data-cms="pages.index.cta.tag" class="eyebrow" data-i18n="cta.tag">ติดต่อเรา</p>
+                <h2 data-cms="pages.index.cta.head" data-i18n="cta.head">พร้อมให้บริการ</h2>
+                <p data-cms="pages.index.cta.sub" class="lead" data-i18n="cta.sub">ทีมงานพร้อมให้คำปรึกษาฟรี ไม่มีข้อผูกมัด</p>
                 <ul class="wd-contact-details">
-                    <li><span class="ico">📞</span><a href="tel:0800282399">080-028-2399</a></li>
-                    <li><span class="ico">✉️</span><a href="mailto:info@proinventive.co.th">info@proinventive.co.th</a></li>
-                    <li><span class="ico">📍</span><span data-i18n="f.addr">59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150</span></li>
+                    <li><span class="ico">📞</span><a data-cms="contact.phone" data-cms-attr="href:contact.phone" href="tel:0800282399">080-028-2399</a></li>
+                    <li><span class="ico">✉️</span><a data-cms="contact.email" data-cms-attr="href:contact.email" href="mailto:info@proinventive.co.th">info@proinventive.co.th</a></li>
+                    <li><span class="ico">📍</span><span data-cms="contact.address" data-i18n="f.addr">59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150</span></li>
                 </ul>
                 <div class="wd-contact-hours" data-i18n="cta.hours">จันทร์–ศุกร์ 08:00–17:00 น.</div>
             </div>
@@ -717,9 +726,9 @@ document.addEventListener('keydown',function(e){
                     <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
                 </a>
                 <div class="footer-contact">
-                    <span data-i18n="f.addr">59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150</span>
-                    <a href="tel:0800282399">📞 080-028-2399</a>
-                    <a href="mailto:info@proinventive.co.th">✉️ info@proinventive.co.th</a>
+                    <span data-cms="contact.address" data-i18n="f.addr">59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150</span>
+                    <a data-cms="contact.phone" data-cms-tpl="📞 {}" data-cms-attr="href:contact.phone" href="tel:0800282399">📞 080-028-2399</a>
+                    <a data-cms="contact.email" data-cms-tpl="✉️ {}" data-cms-attr="href:contact.email" href="mailto:info@proinventive.co.th">✉️ info@proinventive.co.th</a>
                 </div>
                 <div class="social">
                     <a href="https://www.facebook.com/profile.php?id=61572188957133" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12Z"/></svg></a>
@@ -732,12 +741,12 @@ document.addEventListener('keydown',function(e){
             <div class="footer-col">
                 <h4 data-i18n="f.product">ผลิตภัณฑ์</h4>
                 <ul>
-                    <li class="internal-only"><a href="pi_tasks/index.html" class="tasks-chip" data-i18n="dd.tasks.t">Pi Tasks</a></li>
-                    <li><a href="product.html" data-i18n="f.features">ฟีเจอร์</a></li>
-                    <li class="internal-only"><a href="admin.html">Admin CMS</a></li>
-                    <li><a href="#" data-i18n="f.ai">PROINVENTIVE AI</a></li>
-                    <li><a href="demo.html" data-i18n="nav.demo">Demo</a></li>
-                    <li><a href="#" data-i18n="f.download">ดาวน์โหลด</a></li>
+                    <li data-cms-show="footer.products#ft-tasks.visible" class="internal-only"><a data-cms="footer.products#ft-tasks.label" data-cms-attr="href:footer.products#ft-tasks.href" href="pi_tasks/index.html" class="tasks-chip" data-i18n="dd.tasks.t">Pi Tasks</a></li>
+                    <li data-cms-show="footer.products#ft-features.visible"><a data-cms="footer.products#ft-features.label" data-cms-attr="href:footer.products#ft-features.href" href="product.html" data-i18n="f.features">ฟีเจอร์</a></li>
+                    <li data-cms-show="footer.products#ft-cms.visible" class="internal-only"><a data-cms="footer.products#ft-cms.label" data-cms-attr="href:footer.products#ft-cms.href" href="admin.html">Admin CMS</a></li>
+                    <li data-cms-show="footer.products#ft-ai.visible"><a data-cms="footer.products#ft-ai.label" data-cms-attr="href:footer.products#ft-ai.href" href="#" data-i18n="f.ai">PROINVENTIVE AI</a></li>
+                    <li data-cms-show="footer.products#ft-demo.visible"><a data-cms="footer.products#ft-demo.label" data-cms-attr="href:footer.products#ft-demo.href" href="demo.html" data-i18n="nav.demo">Demo</a></li>
+                    <li data-cms-show="footer.products#ft-dl.visible"><a data-cms="footer.products#ft-dl.label" data-cms-attr="href:footer.products#ft-dl.href" href="#" data-i18n="f.download">ดาวน์โหลด</a></li>
                 </ul>
             </div>
 
@@ -831,8 +840,8 @@ document.addEventListener('keydown',function(e){
             • <strong>สิทธิ์ถอนความยินยอม</strong> — ถอนความยินยอมได้ทุกเมื่อ</p>
 
             <p><strong>7. ติดต่อผู้ควบคุมข้อมูล</strong><br>
-            ProInventive · อีเมล: <a href="mailto:info@proinventive.co.th">info@proinventive.co.th</a><br>
-            โทร: <a href="tel:0800282399">080-028-2399</a></p>
+            ProInventive · อีเมล: <a data-cms="contact.email" data-cms-attr="href:contact.email" href="mailto:info@proinventive.co.th">info@proinventive.co.th</a><br>
+            โทร: <a data-cms="contact.phone" data-cms-attr="href:contact.phone" href="tel:0800282399">080-028-2399</a></p>
         </div>
         <div class="pdpa-modal-foot">
             <button onclick="document.getElementById('pdpaModal').classList.remove('active')">ปิด</button>

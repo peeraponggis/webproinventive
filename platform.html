@@ -14,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261127005">
-    <link rel="stylesheet" href="pi-console.css?v=20261127005">
+    <link rel="stylesheet" href="style.css?v=20261127006">
+    <link rel="stylesheet" href="pi-console.css?v=20261127006">
     <style>
     body{background:#fffbf5}
     .sub-hero{background:linear-gradient(135deg,#059669,#047857);color:#fff;padding:100px 24px 48px;text-align:center}
@@ -50,11 +50,12 @@
         .sub-cards{grid-template-columns:1fr}
     }
     </style>
-    <script src="i18n.js?v=20261127005" defer></script>
-    <script src="auth.js?v=20261127005" defer></script>
-    <script src="app.js?v=20261127005" defer></script>
-    <script src="pi-console.js?v=20261127005" defer></script>
-    <script src="pi-brain.js?v=20261127005" defer></script>
+    <script src="i18n.js?v=20261127006" defer></script>
+    <script src="content.js?v=20261127006" defer></script>
+    <script src="auth.js?v=20261127006" defer></script>
+    <script src="app.js?v=20261127006" defer></script>
+    <script src="pi-console.js?v=20261127006" defer></script>
+    <script src="pi-brain.js?v=20261127006" defer></script>
 </head>
 <body>
 
@@ -94,35 +95,35 @@
 <main>
     <section class="sub-hero">
         <a class="back" href="index.html">← กลับหน้าหลัก</a>
-        <h1>Energy Platform</h1>
-        <p>เครื่องมือวิเคราะห์พลังงาน สำรวจหน้างาน และจับคู่อุปกรณ์อัตโนมัติ</p>
+        <h1 data-cms="pages.platform.hero.title">Energy Platform</h1>
+        <p data-cms="pages.platform.hero.sub">เครื่องมือวิเคราะห์พลังงาน สำรวจหน้างาน และจับคู่อุปกรณ์อัตโนมัติ</p>
     </section>
 
     <div class="sub-cards">
-        <a class="sub-card" href="https://peeraponggis.github.io/aisolar2/solar-saas.html" target="_blank" rel="noopener">
+        <a data-cms-attr="href:pages.platform.cards#plat-pvcal.href" class="sub-card" href="https://peeraponggis.github.io/aisolar2/solar-saas.html" target="_blank" rel="noopener">
             <div class="pvcal-banner">
-                <h3>ติดโซลาร์เซลล์คุ้มไหม?</h3>
-                <p>รู้ผลใน 30 วินาที<br>กรอกแค่ค่าไฟรายเดือน — ระบบคำนวณขนาดที่เหมาะสม เงินลงทุน และปีที่คุ้มให้ทันที</p>
+                <h3 data-cms="pages.platform.cards#plat-pvcal.bannerTitle">ติดโซลาร์เซลล์คุ้มไหม?</h3>
+                <p data-cms="pages.platform.cards#plat-pvcal.bannerDesc" style="white-space:pre-line">รู้ผลใน 30 วินาที<br>กรอกแค่ค่าไฟรายเดือน — ระบบคำนวณขนาดที่เหมาะสม เงินลงทุน และปีที่คุ้มให้ทันที</p>
             </div>
             <div class="sub-card-body">
-                <h3>PVCAL</h3>
-                <p>เครื่องคำนวณความคุ้มค่าโซลาร์เซลล์ออนไลน์</p>
-                <div class="card-action">ลองคำนวณ →</div>
+                <h3 data-cms="pages.platform.cards#plat-pvcal.title">PVCAL</h3>
+                <p data-cms="pages.platform.cards#plat-pvcal.desc">เครื่องคำนวณความคุ้มค่าโซลาร์เซลล์ออนไลน์</p>
+                <div data-cms="pages.platform.cards#plat-pvcal.action" class="card-action">ลองคำนวณ →</div>
             </div>
         </a>
 
-        <a class="sub-card" href="https://peeraponggis.github.io/aisolar2/Pee_survey.html" target="_blank" rel="noopener">
+        <a data-cms-attr="href:pages.platform.cards#plat-survey.href" class="sub-card" href="https://peeraponggis.github.io/aisolar2/Pee_survey.html" target="_blank" rel="noopener">
             <div class="sub-card-img" style="background:#e0f2fe;padding:16px">
                 <span style="font-size:64px">📋</span>
             </div>
             <div class="sub-card-body">
-                <h3>Site Survey</h3>
-                <p>ระบบสำรวจหน้างานโซลาร์เซลล์ บันทึกข้อมูลสำรวจ ถ่ายภาพ และส่งออกรายงาน</p>
-                <div class="card-action">เปิด Site Survey →</div>
+                <h3 data-cms="pages.platform.cards#plat-survey.title">Site Survey</h3>
+                <p data-cms="pages.platform.cards#plat-survey.desc">ระบบสำรวจหน้างานโซลาร์เซลล์ บันทึกข้อมูลสำรวจ ถ่ายภาพ และส่งออกรายงาน</p>
+                <div data-cms="pages.platform.cards#plat-survey.action" class="card-action">เปิด Site Survey →</div>
             </div>
         </a>
 
-        <a class="sub-card" href="https://peeraponggis.github.io/aisolar2/solarmatch_by_proinventive.html" target="_blank" rel="noopener">
+        <a data-cms-attr="href:pages.platform.cards#plat-match.href" class="sub-card" href="https://peeraponggis.github.io/aisolar2/solarmatch_by_proinventive.html" target="_blank" rel="noopener">
             <div class="sub-card-img dark-bg" style="padding:24px;text-align:center">
                 <div>
                     <img src="img/pi-gold-logo-md.png" alt="SolarMatch" style="width:48px;height:48px;border-radius:50%;margin-bottom:8px">
@@ -131,9 +132,9 @@
                 </div>
             </div>
             <div class="sub-card-body">
-                <h3>SolarMatch</h3>
-                <p>จับคู่แผงและอินเวอร์เตอร์อัตโนมัติ — เลือกอุปกรณ์ที่เข้ากันได้ดีที่สุด</p>
-                <div class="card-action">เปิด SolarMatch →</div>
+                <h3 data-cms="pages.platform.cards#plat-match.title">SolarMatch</h3>
+                <p data-cms="pages.platform.cards#plat-match.desc">จับคู่แผงและอินเวอร์เตอร์อัตโนมัติ — เลือกอุปกรณ์ที่เข้ากันได้ดีที่สุด</p>
+                <div data-cms="pages.platform.cards#plat-match.action" class="card-action">เปิด SolarMatch →</div>
             </div>
         </a>
     </div>
@@ -147,8 +148,8 @@
                 <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
             </a>
             <div class="fb-links">
-                <a href="tel:0800282399">📞 080-028-2399</a>
-                <a href="mailto:info@proinventive.co.th">✉️ info@proinventive.co.th</a>
+                <a data-cms="contact.phone" data-cms-tpl="📞 {}" data-cms-attr="href:contact.phone" href="tel:0800282399">📞 080-028-2399</a>
+                <a data-cms="contact.email" data-cms-tpl="✉️ {}" data-cms-attr="href:contact.email" href="mailto:info@proinventive.co.th">✉️ info@proinventive.co.th</a>
                 <div class="lang-switch" role="group">
                     <button type="button" data-lang="th">TH</button>
                     <button type="button" data-lang="en">EN</button>

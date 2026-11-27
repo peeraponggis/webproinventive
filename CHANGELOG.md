@@ -1,3 +1,8 @@
+## 1.4.5 — 2026-11-27 โดย ลุงพี
+- เพิ่ม Admin CMS ในเมนู "ระบบภายใน" (จอคอม + มือถือ) หน้า index, demo, product
+- แก้ใน Admin CMS แล้วหน้าเว็บเปลี่ยนตามจริง: เพิ่ม content.js ดึงข้อความ ลิงก์ รูป ซ่อน/แสดง จาก content.json ทั้ง 5 หน้า (index, product, demo, ascs, platform)
+- ปรับ content.json ให้ตรงหน้าเว็บปัจจุบัน (footer Admin CMS, รูปการ์ด Package, คลิป ASC Studio 4 คลิป, เมนู Admin CMS) + ลบ test_field
+
 ## 1.4.4 — 2026-11-27 โดย ลุงพี
 - ลบปุ่มคำถามแนะนำ 3 ปุ่มใน Console · Chat with Ai-Pi (แรงดันสตริง · สายดิน · ราคาติดตั้ง)
 
