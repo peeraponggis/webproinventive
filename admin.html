@@ -212,12 +212,12 @@ body { background: var(--bg); color: var(--text); font-size: 14px; line-height: 
 <div class="toast" id="toast"></div>
 
 <div class="preview-bar" id="previewBar">
-  <div class="changes"><strong id="changeCount">0</strong> การเปลี่ยนแปลง ยังไม่บันทึก</div>
+  <div class="changes"><span id="barStatus"><strong id="changeCount">0</strong> การเปลี่ยนแปลง ยังไม่บันทึก</span></div>
   <div class="actions">
-    <button class="btn" onclick="discardChanges()">ยกเลิก</button>
+    <button class="btn" onclick="discardChanges()" id="btnDiscard">ยกเลิก</button>
     <button class="btn" onclick="previewChanges()">ดูตัวอย่าง</button>
-    <button class="btn primary" onclick="saveChanges()">บันทึก content.json</button>
-    <button class="btn publish" onclick="publishChanges()" title="บันทึก + commit + push ขึ้นเว็บจริง">เผยแพร่ขึ้นเว็บ</button>
+    <button class="btn primary" onclick="saveChanges()" id="btnSave">บันทึก content.json</button>
+    <button class="btn publish" onclick="publishChanges()" id="btnPublish" title="บันทึก + commit + push ขึ้นเว็บจริง">เผยแพร่ขึ้นเว็บ</button>
   </div>
 </div>
 
@@ -958,10 +958,29 @@ function toggleEditor(btn){
   btn.textContent = editor.classList.contains('open') ? '✕ ปิด' : 'แก้ไข';
 }
 
+var savedNotPublished = false;
 function markChanged(){
   changeCount = JSON.stringify(DATA) === ORIGINAL ? 0 : 1;
-  document.getElementById('changeCount').textContent = changeCount;
-  document.getElementById('previewBar').classList.toggle('show', changeCount > 0);
+  var bar = document.getElementById('previewBar');
+  var status = document.getElementById('barStatus');
+  var btnSave = document.getElementById('btnSave');
+  var btnPublish = document.getElementById('btnPublish');
+  var btnDiscard = document.getElementById('btnDiscard');
+  if(changeCount > 0){
+    savedNotPublished = false;
+    status.innerHTML = '<strong>' + changeCount + '</strong> การเปลี่ยนแปลง ยังไม่บันทึก';
+    btnSave.disabled = false; btnSave.textContent = 'บันทึก content.json';
+    btnDiscard.style.display = '';
+    bar.classList.add('show');
+  } else if(savedNotPublished){
+    status.innerHTML = '✅ บันทึกแล้ว — กดเผยแพร่เพื่ออัปเดตเว็บจริง';
+    btnSave.disabled = true; btnSave.textContent = '✓ บันทึกแล้ว';
+    btnDiscard.style.display = 'none';
+    bar.classList.add('show');
+  } else {
+    status.innerHTML = '';
+    bar.classList.remove('show');
+  }
 }
 
 function discardChanges(){
@@ -986,7 +1005,7 @@ function saveChanges(){
     fetch('/api/save', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(DATA, null, 2)})
       .then(function(r){ return r.json(); })
       .then(function(d){
-        if(d.ok){ toast(d.message, 'success'); ORIGINAL = JSON.stringify(DATA); markChanged(); }
+        if(d.ok){ toast(d.message, 'success'); ORIGINAL = JSON.stringify(DATA); savedNotPublished = true; markChanged(); }
         else toast(d.message, 'error');
       })
       .catch(function(e){ toast('บันทึกไม่สำเร็จ: ' + e.message + ' — ลองดาวน์โหลดแทน', 'error'); downloadFallback(); });
@@ -1014,22 +1033,53 @@ function publishChanges(){
     return;
   }
   DATA._updated = new Date().toISOString().slice(0,10);
-  var btn = document.querySelector('.btn.publish');
+  var btn = document.getElementById('btnPublish');
   btn.disabled = true; btn.textContent = 'กำลังเผยแพร่...';
+  var status = document.getElementById('barStatus');
+  status.innerHTML = '⏳ กำลังบันทึกและเผยแพร่ขึ้นเว็บ...';
   fetch('/api/save', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(DATA, null, 2)})
     .then(function(r){ return r.json(); })
     .then(function(d){
-      if(!d.ok){ toast(d.message, 'error'); btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ'; return; }
-      ORIGINAL = JSON.stringify(DATA); markChanged();
+      if(!d.ok){ toast(d.message, 'error'); btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ'; markChanged(); return; }
+      ORIGINAL = JSON.stringify(DATA);
+      status.innerHTML = '⏳ บันทึกแล้ว กำลัง commit + push...';
       return fetch('/api/publish', {method:'POST'}).then(function(r){ return r.json(); });
     })
     .then(function(d){
       if(!d) return;
       btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ';
-      if(d.ok) toast(d.message, 'success');
-      else toast(d.message, 'error');
+      if(d.ok){
+        savedNotPublished = false;
+        status.innerHTML = '🎉 เผยแพร่สำเร็จ! เว็บจะอัปเดตใน 1-2 นาที';
+        toast('เผยแพร่สำเร็จ — commit + push เรียบร้อย', 'success');
+        showPublishResult(d);
+      } else {
+        toast(d.message, 'error');
+        markChanged();
+      }
     })
-    .catch(function(e){ btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ'; toast('เผยแพร่ไม่สำเร็จ: ' + e.message, 'error'); });
+    .catch(function(e){ btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ'; toast('เผยแพร่ไม่สำเร็จ: ' + e.message, 'error'); markChanged(); });
+}
+
+function showPublishResult(d){
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;display:flex;align-items:center;justify-content:center';
+  var box = document.createElement('div');
+  box.style.cssText = 'background:#fff;border-radius:12px;padding:28px 32px;max-width:460px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,.18);text-align:center;font-family:inherit';
+  box.innerHTML = '<div style="font-size:48px;margin-bottom:12px">🎉</div>' +
+    '<h2 style="font-size:18px;font-weight:700;margin-bottom:8px">เผยแพร่สำเร็จ!</h2>' +
+    '<p style="color:#6b7280;font-size:13px;margin-bottom:16px">' + esc(d.message || 'commit + push เรียบร้อย') + '</p>' +
+    '<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px;margin-bottom:16px;text-align:left">' +
+      '<div style="font-size:12px;color:#166534;font-weight:600;margin-bottom:4px">📁 ไฟล์ content.json อยู่ที่:</div>' +
+      '<code style="font-size:12px;color:#1a1a1a;word-break:break-all">' + esc(d.path || 'repo/content.json') + '</code>' +
+    '</div>' +
+    '<div style="display:flex;gap:8px;justify-content:center">' +
+      '<a href="https://pi.aisolar.dev" target="_blank" style="padding:8px 16px;background:#3b82f6;color:#fff;border-radius:6px;text-decoration:none;font-size:13px;font-weight:500">🌐 เปิดเว็บจริง</a>' +
+      '<button onclick="this.closest(\'div\').closest(\'div\').closest(\'div\').remove()" style="padding:8px 16px;background:#f3f4f6;border:1px solid #e2e4e8;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500">ปิด</button>' +
+    '</div>';
+  overlay.appendChild(box);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
 }
 
 /* ── th/en row helper ── */

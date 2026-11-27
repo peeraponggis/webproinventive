@@ -44,7 +44,7 @@ class CMSHandler(http.server.SimpleHTTPRequestHandler):
             )
             status = git("status", "--porcelain", "content.json")
             if not status.stdout.strip():
-                self._json_response({"ok": True, "message": "ไม่มีการเปลี่ยนแปลง content.json — ไม่ต้อง push"})
+                self._json_response({"ok": True, "message": "ไม่มีการเปลี่ยนแปลง content.json — ไม่ต้อง push", "path": CONTENT_FILE})
                 return
             git("add", "content.json")
             result = git("commit", "-m", "อัปเดตเนื้อหา content.json โดย ลุงพี")
@@ -55,7 +55,7 @@ class CMSHandler(http.server.SimpleHTTPRequestHandler):
             if push.returncode != 0:
                 self._json_response({"ok": False, "message": "push ไม่สำเร็จ: " + push.stderr}, 500)
                 return
-            self._json_response({"ok": True, "message": "เผยแพร่แล้ว! commit + push สำเร็จ รอ GitHub Pages deploy ~30 วินาที"})
+            self._json_response({"ok": True, "message": "เผยแพร่แล้ว! commit + push สำเร็จ รอ GitHub Pages deploy ~30 วินาที", "path": CONTENT_FILE})
         except Exception as e:
             self._json_response({"ok": False, "message": str(e)}, 500)
 
