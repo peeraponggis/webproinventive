@@ -306,6 +306,10 @@
     flex: none;
 }
 
+.pi-quick:empty {
+    display: none;
+}
+
 .pi-quick button {
     font-family: inherit;
     font-size: 12px;

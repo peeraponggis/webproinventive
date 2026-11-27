@@ -504,16 +504,6 @@
             config.endpoint || config.transport ? "online" : "local"
         );
 
-        el.quick.innerHTML = "";
-        ["pi.q1", "pi.q2", "pi.q3"].forEach(function (key) {
-            var b = document.createElement("button");
-            b.type = "button";
-            b.textContent = t(key);
-            b.addEventListener("click", function () {
-                send(b.textContent);
-            });
-            el.quick.appendChild(b);
-        });
     }
 
     /* ---------------- public API ---------------- */
