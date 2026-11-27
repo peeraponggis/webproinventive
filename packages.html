@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เลือกแพ็คเกจ — ASC Architect | PROINVENTIVE</title>
+    <meta name="description" content="เลือกแพ็คเกจ ASC Architect ระบบออกแบบสถาปัตยกรรมครบวงจร — ทดลองใช้ฟรี 5 วัน, อบรม, Starter, Pro">
+
+    <link rel="icon" href="img/favicon.ico?v=2" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png?v=2">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=2">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Noto Sans Thai','Inter',sans-serif;background:#fffbf5;color:#44403c;min-height:100vh}
+
+    .pkg-header{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;padding:32px 24px;text-align:center}
+    .pkg-header a{color:#e9d5ff;text-decoration:none;font-size:14px;display:inline-block;margin-bottom:16px}
+    .pkg-header a:hover{text-decoration:underline}
+    .pkg-header h1{font-size:28px;font-weight:800;margin-bottom:8px}
+    .pkg-header p{font-size:15px;opacity:.85}
+    .pkg-header .pkg-logo{width:48px;height:48px;border-radius:12px;margin-bottom:12px}
+
+    .pkg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1040px;margin:0 auto;padding:32px 24px 48px}
+
+    .pkg-card{background:#fff;border-radius:16px;padding:28px 24px;border:2px solid #fed7aa;position:relative;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+    .pkg-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(124,58,237,.12)}
+    .pkg-card.featured{border-color:#7c3aed;box-shadow:0 4px 20px rgba(124,58,237,.15)}
+    .pkg-card.featured::before{content:'แนะนำ';position:absolute;top:-12px;right:16px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
+
+    .pkg-name{font-size:20px;font-weight:800;color:#7c3aed;margin-bottom:4px}
+    .pkg-price{font-size:14px;color:#78716c;margin-bottom:16px}
+    .pkg-features{list-style:none;flex:1;margin-bottom:20px}
+    .pkg-features li{font-size:13px;padding:6px 0;border-bottom:1px solid #fef3c7;display:flex;align-items:flex-start;gap:8px}
+    .pkg-features li::before{content:'✓';color:#7c3aed;font-weight:700;flex-shrink:0}
+
+    .pkg-btn{display:block;text-align:center;padding:12px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}
+    .pkg-btn-outline{border:2px solid #7c3aed;color:#7c3aed;background:transparent}
+    .pkg-btn-outline:hover{background:#7c3aed;color:#fff}
+    .pkg-btn-solid{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none}
+    .pkg-btn-solid:hover{opacity:.9;transform:scale(1.02)}
+
+    .pkg-note{text-align:center;padding:0 24px 40px;font-size:13px;color:#78716c;max-width:600px;margin:0 auto}
+
+    @media(max-width:600px){
+        .pkg-grid{grid-template-columns:1fr}
+        .pkg-header h1{font-size:22px}
+    }
+    </style>
+</head>
+<body>
+
+<div class="pkg-header">
+    <a href="index.html">← กลับหน้าหลัก</a>
+    <br>
+    <img class="pkg-logo" src="img/promo/asc-architect/asc_architect.ico" alt="ASC Architect">
+    <h1>เลือกแพ็คเกจ ASC Architect</h1>
+    <p>ระบบออกแบบสถาปัตยกรรมครบวงจร</p>
+</div>
+
+<div class="pkg-grid">
+    <div class="pkg-card">
+        <div class="pkg-name">ทดลองใช้งาน</div>
+        <div class="pkg-price">ฟรี 5 วัน</div>
+        <ul class="pkg-features">
+            <li>เปิดใช้ได้ทันที ไม่ต้องสมัคร</li>
+            <li>ทดลองฟีเจอร์ครบทุกระบบ</li>
+            <li>ส่งออก PDF ได้</li>
+            <li>จำกัด 2 โปรเจกต์</li>
+        </ul>
+        <a href="https://aisolar.dev/index.html" target="_blank" rel="noopener" class="pkg-btn pkg-btn-outline">เริ่มทดลองใช้</a>
+    </div>
+
+    <div class="pkg-card">
+        <div class="pkg-name">Training</div>
+        <div class="pkg-price">อบรมการใช้งาน</div>
+        <ul class="pkg-features">
+            <li>อบรมพร้อมทีมช่าง 1 วัน</li>
+            <li>คู่มือการใช้งานภาษาไทย</li>
+            <li>วิดีโอสอนใช้ทุกฟีเจอร์</li>
+            <li>ซัพพอร์ตหลังอบรม 30 วัน</li>
+        </ul>
+        <a href="mailto:giskku@gmail.com?subject=สนใจแพ็คเกจ Training ASC Architect" class="pkg-btn pkg-btn-outline">สอบถามรายละเอียด</a>
+    </div>
+
+    <div class="pkg-card featured">
+        <div class="pkg-name">Starter</div>
+        <div class="pkg-price">สำหรับเริ่มต้นใช้งานจริง</div>
+        <ul class="pkg-features">
+            <li>ไม่จำกัดจำนวนโปรเจกต์</li>
+            <li>ส่งออก PDF / DXF</li>
+            <li>คำนวณ BOQ อัตโนมัติ</li>
+            <li>อัปเดตฟีเจอร์ใหม่ 1 ปี</li>
+            <li>ซัพพอร์ตออนไลน์</li>
+        </ul>
+        <a href="mailto:giskku@gmail.com?subject=สนใจแพ็คเกจ Starter ASC Architect" class="pkg-btn pkg-btn-solid">เลือกแพ็คเกจนี้</a>
+    </div>
+
+    <div class="pkg-card">
+        <div class="pkg-name">Pro</div>
+        <div class="pkg-price">สำหรับมืออาชีพ</div>
+        <ul class="pkg-features">
+            <li>ทุกอย่างใน Starter</li>
+            <li>ผู้ช่วย AI ออกแบบอัตโนมัติ</li>
+            <li>เชื่อมต่อระบบ CRM-Pi</li>
+            <li>รายงาน Dashboard ผู้บริหาร</li>
+            <li>ซัพพอร์ตตรง + อบรมทีม</li>
+        </ul>
+        <a href="mailto:giskku@gmail.com?subject=สนใจแพ็คเกจ Pro ASC Architect" class="pkg-btn pkg-btn-outline">สอบถามรายละเอียด</a>
+    </div>
+</div>
+
+<div class="pkg-note">
+    ทุกแพ็คเกจรวมอัปเดตซอฟต์แวร์ · สอบถามราคาและโปรโมชั่นพิเศษได้ที่ทีมงาน
+</div>
+
+</body>
+</html>
