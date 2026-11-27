@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROINVENTIVE — Preview: Warm Donut (Revised)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Thai:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:'Inter','Noto Sans Thai',system-ui,sans-serif;background:#fffbf5;color:#1a1a1a}
+
+/* ── Navbar ── */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,251,245,.95);backdrop-filter:blur(12px);border-bottom:1px solid #fed7aa;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#1a1a1a}
+.nav-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.nav-logo span{font-size:16px;font-weight:800;letter-spacing:-0.5px}
+.nav-logo .pro{color:#c2410c}
+.nav-logo .inv{color:#1a1a1a}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a{font-size:13px;font-weight:600;color:#78716c;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:#c2410c}
+.nav-links .console-btn{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;background:linear-gradient(135deg,#c2410c,#ea580c);color:#fff;font-weight:600;font-size:13px}
+.nav-links .console-btn:hover{opacity:.9;color:#fff}
+
+/* ── Hero ── */
+.hero{text-align:center;padding:100px 24px 20px}
+.hero .badge{display:inline-block;background:linear-gradient(90deg,#d97706,#f59e0b);padding:5px 20px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;margin-bottom:16px;letter-spacing:0.5px}
+.hero h1{font-size:42px;font-weight:900;color:#c2410c;margin-bottom:8px;letter-spacing:-1px}
+.hero .tagline{color:#78716c;font-size:16px;max-width:560px;margin:0 auto 8px}
+.hero .sub-tagline{color:#a8a29e;font-size:14px;font-style:italic}
+
+/* ── Donut + Legend ── */
+.donut-wrap{display:flex;justify-content:center;align-items:center;padding:40px 24px 48px;gap:48px;flex-wrap:wrap;max-width:1000px;margin:0 auto}
+.donut-chart{width:300px;height:300px;border-radius:50%;background:conic-gradient(#2563eb 0deg 120deg,#7c3aed 120deg 210deg,#059669 210deg 290deg,#d97706 290deg 360deg);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 40px rgba(217,119,6,.2)}
+.donut-hole{width:170px;height:170px;border-radius:50%;background:#fffbf5;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.donut-hole img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.donut-hole span{font-size:11px;font-weight:600;color:#c2410c;margin-top:4px}
+.donut-legend{display:flex;flex-direction:column;gap:12px;min-width:320px}
+.legend-item{display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:16px;color:#fff;transition:transform .2s,box-shadow .2s;cursor:pointer;border-top:1px solid rgba(255,255,255,.25);border-left:1px solid rgba(255,255,255,.15);border-bottom:2px solid rgba(0,0,0,.2);border-right:1px solid rgba(0,0,0,.08)}
+.legend-item:hover{transform:translateY(-3px) scale(1.02)}
+.legend-dot{width:14px;height:14px;border-radius:4px;flex-shrink:0;background:rgba(255,255,255,.35);box-shadow:inset 0 1px 2px rgba(255,255,255,.3)}
+.legend-item h4{font-size:15px;font-weight:700;flex:1;text-shadow:0 1px 2px rgba(0,0,0,.15)}
+.legend-item span{font-size:13px;font-weight:500;opacity:.9;text-shadow:0 1px 1px rgba(0,0,0,.1)}
+.li-blue{background:linear-gradient(160deg,#4b83f0 0%,#2563eb 40%,#1d4ed8 100%);box-shadow:0 4px 14px rgba(37,99,235,.35),inset 0 1px 0 rgba(255,255,255,.15)}
+.li-purple{background:linear-gradient(160deg,#9b6df0 0%,#7c3aed 40%,#6d28d9 100%);box-shadow:0 4px 14px rgba(124,58,237,.35),inset 0 1px 0 rgba(255,255,255,.15)}
+.li-green{background:linear-gradient(160deg,#2dd4a0 0%,#059669 40%,#047857 100%);box-shadow:0 4px 14px rgba(5,150,105,.35),inset 0 1px 0 rgba(255,255,255,.15)}
+.li-amber{background:linear-gradient(160deg,#fbbf24 0%,#d97706 40%,#b45309 100%);box-shadow:0 4px 14px rgba(217,119,6,.35),inset 0 1px 0 rgba(255,255,255,.15)}
+
+/* ── About Section ── */
+.about-section{background:linear-gradient(180deg,#fff7ed,#fffbf5);padding:60px 24px;border-top:1px solid #fed7aa}
+.about-section .container{max-width:900px;margin:0 auto}
+.about-section .eyebrow{font-size:12px;font-weight:700;color:#d97706;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.about-section h2{font-size:28px;font-weight:800;color:#c2410c;margin-bottom:16px}
+.about-section .lead{color:#57534e;font-size:15px;line-height:1.8;max-width:800px;margin-bottom:28px}
+.about-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.about-card{background:#fff;border:1px solid #fed7aa;border-radius:16px;padding:24px;transition:transform .2s,box-shadow .2s}
+.about-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(217,119,6,.1)}
+.about-card h3{font-size:14px;font-weight:700;color:#c2410c;margin-bottom:8px}
+.about-card p{font-size:13px;color:#78716c;line-height:1.6}
+
+/* ── Links Section ── */
+.link-pages{padding:48px 24px;max-width:900px;margin:0 auto}
+.link-pages h2{font-size:18px;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #fed7aa;color:#1a1a1a}
+.link-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.link-card{padding:16px 18px;border-radius:12px;display:flex;align-items:center;gap:12px;transition:transform .15s;cursor:pointer;text-decoration:none;color:inherit;background:#fff;border:1px solid #fed7aa}
+.link-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(217,119,6,.08)}
+.link-card .lc-icon{font-size:22px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:10px;flex-shrink:0;background:#fff7ed}
+.link-card h4{font-size:14px;font-weight:600;color:#1a1a1a}
+.link-card p{font-size:12px;color:#78716c;margin-top:2px}
+
+/* ── Contact Section (Warm Donut) ── */
+.contact-section{background:linear-gradient(180deg,#fff7ed,#fef3e2);color:#1a1a1a;padding:60px 24px;border-top:1px solid #fed7aa}
+.contact-section .container{max-width:900px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap}
+.contact-info{flex:1;min-width:280px}
+.contact-info .eyebrow{font-size:12px;font-weight:700;color:#d97706;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.contact-info h2{font-size:28px;font-weight:800;color:#c2410c;margin-bottom:8px}
+.contact-info .lead{color:#78716c;font-size:14px;margin-bottom:24px}
+.contact-details{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.contact-details li{display:flex;align-items:center;gap:12px;font-size:14px;background:#fff;padding:14px 18px;border-radius:14px;border:1px solid #fed7aa;box-shadow:0 2px 8px rgba(217,119,6,.06)}
+.contact-details .ico{font-size:18px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#fff7ed;flex-shrink:0}
+.contact-details a{color:#c2410c;font-weight:600;text-decoration:none}
+.contact-details a:hover{text-decoration:underline}
+.contact-details span{color:#57534e}
+.contact-hours{margin-top:16px;font-size:13px;color:#78716c;padding:10px 16px;background:#fff;border:1px solid #fed7aa;border-radius:10px;display:inline-block;box-shadow:0 2px 6px rgba(217,119,6,.05)}
+.console-cta{flex:1;min-width:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;border-radius:20px;background:#fff;border:2px solid #fed7aa;box-shadow:0 4px 20px rgba(217,119,6,.1)}
+.console-cta .console-icon{font-size:48px;margin-bottom:16px}
+.console-cta h3{font-size:20px;font-weight:700;color:#c2410c;margin-bottom:8px}
+.console-cta p{color:#78716c;font-size:14px;margin-bottom:20px;line-height:1.6}
+.console-cta .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:12px;background:linear-gradient(135deg,#d97706,#f59e0b);color:#fff;font-weight:700;font-size:14px;text-decoration:none;transition:all .2s;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(217,119,6,.25)}
+.console-cta .cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,158,11,.35)}
+
+/* ── Footer (Warm) ── */
+.footer{background:#44270b;color:#d4b896;padding:32px 24px;text-align:center;font-size:13px;border-top:2px solid #c2410c}
+.footer a{color:#fbbf24;text-decoration:none}
+.footer a:hover{text-decoration:underline}
+
+@media(max-width:768px){
+  .donut-wrap{flex-direction:column;align-items:center}
+  .about-cards{grid-template-columns:1fr}
+  .link-grid{grid-template-columns:1fr}
+  .contact-section .container{flex-direction:column}
+  .hero h1{font-size:30px}
+  .navbar{padding:0 12px}
+  .nav-links{gap:10px}
+  .nav-links a:not(.console-btn){display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<div class="navbar">
+  <a href="#" class="nav-logo">
+    <img src="img/pi-gold-logo-sm.png" alt="Pi">
+    <span><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#about">เกี่ยวกับเรา</a>
+    <a href="#links">ผลิตภัณฑ์</a>
+    <a href="#contact">ติดต่อเรา</a>
+    <a href="#console" class="console-btn"><img src="img/pi-robot-wave.png" alt="" style="width:22px;height:22px;border-radius:50%;object-fit:cover"> Console · Chat with Pi</a>
+  </div>
+</div>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="badge">Innovative Clean Energy Solution Provider</div>
+  <h1>PROINVENTIVE ECOSYSTEMS</h1>
+  <p class="tagline">โซลูชันพลังงานและเทคโนโลยีครบวงจร — ออกแบบ ติดตั้ง บริหาร ในระบบเดียว</p>
+  <p class="sub-tagline">Comprehensive Energy & Technology Solutions</p>
+  <img src="img/pi-robot-wave.png" alt="Pi Mascot" style="width:100px;height:100px;object-fit:contain;margin-top:16px;filter:drop-shadow(0 4px 12px rgba(217,119,6,.2))">
+</div>
+
+<!-- ── Donut + Legend ── -->
+<div class="donut-wrap">
+  <div class="donut-chart">
+    <div class="donut-hole">
+      <img src="img/pi-gold-logo-md.png" alt="Pi">
+    </div>
+  </div>
+  <div class="donut-legend">
+    <div class="legend-item li-blue">
+      <div class="legend-dot"></div>
+      <h4>Solar PV Design</h4>
+      <span>ASC Studio</span>
+    </div>
+    <div class="legend-item li-purple">
+      <div class="legend-dot"></div>
+      <h4>Architectural Design</h4>
+      <span>ASC Architect</span>
+    </div>
+    <div class="legend-item li-green">
+      <div class="legend-dot"></div>
+      <h4>Energy Platform</h4>
+      <span>PVCAL Site Survey</span>
+    </div>
+    <div class="legend-item li-amber">
+      <div class="legend-dot"></div>
+      <h4>Project Dashboard</h4>
+      <span>CRM-Pi · BoQ · Pi Tasks</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── About Section ── -->
+<section class="about-section" id="about">
+  <div class="container">
+    <p class="eyebrow">Innovative Clean Energy Solution Provider</p>
+    <h2>เกี่ยวกับเรา</h2>
+    <p class="lead">เราสร้างอนาคตพลังงานสะอาด ด้วยเทคโนโลยีล้ำหน้าและความยั่งยืนที่จับต้องได้ — โซลูชันครบวงจรตั้งแต่การออกแบบ ติดตั้ง ตรวจสอบระบบ ไปจนถึงการบำรุงรักษาเชิงป้องกัน</p>
+    <div class="about-cards">
+      <div class="about-card">
+        <h3>Smart Energy Management</h3>
+        <p>ผสานเทคโนโลยี IoT, AI และ Big Data เข้ากับระบบพลังงาน เพื่อการบริหารจัดการที่ฉลาดขึ้น</p>
+      </div>
+      <div class="about-card">
+        <h3>C&I · ESS · Peak Shaving</h3>
+        <p>เชี่ยวชาญการออกแบบระบบเชิงพาณิชย์และอุตสาหกรรม ระบบจัดเก็บพลังงาน และการลดค่าความต้องการไฟฟ้าสูงสุด</p>
+      </div>
+      <div class="about-card">
+        <h3>ESG และการพัฒนาบุคลากร</h3>
+        <p>ดำเนินธุรกิจตามหลัก ESG อย่างรอบด้าน พร้อมฝึกอบรมและพัฒนาศักยภาพบุคลากรทุกระดับ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Links Section ── -->
+<div class="link-pages" id="links">
+  <h2>📋 ลิงก์ทั้งหมด</h2>
+  <div class="link-grid">
+    <a class="link-card" href="#">
+      <div class="lc-icon">🗂️</div>
+      <div><h4>โปรเจกต์และงาน</h4><p>ติดตามงานทุกชิ้น</p></div>
+    </a>
+    <a class="link-card" href="#">
+      <div class="lc-icon">🗒️</div>
+      <div><h4>Pi Tasks</h4><p>บอร์ด Kanban สำหรับทีม</p></div>
+    </a>
+    <a class="link-card" href="#">
+      <div class="lc-icon">📇</div>
+      <div><h4>CRM</h4><p>บริหารลูกค้าสัมพันธ์</p></div>
+    </a>
+    <a class="link-card" href="#">
+      <div class="lc-icon">⚡</div>
+      <div><h4>ASC Studio</h4><p>ออกแบบ PV System</p></div>
+    </a>
+    <a class="link-card" href="#">
+      <div class="lc-icon">🎬</div>
+      <div><h4>Demo</h4><p>ชมคลิปการทำงาน</p></div>
+    </a>
+  </div>
+</div>
+
+<!-- ── Contact + Console ── -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-info">
+      <p class="eyebrow">ติดต่อเรา</p>
+      <h2>เริ่มต้นวันนี้เลย</h2>
+      <p class="lead">ทีมงานพร้อมให้คำปรึกษาฟรี ไม่มีข้อผูกมัด</p>
+      <ul class="contact-details">
+        <li><span class="ico">📞</span><a href="tel:0800282399">080-028-2399</a></li>
+        <li><span class="ico">✉️</span><a href="mailto:info@proinventive.co.th">info@proinventive.co.th</a></li>
+        <li><span class="ico">📍</span><span>59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150</span></li>
+      </ul>
+      <div class="contact-hours">🕗 จันทร์–ศุกร์ 08:00–17:00 น.</div>
+    </div>
+    <div class="console-cta" id="console">
+      <img src="img/pi-robot-desk.jpg" alt="Pi Robot" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:16px;border:3px solid #fed7aa;box-shadow:0 4px 16px rgba(217,119,6,.15)">
+      <h3>Console · Chat with Pi</h3>
+      <p>สอบถามข้อมูลผลิตภัณฑ์ ขอคำปรึกษาด้านพลังงาน หรือเริ่มใช้งานระบบได้ทันที ผ่าน Pi Console</p>
+      <button class="cta-btn">เปิด Console ↗</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<div class="footer">
+  <p>&copy; 2026 PROINVENTIVE Co., Ltd. — Innovative Clean Energy Solution Provider</p>
+  <p style="margin-top:6px"><a href="#about">เกี่ยวกับเรา</a> · <a href="#links">ผลิตภัณฑ์</a> · <a href="#contact">ติดต่อเรา</a></p>
+</div>
+
+</body>
+</html>
