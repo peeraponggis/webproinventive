@@ -204,6 +204,9 @@ body { background: var(--bg); color: var(--text); font-size: 14px; line-height: 
         <button data-section="seo" onclick="showSection('seo')">
           <span class="icon">🔍</span> SEO & AI
         </button>
+        <button onclick="promptToken()" id="btnToken" style="margin-top:8px;border-top:1px solid #e5e7eb;padding-top:8px">
+          <span class="icon">🔑</span> <span id="tokenLabel">GitHub Token</span>
+        </button>
       </div>
     </nav>
   </aside>
@@ -237,8 +240,24 @@ fetch('content.json?t=' + Date.now())
     DATA = d;
     ORIGINAL = JSON.stringify(d);
     showSection('overview');
+    updateTokenLabel();
   })
   .catch(function(e){ toast('โหลด content.json ไม่ได้: ' + e.message, 'error'); });
+
+function updateTokenLabel(){
+  var lbl = document.getElementById('tokenLabel');
+  if(!lbl) return;
+  if(isLocal()){
+    lbl.textContent = 'GitHub Token';
+    lbl.style.color = '';
+  } else if(getGhToken()){
+    lbl.textContent = 'Token ✓';
+    lbl.style.color = '#16a34a';
+  } else {
+    lbl.textContent = 'ตั้งค่า Token ❗';
+    lbl.style.color = '#dc2626';
+  }
+}
 
 /* ── Sections ── */
 function showSection(id){
@@ -1003,66 +1022,156 @@ function previewChanges(){
   w.document.close();
 }
 
+/* ── GitHub API config ── */
+var GH_OWNER = 'peeraponggis';
+var GH_REPO = 'webproinventive';
+var GH_FILE = 'content.json';
+var GH_BRANCH = 'main';
+
+function isLocal(){ return location.hostname === 'localhost' || location.hostname === '127.0.0.1'; }
+
+function getGhToken(){
+  try { return localStorage.getItem('cms_gh_token') || ''; } catch(e){ return ''; }
+}
+function setGhToken(t){
+  try { localStorage.setItem('cms_gh_token', t); } catch(e){}
+}
+
+function promptToken(){
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;display:flex;align-items:center;justify-content:center';
+  var box = document.createElement('div');
+  box.style.cssText = 'background:#fff;border-radius:12px;padding:28px 32px;max-width:500px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,.18);font-family:inherit';
+  box.innerHTML = '<h2 style="font-size:16px;font-weight:700;margin-bottom:8px">🔑 ตั้งค่า GitHub Token</h2>' +
+    '<p style="color:#6b7280;font-size:13px;margin-bottom:16px">ใช้สำหรับบันทึกและเผยแพร่เนื้อหาจากเว็บออนไลน์<br>สร้าง Token ที่ <a href="https://github.com/settings/tokens/new" target="_blank" style="color:#3b82f6">github.com/settings/tokens</a> (เลือก repo scope)</p>' +
+    '<input id="ghTokenInput" type="password" placeholder="ghp_xxxxxxxxxxxx" value="' + esc(getGhToken()) + '" style="width:100%;padding:10px 12px;border:1px solid #e2e4e8;border-radius:6px;font-size:14px;font-family:monospace;margin-bottom:12px">' +
+    '<div style="display:flex;gap:8px;justify-content:flex-end">' +
+      '<button onclick="this.closest(\'div\').closest(\'div\').closest(\'div\').remove()" style="padding:8px 16px;background:#f3f4f6;border:1px solid #e2e4e8;border-radius:6px;cursor:pointer;font-size:13px">ยกเลิก</button>' +
+      '<button onclick="saveToken()" style="padding:8px 16px;background:#3b82f6;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500">บันทึก Token</button>' +
+    '</div>';
+  overlay.appendChild(box);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+  document.getElementById('ghTokenInput').focus();
+}
+
+function saveToken(){
+  var inp = document.getElementById('ghTokenInput');
+  var t = inp.value.trim();
+  if(!t){ toast('กรุณาใส่ Token', 'error'); return; }
+  setGhToken(t);
+  inp.closest('div').closest('div').closest('div').remove();
+  toast('บันทึก Token แล้ว — พร้อมบันทึกและเผยแพร่ออนไลน์', 'success');
+  updateTokenLabel();
+}
+
+function ghApi(path, opts){
+  var token = getGhToken();
+  if(!token) return Promise.reject(new Error('NO_TOKEN'));
+  var url = 'https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/' + path;
+  var headers = {'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json'};
+  if(opts && opts.body) headers['Content-Type'] = 'application/json';
+  return fetch(url, Object.assign({headers: headers}, opts || {})).then(function(r){
+    if(!r.ok) return r.json().then(function(d){ throw new Error(d.message || 'GitHub API error ' + r.status); });
+    return r.json();
+  });
+}
+
+function ghSaveAndPublish(){
+  DATA._updated = new Date().toISOString().slice(0,10);
+  var btn = document.getElementById('btnPublish');
+  var btnSave = document.getElementById('btnSave');
+  btn.disabled = true; btn.textContent = 'กำลังเผยแพร่...';
+  btnSave.disabled = true;
+  var status = document.getElementById('barStatus');
+  status.innerHTML = '⏳ กำลังดึง content.json จาก GitHub...';
+
+  ghApi('contents/' + GH_FILE + '?ref=' + GH_BRANCH)
+    .then(function(file){
+      status.innerHTML = '⏳ กำลัง commit content.json ขึ้น GitHub...';
+      var content = btoa(unescape(encodeURIComponent(JSON.stringify(DATA, null, 2) + '\n')));
+      return ghApi('contents/' + GH_FILE, {
+        method: 'PUT',
+        body: JSON.stringify({
+          message: 'อัปเดตเนื้อหา content.json โดย ลุงพี',
+          content: content,
+          sha: file.sha,
+          branch: GH_BRANCH
+        })
+      });
+    })
+    .then(function(result){
+      btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ';
+      btnSave.disabled = false;
+      ORIGINAL = JSON.stringify(DATA);
+      savedNotPublished = false;
+      status.innerHTML = '🎉 เผยแพร่สำเร็จ! เว็บจะอัปเดตใน 1-2 นาที';
+      toast('เผยแพร่สำเร็จ — commit ขึ้น GitHub เรียบร้อย', 'success');
+      showPublishResult({ok:true, message:'commit ขึ้น GitHub สำเร็จ — รอ GitHub Pages deploy ~30 วินาที', sha: result.content.sha});
+    })
+    .catch(function(e){
+      btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ';
+      btnSave.disabled = false;
+      if(e.message === 'NO_TOKEN'){
+        promptToken();
+        toast('กรุณาใส่ GitHub Token ก่อน', 'error');
+      } else {
+        toast('เผยแพร่ไม่สำเร็จ: ' + e.message, 'error');
+      }
+      markChanged();
+    });
+}
+
 function saveChanges(){
   DATA._updated = new Date().toISOString().slice(0,10);
-  if(location.hostname === 'localhost' || location.hostname === '127.0.0.1'){
+  if(isLocal()){
     fetch('/api/save', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(DATA, null, 2)})
       .then(function(r){ return r.json(); })
       .then(function(d){
         if(d.ok){ toast(d.message, 'success'); ORIGINAL = JSON.stringify(DATA); savedNotPublished = true; markChanged(); }
         else toast(d.message, 'error');
       })
-      .catch(function(e){ toast('บันทึกไม่สำเร็จ: ' + e.message + ' — ลองดาวน์โหลดแทน', 'error'); downloadFallback(); });
+      .catch(function(e){ toast('บันทึกไม่สำเร็จ: ' + e.message, 'error'); });
   } else {
-    downloadFallback();
+    ORIGINAL = JSON.stringify(DATA);
+    savedNotPublished = true;
+    markChanged();
+    toast('พร้อมเผยแพร่ — กดปุ่มเผยแพร่ขึ้นเว็บเพื่อ commit ขึ้น GitHub', 'success');
   }
-}
-
-function downloadFallback(){
-  DATA._updated = new Date().toISOString().slice(0,10);
-  var blob = new Blob([JSON.stringify(DATA, null, 2)], {type:'application/json'});
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'content.json';
-  a.click();
-  URL.revokeObjectURL(a.href);
-  toast('ดาวน์โหลด content.json แล้ว — วางทับไฟล์เดิมใน repo แล้ว commit + push', 'success');
-  ORIGINAL = JSON.stringify(DATA);
-  markChanged();
 }
 
 function publishChanges(){
-  if(location.hostname !== 'localhost' && location.hostname !== '127.0.0.1'){
-    toast('เผยแพร่ได้เฉพาะจาก localhost (เปิดผ่าน CMS Server)', 'error');
-    return;
+  if(isLocal()){
+    DATA._updated = new Date().toISOString().slice(0,10);
+    var btn = document.getElementById('btnPublish');
+    btn.disabled = true; btn.textContent = 'กำลังเผยแพร่...';
+    var status = document.getElementById('barStatus');
+    status.innerHTML = '⏳ กำลังบันทึกและเผยแพร่ขึ้นเว็บ...';
+    fetch('/api/save', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(DATA, null, 2)})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if(!d.ok){ toast(d.message, 'error'); btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ'; markChanged(); return; }
+        ORIGINAL = JSON.stringify(DATA);
+        status.innerHTML = '⏳ บันทึกแล้ว กำลัง commit + push...';
+        return fetch('/api/publish', {method:'POST'}).then(function(r){ return r.json(); });
+      })
+      .then(function(d){
+        if(!d) return;
+        btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ';
+        if(d.ok){
+          savedNotPublished = false;
+          status.innerHTML = '🎉 เผยแพร่สำเร็จ! เว็บจะอัปเดตใน 1-2 นาที';
+          toast('เผยแพร่สำเร็จ — commit + push เรียบร้อย', 'success');
+          showPublishResult(d);
+        } else {
+          toast(d.message, 'error');
+          markChanged();
+        }
+      })
+      .catch(function(e){ btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ'; toast('เผยแพร่ไม่สำเร็จ: ' + e.message, 'error'); markChanged(); });
+  } else {
+    ghSaveAndPublish();
   }
-  DATA._updated = new Date().toISOString().slice(0,10);
-  var btn = document.getElementById('btnPublish');
-  btn.disabled = true; btn.textContent = 'กำลังเผยแพร่...';
-  var status = document.getElementById('barStatus');
-  status.innerHTML = '⏳ กำลังบันทึกและเผยแพร่ขึ้นเว็บ...';
-  fetch('/api/save', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(DATA, null, 2)})
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if(!d.ok){ toast(d.message, 'error'); btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ'; markChanged(); return; }
-      ORIGINAL = JSON.stringify(DATA);
-      status.innerHTML = '⏳ บันทึกแล้ว กำลัง commit + push...';
-      return fetch('/api/publish', {method:'POST'}).then(function(r){ return r.json(); });
-    })
-    .then(function(d){
-      if(!d) return;
-      btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ';
-      if(d.ok){
-        savedNotPublished = false;
-        status.innerHTML = '🎉 เผยแพร่สำเร็จ! เว็บจะอัปเดตใน 1-2 นาที';
-        toast('เผยแพร่สำเร็จ — commit + push เรียบร้อย', 'success');
-        showPublishResult(d);
-      } else {
-        toast(d.message, 'error');
-        markChanged();
-      }
-    })
-    .catch(function(e){ btn.disabled = false; btn.textContent = 'เผยแพร่ขึ้นเว็บ'; toast('เผยแพร่ไม่สำเร็จ: ' + e.message, 'error'); markChanged(); });
 }
 
 function showPublishResult(d){
@@ -1073,10 +1182,7 @@ function showPublishResult(d){
   box.innerHTML = '<div style="font-size:48px;margin-bottom:12px">🎉</div>' +
     '<h2 style="font-size:18px;font-weight:700;margin-bottom:8px">เผยแพร่สำเร็จ!</h2>' +
     '<p style="color:#6b7280;font-size:13px;margin-bottom:16px">' + esc(d.message || 'commit + push เรียบร้อย') + '</p>' +
-    '<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px;margin-bottom:16px;text-align:left">' +
-      '<div style="font-size:12px;color:#166534;font-weight:600;margin-bottom:4px">📁 ไฟล์ content.json อยู่ที่:</div>' +
-      '<code style="font-size:12px;color:#1a1a1a;word-break:break-all">' + esc(d.path || 'repo/content.json') + '</code>' +
-    '</div>' +
+    (d.sha ? '<div style="font-size:11px;color:#9ca3af;margin-bottom:12px">SHA: ' + esc(d.sha.substring(0,7)) + '</div>' : '') +
     '<div style="display:flex;gap:8px;justify-content:center">' +
       '<a href="https://pi.aisolar.dev" target="_blank" style="padding:8px 16px;background:#3b82f6;color:#fff;border-radius:6px;text-decoration:none;font-size:13px;font-weight:500">🌐 เปิดเว็บจริง</a>' +
       '<button onclick="this.closest(\'div\').closest(\'div\').closest(\'div\').remove()" style="padding:8px 16px;background:#f3f4f6;border:1px solid #e2e4e8;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500">ปิด</button>' +
