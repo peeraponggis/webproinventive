@@ -1,3 +1,6 @@
+## 1.1.6 — 2026-11-27 โดย ลุงพี
+- ตัด internal-only SaaS หลังบ้านแอดมิน ออกจาก pi_tasks/index.html
+
 ## 1.1.5 — 2026-11-27 โดย ลุงพี
 - ตัด internal-only SaaS หลังบ้านแอดมิน ออกจาก demo.html และ product.html
 
