@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROINVENTIVE Admin — จัดการเนื้อหาเว็บ</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8f9fa; --surface: #fff; --border: #e2e4e8; --border-focus: #3b82f6;
+  --text: #1a1a1a; --text2: #6b7280; --text3: #9ca3af;
+  --accent: #3b82f6; --accent-bg: #eff6ff; --accent-text: #1d4ed8;
+  --danger: #ef4444; --danger-bg: #fef2f2;
+  --success: #22c55e; --success-bg: #f0fdf4;
+  --warn: #f59e0b; --warn-bg: #fffbeb;
+  --radius: 8px; --shadow: 0 1px 3px rgba(0,0,0,.08);
+  font-family: 'Inter', 'Noto Sans Thai', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; }
+body { background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; }
+
+/* Layout */
+.app { display: flex; min-height: 100vh; }
+.sidebar { width: 240px; background: var(--surface); border-right: 1px solid var(--border); padding: 20px 0; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+.sidebar-logo { padding: 0 20px 20px; font-weight: 700; font-size: 15px; color: var(--accent); border-bottom: 1px solid var(--border); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.sidebar-logo img { width: 28px; height: 28px; border-radius: 6px; }
+.sidebar nav { padding: 0 8px; }
+.sidebar nav button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 12px; border: none; background: none; color: var(--text2); font-size: 13px; font-weight: 500; border-radius: 6px; cursor: pointer; text-align: left; }
+.sidebar nav button:hover { background: var(--bg); color: var(--text); }
+.sidebar nav button.active { background: var(--accent-bg); color: var(--accent-text); }
+.sidebar nav button .icon { width: 20px; text-align: center; font-size: 16px; }
+.sidebar nav .divider { height: 1px; background: var(--border); margin: 8px 12px; }
+
+.main { flex: 1; padding: 24px 32px; max-width: 960px; }
+.main h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.main .subtitle { color: var(--text2); margin-bottom: 24px; font-size: 13px; }
+
+/* Toast */
+.toast { position: fixed; top: 20px; right: 20px; padding: 12px 20px; border-radius: var(--radius); font-size: 13px; font-weight: 500; z-index: 999; opacity: 0; transform: translateY(-8px); transition: all .3s; pointer-events: none; box-shadow: var(--shadow); }
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.success { background: var(--success-bg); color: #166534; border: 1px solid #bbf7d0; }
+.toast.error { background: var(--danger-bg); color: #991b1b; border: 1px solid #fecaca; }
+
+/* Cards */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.card.hidden-item { opacity: .55; border-style: dashed; }
+.card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.card-icon { font-size: 20px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--bg); border-radius: 6px; flex-shrink: 0; }
+.card-title { font-weight: 600; font-size: 14px; }
+.card-desc { font-size: 12px; color: var(--text2); }
+.card-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; align-items: center; }
+
+/* Badges */
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+.badge.visible { background: var(--success-bg); color: #166534; }
+.badge.hidden { background: var(--danger-bg); color: #991b1b; }
+.badge.internal { background: var(--warn-bg); color: #92400e; }
+.badge.external { background: var(--accent-bg); color: var(--accent-text); }
+
+/* Inputs */
+.field { margin-bottom: 12px; }
+.field label { display: block; font-size: 12px; font-weight: 600; color: var(--text2); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .5px; }
+.field input, .field select { width: 100%; padding: 7px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; font-family: inherit; background: var(--surface); transition: border-color .2s; }
+.field input:focus, .field select:focus { outline: none; border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(59,130,246,.12); }
+.field input.url-input { font-family: 'JetBrains Mono', monospace, monospace; font-size: 12px; }
+.field .note { font-size: 11px; color: var(--warn); margin-top: 2px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* Buttons */
+.btn { padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; font-family: inherit; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--text); transition: all .15s; display: inline-flex; align-items: center; gap: 6px; }
+.btn:hover { background: var(--bg); }
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn.primary:hover { background: #2563eb; }
+.btn.danger { color: var(--danger); }
+.btn.danger:hover { background: var(--danger-bg); }
+.btn.sm { padding: 4px 10px; font-size: 12px; }
+.toggle-vis { cursor: pointer; user-select: none; }
+
+/* Section header */
+.section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.section-head h2 { font-size: 16px; font-weight: 600; }
+.section-head .count { font-size: 12px; color: var(--text3); font-weight: 400; margin-left: 8px; }
+
+/* Drag handle */
+.drag-handle { cursor: grab; color: var(--text3); padding: 4px; font-size: 16px; user-select: none; }
+.drag-handle:active { cursor: grabbing; }
+.card.dragging { opacity: .4; }
+.card.drag-over { border-top: 2px solid var(--accent); }
+
+/* Expand/collapse editor */
+.card-editor { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.card-editor.open { display: block; }
+
+/* Preview bar */
+.preview-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--surface); border-top: 1px solid var(--border); padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; z-index: 100; box-shadow: 0 -2px 8px rgba(0,0,0,.06); transform: translateY(100%); transition: transform .3s; }
+.preview-bar.show { transform: translateY(0); }
+.preview-bar .changes { font-size: 13px; color: var(--text2); }
+.preview-bar .changes strong { color: var(--text); }
+.preview-bar .actions { display: flex; gap: 8px; }
+
+/* Add button */
+.add-btn { width: 100%; padding: 12px; border: 2px dashed var(--border); border-radius: var(--radius); background: none; color: var(--text2); font-size: 13px; font-weight: 500; font-family: inherit; cursor: pointer; transition: all .15s; display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 12px; }
+.add-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+
+/* Delete button */
+.btn.delete { color: var(--text3); font-size: 14px; padding: 4px 6px; }
+.btn.delete:hover { color: var(--danger); background: var(--danger-bg); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { padding: 16px; }
+  .row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="img/pilogo.png" alt="" onerror="this.style.display='none'">
+      <span>Admin CMS</span>
+    </div>
+    <nav>
+      <button class="active" data-section="nav" onclick="showSection('nav')">
+        <span class="icon">🧭</span> เมนูและลิงก์
+      </button>
+      <button data-section="ecosystem" onclick="showSection('ecosystem')">
+        <span class="icon">🌐</span> Ecosystem
+      </button>
+      <button data-section="footer" onclick="showSection('footer')">
+        <span class="icon">📋</span> Footer
+      </button>
+      <button data-section="contact" onclick="showSection('contact')">
+        <span class="icon">📞</span> ข้อมูลติดต่อ
+      </button>
+      <div class="divider"></div>
+      <button data-section="seo" onclick="showSection('seo')">
+        <span class="icon">🔍</span> SEO & AI
+      </button>
+    </nav>
+  </aside>
+
+  <main class="main" id="main-content">
+    <!-- Rendered by JS -->
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="preview-bar" id="previewBar">
+  <div class="changes"><strong id="changeCount">0</strong> การเปลี่ยนแปลง ยังไม่บันทึก</div>
+  <div class="actions">
+    <button class="btn" onclick="discardChanges()">ยกเลิก</button>
+    <button class="btn" onclick="previewChanges()">👁 ดูตัวอย่าง</button>
+    <button class="btn primary" onclick="saveChanges()">💾 บันทึก content.json</button>
+  </div>
+</div>
+
+<script>
+var DATA = null;
+var ORIGINAL = null;
+var changeCount = 0;
+
+/* ── Load ── */
+fetch('content.json?t=' + Date.now())
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    DATA = d;
+    ORIGINAL = JSON.stringify(d);
+    showSection('nav');
+  })
+  .catch(function(e){ toast('โหลด content.json ไม่ได้: ' + e.message, 'error'); });
+
+/* ── Sections ── */
+function showSection(id){
+  document.querySelectorAll('.sidebar nav button').forEach(function(b){
+    b.classList.toggle('active', b.dataset.section === id);
+  });
+  var main = document.getElementById('main-content');
+  if(id === 'nav') renderNav(main);
+  else if(id === 'ecosystem') renderEcosystem(main);
+  else if(id === 'footer') renderFooter(main);
+  else if(id === 'contact') renderContact(main);
+  else if(id === 'seo') renderSEO(main);
+}
+
+/* ── Nav menus ── */
+function renderNav(el){
+  var h = '<h1>🧭 เมนูและลิงก์</h1><p class="subtitle">จัดการเมนู dropdown, quick links และลิงก์ทั้งหมดบนเว็บ — แก้ URL, ซ่อน/แสดง, เปลี่ยนชื่อ</p>';
+  DATA.nav.menus.forEach(function(menu, mi){
+    var vis = menu.items.filter(function(i){return i.visible;}).length;
+    h += '<div class="section-head"><h2>' + esc(menu.label.th) + ' (' + esc(menu.label.en) + ')' +
+         '<span class="count">' + vis + '/' + menu.items.length + ' แสดง</span></h2></div>';
+    menu.items.forEach(function(item, ii){
+      h += renderItemCard(item, 'nav.menus[' + mi + '].items[' + ii + ']', 'nav.menus[' + mi + '].items', ii);
+    });
+    h += '<button class="add-btn" onclick="addNavItem(' + mi + ')">➕ เพิ่มรายการใหม่ใน ' + esc(menu.label.th) + '</button>';
+  });
+  h += '<div class="section-head" style="margin-top:24px"><h2>Quick Links (แถบด้านบน)<span class="count">' +
+       DATA.nav.quickLinks.filter(function(i){return i.visible;}).length + '/' + DATA.nav.quickLinks.length + ' แสดง</span></h2></div>';
+  DATA.nav.quickLinks.forEach(function(item, i){
+    h += renderItemCard(item, 'nav.quickLinks[' + i + ']', 'nav.quickLinks', i);
+  });
+  h += '<button class="add-btn" onclick="addQuickLink()">➕ เพิ่ม Quick Link</button>';
+  el.innerHTML = h;
+}
+
+function renderItemCard(item, path, arrPath, idx){
+  var cls = item.visible ? '' : ' hidden-item';
+  var badges = '';
+  badges += '<span class="badge ' + (item.visible ? 'visible' : 'hidden') + '">' + (item.visible ? '✓ แสดง' : '✗ ซ่อน') + '</span>';
+  if(item.internal) badges += '<span class="badge internal">🔒 ภายใน</span>';
+  if(item.external) badges += '<span class="badge external">↗ ลิงก์ภายนอก</span>';
+
+  var noteHtml = item.note ? '<div class="field"><div class="note">⚠ ' + esc(item.note) + '</div></div>' : '';
+  var delBtn = arrPath != null ? '<button class="btn sm delete" onclick="deleteItem(\'' + arrPath + '\',' + idx + ')" title="ลบรายการ">🗑</button>' : '';
+
+  return '<div class="card' + cls + '" data-path="' + path + '">' +
+    '<div class="card-head">' +
+      '<span class="drag-handle" title="ลากเรียงลำดับ">⠿</span>' +
+      '<span class="card-icon">' + (item.icon || '📄') + '</span>' +
+      '<div style="flex:1">' +
+        '<div class="card-title">' + esc(item.label.th) + ' <span style="color:var(--text3);font-weight:400">/ ' + esc(item.label.en) + '</span></div>' +
+        '<div class="card-desc">' + esc(item.desc ? item.desc.th : '') + '</div>' +
+      '</div>' +
+      '<button class="btn sm toggle-vis" onclick="toggleVis(\'' + path + '\')">' + (item.visible ? '👁 ซ่อน' : '👁 แสดง') + '</button>' +
+      '<button class="btn sm" onclick="toggleEditor(this)">✏️ แก้ไข</button>' +
+      delBtn +
+    '</div>' +
+    '<div class="card-meta">' + badges + '</div>' +
+    '<div class="card-editor">' +
+      '<div class="row">' +
+        '<div class="field"><label>ชื่อ (ไทย)</label><input value="' + esc(item.label.th) + '" onchange="setVal(\'' + path + '.label.th\',this.value)"></div>' +
+        '<div class="field"><label>ชื่อ (อังกฤษ)</label><input value="' + esc(item.label.en) + '" onchange="setVal(\'' + path + '.label.en\',this.value)"></div>' +
+      '</div>' +
+      (item.desc ? '<div class="row">' +
+        '<div class="field"><label>คำอธิบาย (ไทย)</label><input value="' + esc(item.desc.th) + '" onchange="setVal(\'' + path + '.desc.th\',this.value)"></div>' +
+        '<div class="field"><label>คำอธิบาย (อังกฤษ)</label><input value="' + esc(item.desc.en) + '" onchange="setVal(\'' + path + '.desc.en\',this.value)"></div>' +
+      '</div>' : '') +
+      '<div class="field"><label>URL</label><input class="url-input" value="' + esc(item.href) + '" placeholder="https://... หรือ page.html หรือ #section" onchange="setVal(\'' + path + '.href\',this.value)"></div>' +
+      noteHtml +
+    '</div>' +
+  '</div>';
+}
+
+/* ── Ecosystem ── */
+function renderEcosystem(el){
+  var h = '<h1>🌐 Ecosystem Cards</h1><p class="subtitle">การ์ดในส่วน "โซลูชันพลังงานครบวงจร" — แสดง/ซ่อน และแก้ลิงก์ได้</p>';
+  DATA.ecosystem.forEach(function(item, i){
+    h += renderItemCard(
+      {id:item.id, icon:'🌐', label:item.title, desc:item.desc, href:item.href, visible:item.visible, external:item.href && item.href.indexOf('http')===0, note:item.note},
+      'ecosystem[' + i + ']', 'ecosystem', i
+    );
+  });
+  h += '<button class="add-btn" onclick="addEcosystemItem()">➕ เพิ่มการ์ด Ecosystem ใหม่</button>';
+  el.innerHTML = h;
+}
+
+/* ── Footer ── */
+function renderFooter(el){
+  var h = '<h1>📋 Footer Links</h1><p class="subtitle">ลิงก์ในส่วนท้ายเว็บ คอลัมน์ "ผลิตภัณฑ์"</p>';
+  DATA.footer.products.forEach(function(item, i){
+    var card = {id:item.id, icon:'🔗', label:item.label, desc:null, href:item.href, visible:item.visible, internal:item.internal, external:item.external, note:item.note};
+    h += renderItemCard(card, 'footer.products[' + i + ']', 'footer.products', i);
+  });
+  h += '<button class="add-btn" onclick="addFooterItem()">➕ เพิ่ม Footer Link ใหม่</button>';
+  el.innerHTML = h;
+}
+
+/* ── Contact ── */
+function renderContact(el){
+  var c = DATA.contact;
+  el.innerHTML = '<h1>📞 ข้อมูลติดต่อ</h1><p class="subtitle">แก้เบอร์โทร อีเมล ที่อยู่ และ social links</p>' +
+    '<div class="card">' +
+      '<div class="row">' +
+        '<div class="field"><label>โทรศัพท์</label><input value="' + esc(c.phone) + '" onchange="setVal(\'contact.phone\',this.value)"></div>' +
+        '<div class="field"><label>อีเมล</label><input value="' + esc(c.email) + '" onchange="setVal(\'contact.email\',this.value)"></div>' +
+      '</div>' +
+      '<div class="row">' +
+        '<div class="field"><label>ที่อยู่ (ไทย)</label><input value="' + esc(c.address.th) + '" onchange="setVal(\'contact.address.th\',this.value)"></div>' +
+        '<div class="field"><label>ที่อยู่ (อังกฤษ)</label><input value="' + esc(c.address.en) + '" onchange="setVal(\'contact.address.en\',this.value)"></div>' +
+      '</div>' +
+      '<div class="row" style="grid-template-columns:1fr 1fr 1fr">' +
+        '<div class="field"><label>X (Twitter)</label><input class="url-input" value="' + esc(c.social.x) + '" placeholder="https://x.com/..." onchange="setVal(\'contact.social.x\',this.value)"></div>' +
+        '<div class="field"><label>LinkedIn</label><input class="url-input" value="' + esc(c.social.linkedin) + '" placeholder="https://linkedin.com/company/..." onchange="setVal(\'contact.social.linkedin\',this.value)"></div>' +
+        '<div class="field"><label>YouTube</label><input class="url-input" value="' + esc(c.social.youtube) + '" placeholder="https://youtube.com/@..." onchange="setVal(\'contact.social.youtube\',this.value)"></div>' +
+      '</div>' +
+    '</div>';
+}
+
+/* ── SEO ── */
+function renderSEO(el){
+  var seo = DATA.seo || {siteTitle:{th:'',en:''},siteDesc:{th:'',en:''},keywords:'',canonical:'',ogImage:'',items:[]};
+  if(!DATA.seo) DATA.seo = seo;
+
+  var h = '<h1>🔍 SEO & AI Discovery</h1><p class="subtitle">ตั้งค่า SEO, meta tags และรายการไฟล์ AI ที่สร้างตอน build</p>';
+
+  h += '<div class="card"><h3 style="font-size:14px;font-weight:600;margin-bottom:12px">🏷 Meta Tags หลัก</h3>' +
+    '<div class="row">' +
+      '<div class="field"><label>Site Title (ไทย)</label><input value="' + esc(seo.siteTitle.th) + '" onchange="setVal(\'seo.siteTitle.th\',this.value)"></div>' +
+      '<div class="field"><label>Site Title (อังกฤษ)</label><input value="' + esc(seo.siteTitle.en) + '" onchange="setVal(\'seo.siteTitle.en\',this.value)"></div>' +
+    '</div>' +
+    '<div class="row">' +
+      '<div class="field"><label>Description (ไทย)</label><input value="' + esc(seo.siteDesc.th) + '" onchange="setVal(\'seo.siteDesc.th\',this.value)"></div>' +
+      '<div class="field"><label>Description (อังกฤษ)</label><input value="' + esc(seo.siteDesc.en) + '" onchange="setVal(\'seo.siteDesc.en\',this.value)"></div>' +
+    '</div>' +
+    '<div class="field"><label>Keywords (คั่นด้วย comma)</label><input value="' + esc(seo.keywords) + '" onchange="setVal(\'seo.keywords\',this.value)"></div>' +
+    '<div class="row">' +
+      '<div class="field"><label>Canonical URL</label><input class="url-input" value="' + esc(seo.canonical) + '" onchange="setVal(\'seo.canonical\',this.value)"></div>' +
+      '<div class="field"><label>OG Image</label><input class="url-input" value="' + esc(seo.ogImage) + '" onchange="setVal(\'seo.ogImage\',this.value)"></div>' +
+    '</div>' +
+  '</div>';
+
+  h += '<div class="section-head" style="margin-top:20px"><h2>📋 Checklist ไฟล์ SEO/AI<span class="count">' +
+       seo.items.filter(function(i){return i.status==='done';}).length + '/' + seo.items.length + ' เสร็จ</span></h2></div>';
+
+  h += '<div class="card"><table style="width:100%;font-size:13px;border-collapse:collapse">';
+  seo.items.forEach(function(item, i){
+    var statusBadge = item.status === 'done' ? '<span class="badge visible">✅ มีแล้ว' + (item.note ? ' · ' + esc(item.note) : '') + '</span>'
+      : item.status === 'partial' ? '<span class="badge internal">⚠ ' + esc(item.note || 'บางส่วน') + '</span>'
+      : '<span class="badge hidden">❌ ยังไม่มี</span>' + (item.note ? ' → ' + esc(item.note) : '');
+    var selectHtml = '<select style="font-size:11px;padding:2px 4px;border:1px solid var(--border);border-radius:4px;margin-right:6px" onchange="setSeoStatus(' + i + ',this.value)">' +
+      '<option value="pending"' + (item.status==='pending'?' selected':'') + '>❌ ยังไม่มี</option>' +
+      '<option value="partial"' + (item.status==='partial'?' selected':'') + '>⚠ บางส่วน</option>' +
+      '<option value="done"' + (item.status==='done'?' selected':'') + '>✅ เสร็จ</option></select>';
+    h += '<tr><td style="padding:8px 0;border-bottom:1px solid var(--border)">' + esc(item.label) + '</td>' +
+      '<td style="text-align:right;padding:8px 0;border-bottom:1px solid var(--border)">' + selectHtml +
+      '<button class="btn sm delete" onclick="deleteSeoItem(' + i + ')" title="ลบ">🗑</button></td></tr>';
+  });
+  h += '</table></div>';
+  h += '<button class="add-btn" onclick="addSeoItem()">➕ เพิ่มรายการ SEO/AI ใหม่</button>';
+
+  h += '<p style="font-size:12px;color:var(--text2);margin-top:8px">ไฟล์ที่ขึ้น "สร้างตอน build" จะถูกสร้างจาก content.json อัตโนมัติเมื่อรัน build script ก่อน deploy</p>';
+  el.innerHTML = h;
+}
+
+/* ── Helpers ── */
+function esc(s){ return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : ''; }
+
+function getByPath(obj, path){
+  return path.replace(/\[(\d+)\]/g, '.$1').split('.').reduce(function(o, k){ return o && o[k]; }, obj);
+}
+function setByPath(obj, path, val){
+  var parts = path.replace(/\[(\d+)\]/g, '.$1').split('.');
+  var last = parts.pop();
+  var target = parts.reduce(function(o, k){ return o[k]; }, obj);
+  target[last] = val;
+}
+
+function setVal(path, val){
+  setByPath(DATA, path, val);
+  markChanged();
+}
+
+function toggleVis(path){
+  var item = getByPath(DATA, path);
+  item.visible = !item.visible;
+  markChanged();
+  showSection(document.querySelector('.sidebar nav button.active').dataset.section);
+}
+
+function toggleEditor(btn){
+  var editor = btn.closest('.card').querySelector('.card-editor');
+  editor.classList.toggle('open');
+  btn.textContent = editor.classList.contains('open') ? '✕ ปิด' : '✏️ แก้ไข';
+}
+
+function markChanged(){
+  changeCount = countChanges();
+  document.getElementById('changeCount').textContent = changeCount;
+  document.getElementById('previewBar').classList.toggle('show', changeCount > 0);
+}
+
+function countChanges(){
+  return JSON.stringify(DATA) === ORIGINAL ? 0 : 1;
+}
+
+function discardChanges(){
+  DATA = JSON.parse(ORIGINAL);
+  markChanged();
+  showSection(document.querySelector('.sidebar nav button.active').dataset.section);
+  toast('ยกเลิกการเปลี่ยนแปลงแล้ว', 'success');
+}
+
+function previewChanges(){
+  var diff = generateDiff();
+  var w = window.open('', '_blank', 'width=600,height=500');
+  w.document.write('<html><head><title>Preview changes</title><style>body{font-family:system-ui;padding:20px;font-size:13px}pre{background:#f5f5f5;padding:12px;border-radius:8px;overflow-x:auto;font-size:12px}h2{font-size:16px;margin-bottom:12px}</style></head><body>');
+  w.document.write('<h2>การเปลี่ยนแปลงที่จะบันทึก</h2>');
+  w.document.write('<pre>' + esc(JSON.stringify(DATA, null, 2)) + '</pre>');
+  w.document.write('</body></html>');
+  w.document.close();
+}
+
+function generateDiff(){
+  return JSON.stringify(DATA, null, 2);
+}
+
+function saveChanges(){
+  DATA._updated = new Date().toISOString().slice(0,10);
+  var blob = new Blob([JSON.stringify(DATA, null, 2)], {type:'application/json'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'content.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast('💾 ดาวน์โหลด content.json แล้ว — วางทับไฟล์เดิมใน repo แล้ว commit + push', 'success');
+  ORIGINAL = JSON.stringify(DATA);
+  markChanged();
+}
+
+/* ── Add / Delete ── */
+function genId(prefix){ return prefix + '-' + Date.now().toString(36); }
+
+function addNavItem(menuIndex){
+  var menu = DATA.nav.menus[menuIndex];
+  menu.items.push({id:genId('item'), icon:'📄', label:{th:'รายการใหม่',en:'New Item'}, desc:{th:'คำอธิบาย',en:'Description'}, href:'#', visible:false});
+  markChanged();
+  showSection('nav');
+  toast('เพิ่มรายการใหม่ใน ' + menu.label.th + ' แล้ว', 'success');
+}
+
+function addQuickLink(){
+  DATA.nav.quickLinks.push({id:genId('ql'), label:{th:'ลิงก์ใหม่',en:'New Link'}, href:'#', visible:false});
+  markChanged();
+  showSection('nav');
+  toast('เพิ่ม Quick Link ใหม่แล้ว', 'success');
+}
+
+function addEcosystemItem(){
+  DATA.ecosystem.push({id:genId('eco'), title:{th:'การ์ดใหม่',en:'New Card'}, desc:{th:'คำอธิบาย',en:'Description'}, href:'#', linkText:{th:'ดูเพิ่ม →',en:'Learn more →'}, visible:false});
+  markChanged();
+  showSection('ecosystem');
+  toast('เพิ่มการ์ด Ecosystem ใหม่แล้ว', 'success');
+}
+
+function addFooterItem(){
+  DATA.footer.products.push({id:genId('ft'), label:{th:'ลิงก์ใหม่',en:'New Link'}, href:'#', visible:false});
+  markChanged();
+  showSection('footer');
+  toast('เพิ่ม Footer Link ใหม่แล้ว', 'success');
+}
+
+function addSeoItem(){
+  if(!DATA.seo) DATA.seo = {siteTitle:{th:'',en:''},siteDesc:{th:'',en:''},keywords:'',canonical:'',ogImage:'',items:[]};
+  var label = prompt('ชื่อรายการ SEO/AI ใหม่ (เช่น FAQ Schema, AMP Pages):');
+  if(!label) return;
+  DATA.seo.items.push({id:genId('seo'), label:label, status:'pending', note:''});
+  markChanged();
+  showSection('seo');
+  toast('เพิ่ม ' + label + ' แล้ว', 'success');
+}
+
+function deleteSeoItem(idx){
+  if(!confirm('ลบ "' + DATA.seo.items[idx].label + '" ?')) return;
+  DATA.seo.items.splice(idx, 1);
+  markChanged();
+  showSection('seo');
+  toast('ลบรายการ SEO แล้ว', 'success');
+}
+
+function setSeoStatus(idx, val){
+  DATA.seo.items[idx].status = val;
+  markChanged();
+}
+
+function deleteItem(arrPath, idx){
+  var arr = getByPath(DATA, arrPath);
+  var name = arr[idx].label ? arr[idx].label.th : (arr[idx].title ? arr[idx].title.th : 'รายการนี้');
+  if(!confirm('ลบ "' + name + '" ?')) return;
+  arr.splice(idx, 1);
+  markChanged();
+  showSection(document.querySelector('.sidebar nav button.active').dataset.section);
+  toast('ลบ ' + name + ' แล้ว', 'success');
+}
+
+function toast(msg, type){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + (type || 'success') + ' show';
+  setTimeout(function(){ t.classList.remove('show'); }, 4000);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{
+  "_version": "1.0.0",
+  "_updated": "2026-11-27",
+  "nav": {
+    "menus": [
+      {
+        "id": "product",
+        "label": { "th": "ผลิตภัณฑ์", "en": "Products" },
+        "i18n": "nav.product",
+        "items": [
+          { "id": "project",   "icon": "🗂️", "label": { "th": "โปรเจกต์และงาน", "en": "Projects & Tasks" }, "desc": { "th": "ติดตามงานทุกชิ้นในมุมมองเดียว", "en": "Track every task in one view" }, "href": "product.html", "visible": true },
+          { "id": "tasks",     "icon": "🗒️", "label": { "th": "Pi Tasks", "en": "Pi Tasks" }, "desc": { "th": "บอร์ด Kanban สำหรับทีม เปิดใช้ได้ทันที", "en": "Team Kanban board, ready to use" }, "href": "pi_tasks/index.html", "internal": true, "visible": true },
+          { "id": "saas",      "icon": "☀️", "label": { "th": "SaaS", "en": "SaaS" }, "desc": { "th": "แพลตฟอร์ม SaaS สำหรับลูกค้า", "en": "SaaS platform for customers" }, "href": "", "external": true, "visible": false, "note": "Railway app offline — ใส่ URL ใหม่แล้วเปิด visible" },
+          { "id": "saas-pro",  "icon": "🧰", "label": { "th": "SaaS ช่างติดตั้ง", "en": "SaaS Installer" }, "desc": { "th": "พื้นที่ทำงานสำหรับทีมติดตั้งหน้างาน", "en": "Workspace for field installation teams" }, "href": "", "external": true, "visible": false, "note": "Railway app offline — ใส่ URL ใหม่แล้วเปิด visible" },
+          { "id": "ev",        "icon": "🔌", "label": { "th": "สถานีชาร์จ EV", "en": "EV Charging Station" }, "desc": { "th": "ออกแบบและติดตั้ง ตามมาตรฐาน กฟภ.-MPESTD", "en": "Design & install per PEA-MPESTD standards" }, "href": "#services", "badge": { "th": "ใหม่", "en": "New" }, "visible": true }
+        ]
+      },
+      {
+        "id": "resources",
+        "label": { "th": "แหล่งข้อมูล", "en": "Resources" },
+        "i18n": "nav.resources",
+        "items": [
+          { "id": "stories",  "icon": "💬", "label": { "th": "เรื่องราวลูกค้า", "en": "Customer Stories" }, "desc": { "th": "ทีมที่เติบโตไปกับ PROINVENTIVE", "en": "Teams growing with PROINVENTIVE" }, "href": "#stories", "visible": true },
+          { "id": "connect",  "icon": "🔌", "label": { "th": "การเชื่อมต่อ", "en": "Integrations" }, "desc": { "th": "ต่อกับเครื่องมือที่ทีมใช้อยู่", "en": "Connect with your team's tools" }, "href": "#", "visible": true },
+          { "id": "help",     "icon": "🎓", "label": { "th": "ศูนย์ช่วยเหลือ", "en": "Help Center" }, "desc": { "th": "คู่มือ บทเรียน และคำถามที่พบบ่อย", "en": "Guides, tutorials, and FAQ" }, "href": "#", "visible": true }
+        ]
+      },
+      {
+        "id": "internal",
+        "label": { "th": "ระบบภายใน", "en": "Internal" },
+        "i18n": "nav.internal",
+        "internal": true,
+        "items": [
+          { "id": "int-tasks", "icon": "🗒️", "label": { "th": "Pi Tasks", "en": "Pi Tasks" }, "desc": { "th": "บอร์ด Kanban สำหรับทีม เปิดใช้ได้ทันที", "en": "Team Kanban board" }, "href": "pi_tasks/index.html", "visible": true },
+          { "id": "int-crm",   "icon": "📇", "label": { "th": "CRM", "en": "CRM" }, "desc": { "th": "ระบบบริหารลูกค้าสัมพันธ์", "en": "Customer relationship management" }, "href": "https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi", "external": true, "visible": true },
+          { "id": "int-boq",   "icon": "🧾", "label": { "th": "BoQ", "en": "BoQ" }, "desc": { "th": "ระบบถอดแบบประมาณราคา", "en": "Bill of Quantities estimator" }, "href": "https://pi-system.pages.dev/pi_boq_app/web/", "external": true, "visible": true },
+          { "id": "int-asc",   "icon": "⚡", "label": { "th": "ASC", "en": "ASC" }, "desc": { "th": "ระบบออกแบบ PVs", "en": "PV system design" }, "href": "https://aisolar.dev/index.html", "external": true, "visible": true },
+          { "id": "int-admin",  "icon": "🛠️", "label": { "th": "SaaS หลังบ้านแอดมิน", "en": "SaaS Admin" }, "desc": { "th": "ตรวจ lead / ตรวจสลิป", "en": "Review leads / verify slips" }, "href": "", "external": true, "visible": false, "note": "Railway app offline" },
+          { "id": "int-demo",  "icon": "🎬", "label": { "th": "Demo", "en": "Demo" }, "desc": { "th": "ชมคลิปการทำงานของทุกระบบ", "en": "Watch all systems in action" }, "href": "demo.html", "visible": true }
+        ]
+      }
+    ],
+    "quickLinks": [
+      { "id": "ql-tasks", "label": { "th": "Pi Tasks", "en": "Pi Tasks" }, "href": "pi_tasks/index.html", "internal": true, "visible": true },
+      { "id": "ql-saas",  "label": { "th": "SaaS", "en": "SaaS" }, "href": "", "external": true, "visible": false, "note": "Railway app offline" },
+      { "id": "ql-demo",  "label": { "th": "Demo", "en": "Demo" }, "href": "demo.html", "visible": true }
+    ]
+  },
+  "ecosystem": [
+    { "id": "eco-asc",   "title": { "th": "ASC Suite", "en": "ASC Suite" }, "desc": { "th": "ซอฟต์แวร์ออกแบบและบริหารระบบ Solar PV ครบวงจร", "en": "Complete Solar PV design & management software" }, "href": "https://aisolar.dev/index.html", "linkText": { "th": "ทดลองใช้ →", "en": "Try it →" }, "visible": true },
+    { "id": "eco-saas",  "title": { "th": "Energy Platform", "en": "Energy Platform" }, "desc": { "th": "แพลตฟอร์ม SaaS ให้ลูกค้าดูผล", "en": "SaaS platform for customer energy monitoring" }, "href": "", "linkText": { "th": "ทดลองใช้ →", "en": "Try it →" }, "visible": false, "note": "Railway app offline" },
+    { "id": "eco-edu",   "title": { "th": "Education Hub", "en": "Education Hub" }, "desc": { "th": "อบรมพลังงานแสงอาทิตย์ และ EV", "en": "Solar and EV training programs" }, "href": "#", "linkText": { "th": "ดูหลักสูตร →", "en": "View courses →" }, "visible": true }
+  ],
+  "footer": {
+    "products": [
+      { "id": "ft-tasks", "label": { "th": "Pi Tasks", "en": "Pi Tasks" }, "href": "pi_tasks/index.html", "internal": true, "visible": true },
+      { "id": "ft-saas",  "label": { "th": "SaaS", "en": "SaaS" }, "href": "", "external": true, "visible": false },
+      { "id": "ft-saas-pro", "label": { "th": "SaaS ช่างติดตั้ง", "en": "SaaS Installer" }, "href": "", "external": true, "visible": false },
+      { "id": "ft-features", "label": { "th": "ฟีเจอร์", "en": "Features" }, "href": "product.html", "visible": true },
+      { "id": "ft-new",   "label": { "th": "มีอะไรใหม่", "en": "What's new" }, "href": "#", "visible": true },
+      { "id": "ft-ai",    "label": { "th": "PROINVENTIVE AI", "en": "PROINVENTIVE AI" }, "href": "#", "visible": true },
+      { "id": "ft-demo",  "label": { "th": "Demo", "en": "Demo" }, "href": "demo.html", "visible": true },
+      { "id": "ft-dl",    "label": { "th": "ดาวน์โหลด", "en": "Downloads" }, "href": "#", "visible": true }
+    ]
+  },
+  "seo": {
+    "siteTitle": { "th": "PROINVENTIVE — โซลูชันพลังงานและเทคโนโลยีครบวงจร", "en": "PROINVENTIVE — Comprehensive Energy & Technology Solutions" },
+    "siteDesc": { "th": "ซอฟต์แวร์ออกแบบ Solar PV, สถานีชาร์จ EV, ระบบบริหารพลังงานครบวงจร", "en": "Solar PV design software, EV charging stations, comprehensive energy management" },
+    "keywords": "solar, pv, ev charging, energy management, proinventive, โซลาร์เซลล์, สถานีชาร์จ, พลังงาน",
+    "canonical": "https://pi.aisolar.dev",
+    "ogImage": "img/og-image.png",
+    "items": [
+      { "id": "seo-sitemap", "label": "sitemap.xml", "status": "pending", "note": "สร้างตอน build" },
+      { "id": "seo-robots", "label": "robots.txt", "status": "pending", "note": "สร้างตอน build" },
+      { "id": "seo-llms", "label": "llms.txt", "status": "pending", "note": "สร้างตอน build" },
+      { "id": "seo-jsonld", "label": "JSON-LD Organization", "status": "done" },
+      { "id": "seo-og", "label": "OG Meta Tags", "status": "done", "note": "10 แท็ก" },
+      { "id": "seo-twitter", "label": "Twitter Card", "status": "done" },
+      { "id": "seo-canonical", "label": "Canonical URLs (ทุกหน้า)", "status": "partial", "note": "เฉพาะ index → เพิ่มตอน build" },
+      { "id": "seo-hreflang", "label": "hreflang th/en", "status": "pending", "note": "เพิ่มตอน build" }
+    ]
+  },
+  "contact": {
+    "phone": "080-028-2399",
+    "email": "info@proinventive.co.th",
+    "address": { "th": "59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150", "en": "59/6 Moo 7, Sai Noi, Sai Noi, Nonthaburi 11150, Thailand" },
+    "social": {
+      "x": "",
+      "linkedin": "",
+      "youtube": ""
+    }
+  }
+}

@@ -2969,3 +2969,8 @@ body.pi-authed .guest-only {
     .form-row { grid-template-columns: 1fr; }
     .section-contact .eyebrow { background: rgba(255,255,255,.15); }
 }
+
+/* ซ่อนลิงก์ SaaS บน Railway ชั่วคราว — แอปถูกปิด (404 Application not found) · 27 พ.ย. 2569
+   ใส่ URL ใหม่แล้วลบบล็อกนี้ทิ้งเพื่อแสดงลิงก์กลับ */
+a[href*="web-production-359eb.up.railway.app"],
+li:has(> a[href*="web-production-359eb.up.railway.app"]) { display: none !important; }
