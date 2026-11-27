@@ -63,8 +63,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Thai:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261127006">
-    <link rel="stylesheet" href="pi-console.css?v=20261127006">
+    <link rel="stylesheet" href="style.css?v=20261127007">
+    <link rel="stylesheet" href="pi-console.css?v=20261127007">
 
     <!-- Warm Donut Theme -->
     <style>
@@ -73,7 +73,8 @@
     /* ── Hero (Warm Donut) ── */
     .wd-hero{text-align:center;padding:100px 24px 20px}
     .wd-hero .badge{display:inline-block;background:linear-gradient(90deg,#d97706,#f59e0b);padding:5px 20px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;margin-bottom:16px;letter-spacing:0.5px}
-    .wd-hero h1{font-size:42px;font-weight:900;color:#c2410c;margin-bottom:8px;letter-spacing:-1px}
+    .wd-hero h1{font-size:42px;font-weight:900;color:#c2410c;margin-bottom:8px;letter-spacing:-1px;white-space:pre-wrap}
+    .wd-hero h1 .hero-rest{font-weight:400;letter-spacing:0}
     .wd-hero .tagline{color:#78716c;font-size:16px;max-width:560px;margin:0 auto 8px}
     .wd-hero .sub-tagline{color:#a8a29e;font-size:14px;font-style:italic}
     .wd-hero .hero-mascot{width:100px;height:100px;object-fit:contain;margin-top:16px;filter:drop-shadow(0 4px 12px rgba(217,119,6,.2))}
@@ -236,15 +237,15 @@
     }
     </style>
 
-    <script src="i18n.js?v=20261127006" defer></script>
-    <script src="content.js?v=20261127006" defer></script>
-    <script src="auth.js?v=20261127006" defer></script>
-    <script src="app.js?v=20261127006" defer></script>
-    <script src="thmap.js?v=20261127006" defer></script>
-    <script src="dashboard.js?v=20261127006" defer></script>
-    <script src="pi-console.js?v=20261127006" defer></script>
-    <script src="pi-brain.js?v=20261127006" defer></script>
-    <script src="okmd-bridge.js?v=20261127006" defer></script>
+    <script src="i18n.js?v=20261127007" defer></script>
+    <script src="content.js?v=20261127007" defer></script>
+    <script src="auth.js?v=20261127007" defer></script>
+    <script src="app.js?v=20261127007" defer></script>
+    <script src="thmap.js?v=20261127007" defer></script>
+    <script src="dashboard.js?v=20261127007" defer></script>
+    <script src="pi-console.js?v=20261127007" defer></script>
+    <script src="pi-brain.js?v=20261127007" defer></script>
+    <script src="okmd-bridge.js?v=20261127007" defer></script>
     <script src="config/okmd-config.js" defer></script>
 </head>
 <body data-i18n-title="meta.title" data-i18n-desc="meta.desc">
@@ -350,7 +351,7 @@
         </div>
         <div>
             <div data-cms="pages.index.hero.badge" class="badge" data-i18n="about.tag">Innovative Clean Energy Solution Provider</div>
-            <h1 data-cms="pages.index.hero.title">PROINVENTIVE ECOSYSTEMS</h1>
+            <h1 data-cms="pages.index.hero.title" data-cms-rest="hero-rest">PROINVENTIVE    <span class="hero-rest">ECOSYSTEMS</span></h1>
         </div>
     </section>
 

@@ -3,6 +3,7 @@
    Markup:
      data-cms="pages.index.hero.title"          -> textContent
      data-cms-tpl="📞 {}"                        -> wrap the value
+     data-cms-rest="cls"                         -> words after the first go in <span class="cls">
      data-cms-attr="href:path, poster:path"     -> attributes (tel:/mailto: prefix kept)
      data-cms-show="footer.products#ft-ai.visible" -> false hides the element
    Path segments: "key", "0" (array index), "key#id" (array item with that id).
@@ -67,7 +68,17 @@
             var v = text(path);
             if (v == null) return warn(path);
             var tpl = el.getAttribute("data-cms-tpl");
-            el.textContent = tpl ? tpl.replace("{}", v) : v;
+            v = tpl ? tpl.replace("{}", v) : v;
+            var restCls = el.getAttribute("data-cms-rest");
+            var m = restCls && v.match(/^(\S+)(\s+)([\s\S]+)$/);
+            if (m) {
+                var rest = document.createElement("span");
+                rest.className = restCls;
+                rest.textContent = m[3];
+                el.replaceChildren(m[1] + m[2], rest);
+            } else {
+                el.textContent = v;
+            }
         });
 
         root.querySelectorAll("[data-cms-attr]").forEach(function (el) {
