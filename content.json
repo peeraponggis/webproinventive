@@ -655,6 +655,33 @@
     },
     {
       "id": "proj-mwyoqtbp",
+      "name": "Dr.Thares",
+      "kWp": 7.8,
+      "type": "installed",
+      "province": "มหาสารคม",
+      "lat": 16.382588870137614,
+      "lng": 103.23503212126379
+    },
+    {
+      "id": "proj-mwyp79ea",
+      "name": "Dr.Somsak",
+      "kWp": 6.5,
+      "type": "installed",
+      "province": "ขอนแก่น",
+      "lat": 16.48173979145336,
+      "lng": 102.84179276738956
+    },
+    {
+      "id": "proj-mwyp9j9x",
+      "name": "Bangkok law",
+      "kWp": 19.65,
+      "type": "installed",
+      "province": "กรุงเทพ",
+      "lat": 13.887653776528746,
+      "lng": 100.57891000615139
+    },
+    {
+      "id": "proj-mwypb3sw",
       "name": "โครงการใหม่",
       "kWp": 0,
       "type": "designed",
