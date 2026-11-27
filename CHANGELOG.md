@@ -1,3 +1,9 @@
+## 1.1.7 — 2026-11-27 โดย ลุงพี
+- ปรับปรุง Admin CMS ใหม่ทั้งหมด: เพิ่มการจัดการเนื้อหาทุกหน้าย่อย (index, product, demo, ascs, platform, pi_tasks)
+- Sidebar แบ่ง 2 กลุ่ม: หน้าเว็บ 7 หน้า + ตั้งค่าทั่วไป 6 หมวด
+- หน้าภาพรวมแสดงการ์ดทุกหน้าให้คลิกเข้าแก้ได้เลย
+- ขยาย content.json รองรับ pages (hero, cards, videos, about, cta ทุกหน้า)
+
 ## 1.1.6 — 2026-11-27 โดย ลุงพี
 - ตัด internal-only SaaS หลังบ้านแอดมิน ออกจาก pi_tasks/index.html
 

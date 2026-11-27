@@ -112,5 +112,113 @@
       "linkedin": "",
       "youtube": ""
     }
+  },
+  "pages": {
+    "index": {
+      "hero": {
+        "badge": { "th": "Innovative Clean Energy Solution Provider", "en": "Innovative Clean Energy Solution Provider" },
+        "title": "PROINVENTIVE ECOSYSTEMS"
+      },
+      "donut": [
+        { "id": "d-blue", "label": "Solar PV Design", "sub": "ASC Studio", "href": "ascs.html", "color": "blue" },
+        { "id": "d-purple", "label": "Architectural Design", "sub": "ASC Architect", "href": "javascript:void(0)", "color": "purple", "note": "Gallery only" },
+        { "id": "d-green", "label": "Energy Platform", "sub": "PVCAL · Site Survey", "href": "platform.html", "color": "green" },
+        { "id": "d-amber", "label": "Project Dashboard", "sub": "CRM-Pi · BoQ · Pi Tasks", "href": "demo.html", "color": "amber" }
+      ],
+      "softwareCards": [
+        { "id": "sw-asc", "title": "ASC Studio", "desc": { "th": "ระบบออกแบบ Solar PV ครบวงจร", "en": "Complete Solar PV design system" }, "icon": "img/promo/asc-studio/ascs.ico", "gallery": "asc-studio", "href": "" },
+        { "id": "sw-arch", "title": "ASC Architect", "desc": { "th": "ระบบออกแบบสถาปัตยกรรมครบวงจร", "en": "Complete architectural design system" }, "icon": "img/promo/asc-architect/asc_architect.ico", "gallery": "asc-architect", "href": "" },
+        { "id": "sw-plan", "title": "Project Plan", "desc": { "th": "Plan S-curve Weekly Daily report", "en": "Plan S-curve Weekly Daily report" }, "icon": "img/promo/asc-studio/ascs.ico", "gallery": "project-plan", "href": "" },
+        { "id": "sw-demo", "title": "Demo", "desc": { "th": "ชมคลิปการทำงานของทุกระบบ", "en": "Watch all systems in action" }, "icon": "", "gallery": "", "href": "demo.html", "sub": { "th": "CRM · BOQ · Project Management · i-Tasks", "en": "CRM · BOQ · Project Management · i-Tasks" } }
+      ],
+      "about": {
+        "tag": { "th": "Innovative Clean Energy Solution Provider", "en": "Innovative Clean Energy Solution Provider" },
+        "head": { "th": "เกี่ยวกับเรา", "en": "About Us" },
+        "lead": { "th": "เราสร้างอนาคตพลังงานสะอาด ด้วยเทคโนโลยีล้ำหน้าและความยั่งยืนที่จับต้องได้ — โซลูชันครบวงจรตั้งแต่การออกแบบ ติดตั้ง ตรวจสอบระบบ ไปจนถึงการบำรุงรักษาเชิงป้องกัน", "en": "Building a clean energy future with cutting-edge technology and tangible sustainability — comprehensive solutions from design, installation, system inspection to preventive maintenance" },
+        "cards": [
+          { "id": "a1", "title": { "th": "Smart Energy Management", "en": "Smart Energy Management" }, "desc": { "th": "ผสานเทคโนโลยี IoT, AI และ Big Data เข้ากับระบบพลังงาน เพื่อการบริหารจัดการที่ฉลาดขึ้น และวิเคราะห์ประสิทธิภาพแบบเรียลไทม์", "en": "Integrate IoT, AI, and Big Data with energy systems for smarter management and real-time performance analytics" } },
+          { "id": "a2", "title": { "th": "C&I · ESS · Peak Shaving", "en": "C&I · ESS · Peak Shaving" }, "desc": { "th": "เชี่ยวชาญการออกแบบระบบเชิงพาณิชย์และอุตสาหกรรม ระบบจัดเก็บพลังงาน และการลดค่าความต้องการไฟฟ้าสูงสุด เพื่อพลังงานที่ต่อเนื่องและมีเสถียรภาพ", "en": "Expert in commercial/industrial system design, energy storage, and peak demand reduction for continuous, stable energy" } },
+          { "id": "a3", "title": { "th": "ESG และการพัฒนาบุคลากร", "en": "ESG & Human Development" }, "desc": { "th": "ดำเนินธุรกิจตามหลัก ESG อย่างรอบด้าน พร้อมฝึกอบรมและพัฒนาศักยภาพบุคลากรทุกระดับ สู่ยุคพลังงานสะอาดที่เปลี่ยนแปลงอย่างรวดเร็ว", "en": "Comprehensive ESG-driven operations with training and development at all levels for the rapidly evolving clean energy era" } }
+        ]
+      },
+      "cta": {
+        "tag": { "th": "ติดต่อเรา", "en": "Contact Us" },
+        "head": { "th": "พร้อมให้บริการ", "en": "Ready to Serve" },
+        "sub": { "th": "ทีมงานพร้อมให้คำปรึกษาฟรี ไม่มีข้อผูกมัด", "en": "Free consultation, no obligations" }
+      }
+    },
+    "product": {
+      "hero": {
+        "head": { "th": "ทุกสิ่งที่คุณต้องการเพื่อทำงานให้สำเร็จ..อยู่ที่นี่", "en": "Everything you need to get the job done..right here" },
+        "sub": { "th": "เครื่องมือที่ยืดหยุ่น ปรับแต่งได้ตามใจคุณ", "en": "Flexible tools, customizable to your needs" }
+      },
+      "features": [
+        { "id": "pp-c1", "title": { "th": "การออกแบบติดตั้งระบบโซล่าร์เซลล์", "en": "Solar Cell System Design & Installation" }, "desc": { "th": "ออกแบบระบบ เลือกโซลูชั่น นำเสนอระบบ จบด้วยราคาที่ยุติธรรม รับประกันระบบอย่างมืออาชีพ", "en": "Design systems, select solutions, present with fair pricing, professional system warranty" } },
+        { "id": "pp-c2", "title": { "th": "U-Projects", "en": "U-Projects" }, "desc": { "th": "CRM/BOQ/Project Management/i-Tasks ครบทุกกระบวนงานในองค์กรของคุณ", "en": "CRM/BOQ/Project Management/i-Tasks — all your organization's workflows" } },
+        { "id": "pp-c3", "title": { "th": "Wikis", "en": "Wikis" }, "desc": { "th": "รวบรวมองค์ความรู้ของบริษัทไว้ในที่เดียว ค้นหาง่าย และอัปเดตได้ตลอดเวลา", "en": "Centralize company knowledge, easy search, always up to date" } }
+      ],
+      "portfolio": {
+        "head": { "th": "ผลงานออกแบบและติดตั้ง", "en": "Design & Installation Portfolio" },
+        "sub": { "th": "โครงการจริงของเรา — ติดตั้งแล้ว 8 โครงการ และงานออกแบบระบบอีก 12 โครงการทั่วประเทศ", "en": "Our real projects — 8 installed and 12 design projects nationwide" }
+      }
+    },
+    "demo": {
+      "hero": {
+        "head": { "th": "ชมการทำงานจริงของระบบ", "en": "Watch Real System Operations" },
+        "sub": { "th": "คลิปสั้น ๆ จากหน้าจอจริงของแต่ละระบบ — กดเล่นได้เลย", "en": "Short clips from each system's real screen — press play" }
+      },
+      "uProjects": {
+        "eyebrow": "U-Projects",
+        "head": { "th": "ครบทุกกระบวนงานในองค์กรของคุณ", "en": "All Workflows for Your Organization" },
+        "sub": { "th": "CRM / BOQ / Project Management / i-Tasks — ชุดเครื่องมือภายในที่ทีม PROINVENTIVE ใช้ทำงานจริงทุกวัน", "en": "CRM / BOQ / Project Management / i-Tasks — internal tools used daily by team PROINVENTIVE" },
+        "items": [
+          { "id": "demo-pt", "title": "📇 Pi Tasks", "desc": { "th": "บอร์ด Kanban ของทีม — ลากการ์ดข้ามสถานะ ติดตามเจ้าของงานพร้อม timestamp และดูสรุปงานวันนี้เป็น dashboard", "en": "Team Kanban board — drag cards, track owners, view daily summary" }, "video": "media/pi_tasks.mp4", "poster": "media/pi_tasks.jpg", "wide": false },
+          { "id": "demo-boq", "title": "🧾 Pi BoQ", "desc": { "th": "ออกใบเสนอราคาและ BOQ — กำหนดงวดชำระเงิน เงื่อนไขเอกสาร แล้วพิมพ์เป็น PDF ได้ในไม่กี่คลิก", "en": "Issue quotations and BOQ — set payment terms, print PDF in clicks" }, "video": "media/boq.mp4", "poster": "media/boq.jpg", "wide": false },
+          { "id": "demo-crm", "title": "📇 CRM + BoQ (Pi-System)", "desc": { "th": "ระบบบริหารลูกค้าสัมพันธ์เชื่อมกับฐานข้อมูลวัสดุกว่า 500 รายการ — จาก Lead ถึงใบเสนอราคาในระบบเดียว พร้อม Pipeline และ Siteflow", "en": "CRM linked to 500+ material database — from Lead to quotation in one system" }, "video": "media/crm_boq.mp4", "poster": "media/crm_boq.jpg", "wide": true }
+        ]
+      },
+      "ascDemo": {
+        "eyebrow": "ASC",
+        "head": { "th": "ระบบออกแบบ PVs", "en": "PV System Design" },
+        "items": [
+          { "id": "demo-asc", "title": "🛠️ ASC — Advanced Solar Calculator", "desc": { "th": "ครบ 6 ขั้นตอนออกแบบระบบโซล่าร์: วิเคราะห์ค่าไฟ Load Profiling → System Design → โมเดล 3 มิติ → ตำแหน่งอุปกรณ์ → ข้อเสนอและรายงาน → สรุประบบ", "en": "Complete 6-step solar design: Bill analysis → System Design → 3D Model → Equipment layout → Proposal → Summary" }, "video": "media/asc.mp4", "poster": "media/asc.jpg", "wide": true }
+        ]
+      },
+      "saasDemo": {
+        "eyebrow": "SaaS",
+        "head": { "th": "แพลตฟอร์มสำหรับลูกค้า", "en": "Customer Platform" },
+        "tryLink": "https://web-production-359eb.up.railway.app",
+        "tryLabel": { "th": "ลองใช้งานจริง →", "en": "Try it live →" },
+        "items": [
+          { "id": "demo-saas", "title": { "th": "☀️ SaaS — ประเมินระบบโซล่าร์ด้วยตัวเอง", "en": "☀️ SaaS — Self-assess your solar system" }, "desc": { "th": "ลูกค้ากรอกข้อมูลการใช้ไฟ แล้วได้ผลวิเคราะห์ทันที — กำลังผลิตรายชั่วโมง การทำงานของแบตเตอรี่ ผลผลิตรายเดือน Cash Flow, NPV, LCOE พร้อมรายงานฉบับเต็มพิมพ์เป็น PDF ได้", "en": "Customers enter electricity data and get instant analysis — hourly production, battery, monthly output, Cash Flow, NPV, LCOE with full PDF report" }, "video": "media/saas_customer.mp4", "poster": "media/saas_customer.jpg", "wide": true }
+        ]
+      }
+    },
+    "ascs": {
+      "hero": {
+        "title": "Solar PV Design",
+        "sub": { "th": "ASC Studio — ระบบออกแบบโซลาร์เซลล์ครบวงจรในที่เดียว", "en": "ASC Studio — Complete solar cell design system in one place" }
+      },
+      "cards": [
+        { "id": "ascs-demo", "title": "Demo", "desc": { "th": "ชมคลิปการทำงานของทุกระบบ", "en": "Watch all systems in action" }, "href": "demo.html", "icon": "🎬", "action": { "th": "ดูคลิปสาธิต →", "en": "Watch demos →" } },
+        { "id": "ascs-pkg", "title": "Package ASC Studio", "desc": { "th": "เลือกแพ็คเกจที่เหมาะกับการใช้งานของคุณ — ทดลองฟรี, Starter, Pro", "en": "Choose the right package for you — Free trial, Starter, Pro" }, "href": "packages.html", "icon": "📦", "action": { "th": "ดูแพ็คเกจ →", "en": "View packages →" }, "image": "img/promo/asc-architect/01.jpg" },
+        { "id": "ascs-app", "title": "ASC Studio", "desc": { "th": "เปิดใช้งานระบบออกแบบ Solar PV ออนไลน์ — ออกแบบ คำนวณ ส่งออก ครบจบในเว็บ", "en": "Open the online Solar PV design system — design, calculate, export all in web" }, "href": "https://aisolar.dev/index.html", "icon": "⚡", "action": { "th": "เปิดใช้งาน →", "en": "Launch →" }, "external": true }
+      ]
+    },
+    "platform": {
+      "hero": {
+        "title": "Energy Platform",
+        "sub": { "th": "เครื่องมือวิเคราะห์พลังงาน สำรวจหน้างาน และจับคู่อุปกรณ์อัตโนมัติ", "en": "Energy analysis tools, site survey, and automatic equipment matching" }
+      },
+      "cards": [
+        { "id": "plat-pvcal", "title": "PVCAL", "bannerTitle": { "th": "ติดโซลาร์เซลล์คุ้มไหม?", "en": "Is solar worth it?" }, "bannerDesc": { "th": "รู้ผลใน 30 วินาที\nกรอกแค่ค่าไฟรายเดือน — ระบบคำนวณขนาดที่เหมาะสม เงินลงทุน และปีที่คุ้มให้ทันที", "en": "Know in 30 seconds\nJust enter your monthly bill — system calculates optimal size, investment, and payback" }, "desc": { "th": "เครื่องคำนวณความคุ้มค่าโซลาร์เซลล์ออนไลน์", "en": "Online solar cell cost-effectiveness calculator" }, "href": "https://peeraponggis.github.io/aisolar2/solar-saas.html", "action": { "th": "ลองคำนวณ →", "en": "Calculate →" }, "external": true },
+        { "id": "plat-survey", "title": "Site Survey", "desc": { "th": "ระบบสำรวจหน้างานโซลาร์เซลล์ บันทึกข้อมูลสำรวจ ถ่ายภาพ และส่งออกรายงาน", "en": "Solar site survey system — record survey data, photos, and export reports" }, "href": "https://peeraponggis.github.io/aisolar2/Pee_survey.html", "icon": "📋", "action": { "th": "เปิด Site Survey →", "en": "Open Site Survey →" }, "external": true },
+        { "id": "plat-match", "title": "SolarMatch", "desc": { "th": "จับคู่แผงและอินเวอร์เตอร์อัตโนมัติ — เลือกอุปกรณ์ที่เข้ากันได้ดีที่สุด", "en": "Auto-match panels and inverters — select the best compatible equipment" }, "href": "https://peeraponggis.github.io/aisolar2/solarmatch_by_proinventive.html", "icon": "☀️", "action": { "th": "เปิด SolarMatch →", "en": "Open SolarMatch →" }, "external": true }
+      ]
+    },
+    "piTasks": {
+      "note": { "th": "Pi Tasks เป็น Kanban board ที่ทำงานจาก JavaScript (tasks.js) — เนื้อหาไม่ได้จัดการผ่าน CMS นี้", "en": "Pi Tasks is a JS-driven Kanban board — content not managed through this CMS" },
+      "file": "pi_tasks/index.html"
+    }
   }
 }
