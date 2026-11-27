@@ -652,6 +652,15 @@
       "province": "ฉะเชิงเทรา",
       "lat": 13.69,
       "lng": 101.077
+    },
+    {
+      "id": "proj-mwyoqtbp",
+      "name": "โครงการใหม่",
+      "kWp": 0,
+      "type": "designed",
+      "province": null,
+      "lat": null,
+      "lng": null
     }
   ],
   "contact": {
