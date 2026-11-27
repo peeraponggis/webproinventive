@@ -1294,6 +1294,116 @@
    "clause": "2.3 + 4.1 (8)",
    "table": null,
    "title": "การออกแบบทางกลและการยึดโยงของระบบทุ่นลอยน้ำ (แทนร่าง 8.3)"
+  },
+  {
+   "id": "PAGE.INDEX",
+   "type": "page",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "หน้าแรก (index.html)",
+   "kw": "หน้าแรก home index โฮม เว็บ",
+   "a_th": "หน้าแรก pi.aisolar.dev — ส่วนบน: หุ่นยนต์ Pi + แนะนำ PROINVENTIVE · Donut Chart แสดงสัดส่วนซอฟต์แวร์ 6 ตัว (ASC Studio, PVCAL, Site Survey, SolarMatch, Pi Tasks, CRM-Pi) · Project Dashboard แผนที่โครงการทั่วประเทศ + กำลังติดตั้ง/ออกแบบ + จำนวนโครงการ/จังหวัด · Ecosystem การ์ดเชื่อมต่อระบบ · Console Chat with Ai-Pi · Footer",
+   "a_en": "Home page at pi.aisolar.dev — Hero robot + intro, Donut Chart (6 software products), Project Dashboard with Thailand map + installed/designed capacity stats, Ecosystem cards, Console Chat with Ai-Pi, Footer"
+  },
+  {
+   "id": "PAGE.PRODUCT",
+   "type": "page",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "หน้าผลิตภัณฑ์ (product.html)",
+   "kw": "ผลิตภัณฑ์ product สินค้า feature",
+   "a_th": "หน้าผลิตภัณฑ์ — Feature Cards แสดงความสามารถหลักของ PROINVENTIVE · Portfolio ผลงานโครงการที่ผ่านมา · Hero section + CTA",
+   "a_en": "Product page — Feature Cards showing PROINVENTIVE capabilities, project portfolio, hero section with CTA"
+  },
+  {
+   "id": "PAGE.DEMO",
+   "type": "page",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "หน้า Demo (demo.html)",
+   "kw": "demo สาธิต ตัวอย่าง คลิป วิดีโอ",
+   "a_th": "หน้า Demo — ส่วน U-Projects: วิดีโอตัวอย่างผลงาน · ส่วน ASC Studio: 4 คลิปสาธิต (ตัวอย่างงานบ้าน, งานพาณิชย์, การขนานแรงต่ำ, การขนานแรงสูง) พร้อมหัวข้อ \"ASC Studio ระบบออกแบบโซลาร์เซลล์ครบวงจรในที่เดียว\"",
+   "a_en": "Demo page — U-Projects video showcase, ASC Studio section with 4 demo clips (residential, commercial, low-voltage parallel, high-voltage parallel)"
+  },
+  {
+   "id": "PAGE.ASCS",
+   "type": "page",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "หน้า Solar PV Design (ascs.html)",
+   "kw": "solar pv design asc studio ออกแบบ โซลาร์เซลล์",
+   "a_th": "หน้า Solar PV Design — 3 การ์ด: Demo (ทดลองใช้), Package (แพ็กเกจราคา), ASC Studio (เข้าสู่ระบบออกแบบ) · เป็นหน้ารวมเครื่องมือออกแบบโซลาร์เซลล์ของ PROINVENTIVE",
+   "a_en": "Solar PV Design page — 3 cards: Demo (try it), Package (pricing), ASC Studio (design system login)"
+  },
+  {
+   "id": "PAGE.PLATFORM",
+   "type": "page",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "หน้า Energy Platform (platform.html)",
+   "kw": "energy platform แพลตฟอร์ม พลังงาน pvcal survey solarmatch",
+   "a_th": "หน้า Energy Platform — 3 การ์ด: PVCAL (คำนวณผลผลิตพลังงาน), Site Survey (สำรวจพื้นที่), SolarMatch (จับคู่ผู้ติดตั้ง) · เป็นแพลตฟอร์มบริการด้านพลังงานของ PROINVENTIVE",
+   "a_en": "Energy Platform page — 3 cards: PVCAL (energy yield calculator), Site Survey (site assessment), SolarMatch (installer matching)"
+  },
+  {
+   "id": "PAGE.PITASKS",
+   "type": "page",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "หน้า Pi Tasks (pi_tasks/index.html)",
+   "kw": "pi tasks งาน kanban บอร์ด ติดตาม โครงการ",
+   "a_th": "หน้า Pi Tasks — บอร์ดจัดการงานแบบ Kanban สำหรับติดตามโครงการและงานภายในของ PROINVENTIVE · มีโหมดสาธิตสด · ใช้ร่วมกับ Console Chat with Ai-Pi",
+   "a_en": "Pi Tasks page — Kanban task board for tracking PROINVENTIVE projects and internal tasks, with live demo mode"
+  },
+  {
+   "id": "PAGE.ADMIN",
+   "type": "page",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "หน้า Admin CMS (admin.html)",
+   "kw": "admin cms แอดมิน จัดการ เนื้อหา content",
+   "a_th": "หน้า Admin CMS — เข้าได้หลังล็อกอินด้วย @proinventive.co.th · จัดการเนื้อหาทุกหน้าย่อยผ่าน content.json · รองรับทั้ง localhost (CMS Server) และออนไลน์ (GitHub API + Token) · Sidebar แบ่ง 2 กลุ่ม: หน้าเว็บ 7 หน้า + ตั้งค่าทั่วไป 6 หมวด",
+   "a_en": "Admin CMS page — accessible after @proinventive.co.th login, manages all page content via content.json, supports both localhost and online (GitHub API) editing"
+  },
+  {
+   "id": "PAGE.CONSOLE",
+   "type": "page",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "Console · Chat with Ai-Pi",
+   "kw": "console chat ai-pi คอนโซล แชท ถาม ตอบ ผู้ช่วย",
+   "a_th": "Console Chat with Ai-Pi — ผู้ช่วย AI ประจำเว็บ เปิดได้ทุกหน้า กดปุ่ม Pi มุมล่างขวา · ตอบคำถามจากฐานความรู้มาตรฐาน วสท. (EIT) + คลังความรู้ ASC Studio + ข้อมูลหน้าเว็บ · คำสั่งพิเศษ: /status /teach /tables /okmd · รองรับ 2 ภาษา",
+   "a_en": "Console Chat with Ai-Pi — AI assistant on every page, opened via Pi button at bottom-right. Answers from EIT standards + ASC Studio knowledge base + page info. Commands: /status /teach /tables /okmd. Bilingual."
+  },
+  {
+   "id": "INFO.PROINVENTIVE",
+   "type": "page",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "เกี่ยวกับ PROINVENTIVE",
+   "kw": "proinventive บริษัท โปรอินเวนทีฟ เกี่ยวกับ about ที่อยู่ โทร อีเมล",
+   "a_th": "บริษัท โปรอินเวนทีฟ จำกัด (PROINVENTIVE CO., LTD.) — ที่อยู่: 59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150 · โทร: 080-028-2399 · อีเมล: info@proinventive.co.th · เว็บ: pi.aisolar.dev · ให้บริการด้านซอฟต์แวร์พลังงานแสงอาทิตย์ครบวงจร",
+   "a_en": "PROINVENTIVE CO., LTD. — Address: 59/6 Moo 7, Sai Noi, Nonthaburi 11150 · Tel: 080-028-2399 · Email: info@proinventive.co.th · Web: pi.aisolar.dev · Full-service solar energy software provider"
+  },
+  {
+   "id": "INFO.ASCSTUDIO",
+   "type": "page",
+   "code": null,
+   "clause": null,
+   "table": null,
+   "title": "ASC Studio คืออะไร",
+   "kw": "asc studio auto solar copilot ออกแบบ โซลาร์เซลล์ ซอฟต์แวร์",
+   "a_th": "ASC Studio (Auto Solar Co-pilot Studio) — ซอฟต์แวร์ออกแบบระบบโซลาร์เซลล์ครบวงจร ตั้งแต่วาดแบบ เลือกอุปกรณ์ จัดสตริง ตรวจมาตรฐาน วสท. ไปจนถึงรายงาน/PDF · มีทั้งเวอร์ชันเดสก์ท็อปและเว็บ (ASC Enterprise) · คลังความรู้ในตัว 376 หัวข้อ ครอบคลุม 57 บท",
+   "a_en": "ASC Studio (Auto Solar Co-pilot Studio) — full-cycle solar PV design software from layout, equipment selection, string design, EIT compliance check to reports/PDF. Desktop and web (ASC Enterprise) versions. Built-in knowledge base with 376 topics across 57 chapters."
   }
  ]
 }

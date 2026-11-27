@@ -1,7 +1,8 @@
 /* =========================================================
-   Pi Brain — client-side EIT knowledge base for the console
+   Pi Brain — client-side knowledge base for Console · Chat with Ai-Pi
    ---------------------------------------------------------
-   Phase 1: clause references + curated FAQ (knowledge.json).
+   Phase 1: EIT clause references + curated FAQ (knowledge.json)
+            + ASC Studio KB (kb-asc.json) + page info.
    Phase 2: lookup skills over digitized tables, in two tiers —
      tables-public.json  (tariffs, Ft, PEA labs, compat: public data)
      tables-private.json (วสท. tables: git-ignored, fetched only for
@@ -35,6 +36,7 @@
         privateTablesUrl: "https://web-production-359eb.up.railway.app/api/pi/tables"
     };
     var KB = null;
+    var ASC_KB = null;
     var loading = null;
     var TABLES = { public: undefined, private: undefined };   /* undefined = not tried yet */
 
@@ -50,17 +52,41 @@
         return e;
     }
 
+    function indexAsc(chunk) {
+        var e = {
+            id: "ASC." + chunk.id,
+            type: "asc",
+            code: null,
+            clause: null,
+            table: null,
+            title: chunk.title || chunk.topic,
+            kw: (chunk.tags || []).join(" "),
+            a_th: chunk.text,
+            a_en: null
+        };
+        e._text = norm([e.title, e.kw, e.a_th, chunk.topic].filter(Boolean).join(" "));
+        e._tri = trigrams(e._text);
+        return e;
+    }
+
     function load() {
         if (KB) return Promise.resolve(KB);
         if (!loading) {
-            loading = fetch(BASE + "knowledge.json" + VQ)
-                .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-                .then(function (data) {
-                    KB = data;
-                    KB.entries.forEach(index);
-                    taughtList().forEach(function (f) { KB.entries.push(index(taughtToEntry(f))); });
-                    return KB;
-                });
+            var kbP = fetch(BASE + "knowledge.json" + VQ)
+                .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
+            var ascP = fetch(BASE + "kb-asc.json" + VQ)
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .catch(function () { return null; });
+            loading = Promise.all([kbP, ascP]).then(function (arr) {
+                KB = arr[0];
+                KB.entries.forEach(index);
+                taughtList().forEach(function (f) { KB.entries.push(index(taughtToEntry(f))); });
+                if (arr[1] && arr[1].chunks) {
+                    ASC_KB = arr[1];
+                    ASC_KB.chunks.forEach(function (c) { KB.entries.push(indexAsc(c)); });
+                }
+                return KB;
+            });
         }
         return loading;
     }
@@ -138,7 +164,9 @@
         var mm = qNorm.match(/\d+(?:\.\d+)+/);
         if (mm && entry.clause && entry.clause.indexOf(mm[0]) !== -1) s += 6;
         if (entry.type === "taught") s *= 1.4;
+        else if (entry.type === "page") s *= 1.3;
         else if (entry.type === "faq") s *= 1.25;
+        else if (entry.type === "asc") s *= 1.2;
         else if (entry.type === "provision") s *= 1.15;
         return s;
     }
@@ -163,13 +191,16 @@
     function compose(best, l) {
         var body = (l === "en" && best.a_en) ? best.a_en : (best.a_th || best.title);
         if (best.type === "provision" && best.value && body.indexOf(String(best.value)) === -1) body += " — " + best.value + " " + (best.unit || "");
+        if (best.type === "asc") return body.trim() + "\n\n📚 ASC Studio Knowledge Base";
+        if (best.type === "page") return body.trim() + "\n\n🗂️ " + t("kb.pageInfo");
         var c = cite(best);
         return body.trim() + (c ? tail(c, false) : "\n\n⚠️ " + t("kb.disclaimer"));
     }
 
     function composePointers(list) {
         return t("kb.pointer") + "\n" + list.map(function (e) {
-            return "• " + e.title + " — " + cite(e);
+            var src = e.type === "asc" ? "📚 ASC Studio" : e.type === "page" ? "🗂️" : cite(e);
+            return "• " + e.title + (src ? " — " + src : "");
         }).join("\n") + "\n\n⚠️ " + t("kb.disclaimer");
     }
 
@@ -599,7 +630,12 @@
         return load().then(function () {
             var lines = [t("kb.status.user", { user: u ? u.email : t("kb.status.guest") })];
             var taught = KB.entries.filter(function (e) { return e.type === "taught"; }).length;
-            lines.push(t("kb.status.kb", { n: KB.entries.length - taught, taught: taught }));
+            var ascCount = KB.entries.filter(function (e) { return e.type === "asc"; }).length;
+            var pageCount = KB.entries.filter(function (e) { return e.type === "page"; }).length;
+            var eitCount = KB.entries.length - taught - ascCount - pageCount;
+            lines.push(t("kb.status.kb", { n: eitCount, taught: taught }));
+            if (ascCount) lines.push("📚 ASC Studio: " + ascCount + " chunks");
+            if (pageCount) lines.push("🗂️ " + t("kb.pageInfo") + ": " + pageCount);
             if (!u) { lines.push(t("kb.status.tablesGuest")); return lines.join("\n"); }
             return loadTables("private").then(function (T) {
                 lines.push(T ? t("kb.status.tablesOk", { n: Object.keys(T).length, src: TABLES._privateSrc || "" })

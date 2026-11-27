@@ -1,7 +1,7 @@
 # webproinventive
 
 เว็บไซต์ PROINVENTIVE — โครงหน้าและภาษาการออกแบบอ้างอิงจาก notion.com
-รองรับ 2 ภาษา (ไทย / อังกฤษ), มี **Console · Chat with Pi** และบอร์ดงาน **Pi Tasks**
+รองรับ 2 ภาษา (ไทย / อังกฤษ), มี **Console · Chat with Ai-Pi** และบอร์ดงาน **Pi Tasks**
 
 ---
 
@@ -15,7 +15,7 @@
 ├── style.css             design system ทั้งเว็บ (tokens, nav, ปุ่ม, การ์ด, footer)
 ├── app.js                sticky header, เมนูมือถือ, คำหมุนใน hero, marquee, reveal-on-scroll
 ├── i18n.js               ระบบ 2 ภาษา + พจนานุกรม TH/EN ของทั้งเว็บ
-├── pi-console.js         Console · Chat with Pi (logic + adapter สำหรับ CRM/SaaS)
+├── pi-console.js         Console · Chat with Ai-Pi (logic + adapter สำหรับ CRM/SaaS)
 ├── pi-console.css        สไตล์ของคอนโซล
 ├── img/                  โลโก้ (pilogo.png), favicon, ไอคอน
 └── pi_tasks/             บอร์ดงานแบบ Kanban
@@ -69,7 +69,7 @@ document.addEventListener('i18n:change', e => console.log(e.detail.lang));
 
 ---
 
-## Console · Chat with Pi
+## Console · Chat with Ai-Pi
 
 ปุ่มลอยมุมขวาล่างของทุกหน้า เปิดคอนโซลคุยกับ Pi
 **เฟสนี้ทำงานในโหมดสาธิต** (ตอบจากชุดคำตอบในเครื่อง) และเตรียม adapter ไว้ให้ต่อ CRM/SaaS ในเฟสถัดไปโดยไม่ต้องแก้ UI

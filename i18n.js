@@ -447,13 +447,14 @@
             "kb.status.tablesNone": "ตารางภายใน: ยังไม่ได้เชื่อม — ใส่รหัสด้วย /tables <รหัส>",
             "kb.status.tablesFail": "ตารางภายใน: มีรหัสแต่เชื่อมไม่ได้ — ตรวจรหัสหรือเซิร์ฟเวอร์ (/tables)",
             "kb.ref": "อ้างอิง",
+            "kb.pageInfo": "ข้อมูลหน้าเว็บ PROINVENTIVE",
             "kb.clause": "ข้อ",
             "kb.disclaimer": "สรุปย่อเพื่ออ้างอิงเบื้องต้น โปรดตรวจสอบกับเล่มมาตรฐานฉบับจริงของ วสท.",
             "kb.pointer": "เรื่องนี้อยู่ในหัวข้อต่อไปนี้ของมาตรฐาน:",
 
             /* ---- Pi console ---- */
             "pi.launch": "เปิดคอนโซลคุยกับ Pi",
-            "pi.title": "Console · Chat with Pi",
+            "pi.title": "Console · Chat with Ai-Pi",
             "pi.subtitle": "ผู้ช่วยพื้นที่ทำงาน",
             "pi.status.local": "โหมดสาธิต (ยังไม่เชื่อมต่อ)",
             "pi.status.online": "พร้อมตอบ — ฐานความรู้มาตรฐาน EIT (client-side)",
@@ -913,13 +914,14 @@
             "kb.status.tablesNone": "Internal tables: not connected — enter the key with /tables <key>",
             "kb.status.tablesFail": "Internal tables: key present but connection failed — check the key or server (/tables)",
             "kb.ref": "Reference",
+            "kb.pageInfo": "PROINVENTIVE page info",
             "kb.clause": "clause",
             "kb.disclaimer": "Summarised for quick reference — verify against the printed EIT standard.",
             "kb.pointer": "This topic lives in these clauses of the standard:",
 
             /* ---- Pi console ---- */
             "pi.launch": "Open the Pi console",
-            "pi.title": "Console · Chat with Pi",
+            "pi.title": "Console · Chat with Ai-Pi",
             "pi.subtitle": "Workspace assistant",
             "pi.status.local": "Demo mode (not connected)",
             "pi.status.online": "Ready — EIT standards knowledge base (client-side)",

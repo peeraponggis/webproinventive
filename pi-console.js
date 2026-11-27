@@ -1,5 +1,5 @@
 /* =========================================================
-   Console · Chat with Pi
+   Console · Chat with Ai-Pi
    ---------------------------------------------------------
    Phase 1 (now): self-contained UI + local demo responder.
    Phase 2 (CRM/SaaS): point it at a backend without touching
