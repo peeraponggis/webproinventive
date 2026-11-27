@@ -1,3 +1,6 @@
+## 1.1.3 — 2026-11-27 โดย ลุงพี
+- ตัด SaaS ออกจาก navbar ของ pi_tasks/index.html
+
 ## 1.1.2 — 2026-11-27 โดย ลุงพี
 - ตัด SaaS ออกจาก navbar ของ demo.html และ product.html
 
