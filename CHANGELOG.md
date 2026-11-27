@@ -1,3 +1,6 @@
+## 1.1.2 — 2026-11-27 โดย ลุงพี
+- ตัด SaaS ออกจาก navbar ของ demo.html และ product.html
+
 ## 1.1.1 — 2026-11-27 โดย ลุงพี
 - ตัด SaaS ออกจาก navbar ของ ascs.html และ platform.html
 
