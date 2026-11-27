@@ -139,6 +139,7 @@
             e.preventDefault();
             if (login(els.input.value)) {
                 close();
+                window.location.href = "admin.html";
             } else {
                 els.error.hidden = false;
                 els.input.focus();
