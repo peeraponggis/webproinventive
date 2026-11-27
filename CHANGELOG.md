@@ -1,3 +1,6 @@
+## 1.1.5 — 2026-11-27 โดย ลุงพี
+- ตัด internal-only SaaS หลังบ้านแอดมิน ออกจาก demo.html และ product.html
+
 ## 1.1.4 — 2026-11-27 โดย ลุงพี
 - ตัด internal-only SaaS หลังบ้านแอดมิน ออกจาก navbar index.html
 
