@@ -682,12 +682,12 @@
     },
     {
       "id": "proj-mwypb3sw",
-      "name": "โครงการใหม่",
-      "kWp": 0,
-      "type": "designed",
-      "province": null,
-      "lat": null,
-      "lng": null
+      "name": "Villa Leelawadee.",
+      "kWp": 31.22,
+      "type": "installed",
+      "province": "ภูเก็ต",
+      "lat": 8.076656840342293,
+      "lng": 98.43224586517552
     }
   ],
   "contact": {
