@@ -240,7 +240,7 @@
 
             /* ---- cta ---- */
             "cta.tag": "ติดต่อเรา",
-            "cta.head": "เริ่มต้นวันนี้เลย",
+            "cta.head": "พร้อมให้บริการ",
             "cta.sub": "ทีมงานพร้อมให้คำปรึกษาฟรี ไม่มีข้อผูกมัด",
             "cta.hours": "จันทร์–ศุกร์ 08:00–17:00 น.",
             "cta.f.name": "ชื่อ-นามสกุล *",
@@ -706,7 +706,7 @@
 
             /* ---- cta ---- */
             "cta.tag": "Contact us",
-            "cta.head": "Get started today.",
+            "cta.head": "Ready to serve.",
             "cta.sub": "Our team is ready to advise you — free, no obligation.",
             "cta.hours": "Monday–Friday 08:00–17:00",
             "cta.f.name": "Full name *",

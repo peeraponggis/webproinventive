@@ -1,3 +1,13 @@
+## 1.1.0 — 2026-11-27 โดย ลุงพี
+- หุ่นยนต์หยุดเต้น เปลี่ยนเป็นตากระพริบ ฟ้า→เหลือง→แดง
+- ตัด "เริ่มต้นวันนี้เลย" / "เริ่มใช้ PROINVENTIVE ฟรี" ทุกหน้า → "พร้อมให้บริการ"
+- ลบ ผลิตภัณฑ์ / Demo / เริ่มใช้ฟรี จาก navbar ทุกหน้า
+- เพิ่มปุ่ม "เข้าสู่ระบบ" หลัง TH/EN ทุกหน้า
+- สร้างหน้า ascs.html (Solar PV Design — 3 การ์ด: Demo, Package, ASC Studio)
+- สร้างหน้า platform.html (Energy Platform — 3 การ์ด: PVCAL, Site Survey, SolarMatch)
+- แก้ลิงก์ donut legend ไปหน้าย่อยใหม่
+- ตัดการ์ด SolarMatch จากส่วนซอฟต์แวร์ครบวงจร ขยับ Demo ขึ้นมา
+
 ## 1.0.1 — 2026-11-27 โดย ลุงพี
 - เปลี่ยนลิงก์จาก peeraponggis.github.io เป็นโดเมนใหม่ aisolar.dev / pi.aisolar.dev
 

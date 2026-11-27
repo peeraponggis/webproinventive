@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar PV Design — ASC Studio | PROINVENTIVE</title>
+    <meta name="description" content="ASC Studio ระบบออกแบบ Solar PV ครบวงจร — ทดลองใช้ฟรี, แพ็คเกจ, Demo">
+
+    <link rel="icon" href="img/favicon.ico?v=2" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png?v=2">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=2">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=20261127001">
+    <link rel="stylesheet" href="pi-console.css?v=20261127001">
+    <style>
+    body{background:#fffbf5}
+    .sub-hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;padding:100px 24px 48px;text-align:center}
+    .sub-hero a.back{color:#93c5fd;text-decoration:none;font-size:14px;display:inline-block;margin-bottom:16px}
+    .sub-hero a.back:hover{text-decoration:underline}
+    .sub-hero h1{font-size:32px;font-weight:800;margin-bottom:8px}
+    .sub-hero p{font-size:15px;opacity:.85;max-width:500px;margin:0 auto}
+
+    .sub-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:960px;margin:0 auto;padding:48px 24px 64px}
+    .sub-card{background:#fff;border-radius:20px;overflow:hidden;border:2px solid #fed7aa;transition:transform .2s,box-shadow .2s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+    .sub-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(37,99,235,.15)}
+    .sub-card-img{height:180px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#f0f4ff}
+    .sub-card-img img{width:100%;height:100%;object-fit:cover}
+    .sub-card-img.dark-bg{background:linear-gradient(135deg,#1e293b,#0f172a)}
+    .sub-card-body{padding:20px 24px;flex:1;display:flex;flex-direction:column}
+    .sub-card-body h3{font-size:18px;font-weight:700;color:#2563eb;margin-bottom:6px}
+    .sub-card-body p{font-size:13px;color:#78716c;line-height:1.6;flex:1}
+    .sub-card-body .card-action{font-size:13px;font-weight:600;color:#d97706;margin-top:12px}
+
+    footer{background:#44270b!important;border-top:2px solid #c2410c!important}
+    footer .footer-brand .logo-word .pro{color:#fbbf24}
+    footer .footer-brand .logo-word .inv{color:#d4b896}
+    footer .footer-bottom{color:#d4b896;border-top-color:rgba(251,191,36,.15)}
+    footer .footer-bottom a{color:#fbbf24}
+
+    @media(max-width:600px){
+        .sub-hero h1{font-size:24px}
+        .sub-cards{grid-template-columns:1fr}
+    }
+    </style>
+    <script src="i18n.js?v=20261127001" defer></script>
+    <script src="auth.js?v=20261127001" defer></script>
+    <script src="app.js?v=20261127001" defer></script>
+    <script src="pi-console.js?v=20261127001" defer></script>
+    <script src="pi-brain.js?v=20261127001" defer></script>
+</head>
+<body>
+
+<header id="site-header">
+    <div class="nav-left">
+        <a href="index.html" class="logo">
+            <img class="logo-mark" src="img/pi-gold-logo-sm.png" alt="PROINVENTIVE">
+            <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
+        </a>
+    </div>
+    <nav class="nav-center" data-i18n-attr="aria-label:nav.aria">
+        <div class="nav-links">
+            <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">SaaS</a>
+        </div>
+    </nav>
+    <div class="nav-right">
+        <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang">
+            <button type="button" data-lang="th">TH</button>
+            <button type="button" data-lang="en">EN</button>
+        </div>
+        <a href="#" class="btn btn-ghost desktop-only auth-btn">เข้าสู่ระบบ</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" data-i18n-attr="aria-label:nav.toggle">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">← กลับหน้าแรก</a>
+    <div class="lang-switch" role="group">
+        <button type="button" data-lang="th">TH</button>
+        <button type="button" data-lang="en">EN</button>
+    </div>
+    <div class="mm-actions">
+        <a href="#" class="btn btn-secondary auth-btn">เข้าสู่ระบบ</a>
+    </div>
+</div>
+
+<main>
+    <section class="sub-hero">
+        <a class="back" href="index.html">← กลับหน้าหลัก</a>
+        <h1>Solar PV Design</h1>
+        <p>ASC Studio — ระบบออกแบบโซลาร์เซลล์ครบวงจรในที่เดียว</p>
+    </section>
+
+    <div class="sub-cards">
+        <a class="sub-card" href="demo.html">
+            <div class="sub-card-img" style="background:#f0f4ff;padding:24px">
+                <span style="font-size:64px">🎬</span>
+            </div>
+            <div class="sub-card-body">
+                <h3>Demo</h3>
+                <p>ชมคลิปการทำงานของทุกระบบ</p>
+                <div class="card-action">ดูคลิปสาธิต →</div>
+            </div>
+        </a>
+
+        <a class="sub-card" href="packages.html">
+            <div class="sub-card-img">
+                <img src="img/promo/asc-architect/01.jpg" alt="Package ASC Studio" onerror="this.parentElement.innerHTML='<span style=font-size:64px>📦</span>'">
+            </div>
+            <div class="sub-card-body">
+                <h3>Package ASC Studio</h3>
+                <p>เลือกแพ็คเกจที่เหมาะกับการใช้งานของคุณ — ทดลองฟรี, Starter, Pro</p>
+                <div class="card-action">ดูแพ็คเกจ →</div>
+            </div>
+        </a>
+
+        <a class="sub-card" href="https://aisolar.dev/index.html" target="_blank" rel="noopener">
+            <div class="sub-card-img dark-bg" style="padding:24px;text-align:center">
+                <div>
+                    <img src="img/pi-gold-logo-md.png" alt="PROINVENTIVE" style="width:48px;height:48px;border-radius:12px;margin-bottom:8px">
+                    <div style="color:#fbbf24;font-size:16px;font-weight:700">ระบบออกแบบโซลาร์เซลล์</div>
+                    <div style="color:#94a3b8;font-size:13px">ครบวงจรในที่เดียว</div>
+                </div>
+            </div>
+            <div class="sub-card-body">
+                <h3>ASC Studio</h3>
+                <p>เปิดใช้งานระบบออกแบบ Solar PV ออนไลน์ — ออกแบบ คำนวณ ส่งออก ครบจบในเว็บ</p>
+                <div class="card-action">เปิดใช้งาน →</div>
+            </div>
+        </a>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-bottom" style="margin-top:0;border-top:none;padding-top:0">
+            <a href="index.html" class="logo">
+                <img class="logo-mark" src="img/pi-gold-logo-sm.png" alt="PROINVENTIVE">
+                <span class="logo-word"><span class="pro">PRO</span><span class="inv">INVENTIVE</span></span>
+            </a>
+            <div class="fb-links">
+                <a href="tel:0800282399">📞 080-028-2399</a>
+                <a href="mailto:info@proinventive.co.th">✉️ info@proinventive.co.th</a>
+                <div class="lang-switch" role="group">
+                    <button type="button" data-lang="th">TH</button>
+                    <button type="button" data-lang="en">EN</button>
+                </div>
+                <span>© 2026 บริษัท โปรอินเวนทีฟ จำกัด</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -63,8 +63,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Thai:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20261127001">
-    <link rel="stylesheet" href="pi-console.css?v=20261127001">
+    <link rel="stylesheet" href="style.css?v=20261127002">
+    <link rel="stylesheet" href="pi-console.css?v=20261127002">
 
     <!-- Warm Donut Theme -->
     <style>
@@ -76,14 +76,13 @@
     .wd-hero h1{font-size:42px;font-weight:900;color:#c2410c;margin-bottom:8px;letter-spacing:-1px}
     .wd-hero .tagline{color:#78716c;font-size:16px;max-width:560px;margin:0 auto 8px}
     .wd-hero .sub-tagline{color:#a8a29e;font-size:14px;font-style:italic}
-    .wd-hero .hero-mascot{width:100px;height:100px;object-fit:contain;margin-top:16px;filter:drop-shadow(0 4px 12px rgba(217,119,6,.2));animation:wd-dance 1.2s ease-in-out infinite}
-    @keyframes wd-dance{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-12px) rotate(-3deg)}50%{transform:translateY(0) rotate(0deg)}75%{transform:translateY(-8px) rotate(3deg)}}
+    .wd-hero .hero-mascot{width:100px;height:100px;object-fit:contain;margin-top:16px;filter:drop-shadow(0 4px 12px rgba(217,119,6,.2))}
     .wd-hero .hero-mascot-wrap{position:relative;display:inline-block}
     .wd-hero .mascot-eyes{position:absolute;top:22px;left:50%;transform:translateX(-50%);display:flex;gap:12px;pointer-events:none}
     .wd-hero .mascot-eye{width:10px;height:10px;border-radius:50%;animation:wd-blink 4s ease-in-out infinite;box-shadow:0 0 8px currentColor}
     .wd-hero .mascot-eye.left{animation-delay:0s}
     .wd-hero .mascot-eye.right{animation-delay:0.1s}
-    @keyframes wd-blink{0%,20%{background:#22c55e;color:#22c55e;transform:scaleY(1)}22%{transform:scaleY(0.1)}24%{transform:scaleY(1)}33%,53%{background:#eab308;color:#eab308}55%{transform:scaleY(0.1)}57%{transform:scaleY(1)}66%,86%{background:#ef4444;color:#ef4444}88%{transform:scaleY(0.1)}90%,100%{transform:scaleY(1)}}
+    @keyframes wd-blink{0%,20%{background:#3b82f6;color:#3b82f6;transform:scaleY(1)}22%{transform:scaleY(0.1)}24%{transform:scaleY(1)}33%,53%{background:#eab308;color:#eab308}55%{transform:scaleY(0.1)}57%{transform:scaleY(1)}66%,86%{background:#ef4444;color:#ef4444}88%{transform:scaleY(0.1)}90%,100%{transform:scaleY(1)}}
 
     /* ── Trust Bar ── */
     .wd-trust{background:#fff7ed;border-top:1px solid #fed7aa;border-bottom:1px solid #fed7aa;padding:8px 24px;overflow:hidden}
@@ -237,14 +236,14 @@
     }
     </style>
 
-    <script src="i18n.js?v=20261127001" defer></script>
-    <script src="auth.js?v=20261127001" defer></script>
-    <script src="app.js?v=20261127001" defer></script>
-    <script src="thmap.js?v=20261127001" defer></script>
-    <script src="dashboard.js?v=20261127001" defer></script>
-    <script src="pi-console.js?v=20261127001" defer></script>
-    <script src="pi-brain.js?v=20261127001" defer></script>
-    <script src="okmd-bridge.js?v=20261127001" defer></script>
+    <script src="i18n.js?v=20261127002" defer></script>
+    <script src="auth.js?v=20261127002" defer></script>
+    <script src="app.js?v=20261127002" defer></script>
+    <script src="thmap.js?v=20261127002" defer></script>
+    <script src="dashboard.js?v=20261127002" defer></script>
+    <script src="pi-console.js?v=20261127002" defer></script>
+    <script src="pi-brain.js?v=20261127002" defer></script>
+    <script src="okmd-bridge.js?v=20261127002" defer></script>
     <script src="config/okmd-config.js" defer></script>
 </head>
 <body data-i18n-title="meta.title" data-i18n-desc="meta.desc">
@@ -317,6 +316,7 @@
             <button type="button" data-lang="th">TH</button>
             <button type="button" data-lang="en">EN</button>
         </div>
+        <a href="#" class="btn btn-ghost desktop-only auth-btn">เข้าสู่ระบบ</a>
         <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" data-i18n-attr="aria-label:nav.toggle">
             <span></span><span></span><span></span>
         </button>
@@ -340,7 +340,13 @@
 
     <!-- ================= HERO (Warm Donut) ================= -->
     <section class="wd-hero" style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap">
-        <img class="hero-mascot" src="img/pi-robot-wave.png" alt="Pi Mascot">
+        <div class="hero-mascot-wrap">
+            <img class="hero-mascot" src="img/pi-robot-wave.png" alt="Pi Mascot">
+            <div class="mascot-eyes">
+                <div class="mascot-eye left"></div>
+                <div class="mascot-eye right"></div>
+            </div>
+        </div>
         <div>
             <div class="badge" data-i18n="about.tag">Innovative Clean Energy Solution Provider</div>
             <h1>PROINVENTIVE ECOSYSTEMS</h1>
@@ -367,25 +373,25 @@
             </div>
         </div>
         <div class="wd-donut-legend">
-            <a class="wd-legend-item wd-li-blue" href="https://aisolar.dev/index.html" target="_blank" rel="noopener">
+            <a class="wd-legend-item wd-li-blue" href="ascs.html">
                 <div class="wd-legend-dot"></div>
                 <h4>Solar PV Design</h4>
                 <span class="wd-legend-sub">ASC Studio</span>
             </a>
-            <a class="wd-legend-item wd-li-purple" href="packages.html">
+            <a class="wd-legend-item wd-li-purple" href="javascript:void(0)" onclick="openGallery('asc-architect','ASC Architect')">
                 <div class="wd-legend-dot"></div>
                 <h4>Architectural Design</h4>
                 <span class="wd-legend-sub">ASC Architect</span>
             </a>
-            <a class="wd-legend-item wd-li-green" href="https://peeraponggis.github.io/aisolar2/Pee_survey.html" target="_blank" rel="noopener">
+            <a class="wd-legend-item wd-li-green" href="platform.html">
                 <div class="wd-legend-dot"></div>
                 <h4>Energy Platform</h4>
-                <span class="wd-legend-sub">PVCAL Site Survey</span>
+                <span class="wd-legend-sub">PVCAL · Site Survey</span>
             </a>
-            <a class="wd-legend-item wd-li-amber" href="#links">
+            <a class="wd-legend-item wd-li-amber" href="demo.html">
                 <div class="wd-legend-dot"></div>
                 <h4>Project Dashboard</h4>
-                <span class="wd-legend-sub">CRM-Pi · BoQ · Pi Tasks · SolarMatch</span>
+                <span class="wd-legend-sub">CRM-Pi · BoQ · Pi Tasks</span>
             </a>
         </div>
     </div>
@@ -545,14 +551,6 @@
                 <p>Plan S-curve Weekly Daily report</p>
                 <div class="prod-hint">คลิกดูภาพประชาสัมพันธ์ →</div>
             </div>
-            <a class="wd-prod-card" href="https://peeraponggis.github.io/aisolar2/solarmatch_by_proinventive.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
-                <div class="prod-head">
-                    <span style="font-size:28px;width:32px;text-align:center">☀️</span>
-                    <h4>SolarMatch</h4>
-                </div>
-                <p>จับคู่แผงและอินเวอร์เตอร์อัตโนมัติ</p>
-                <div class="prod-hint">เปิด SolarMatch →</div>
-            </a>
             <a class="wd-prod-card" href="demo.html" style="text-decoration:none;color:inherit">
                 <div class="prod-head">
                     <span style="font-size:28px;width:32px;text-align:center">🎬</span>
@@ -608,7 +606,7 @@
         <div class="container">
             <div class="contact-info-warm">
                 <p class="eyebrow" data-i18n="cta.tag">ติดต่อเรา</p>
-                <h2 data-i18n="cta.head">เริ่มต้นวันนี้เลย</h2>
+                <h2 data-i18n="cta.head">พร้อมให้บริการ</h2>
                 <p class="lead" data-i18n="cta.sub">ทีมงานพร้อมให้คำปรึกษาฟรี ไม่มีข้อผูกมัด</p>
                 <ul class="wd-contact-details">
                     <li><span class="ico">📞</span><a href="tel:0800282399">080-028-2399</a></li>
