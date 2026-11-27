@@ -11,8 +11,8 @@
 (function () {
     "use strict";
 
-    /* ---- data (company profile) — kWp, type: i=installed, d=design ---- */
-    var PROJECTS = [
+    /* ---- data: loaded from content.json, with inline fallback ---- */
+    var FALLBACK = [
         { n: "Big C กำแพงเพชร", kw: 2343.6, t: "i", p: "กำแพงเพชร", la: 16.483, lo: 99.523 },
         { n: "Big C Market สีคิ้ว", kw: 390.6, t: "i", p: "นครราชสีมา", la: 14.890, lo: 101.727 },
         { n: "Big C Market คู้บอน", kw: 195.3, t: "i", p: "นนทบุรี", la: 13.860, lo: 100.514 },
@@ -34,6 +34,14 @@
         { n: "โรงเรียนโพธิ์ไทรพิทยาคาร", kw: 127.8, t: "d", p: "อุบลราชธานี", la: 15.244, lo: 104.847 },
         { n: "เอกรัฐวิศวกรรม ฉะเชิงเทรา", kw: 67.2, t: "d", p: "ฉะเชิงเทรา", la: 13.690, lo: 101.077 }
     ];
+
+    function fromContent(arr) {
+        return arr.map(function (p) {
+            return { n: p.name, kw: p.kWp, t: p.type === "installed" ? "i" : "d", p: p.province || null, la: p.lat, lo: p.lng };
+        });
+    }
+
+    var PROJECTS = FALLBACK;
 
     /* real province map from thmap.js (loaded before this file) */
     var MAP = window.TH_MAP;
@@ -329,11 +337,30 @@
 
     /* ---------------- boot ---------------- */
 
-    syncTiles();
-    buildMap();
-    liveTick();
-    setInterval(liveTick, 2000);
-    setInterval(function () { drawCurve(false); }, 60000);
+    function boot() {
+        syncTiles();
+        buildMap();
+        liveTick();
+        setInterval(liveTick, 2000);
+        setInterval(function () { drawCurve(false); }, 60000);
+    }
+
+    function recompute() {
+        installed = PROJECTS.filter(function (p) { return p.t === "i"; });
+        designed = PROJECTS.filter(function (p) { return p.t === "d"; });
+        kwInstalled = installed.reduce(function (a, p) { return a + p.kw; }, 0);
+        kwDesigned = designed.reduce(function (a, p) { return a + p.kw; }, 0);
+        provinces = {};
+        PROJECTS.forEach(function (p) { if (p.p) provinces[p.p] = 1; });
+    }
+
+    fetch("content.json?t=" + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+        if (d.projects && d.projects.length) {
+            PROJECTS = fromContent(d.projects);
+            recompute();
+        }
+        boot();
+    }).catch(function () { boot(); });
 
     var fired = false;
     function fire() {

@@ -131,6 +131,9 @@ body { background: var(--bg); color: var(--text); font-size: 14px; line-height: 
       <button data-section="ecosystem" onclick="showSection('ecosystem')">
         <span class="icon">🌐</span> Ecosystem
       </button>
+      <button data-section="projects" onclick="showSection('projects')">
+        <span class="icon">📊</span> โครงการ
+      </button>
       <button data-section="footer" onclick="showSection('footer')">
         <span class="icon">📋</span> Footer
       </button>
@@ -183,6 +186,7 @@ function showSection(id){
   var main = document.getElementById('main-content');
   if(id === 'nav') renderNav(main);
   else if(id === 'ecosystem') renderEcosystem(main);
+  else if(id === 'projects') renderProjects(main);
   else if(id === 'footer') renderFooter(main);
   else if(id === 'contact') renderContact(main);
   else if(id === 'seo') renderSEO(main);
@@ -271,6 +275,69 @@ function renderFooter(el){
   el.innerHTML = h;
 }
 
+/* ── Projects (Dashboard) ── */
+function renderProjects(el){
+  if(!DATA.projects) DATA.projects = [];
+  var ps = DATA.projects;
+  var inst = ps.filter(function(p){return p.type==='installed';});
+  var des = ps.filter(function(p){return p.type==='designed';});
+  var kwI = inst.reduce(function(a,p){return a+p.kWp;},0);
+  var kwD = des.reduce(function(a,p){return a+p.kWp;},0);
+  var provs = {};
+  ps.forEach(function(p){if(p.province) provs[p.province]=1;});
+  var provCount = Object.keys(provs).length;
+
+  var h = '<h1>📊 โครงการ — Project Dashboard</h1><p class="subtitle">จัดการข้อมูลโครงการที่แสดงบน Dashboard หน้าแรก — เพิ่ม แก้ไข ลบ</p>';
+
+  h += '<div class="card" style="margin-bottom:16px"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center">' +
+    '<div><div style="font-size:22px;font-weight:800;color:#ff9800">' + inst.length + '</div><div style="font-size:11px;color:var(--text2)">ติดตั้งแล้ว</div></div>' +
+    '<div><div style="font-size:22px;font-weight:800;color:#2b7fd4">' + des.length + '</div><div style="font-size:11px;color:var(--text2)">งานออกแบบ</div></div>' +
+    '<div><div style="font-size:22px;font-weight:800;color:var(--text)">' + (kwI+kwD).toLocaleString(undefined,{maximumFractionDigits:0}) + '</div><div style="font-size:11px;color:var(--text2)">kWp รวม</div></div>' +
+    '<div><div style="font-size:22px;font-weight:800;color:var(--text)">' + provCount + '</div><div style="font-size:11px;color:var(--text2)">จังหวัด</div></div>' +
+  '</div></div>';
+
+  ps.forEach(function(p, i){
+    var color = p.type==='installed' ? '#ff9800' : '#2b7fd4';
+    var typeLabel = p.type==='installed' ? '⚡ ติดตั้งแล้ว' : '📐 งานออกแบบ';
+    var provLabel = p.province || '—';
+    var coordLabel = (p.lat && p.lng) ? p.lat+', '+p.lng : 'ไม่มีพิกัด';
+
+    h += '<div class="card" data-path="projects[' + i + ']">' +
+      '<div class="card-head">' +
+        '<span class="drag-handle" title="ลากเรียงลำดับ">⠿</span>' +
+        '<span class="card-icon" style="font-size:14px;background:' + color + '15;color:' + color + '">' + (p.type==='installed'?'⚡':'📐') + '</span>' +
+        '<div style="flex:1">' +
+          '<div class="card-title">' + esc(p.name) + '</div>' +
+          '<div class="card-desc">' + esc(p.kWp.toLocaleString(undefined,{maximumFractionDigits:2})) + ' kWp · ' + esc(provLabel) + '</div>' +
+        '</div>' +
+        '<span class="badge" style="background:' + color + '18;color:' + color + '">' + typeLabel + '</span>' +
+        '<button class="btn sm" onclick="toggleEditor(this)">✏️ แก้ไข</button>' +
+        '<button class="btn sm delete" onclick="deleteProject(' + i + ')" title="ลบโครงการ">🗑</button>' +
+      '</div>' +
+      '<div class="card-editor">' +
+        '<div class="row">' +
+          '<div class="field"><label>ชื่อโครงการ</label><input value="' + esc(p.name) + '" onchange="setVal(\'projects[' + i + '].name\',this.value)"></div>' +
+          '<div class="field"><label>กำลังผลิต (kWp)</label><input type="number" step="0.01" value="' + p.kWp + '" onchange="setVal(\'projects[' + i + '].kWp\',parseFloat(this.value)||0)"></div>' +
+        '</div>' +
+        '<div class="row">' +
+          '<div class="field"><label>ประเภท</label><select onchange="setVal(\'projects[' + i + '].type\',this.value);showSection(\'projects\')">' +
+            '<option value="installed"' + (p.type==='installed'?' selected':'') + '>⚡ ติดตั้งแล้ว</option>' +
+            '<option value="designed"' + (p.type==='designed'?' selected':'') + '>📐 งานออกแบบ</option>' +
+          '</select></div>' +
+          '<div class="field"><label>จังหวัด</label><input value="' + esc(p.province||'') + '" placeholder="เว้นว่างถ้าไม่ระบุ" onchange="setVal(\'projects[' + i + '].province\',this.value||null)"></div>' +
+        '</div>' +
+        '<div class="row">' +
+          '<div class="field"><label>ละติจูด (lat)</label><input type="number" step="0.001" value="' + (p.lat||'') + '" placeholder="เช่น 13.756" onchange="setVal(\'projects[' + i + '].lat\',parseFloat(this.value)||null)"></div>' +
+          '<div class="field"><label>ลองจิจูด (lng)</label><input type="number" step="0.001" value="' + (p.lng||'') + '" placeholder="เช่น 100.502" onchange="setVal(\'projects[' + i + '].lng\',parseFloat(this.value)||null)"></div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  });
+
+  h += '<button class="add-btn" onclick="addProject()">➕ เพิ่มโครงการใหม่</button>';
+  el.innerHTML = h;
+}
+
 /* ── Contact ── */
 function renderContact(el){
   var c = DATA.contact;
@@ -284,8 +351,11 @@ function renderContact(el){
         '<div class="field"><label>ที่อยู่ (ไทย)</label><input value="' + esc(c.address.th) + '" onchange="setVal(\'contact.address.th\',this.value)"></div>' +
         '<div class="field"><label>ที่อยู่ (อังกฤษ)</label><input value="' + esc(c.address.en) + '" onchange="setVal(\'contact.address.en\',this.value)"></div>' +
       '</div>' +
-      '<div class="row" style="grid-template-columns:1fr 1fr 1fr">' +
+      '<div class="row" style="grid-template-columns:1fr 1fr">' +
+        '<div class="field"><label>Facebook</label><input class="url-input" value="' + esc(c.social.facebook) + '" placeholder="https://facebook.com/..." onchange="setVal(\'contact.social.facebook\',this.value)"></div>' +
         '<div class="field"><label>X (Twitter)</label><input class="url-input" value="' + esc(c.social.x) + '" placeholder="https://x.com/..." onchange="setVal(\'contact.social.x\',this.value)"></div>' +
+      '</div>' +
+      '<div class="row" style="grid-template-columns:1fr 1fr">' +
         '<div class="field"><label>LinkedIn</label><input class="url-input" value="' + esc(c.social.linkedin) + '" placeholder="https://linkedin.com/company/..." onchange="setVal(\'contact.social.linkedin\',this.value)"></div>' +
         '<div class="field"><label>YouTube</label><input class="url-input" value="' + esc(c.social.youtube) + '" placeholder="https://youtube.com/@..." onchange="setVal(\'contact.social.youtube\',this.value)"></div>' +
       '</div>' +
@@ -436,6 +506,23 @@ function addEcosystemItem(){
   markChanged();
   showSection('ecosystem');
   toast('เพิ่มการ์ด Ecosystem ใหม่แล้ว', 'success');
+}
+
+function addProject(){
+  if(!DATA.projects) DATA.projects = [];
+  DATA.projects.push({id:genId('proj'), name:'โครงการใหม่', kWp:0, type:'designed', province:null, lat:null, lng:null});
+  markChanged();
+  showSection('projects');
+  toast('เพิ่มโครงการใหม่แล้ว', 'success');
+}
+
+function deleteProject(idx){
+  var name = DATA.projects[idx].name;
+  if(!confirm('ลบ "' + name + '" ?')) return;
+  DATA.projects.splice(idx, 1);
+  markChanged();
+  showSection('projects');
+  toast('ลบ ' + name + ' แล้ว', 'success');
 }
 
 function addFooterItem(){

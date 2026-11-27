@@ -80,11 +80,34 @@
       { "id": "seo-hreflang", "label": "hreflang th/en", "status": "pending", "note": "เพิ่มตอน build" }
     ]
   },
+  "projects": [
+    { "id": "p01", "name": "Big C กำแพงเพชร", "kWp": 2343.6, "type": "installed", "province": "กำแพงเพชร", "lat": 16.483, "lng": 99.523 },
+    { "id": "p02", "name": "Big C Market สีคิ้ว", "kWp": 390.6, "type": "installed", "province": "นครราชสีมา", "lat": 14.890, "lng": 101.727 },
+    { "id": "p03", "name": "Big C Market คู้บอน", "kWp": 195.3, "type": "installed", "province": "นนทบุรี", "lat": 13.860, "lng": 100.514 },
+    { "id": "p04", "name": "Big C Food Service สนามบินน้ำ", "kWp": 195.3, "type": "installed", "province": "นนทบุรี", "lat": 13.860, "lng": 100.514 },
+    { "id": "p05", "name": "โรงเรียนวิจิตราพิทยา", "kWp": 123, "type": "installed", "province": "อุบลราชธานี", "lat": 15.244, "lng": 104.847 },
+    { "id": "p06", "name": "โรงเรียนอนุบาลบ้านหนือ (BESS)", "kWp": 123, "type": "installed", "province": "อุบลราชธานี", "lat": 15.244, "lng": 104.847 },
+    { "id": "p07", "name": "ร้านอะไหล่ PK เสลภูมิ (Hybrid)", "kWp": 10.44, "type": "installed", "province": "ร้อยเอ็ด", "lat": 16.020, "lng": 103.945 },
+    { "id": "p08", "name": "Level9 Co., Ltd.", "kWp": 5.67, "type": "installed", "province": "กรุงเทพมหานคร", "lat": 13.756, "lng": 100.502 },
+    { "id": "p09", "name": "บมจ. นิตโต เดนโกะ (ประเทศไทย)", "kWp": 999.57, "type": "designed", "province": null, "lat": null, "lng": null },
+    { "id": "p10", "name": "โรงเรียนอนุบาลอุบลราชธานี", "kWp": 999.18, "type": "designed", "province": "อุบลราชธานี", "lat": 15.244, "lng": 104.847 },
+    { "id": "p11", "name": "ร.ร.จุฬาภรณราชวิทยาลัย เพชรบุรี", "kWp": 700.47, "type": "designed", "province": "เพชรบุรี", "lat": 12.980, "lng": 99.950 },
+    { "id": "p12", "name": "โรงพยาบาลชะอำ", "kWp": 451.5, "type": "designed", "province": "เพชรบุรี", "lat": 12.980, "lng": 99.950 },
+    { "id": "p13", "name": "โรงพยาบาลราชเวช เชียงใหม่", "kWp": 451.5, "type": "designed", "province": "เชียงใหม่", "lat": 18.796, "lng": 98.985 },
+    { "id": "p14", "name": "โรงแรมโซ โซฟิเทล หัวหิน", "kWp": 450, "type": "designed", "province": "ประจวบคีรีขันธ์", "lat": 12.568, "lng": 99.958 },
+    { "id": "p15", "name": "บจก. เจริญมงคล ฟู้ดส์ฯ", "kWp": 393.45, "type": "designed", "province": null, "lat": null, "lng": null },
+    { "id": "p16", "name": "บจก. ยูพีพี อัลทิเมท แพคกิ้ง", "kWp": 321.21, "type": "designed", "province": null, "lat": null, "lng": null },
+    { "id": "p17", "name": "โรงเรียนศรีเมืองวิทยาคาร", "kWp": 198.9, "type": "designed", "province": "อุบลราชธานี", "lat": 15.244, "lng": 104.847 },
+    { "id": "p18", "name": "มหาวิทยาลัยนอร์ท-เชียงใหม่", "kWp": 190.92, "type": "designed", "province": "เชียงใหม่", "lat": 18.796, "lng": 98.985 },
+    { "id": "p19", "name": "โรงเรียนโพธิ์ไทรพิทยาคาร", "kWp": 127.8, "type": "designed", "province": "อุบลราชธานี", "lat": 15.244, "lng": 104.847 },
+    { "id": "p20", "name": "เอกรัฐวิศวกรรม ฉะเชิงเทรา", "kWp": 67.2, "type": "designed", "province": "ฉะเชิงเทรา", "lat": 13.690, "lng": 101.077 }
+  ],
   "contact": {
     "phone": "080-028-2399",
     "email": "info@proinventive.co.th",
     "address": { "th": "59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150", "en": "59/6 Moo 7, Sai Noi, Sai Noi, Nonthaburi 11150, Thailand" },
     "social": {
+      "facebook": "https://www.facebook.com/profile.php?id=61572188957133",
       "x": "",
       "linkedin": "",
       "youtube": ""
