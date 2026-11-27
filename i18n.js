@@ -380,6 +380,8 @@
             /* ---- footer contact ---- */
             "f.contact": "ติดต่อเรา",
             "f.addr": "59/6 หมู่ 7 ต.ไทรน้อย อ.ไทรน้อย จ.นนทบุรี 11150",
+            "vc.total": "ผู้เข้าชมทั้งหมด",
+            "vc.today": "วันนี้",
 
             /* ---- dashboard ---- */
             "col.todo": "รอทำ",
@@ -845,6 +847,8 @@
             /* ---- footer contact ---- */
             "f.contact": "Contact",
             "f.addr": "59/6 Moo 7, Sai Noi, Nonthaburi 11150, Thailand",
+            "vc.total": "Total visitors",
+            "vc.today": "today",
 
             /* ---- dashboard ---- */
             "col.todo": "To-do",

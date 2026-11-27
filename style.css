@@ -1915,6 +1915,17 @@ body:not(.pi-authed) .internal-only {
     text-decoration: underline;
 }
 
+.visit-counter {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.visit-counter strong {
+    color: #fbbf24;
+    font-weight: 700;
+}
+
 /* =========================================================
    Mockup sidebar links + "today's summary" dashboard
    ========================================================= */
