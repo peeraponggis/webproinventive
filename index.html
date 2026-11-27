@@ -76,7 +76,14 @@
     .wd-hero h1{font-size:42px;font-weight:900;color:#c2410c;margin-bottom:8px;letter-spacing:-1px}
     .wd-hero .tagline{color:#78716c;font-size:16px;max-width:560px;margin:0 auto 8px}
     .wd-hero .sub-tagline{color:#a8a29e;font-size:14px;font-style:italic}
-    .wd-hero .hero-mascot{width:100px;height:100px;object-fit:contain;margin-top:16px;filter:drop-shadow(0 4px 12px rgba(217,119,6,.2))}
+    .wd-hero .hero-mascot{width:100px;height:100px;object-fit:contain;margin-top:16px;filter:drop-shadow(0 4px 12px rgba(217,119,6,.2));animation:wd-dance 1.2s ease-in-out infinite}
+    @keyframes wd-dance{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-12px) rotate(-3deg)}50%{transform:translateY(0) rotate(0deg)}75%{transform:translateY(-8px) rotate(3deg)}}
+    .wd-hero .hero-mascot-wrap{position:relative;display:inline-block}
+    .wd-hero .mascot-eyes{position:absolute;top:22px;left:50%;transform:translateX(-50%);display:flex;gap:12px;pointer-events:none}
+    .wd-hero .mascot-eye{width:10px;height:10px;border-radius:50%;animation:wd-blink 4s ease-in-out infinite;box-shadow:0 0 8px currentColor}
+    .wd-hero .mascot-eye.left{animation-delay:0s}
+    .wd-hero .mascot-eye.right{animation-delay:0.1s}
+    @keyframes wd-blink{0%,20%{background:#22c55e;color:#22c55e;transform:scaleY(1)}22%{transform:scaleY(0.1)}24%{transform:scaleY(1)}33%,53%{background:#eab308;color:#eab308}55%{transform:scaleY(0.1)}57%{transform:scaleY(1)}66%,86%{background:#ef4444;color:#ef4444}88%{transform:scaleY(0.1)}90%,100%{transform:scaleY(1)}}
 
     /* ── Trust Bar ── */
     .wd-trust{background:#fff7ed;border-top:1px solid #fed7aa;border-bottom:1px solid #fed7aa;padding:8px 24px;overflow:hidden}
@@ -87,7 +94,9 @@
 
     /* ── Donut + Legend ── */
     .wd-donut-wrap{display:flex;justify-content:center;align-items:center;padding:48px 24px 56px;gap:48px;flex-wrap:wrap;max-width:1000px;margin:0 auto}
-    .wd-donut-chart{width:300px;height:300px;border-radius:50%;background:conic-gradient(#2563eb 0deg 120deg,#7c3aed 120deg 210deg,#059669 210deg 290deg,#d97706 290deg 360deg);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 40px rgba(217,119,6,.25),0 0 60px rgba(217,119,6,.1);flex-shrink:0;position:relative}
+    .wd-donut-chart{width:300px;height:300px;border-radius:50%;background:conic-gradient(#2563eb 0deg 120deg,#7c3aed 120deg 210deg,#059669 210deg 290deg,#d97706 290deg 360deg);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 40px rgba(217,119,6,.25),0 0 60px rgba(217,119,6,.1);flex-shrink:0;position:relative;overflow:visible}
+    .wd-donut-labels{position:absolute;top:0;left:0;width:100%;height:100%;z-index:3;pointer-events:none}
+    .wd-donut-labels text{font-size:10px;font-weight:800;fill:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.55));letter-spacing:.3px}
     .wd-donut-chart::before{content:'';position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 50%,rgba(0,0,0,.08) 100%);pointer-events:none;z-index:1}
     .wd-donut-chart::after{content:'';position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(255,255,255,.18);pointer-events:none;z-index:1}
     .wd-donut-hole{width:170px;height:170px;border-radius:50%;background:radial-gradient(ellipse at 35% 30%,#fff9e6,#fbbf24 60%,#d97706 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 -4px 12px rgba(180,83,9,.3),inset 0 4px 12px rgba(255,255,255,.5),0 2px 8px rgba(0,0,0,.15);position:relative;z-index:2;border:3px solid #f59e0b}
@@ -179,9 +188,17 @@
     .wd-gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;max-width:1100px;width:100%;max-height:calc(100vh - 120px);overflow-y:auto;padding:8px}
     .wd-gallery-grid img{width:100%;border-radius:12px;cursor:pointer;transition:transform .2s;box-shadow:0 2px 12px rgba(0,0,0,.3)}
     .wd-gallery-grid img:hover{transform:scale(1.03)}
-    .wd-gallery-full{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:10002;align-items:center;justify-content:center;cursor:pointer}
+    .wd-gallery-full{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:10002;align-items:center;justify-content:center}
     .wd-gallery-full.active{display:flex}
-    .wd-gallery-full img{max-width:95vw;max-height:95vh;object-fit:contain;border-radius:8px}
+    .wd-gallery-full img{max-width:85vw;max-height:85vh;object-fit:contain;border-radius:8px}
+    .wd-gallery-nav{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:10003}
+    .wd-gallery-nav button{padding:10px 20px;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+    .wd-gallery-nav .gn-prev,.wd-gallery-nav .gn-next{background:rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(8px)}
+    .wd-gallery-nav .gn-prev:hover,.wd-gallery-nav .gn-next:hover{background:rgba(255,255,255,.3)}
+    .wd-gallery-nav .gn-back{background:linear-gradient(135deg,#d97706,#f59e0b);color:#fff}
+    .wd-gallery-nav .gn-back:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(217,119,6,.4)}
+    .wd-gallery-grid video{width:100%;border-radius:12px;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+    .wd-gallery-full video{max-width:85vw;max-height:85vh;object-fit:contain;border-radius:8px}
 
     /* ── Dashboard section warm override ── */
     #stories{background:linear-gradient(180deg,#fff7ed,#fffbf5);padding:48px 0;border-top:1px solid #fed7aa}
@@ -226,80 +243,6 @@
     </div>
 
     <nav class="nav-center" data-i18n-attr="aria-label:nav.aria">
-        <div class="nav-item">
-            <button type="button" aria-expanded="false">
-                <span data-i18n="nav.product">ผลิตภัณฑ์</span>
-                <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="dropdown">
-                <a class="dd-item" href="product.html">
-                    <span class="dd-ico">🗂️</span>
-                    <span>
-                        <span class="dd-title" data-i18n="dd.project.t">โปรเจกต์และงาน</span>
-                        <span class="dd-desc" data-i18n="dd.project.d">ติดตามงานทุกชิ้นในมุมมองเดียว</span>
-                    </span>
-                </a>
-                <a class="dd-item internal-only" href="pi_tasks/index.html">
-                    <span class="dd-ico">🗒️</span>
-                    <span>
-                        <span class="dd-title" data-i18n="dd.tasks.t">Pi Tasks</span>
-                        <span class="dd-desc" data-i18n="dd.tasks.d">บอร์ด Kanban สำหรับทีม เปิดใช้ได้ทันที</span>
-                    </span>
-                </a>
-                <a class="dd-item" href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">
-                    <span class="dd-ico">☀️</span>
-                    <span>
-                        <span class="dd-title">SaaS</span>
-                        <span class="dd-desc" data-i18n="saas.main.d">แพลตฟอร์ม SaaS สำหรับลูกค้า</span>
-                    </span>
-                </a>
-                <a class="dd-item" href="https://web-production-359eb.up.railway.app/pro" target="_blank" rel="noopener">
-                    <span class="dd-ico">🧰</span>
-                    <span>
-                        <span class="dd-title" data-i18n="saas.installer.t">SaaS ช่างติดตั้ง</span>
-                        <span class="dd-desc" data-i18n="saas.installer.d">พื้นที่ทำงานสำหรับทีมติดตั้งหน้างาน</span>
-                    </span>
-                </a>
-                <a class="dd-item" href="#services">
-                    <span class="dd-ico">🔌</span>
-                    <span>
-                        <span class="dd-title" data-i18n="dd.ev.t">สถานีชาร์จ EV <span class="dd-new-badge" data-i18n="dd.ev.badge">ใหม่</span></span>
-                        <span class="dd-desc" data-i18n="dd.ev.d">ออกแบบและติดตั้ง ตามมาตรฐาน กฟภ.-MPESTD</span>
-                    </span>
-                </a>
-            </div>
-        </div>
-
-        <div class="nav-item">
-            <button type="button" aria-expanded="false">
-                <span data-i18n="nav.resources">แหล่งข้อมูล</span>
-                <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="dropdown">
-                <a class="dd-item" href="#about">
-                    <span class="dd-ico">💬</span>
-                    <span>
-                        <span class="dd-title" data-i18n="dd.stories.t">เรื่องราวลูกค้า</span>
-                        <span class="dd-desc" data-i18n="dd.stories.d">ทีมที่เติบโตไปกับ PROINVENTIVE</span>
-                    </span>
-                </a>
-                <a class="dd-item" href="#">
-                    <span class="dd-ico">🔌</span>
-                    <span>
-                        <span class="dd-title" data-i18n="dd.connect.t">การเชื่อมต่อ</span>
-                        <span class="dd-desc" data-i18n="dd.connect.d">ต่อกับเครื่องมือที่ทีมใช้อยู่</span>
-                    </span>
-                </a>
-                <a class="dd-item" href="#">
-                    <span class="dd-ico">🎓</span>
-                    <span>
-                        <span class="dd-title" data-i18n="dd.help.t">ศูนย์ช่วยเหลือ</span>
-                        <span class="dd-desc" data-i18n="dd.help.d">คู่มือ บทเรียน และคำถามที่พบบ่อย</span>
-                    </span>
-                </a>
-            </div>
-        </div>
-
         <div class="nav-item internal-only">
             <button type="button" aria-expanded="false">
                 <span data-i18n="nav.internal">ระบบภายใน</span>
@@ -351,11 +294,6 @@
             </div>
         </div>
 
-        <div class="nav-links">
-            <a href="pi_tasks/index.html" class="tasks-chip internal-only" data-i18n="dd.tasks.t">Pi Tasks</a>
-            <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">SaaS</a>
-            <a href="demo.html">Demo</a>
-        </div>
     </nav>
 
     <div class="nav-right">
@@ -363,8 +301,6 @@
             <button type="button" data-lang="th">TH</button>
             <button type="button" data-lang="en">EN</button>
         </div>
-        <a href="#" class="btn btn-ghost desktop-only auth-btn">เข้าสู่ระบบ</a>
-        <a href="#" class="btn btn-primary btn-start" data-i18n="nav.free">เริ่มใช้ฟรี</a>
         <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" data-i18n-attr="aria-label:nav.toggle">
             <span></span><span></span><span></span>
         </button>
@@ -372,10 +308,6 @@
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
-    <a href="product.html" data-i18n="nav.product">ผลิตภัณฑ์</a>
-    <a href="#about" data-i18n="nav.resources">แหล่งข้อมูล</a>
-    <a href="https://web-production-359eb.up.railway.app" target="_blank" rel="noopener">SaaS</a>
-    <a href="demo.html">Demo</a>
     <a class="internal-only" href="pi_tasks/index.html" data-i18n="dd.tasks.t">Pi Tasks</a>
     <a class="internal-only" href="https://pi-system.pages.dev/pi_crm_erp/web/CRM-Pi" target="_blank" rel="noopener">CRM</a>
     <a class="internal-only" href="https://pi-system.pages.dev/pi_boq_app/web/" target="_blank" rel="noopener">BoQ</a>
@@ -386,53 +318,34 @@
         <button type="button" data-lang="th">TH</button>
         <button type="button" data-lang="en">EN</button>
     </div>
-    <div class="mm-actions">
-        <a href="#" class="btn btn-secondary auth-btn">เข้าสู่ระบบ</a>
-        <a href="#" class="btn btn-primary btn-start" data-i18n="nav.free">เริ่มใช้ฟรี</a>
-    </div>
 </div>
 
 <main>
 
     <!-- ================= HERO (Warm Donut) ================= -->
-    <section class="wd-hero">
-        <div class="badge" data-i18n="about.tag">Innovative Clean Energy Solution Provider</div>
-        <h1>PROINVENTIVE ECOSYSTEMS</h1>
+    <section class="wd-hero" style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap">
         <img class="hero-mascot" src="img/pi-robot-wave.png" alt="Pi Mascot">
-    </section>
-
-    <!-- ================= TRUST BAR ================= -->
-    <div class="wd-trust">
-        <p class="trust-caption" data-i18n="trust.caption">ได้รับความไว้วางใจจากทีมกว่า 4,000 ทีมทั่วภูมิภาค</p>
-        <div style="overflow:hidden">
-            <div class="trust-track">
-                <span class="trust-item">Big C</span>
-                <span class="trust-item">Level9</span>
-                <span class="trust-item">โซ โซฟิเทล หัวหิน</span>
-                <span class="trust-item">โรงพยาบาลชะอำ</span>
-                <span class="trust-item">โรงพยาบาลราชเวช เชียงใหม่</span>
-                <span class="trust-item">Nitto Denko</span>
-                <span class="trust-item">UPP Ultimate Packing</span>
-                <span class="trust-item">เอกรัฐวิศวกรรม</span>
-                <span class="trust-item">ม.นอร์ท-เชียงใหม่</span>
-                <span class="trust-item">ร.ร.จุฬาภรณราชวิทยาลัย เพชรบุรี</span>
-                <span class="trust-item">Big C</span>
-                <span class="trust-item">Level9</span>
-                <span class="trust-item">โซ โซฟิเทล หัวหิน</span>
-                <span class="trust-item">โรงพยาบาลชะอำ</span>
-                <span class="trust-item">โรงพยาบาลราชเวช เชียงใหม่</span>
-                <span class="trust-item">Nitto Denko</span>
-                <span class="trust-item">UPP Ultimate Packing</span>
-                <span class="trust-item">เอกรัฐวิศวกรรม</span>
-                <span class="trust-item">ม.นอร์ท-เชียงใหม่</span>
-                <span class="trust-item">ร.ร.จุฬาภรณราชวิทยาลัย เพชรบุรี</span>
-            </div>
+        <div>
+            <div class="badge" data-i18n="about.tag">Innovative Clean Energy Solution Provider</div>
+            <h1>PROINVENTIVE ECOSYSTEMS</h1>
         </div>
-    </div>
+    </section>
 
     <!-- ================= DONUT ECOSYSTEM ================= -->
     <div class="wd-donut-wrap">
         <div class="wd-donut-chart">
+            <svg class="wd-donut-labels" viewBox="0 0 300 300" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <path id="arcBlue" d="M186,51 A105,105 0 0,1 253,168"/>
+                    <path id="arcAmber" d="M59,98 A105,105 0 0,1 141,45"/>
+                    <path id="arcPurple" d="M114,249 A105,105 0 0,0 230,218"/>
+                    <path id="arcGreen" d="M47,132 A105,105 0 0,0 83,230"/>
+                </defs>
+                <text><textPath href="#arcBlue" startOffset="50%" text-anchor="middle">Solar PV Design</textPath></text>
+                <text><textPath href="#arcAmber" startOffset="50%" text-anchor="middle">Project Dashboard</textPath></text>
+                <text><textPath href="#arcPurple" startOffset="50%" text-anchor="middle">Architectural Design</textPath></text>
+                <text><textPath href="#arcGreen" startOffset="50%" text-anchor="middle">Energy Platform</textPath></text>
+            </svg>
             <div class="wd-donut-hole">
                 <img src="img/pi-gold-logo-md.png" alt="PROINVENTIVE">
             </div>
@@ -448,12 +361,12 @@
                 <h4>Architectural Design</h4>
                 <span class="wd-legend-sub">ASC Architect</span>
             </a>
-            <a class="wd-legend-item wd-li-green" href="product.html">
+            <a class="wd-legend-item wd-li-green" href="https://peeraponggis.github.io/aisolar2/Pee_survey.html" target="_blank" rel="noopener">
                 <div class="wd-legend-dot"></div>
                 <h4>Energy Platform</h4>
                 <span class="wd-legend-sub">PVCAL Site Survey</span>
             </a>
-            <a class="wd-legend-item wd-li-amber" href="pi_tasks/index.html">
+            <a class="wd-legend-item wd-li-amber" href="#links">
                 <div class="wd-legend-dot"></div>
                 <h4>Project Dashboard</h4>
                 <span class="wd-legend-sub">CRM-Pi · BoQ · Pi Tasks</span>
@@ -559,6 +472,35 @@
         </div>
     </section>
 
+    <!-- ================= TRUST BAR ================= -->
+    <div class="wd-trust">
+        <p class="trust-caption" data-i18n="trust.caption">ได้รับความไว้วางใจจากองค์กรชั้นนำทั่วประเทศ</p>
+        <div style="overflow:hidden">
+            <div class="trust-track">
+                <span class="trust-item">Ultimate Packing</span>
+                <span class="trust-item">เอกรัฐวิศวกรรม</span>
+                <span class="trust-item">ม.นอร์ท-เชียงใหม่</span>
+                <span class="trust-item">ร.ร.จุฬาภรณราชวิทยาลัย เพชรบุรี</span>
+                <span class="trust-item">Big C</span>
+                <span class="trust-item">Level9</span>
+                <span class="trust-item">โซ โซฟิเทล หัวหิน</span>
+                <span class="trust-item">โรงพยาบาลชะอำ</span>
+                <span class="trust-item">โรงพยาบาลราชเวช เชียงใหม่</span>
+                <span class="trust-item">Nitto Denko</span>
+                <span class="trust-item">UPP Ultimate Packing</span>
+                <span class="trust-item">เอกรัฐวิศวกรรม</span>
+                <span class="trust-item">ม.นอร์ท-เชียงใหม่</span>
+                <span class="trust-item">ร.ร.จุฬาภรณราชวิทยาลัย เพชรบุรี</span>
+                <span class="trust-item">Big C</span>
+                <span class="trust-item">Level9</span>
+                <span class="trust-item">โซ โซฟิเทล หัวหิน</span>
+                <span class="trust-item">โรงพยาบาลชะอำ</span>
+                <span class="trust-item">โรงพยาบาลราชเวช เชียงใหม่</span>
+                <span class="trust-item">Nitto Denko</span>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= ABOUT (Warm) ================= -->
     <section class="wd-about" id="about">
         <div class="container">
@@ -616,6 +558,8 @@
                     <h4>Demo</h4>
                 </div>
                 <p>ชมคลิปการทำงานของทุกระบบ</p>
+                <p style="font-size:11px;color:#78716c;margin-top:4px">CRM · BOQ · Project Management · i-Tasks</p>
+                <div class="prod-hint">ดูคลิปสาธิต →</div>
             </a>
         </div>
     </div>
@@ -626,8 +570,13 @@
         <div class="wd-gallery-title" id="wdGalleryTitle"></div>
         <div class="wd-gallery-grid" id="wdGalleryGrid"></div>
     </div>
-    <div class="wd-gallery-full" id="wdGalleryFull" onclick="this.classList.remove('active')">
+    <div class="wd-gallery-full" id="wdGalleryFull">
         <img id="wdGalleryFullImg" src="" alt="">
+        <div class="wd-gallery-nav">
+            <button class="gn-prev" onclick="galleryNav(-1)">◀ ก่อนหน้า</button>
+            <button class="gn-back" onclick="galleryBackToGrid()">↩ กลับ</button>
+            <button class="gn-next" onclick="galleryNav(1)">ถัดไป ▶</button>
+        </div>
     </div>
 
     <!-- ================= CONTACT (Warm) ================= -->
@@ -657,29 +606,91 @@
 
 <script>
 var galleryData={
-  'asc-studio':{images:['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg','07.jpg','08.jpg','09.jpg','10.jpg','11.jpg'],path:'img/promo/asc-studio/'},
+  'asc-studio':{
+    images:['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg','07.jpg','08.jpg','09.jpg','10.jpg','11.jpg'],
+    videos:[
+      {file:'demo-house.mp4',label:'ตัวอย่างงานบ้าน'},
+      {file:'demo-commercial.mp4',label:'ตัวอย่างงานพาณิชย์'},
+      {file:'demo-low-voltage.mp4',label:'การขนานแรงต่ำ'},
+      {file:'demo-high-voltage.mp4',label:'การขนานแรงสูง'}
+    ],
+    path:'img/promo/asc-studio/'
+  },
   'asc-architect':{images:['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg','07.jpg','08.jpg','09.jpg','10.jpg','11.jpg'],path:'img/promo/asc-architect/'},
   'project-plan':{images:['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg','07.jpg','08.jpg','09.jpg','10.jpg'],path:'img/promo/project-plan/'}
 };
+var galleryCurrentIdx=0,galleryItems=[],galleryCurrentPath='';
 function openGallery(id,title){
   var d=galleryData[id];if(!d)return;
+  galleryItems=[];galleryCurrentPath=d.path;galleryCurrentIdx=0;
+  d.images.forEach(function(f){galleryItems.push({type:'img',file:f})});
+  if(d.videos)d.videos.forEach(function(v){galleryItems.push({type:'video',file:v.file,label:v.label})});
   document.getElementById('wdGalleryTitle').textContent=title;
   var g=document.getElementById('wdGalleryGrid');g.innerHTML='';
-  d.images.forEach(function(f){
-    var img=document.createElement('img');
-    img.src=d.path+f;img.alt=title+' '+f;img.loading='lazy';
-    img.onclick=function(){document.getElementById('wdGalleryFullImg').src=this.src;document.getElementById('wdGalleryFull').classList.add('active')};
-    g.appendChild(img);
+  galleryItems.forEach(function(item,i){
+    if(item.type==='img'){
+      var img=document.createElement('img');
+      img.src=d.path+item.file;img.alt=title+' '+item.file;img.loading='lazy';
+      img.onclick=function(){galleryCurrentIdx=i;showFullItem()};
+      g.appendChild(img);
+    }else{
+      var wrap=document.createElement('div');wrap.style.cssText='position:relative;cursor:pointer';
+      var vid=document.createElement('video');vid.src=d.path+item.file;vid.muted=true;vid.preload='metadata';
+      vid.style.cssText='width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.3)';
+      var lbl=document.createElement('div');
+      lbl.style.cssText='position:absolute;bottom:8px;left:8px;right:8px;background:rgba(0,0,0,.7);color:#fbbf24;padding:6px 10px;border-radius:8px;font-size:12px;font-weight:600;text-align:center';
+      lbl.textContent='▶ '+item.label;
+      wrap.onclick=function(){galleryCurrentIdx=i;showFullItem()};
+      wrap.appendChild(vid);wrap.appendChild(lbl);g.appendChild(wrap);
+    }
   });
   document.getElementById('wdGallery').classList.add('active');
   document.body.style.overflow='hidden';
 }
+function showFullItem(){
+  var item=galleryItems[galleryCurrentIdx];
+  var fullEl=document.getElementById('wdGalleryFull');
+  var imgEl=document.getElementById('wdGalleryFullImg');
+  var existingVid=fullEl.querySelector('video');
+  if(existingVid)existingVid.remove();
+  if(item.type==='img'){
+    imgEl.src=galleryCurrentPath+item.file;imgEl.style.display='';
+  }else{
+    imgEl.style.display='none';
+    var vid=document.createElement('video');vid.src=galleryCurrentPath+item.file;
+    vid.controls=true;vid.autoplay=true;vid.style.cssText='max-width:85vw;max-height:85vh;border-radius:8px';
+    fullEl.insertBefore(vid,fullEl.querySelector('.wd-gallery-nav'));
+  }
+  fullEl.classList.add('active');
+}
+function galleryNav(dir){
+  var v=document.getElementById('wdGalleryFull').querySelector('video');if(v){v.pause();v.remove()}
+  galleryCurrentIdx+=dir;
+  if(galleryCurrentIdx<0)galleryCurrentIdx=galleryItems.length-1;
+  if(galleryCurrentIdx>=galleryItems.length)galleryCurrentIdx=0;
+  showFullItem();
+}
+function galleryBackToGrid(){
+  var f=document.getElementById('wdGalleryFull');
+  var v=f.querySelector('video');if(v){v.pause();v.remove()}
+  document.getElementById('wdGalleryFullImg').style.display='';
+  f.classList.remove('active');
+}
 function closeGallery(){
+  var f=document.getElementById('wdGalleryFull');
+  var v=f.querySelector('video');if(v){v.pause();v.remove()}
+  document.getElementById('wdGalleryFullImg').style.display='';
   document.getElementById('wdGallery').classList.remove('active');
-  document.getElementById('wdGalleryFull').classList.remove('active');
+  f.classList.remove('active');
   document.body.style.overflow='';
 }
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeGallery()});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeGallery();
+  if(document.getElementById('wdGalleryFull').classList.contains('active')){
+    if(e.key==='ArrowLeft')galleryNav(-1);
+    if(e.key==='ArrowRight')galleryNav(1);
+  }
+});
 </script>
 
 <!-- ================= FOOTER ================= -->
