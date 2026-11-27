@@ -46,7 +46,7 @@
         "postalCode": "11150",
         "addressCountry": "TH"
       },
-      "sameAs": [],
+      "sameAs": ["https://www.facebook.com/profile.php?id=61572188957133"],
       "offers": [
         {"@type": "Offer", "name": "Solar PV System Design", "description": "ออกแบบระบบผลิตไฟฟ้าพลังงานแสงอาทิตย์"},
         {"@type": "Offer", "name": "EV Charging Station Installation", "description": "ออกแบบและติดตั้งสถานีชาร์จ EV ตามมาตรฐาน กฟภ.-MPESTD"},
@@ -99,7 +99,9 @@
     .wd-donut-labels text{font-size:10px;font-weight:800;fill:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.55));letter-spacing:.3px}
     .wd-donut-chart::before{content:'';position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 50%,rgba(0,0,0,.08) 100%);pointer-events:none;z-index:1}
     .wd-donut-chart::after{content:'';position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(255,255,255,.18);pointer-events:none;z-index:1}
-    .wd-donut-hole{width:170px;height:170px;border-radius:50%;background:radial-gradient(ellipse at 35% 30%,#fff9e6,#fbbf24 60%,#d97706 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 -4px 12px rgba(180,83,9,.3),inset 0 4px 12px rgba(255,255,255,.5),0 2px 8px rgba(0,0,0,.15);position:relative;z-index:2;border:3px solid #f59e0b}
+    .wd-donut-hole{width:170px;height:170px;border-radius:50%;background:radial-gradient(ellipse at 35% 30%,#fff9e6,#fbbf24 55%,#d97706 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 -6px 16px rgba(180,83,9,.35),inset 0 6px 16px rgba(255,255,255,.55),0 4px 12px rgba(0,0,0,.2);position:relative;z-index:2;border:none}
+    .wd-donut-hole::after{content:'';position:absolute;inset:0;border-radius:50%;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.45) 45%,rgba(255,255,255,.1) 55%,transparent 70%);background-size:250% 100%;animation:wd-shimmer 3.5s ease-in-out infinite;pointer-events:none}
+    @keyframes wd-shimmer{0%,100%{background-position:150% center}50%{background-position:-50% center}}
     .wd-donut-hole img{width:80%;height:80%;border-radius:50%;object-fit:cover;filter:drop-shadow(0 2px 6px rgba(180,83,9,.3))}
     .wd-donut-legend{display:flex;flex-direction:column;gap:12px;min-width:320px}
     .wd-legend-item{display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:16px;color:#fff;transition:transform .2s,box-shadow .2s;cursor:pointer;text-decoration:none;border-top:1px solid rgba(255,255,255,.25);border-left:1px solid rgba(255,255,255,.15);border-bottom:2px solid rgba(0,0,0,.2);border-right:1px solid rgba(0,0,0,.08)}
@@ -206,6 +208,20 @@
     #stories .eyebrow{color:#d97706}
     #stories h2{color:#c2410c}
     #stories .pd-card{background:#fff;border:1px solid #fed7aa}
+
+    /* ── PDPA Popup ── */
+    .pdpa-modal-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.72);align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+    .pdpa-modal-overlay.active{display:flex}
+    .pdpa-modal{background:#fff;border-radius:16px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.4);overflow:hidden}
+    .pdpa-modal-head{padding:1.25rem 1.5rem;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between}
+    .pdpa-modal-head h3{font-size:1.1rem;font-weight:700;color:#1e293b;margin:0}
+    .pdpa-modal-close{background:none;border:none;font-size:24px;cursor:pointer;color:#64748b;line-height:1;padding:4px 8px;border-radius:6px}
+    .pdpa-modal-close:hover{background:#f1f5f9;color:#1e293b}
+    .pdpa-modal-body{flex:1;overflow-y:auto;padding:1.25rem 1.5rem;font-size:.875rem;color:#334155;line-height:1.7}
+    .pdpa-modal-body p{margin-bottom:.9rem}
+    .pdpa-modal-body a{color:#c2410c}
+    .pdpa-modal-foot{padding:1rem 1.5rem;border-top:1px solid #e2e8f0;background:#f8fafc;text-align:right}
+    .pdpa-modal-foot button{padding:.6rem 1.5rem;background:linear-gradient(135deg,#d97706,#f59e0b);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:.9rem;cursor:pointer;font-family:inherit}
 
     @media(max-width:768px){
       .wd-donut-wrap{flex-direction:column;align-items:center}
@@ -501,29 +517,6 @@
         </div>
     </div>
 
-    <!-- ================= ABOUT (Warm) ================= -->
-    <section class="wd-about" id="about">
-        <div class="container">
-            <p class="eyebrow" data-i18n="about.tag">Innovative Clean Energy Solution Provider</p>
-            <h2 data-i18n="about.head">เกี่ยวกับเรา</h2>
-            <p class="lead" data-i18n="about.lead">เราสร้างอนาคตพลังงานสะอาด ด้วยเทคโนโลยีล้ำหน้าและความยั่งยืนที่จับต้องได้ — โซลูชันครบวงจรตั้งแต่การออกแบบ ติดตั้ง ตรวจสอบระบบ ไปจนถึงการบำรุงรักษาเชิงป้องกัน</p>
-            <div class="wd-about-cards">
-                <div class="wd-about-card">
-                    <h3 data-i18n="a1.t">Smart Energy Management</h3>
-                    <p data-i18n="a1.d">ผสานเทคโนโลยี IoT, AI และ Big Data เข้ากับระบบพลังงาน เพื่อการบริหารจัดการที่ฉลาดขึ้น และวิเคราะห์ประสิทธิภาพแบบเรียลไทม์</p>
-                </div>
-                <div class="wd-about-card">
-                    <h3 data-i18n="a2.t">C&amp;I · ESS · Peak Shaving</h3>
-                    <p data-i18n="a2.d">เชี่ยวชาญการออกแบบระบบเชิงพาณิชย์และอุตสาหกรรม ระบบจัดเก็บพลังงาน และการลดค่าความต้องการไฟฟ้าสูงสุด เพื่อพลังงานที่ต่อเนื่องและมีเสถียรภาพ</p>
-                </div>
-                <div class="wd-about-card">
-                    <h3 data-i18n="a3.t">ESG และการพัฒนาบุคลากร</h3>
-                    <p data-i18n="a3.d">ดำเนินธุรกิจตามหลัก ESG อย่างรอบด้าน พร้อมฝึกอบรมและพัฒนาศักยภาพบุคลากรทุกระดับ สู่ยุคพลังงานสะอาดที่เปลี่ยนแปลงอย่างรวดเร็ว</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ================= PRODUCTS ================= -->
     <div class="wd-products" id="links">
         <h2>ซอฟต์แวร์ครบวงจร ในระบบเดียว</h2>
@@ -586,6 +579,29 @@
             <button class="gn-next" onclick="galleryNav(1)">ถัดไป ▶</button>
         </div>
     </div>
+
+    <!-- ================= ABOUT (Warm) ================= -->
+    <section class="wd-about" id="about">
+        <div class="container">
+            <p class="eyebrow" data-i18n="about.tag">Innovative Clean Energy Solution Provider</p>
+            <h2 data-i18n="about.head">เกี่ยวกับเรา</h2>
+            <p class="lead" data-i18n="about.lead">เราสร้างอนาคตพลังงานสะอาด ด้วยเทคโนโลยีล้ำหน้าและความยั่งยืนที่จับต้องได้ — โซลูชันครบวงจรตั้งแต่การออกแบบ ติดตั้ง ตรวจสอบระบบ ไปจนถึงการบำรุงรักษาเชิงป้องกัน</p>
+            <div class="wd-about-cards">
+                <div class="wd-about-card">
+                    <h3 data-i18n="a1.t">Smart Energy Management</h3>
+                    <p data-i18n="a1.d">ผสานเทคโนโลยี IoT, AI และ Big Data เข้ากับระบบพลังงาน เพื่อการบริหารจัดการที่ฉลาดขึ้น และวิเคราะห์ประสิทธิภาพแบบเรียลไทม์</p>
+                </div>
+                <div class="wd-about-card">
+                    <h3 data-i18n="a2.t">C&amp;I · ESS · Peak Shaving</h3>
+                    <p data-i18n="a2.d">เชี่ยวชาญการออกแบบระบบเชิงพาณิชย์และอุตสาหกรรม ระบบจัดเก็บพลังงาน และการลดค่าความต้องการไฟฟ้าสูงสุด เพื่อพลังงานที่ต่อเนื่องและมีเสถียรภาพ</p>
+                </div>
+                <div class="wd-about-card">
+                    <h3 data-i18n="a3.t">ESG และการพัฒนาบุคลากร</h3>
+                    <p data-i18n="a3.d">ดำเนินธุรกิจตามหลัก ESG อย่างรอบด้าน พร้อมฝึกอบรมและพัฒนาศักยภาพบุคลากรทุกระดับ สู่ยุคพลังงานสะอาดที่เปลี่ยนแปลงอย่างรวดเร็ว</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ================= CONTACT (Warm) ================= -->
     <section class="wd-contact" id="cta">
@@ -716,6 +732,7 @@ document.addEventListener('keydown',function(e){
                     <a href="mailto:info@proinventive.co.th">✉️ info@proinventive.co.th</a>
                 </div>
                 <div class="social">
+                    <a href="https://www.facebook.com/profile.php?id=61572188957133" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12Z"/></svg></a>
                     <a href="#" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2H21l-6.6 7.6L22 22h-6.2l-4.8-6.3L5.4 22H2.6l7-8.1L2 2h6.4l4.4 5.8L18.2 2Zm-1 18.3h1.6L7.9 3.6H6.2l11 16.7Z"/></svg></a>
                     <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5ZM3 9.5h4V21H3V9.5Zm7 0h3.8v1.6h.05c.53-.95 1.83-1.95 3.77-1.95C21.4 9.15 22 11.3 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3s-2.3 1.57-2.3 3.2V21h-4V9.5Z"/></svg></a>
                     <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2s-.2-1.4-.8-2c-.75-.8-1.6-.8-2-.85C16 4.1 12 4.1 12 4.1h-.01s-4 0-6.8.25c-.4.05-1.25.05-2 .85-.6.6-.8 2-.8 2S2.2 8.85 2.2 10.5v1.55c0 1.65.2 3.3.2 3.3s.2 1.4.8 2c.75.8 1.75.77 2.2.85 1.6.15 6.8.2 6.8.2s4 0 6.8-.26c.4-.05 1.25-.05 2-.85.6-.6.8-2 .8-2s.2-1.65.2-3.3V10.5c0-1.65-.2-3.3-.2-3.3ZM9.95 14.2V8.85l5.15 2.68-5.15 2.67Z"/></svg></a>
@@ -753,7 +770,7 @@ document.addEventListener('keydown',function(e){
                     <li><a href="#" data-i18n="f.careers">ร่วมงานกับเรา</a></li>
                     <li><a href="#" data-i18n="f.security">ความปลอดภัย</a></li>
                     <li><a href="#" data-i18n="f.status">สถานะระบบ</a></li>
-                    <li><a href="#" data-i18n="f.terms">ข้อกำหนดและความเป็นส่วนตัว</a></li>
+                    <li><a href="#" onclick="event.preventDefault();document.getElementById('pdpaModal').classList.add('active')" data-i18n="f.terms">ข้อกำหนดและความเป็นส่วนตัว</a></li>
                 </ul>
             </div>
 
@@ -783,6 +800,55 @@ document.addEventListener('keydown',function(e){
         </div>
     </div>
 </footer>
+
+<!-- PDPA Modal -->
+<div class="pdpa-modal-overlay" id="pdpaModal" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="pdpa-modal">
+        <div class="pdpa-modal-head">
+            <h3>นโยบายคุ้มครองข้อมูลส่วนบุคคล (PDPA)</h3>
+            <button class="pdpa-modal-close" onclick="document.getElementById('pdpaModal').classList.remove('active')">&times;</button>
+        </div>
+        <div class="pdpa-modal-body">
+            <p><strong>1. ผู้ควบคุมข้อมูลส่วนบุคคล</strong><br>
+            บริษัท โปรอินเวนทีฟ จำกัด (<strong>ProInventive</strong>) เป็นผู้ควบคุมข้อมูลส่วนบุคคลสำหรับบริการและผลิตภัณฑ์ทั้งหมดของบริษัทฯ ภายใต้ พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562</p>
+
+            <p><strong>2. ข้อมูลที่เก็บรวบรวม</strong><br>
+            ระบบเก็บข้อมูลเพียงที่จำเป็นสำหรับการทำงาน ได้แก่:<br>
+            • ชื่อผู้ใช้และอีเมลที่ใช้เข้าสู่ระบบ<br>
+            • ข้อมูลโครงการ (ชื่อ ที่ตั้ง ขนาดระบบ)<br>
+            • รูปภาพและไฟล์ที่อัปโหลดประกอบโครงการ<br>
+            • บันทึกการเข้าใช้งาน (Log) เพื่อความปลอดภัย</p>
+
+            <p><strong>3. วัตถุประสงค์การใช้ข้อมูล</strong><br>
+            • ออกแบบและคำนวณระบบพลังงาน<br>
+            • จัดทำรายงานและเอกสารข้อเสนอให้แก่ลูกค้า<br>
+            • บันทึกประวัติการแก้ไขและตรวจสอบความถูกต้องของข้อมูล<br>
+            • ปรับปรุงและพัฒนาระบบต่อเนื่อง</p>
+
+            <p><strong>4. การเปิดเผยข้อมูล</strong><br>
+            ข้อมูลของท่านจะไม่ถูกเปิดเผยต่อบุคคลภายนอก ยกเว้นตามที่กฎหมายกำหนด ระบบใช้มาตรการ Row-Level Security (RLS) — ผู้ใช้แต่ละคนเข้าถึงได้เฉพาะข้อมูลของตนเอง</p>
+
+            <p><strong>5. ระยะเวลาเก็บรักษาข้อมูล</strong><br>
+            ข้อมูลจะถูกเก็บรักษาตลอดช่วงเวลาที่ท่านยังเป็นผู้ใช้งานระบบ และจะถูกลบตามคำขอของท่านหรือเมื่อบัญชีถูกยกเลิก</p>
+
+            <p><strong>6. สิทธิ์ของท่านในฐานะเจ้าของข้อมูล</strong><br>
+            ท่านมีสิทธิ์ดังต่อไปนี้ภายใต้ พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562:<br>
+            • <strong>สิทธิ์รับทราบ</strong> — ทราบว่ามีการเก็บข้อมูลอะไรบ้าง<br>
+            • <strong>สิทธิ์เข้าถึง</strong> — ขอดูข้อมูลของตนเองได้<br>
+            • <strong>สิทธิ์แก้ไข</strong> — ขอแก้ไขข้อมูลที่ไม่ถูกต้อง<br>
+            • <strong>สิทธิ์ลบ</strong> — ขอลบข้อมูลส่วนบุคคล<br>
+            • <strong>สิทธิ์คัดค้าน</strong> — คัดค้านการประมวลผลข้อมูล<br>
+            • <strong>สิทธิ์ถอนความยินยอม</strong> — ถอนความยินยอมได้ทุกเมื่อ</p>
+
+            <p><strong>7. ติดต่อผู้ควบคุมข้อมูล</strong><br>
+            ProInventive · อีเมล: <a href="mailto:info@proinventive.co.th">info@proinventive.co.th</a><br>
+            โทร: <a href="tel:0800282399">080-028-2399</a></p>
+        </div>
+        <div class="pdpa-modal-foot">
+            <button onclick="document.getElementById('pdpaModal').classList.remove('active')">ปิด</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
